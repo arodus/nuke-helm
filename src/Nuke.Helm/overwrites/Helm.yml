@@ -1,0 +1,85 @@
+﻿enumerations:
+  - name: 'HelmOutputFormat'
+    values:
+      - 'json'
+      - 'yaml'
+propertyOverwrites:
+  HelmListSettings.Output:
+    type: 'HelmOutputFormat'
+  HelmStatusSettings.Output:
+    type: 'HelmOutputFormat'
+  HelmFetchSettings.Urls:
+    name: 'Charts'
+    help: 'The charts to fetch. Can either be specified by <c>repoName/chartName</c> or directly by an url.'
+  HelmCreateSettings.Name:
+    help: 'The name of chart directory to create.'
+  HelmDeleteSettings.ReleaseNames:
+    help: 'The name of the releases to delete.'
+  HelmDependencyBuildSettings.Chart:
+    help: 'The name of the chart to build.'
+  HelmDependencyListSettings.Chart:
+    help: 'The name of the chart to list.'
+  HelmDependencyUpdateSettings.Chart:
+    help: 'The name of the chart to update.'
+  HelmGetSettings.ReleaseName:
+    help: 'The name of the release to get.'
+  HelmGetHooksSettings.ReleaseName:
+    help: 'The name of the release to get the hooks for.'
+  HelmGetManifestSettings.ReleaseName:
+    help: 'The name of the release to get the manifest for.'
+  HelmGetValuesSettings.ReleaseName:
+    help: 'The name of the release to get the values for.'
+  HelmHistorySettings.ReleaseName:
+    help: 'The name of the release to get the history for.'
+  HelmInspectSettings.Chart:
+    help: 'The name of the chart to inspect.'
+  HelmInspectChartSettings.Chart:
+    help: 'The name of the chart to inspect.'
+  HelmInspectReadmeSettings.Chart:
+    help: 'The name of the chart to inspect.'
+  HelmInspectValuesSettings.Chart:
+    help: 'The name of the chart to inspect.'
+  HelmInstallSettings.Chart:
+    help: 'The name of the chart to install.'
+  HelmLintSettings.Path:
+    help: 'The Path to a chart.'
+  HelmListSettings.Filter:
+    help: 'The filter to use.'
+  HelmPackageSettings.ChartPaths:
+    help: 'The paths to the charts to package.'
+  HelmPluginInstallSettings.Paths:
+    help: 'List of paths or urls of packages to install.'
+  HelmPluginRemoveSettings.Plugins:
+    help: 'List of plugins to remove.'
+  HelmPluginUpdateSettings.Plugins:
+    help: 'List of plugins to update.'
+  HelmRepoAddSettings.Name:
+    help: 'The name of the repository to add.'
+  HelmRepoAddSettings.Url:
+    help: 'The url of the repository to add.'
+  HelmRepoIndexSettings.Dir:
+    name: 'Directory'
+    help: 'The directory of the repository.'
+  HelmRepoRemoveSettings.Name:
+    help: 'The name of the repository.'
+  HelmRollbackSettings.Release:
+    help: 'The name of the release.'
+  HelmRollbackSettings.Revision:
+    help: 'The revison to roll back.'
+  HelmSearchSettings.Keyword:
+    help: 'The keyword to search for.'
+  HelmStatusSettings.Release:
+    help: 'The name of the release.'
+  HelmStatusSettings.ReleaseName:
+    help: 'The name of the release to get the status for.'
+  HelmTestSettings.Release:
+    help: 'The name of the release to test.'
+  HelmUpgradeSettings.Release:
+    help: 'The name of the release to upgrade.'
+  HelmUpgradeSettings.Chart:
+    help: 'The name of the chart to upgrade.'
+  HelmVerifySettings.Path:
+    help: 'The path to the chart to verify.'
+
+
+

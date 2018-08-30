@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2005
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "_build", "build\_build.csproj", "{CC0913A7-3CF1-45E1-8226-71023733BE97}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "misc", "misc", "{8ACB496A-03F4-4399-A4C6-B04E006F78AF}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+		CHANGELOG.md = CHANGELOG.md
+		src\CodeStyle.DotSettings = src\CodeStyle.DotSettings
+		src\Configuration.props = src\Configuration.props
+		src\Inspections.DotSettings = src\Inspections.DotSettings
+		LICENSE = LICENSE
+		src\Package.props = src\Package.props
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nuke.Helm", "src\Nuke.Helm\Nuke.Helm.csproj", "{891C218E-9D21-43E0-8BB8-943B51E0C3C4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Nuke.Helm.Generator", "src\Nuke.Helm.Generator\Nuke.Helm.Generator.csproj", "{73F4391B-755B-45A4-9097-D94352306487}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nuke.Helm.Generator.Tests", "tests\Nuke.Helm.Generator.Tests\Nuke.Helm.Generator.Tests.csproj", "{19CA2786-E7F5-4D5E-B0C1-7972855C74F9}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CC0913A7-3CF1-45E1-8226-71023733BE97}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC0913A7-3CF1-45E1-8226-71023733BE97}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{891C218E-9D21-43E0-8BB8-943B51E0C3C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{891C218E-9D21-43E0-8BB8-943B51E0C3C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{891C218E-9D21-43E0-8BB8-943B51E0C3C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{891C218E-9D21-43E0-8BB8-943B51E0C3C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{73F4391B-755B-45A4-9097-D94352306487}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{73F4391B-755B-45A4-9097-D94352306487}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{73F4391B-755B-45A4-9097-D94352306487}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{73F4391B-755B-45A4-9097-D94352306487}.Release|Any CPU.Build.0 = Release|Any CPU
+		{19CA2786-E7F5-4D5E-B0C1-7972855C74F9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{19CA2786-E7F5-4D5E-B0C1-7972855C74F9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{19CA2786-E7F5-4D5E-B0C1-7972855C74F9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{19CA2786-E7F5-4D5E-B0C1-7972855C74F9}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FA5C517C-9D92-485C-9796-5BC75DEF1ADC}
+	EndGlobalSection
+EndGlobal
