@@ -7,7 +7,7 @@ pipeline {
     }
     environment {
         GITHUB_REPO_OWNER = 'nuke-build'
-        GITHUB_REPO_NAME = 'kubernetes'
+        GITHUB_REPO_NAME = 'helm'
     }
     stages {
         stage('Checkout') {
