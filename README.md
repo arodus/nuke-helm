@@ -21,24 +21,24 @@ class Build : NukeBuild
         .Executes(() =>
         {
             // helm repo update
-            HelmTasks.HelmRepoUpdate();
+            HelmRepoUpdate();
 
             var commonSettings = new HelmCommonSettings()
                 .EnableDebug();
 
             // helm create --debug nuke-chart
-            HelmTasks.HelmCreate(s => s
+            HelmCreate(s => s
                 .SetName("nuke-chart ")
                 .SetCommonSettings(commonSettings));
 
             // helm install --debug --name nuke-release nuke-chart
-            HelmTasks.HelmInstall(s => s
+            HelmInstall(s => s
                 .SetName("nuke-release")
                 .SetChart("nuke-chart")
                 .SetCommonSettings(commonSettings));
 
             // helm delete nuke-release
-            HelmTasks.HelmDelete(s => s
+            HelmDelete(s => s
                 .AddReleaseNames("nuke-release"));
         });
 }
