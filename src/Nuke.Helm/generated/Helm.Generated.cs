@@ -3,7 +3,7 @@
 // https://github.com/nuke-build/nuke/blob/master/LICENSE
 
 // Generated with Nuke.CodeGeneration, Version: 0.8.0 [CommitSha: 0a204764].
-// Generated from https://github.com/nuke-build/kubernetes/blob/master/src/Nuke.Helm/specifications/Helm.json.
+// Generated from https://github.com/nuke-build/helm/blob/helm-update-2.11.0/src/Nuke.Helm/specifications/Helm.json.
 
 using JetBrains.Annotations;
 using Newtonsoft.Json;
@@ -110,6 +110,14 @@ namespace Nuke.Helm
         public static IReadOnlyCollection<Output> HelmGetManifest(Configure<HelmGetManifestSettings> configurator = null)
         {
             var toolSettings = configurator.InvokeSafe(new HelmGetManifestSettings());
+            var process = ProcessTasks.StartProcess(toolSettings);
+            process.AssertZeroExitCode();
+            return process.Output;
+        }
+        /// <summary><p>This command shows notes provided by the chart of a named release.</p><p>For more details, visit the <a href="https://helm.sh/">official website</a>.</p></summary>
+        public static IReadOnlyCollection<Output> HelmGetNotes(Configure<HelmGetNotesSettings> configurator = null)
+        {
+            var toolSettings = configurator.InvokeSafe(new HelmGetNotesSettings());
             var process = ProcessTasks.StartProcess(toolSettings);
             process.AssertZeroExitCode();
             return process.Output;
@@ -338,7 +346,7 @@ namespace Nuke.Helm
             process.AssertZeroExitCode();
             return process.Output;
         }
-        /// <summary><p>This command upgrades a release to a new version of a chart. The upgrade arguments must be a release and chart. The chart argument can be either: a chart reference('stable/mariadb'), a path to a chart directory, a packaged chart, or a fully qualified URL. For chart references, the latest version will be specified unless the '--version' flag is set. To override values in a chart, use either the '--values' flag and pass in a file or use the '--set' flag and pass configuration from the command line. To force string values in '--set', use '--set-string' instead. In case a value is large and therefore you want not to use neither '--values' nor '--set', use '--set-file' to read the single large value from file. You can specify the '--values'/'-f' flag multiple times. The priority will be given to the last (right-most) file specified. For example, if both myvalues.yaml and override.yaml contained a key called 'Test', the value set in override.yaml would take precedence: 	$ helm upgrade -f myvalues.yaml -f override.yaml redis ./redis You can specify the '--set' flag multiple times. The priority will be given to the last (right-most) set specified. For example, if both 'bar' and 'newbar' values are set for a key called 'foo', the 'newbar' value would take precedence: 	$ helm upgrade --set foo=bar --set foo=newbar redis ./redis.</p><p>For more details, visit the <a href="https://helm.sh/">official website</a>.</p></summary>
+        /// <summary><p>This command upgrades a release to a specified version of a chart and/or updates chart values. Required arguments are release and chart. The chart argument can be one of:  - a chart reference('stable/mariadb'); use '--version' and '--devel' flags for versions other than latest,  - a path to a chart directory,  - a packaged chart,  - a fully qualified URL. To customize the chart values, use any of  - '--values'/'-f' to pass in a yaml file holding settings,  - '--set' to provide one or more key=val pairs directly,  - '--set-string' to provide key=val forcing val to be stored as a string,  - '--set-file' to provide key=path to read a single large value from a file at path. To edit or append to the existing customized values, add the   '--reuse-values' flag, otherwise any existing customized values are ignored. If no chart value arguments are provided on the command line, any existing customized values are carried forward. If you want to revert to just the values provided in the chart, use the '--reset-values' flag. You can specify any of the chart value flags multiple times. The priority will be given to the last (right-most) value specified. For example, if both myvalues.yaml and override.yaml contained a key called 'Test', the value set in override.yaml would take precedence: 	$ helm upgrade -f myvalues.yaml -f override.yaml redis ./redis Note that the key name provided to the '--set', '--set-string' and '--set-file' flags can reference structure elements. Examples:   - mybool=TRUE   - livenessProbe.timeoutSeconds=10   - metrics.annotations[0]=hey,metrics.annotations[1]=ho which sets the top level key mybool to true, the nested timeoutSeconds to 10, and two array values, respectively. Note that the value side of the key=val provided to '--set' and '--set-string' flags will pass through shell evaluation followed by yaml type parsing to produce the final value. This may alter inputs with special characters in unexpected ways, for example 	$ helm upgrade --set pwd=3jk$o2,z=f\30.e redis ./redis results in "pwd: 3jk" and "z: f30.e". Use single quotes to avoid shell evaluation and argument delimiters, and use backslash to escape yaml special characters: 	$ helm upgrade --set pwd='3jk$o2z=f\\30.e' redis ./redis which results in the expected "pwd: 3jk$o2z=f\30.e". If a single quote occurs in your value then follow your shell convention for escaping it; for example in bash: 	$ helm upgrade --set pwd='3jk$o2z=f\\30with'\''quote' which results in "pwd: 3jk$o2z=f\30with'quote".</p><p>For more details, visit the <a href="https://helm.sh/">official website</a>.</p></summary>
         public static IReadOnlyCollection<Output> HelmUpgrade(Configure<HelmUpgradeSettings> configurator = null)
         {
             var toolSettings = configurator.InvokeSafe(new HelmUpgradeSettings());
@@ -372,11 +380,14 @@ namespace Nuke.Helm
     {
         /// <summary><p>Path to the Helm executable.</p></summary>
         public override string ToolPath => base.ToolPath ?? HelmTasks.HelmPath;
+        /// <summary><p>Help for completion.</p></summary>
+        public virtual bool? Help { get; internal set; }
         public virtual string Shell { get; internal set; }
         protected override Arguments ConfigureArguments(Arguments arguments)
         {
             arguments
               .Add("helm completion")
+              .Add("--help {value}", Help)
               .Add("{value}", Shell);
             return base.ConfigureArguments(arguments);
         }
@@ -391,6 +402,8 @@ namespace Nuke.Helm
     {
         /// <summary><p>Path to the Helm executable.</p></summary>
         public override string ToolPath => base.ToolPath ?? HelmTasks.HelmPath;
+        /// <summary><p>Help for create.</p></summary>
+        public virtual bool? Help { get; internal set; }
         /// <summary><p>The named Helm starter scaffold.</p></summary>
         public virtual string Starter { get; internal set; }
         /// <summary><p>The name of chart directory to create.</p></summary>
@@ -399,6 +412,7 @@ namespace Nuke.Helm
         {
             arguments
               .Add("helm create")
+              .Add("--help {value}", Help)
               .Add("--starter {value}", Starter)
               .Add("{value}", Name);
             return base.ConfigureArguments(arguments);
@@ -418,6 +432,8 @@ namespace Nuke.Helm
         public virtual string Description { get; internal set; }
         /// <summary><p>Simulate a delete.</p></summary>
         public virtual bool? DryRun { get; internal set; }
+        /// <summary><p>Help for delete.</p></summary>
+        public virtual bool? Help { get; internal set; }
         /// <summary><p>Prevent hooks from running during deletion.</p></summary>
         public virtual bool? NoHooks { get; internal set; }
         /// <summary><p>Remove the release from the store and make its name free for later use.</p></summary>
@@ -445,6 +461,7 @@ namespace Nuke.Helm
               .Add("helm delete")
               .Add("--description {value}", Description)
               .Add("--dry-run {value}", DryRun)
+              .Add("--help {value}", Help)
               .Add("--no-hooks {value}", NoHooks)
               .Add("--purge {value}", Purge)
               .Add("--timeout {value}", Timeout)
@@ -468,6 +485,8 @@ namespace Nuke.Helm
     {
         /// <summary><p>Path to the Helm executable.</p></summary>
         public override string ToolPath => base.ToolPath ?? HelmTasks.HelmPath;
+        /// <summary><p>Help for build.</p></summary>
+        public virtual bool? Help { get; internal set; }
         /// <summary><p>Keyring containing public keys (default "~/.gnupg/pubring.gpg").</p></summary>
         public virtual string Keyring { get; internal set; }
         /// <summary><p>Verify the packages against signatures.</p></summary>
@@ -478,6 +497,7 @@ namespace Nuke.Helm
         {
             arguments
               .Add("helm dependency build")
+              .Add("--help {value}", Help)
               .Add("--keyring {value}", Keyring)
               .Add("--verify {value}", Verify)
               .Add("{value}", Chart);
@@ -494,12 +514,15 @@ namespace Nuke.Helm
     {
         /// <summary><p>Path to the Helm executable.</p></summary>
         public override string ToolPath => base.ToolPath ?? HelmTasks.HelmPath;
+        /// <summary><p>Help for list.</p></summary>
+        public virtual bool? Help { get; internal set; }
         /// <summary><p>The name of the chart to list.</p></summary>
         public virtual string Chart { get; internal set; }
         protected override Arguments ConfigureArguments(Arguments arguments)
         {
             arguments
               .Add("helm dependency list")
+              .Add("--help {value}", Help)
               .Add("{value}", Chart);
             return base.ConfigureArguments(arguments);
         }
@@ -514,6 +537,8 @@ namespace Nuke.Helm
     {
         /// <summary><p>Path to the Helm executable.</p></summary>
         public override string ToolPath => base.ToolPath ?? HelmTasks.HelmPath;
+        /// <summary><p>Help for update.</p></summary>
+        public virtual bool? Help { get; internal set; }
         /// <summary><p>Keyring containing public keys (default "~/.gnupg/pubring.gpg").</p></summary>
         public virtual string Keyring { get; internal set; }
         /// <summary><p>Do not refresh the local repository cache.</p></summary>
@@ -526,6 +551,7 @@ namespace Nuke.Helm
         {
             arguments
               .Add("helm dependency update")
+              .Add("--help {value}", Help)
               .Add("--keyring {value}", Keyring)
               .Add("--skip-refresh {value}", SkipRefresh)
               .Add("--verify {value}", Verify)
@@ -551,6 +577,8 @@ namespace Nuke.Helm
         public virtual string Destination { get; internal set; }
         /// <summary><p>Use development versions, too. Equivalent to version '&gt;0.0.0-0'. If --version is set, this is ignored.</p></summary>
         public virtual bool? Devel { get; internal set; }
+        /// <summary><p>Help for fetch.</p></summary>
+        public virtual bool? Help { get; internal set; }
         /// <summary><p>Identify HTTPS client using this SSL key file.</p></summary>
         public virtual string KeyFile { get; internal set; }
         /// <summary><p>Keyring containing public keys (default "~/.gnupg/pubring.gpg").</p></summary>
@@ -582,9 +610,10 @@ namespace Nuke.Helm
               .Add("--cert-file {value}", CertFile)
               .Add("--destination {value}", Destination)
               .Add("--devel {value}", Devel)
+              .Add("--help {value}", Help)
               .Add("--key-file {value}", KeyFile)
               .Add("--keyring {value}", Keyring)
-              .Add("--password {value}", Password)
+              .Add("--password {value}", Password, secret: true)
               .Add("--prov {value}", Prov)
               .Add("--repo {value}", Repo)
               .Add("--untar {value}", Untar)
@@ -606,6 +635,8 @@ namespace Nuke.Helm
     {
         /// <summary><p>Path to the Helm executable.</p></summary>
         public override string ToolPath => base.ToolPath ?? HelmTasks.HelmPath;
+        /// <summary><p>Help for get.</p></summary>
+        public virtual bool? Help { get; internal set; }
         /// <summary><p>Get the named release with revision.</p></summary>
         public virtual int? Revision { get; internal set; }
         /// <summary><p>Enable TLS for request.</p></summary>
@@ -626,6 +657,7 @@ namespace Nuke.Helm
         {
             arguments
               .Add("helm get")
+              .Add("--help {value}", Help)
               .Add("--revision {value}", Revision)
               .Add("--tls {value}", Tls)
               .Add("--tls-ca-cert {value}", TlsCaCert)
@@ -647,6 +679,8 @@ namespace Nuke.Helm
     {
         /// <summary><p>Path to the Helm executable.</p></summary>
         public override string ToolPath => base.ToolPath ?? HelmTasks.HelmPath;
+        /// <summary><p>Help for hooks.</p></summary>
+        public virtual bool? Help { get; internal set; }
         /// <summary><p>Get the named release with revision.</p></summary>
         public virtual int? Revision { get; internal set; }
         /// <summary><p>Enable TLS for request.</p></summary>
@@ -667,6 +701,7 @@ namespace Nuke.Helm
         {
             arguments
               .Add("helm get hooks")
+              .Add("--help {value}", Help)
               .Add("--revision {value}", Revision)
               .Add("--tls {value}", Tls)
               .Add("--tls-ca-cert {value}", TlsCaCert)
@@ -688,6 +723,8 @@ namespace Nuke.Helm
     {
         /// <summary><p>Path to the Helm executable.</p></summary>
         public override string ToolPath => base.ToolPath ?? HelmTasks.HelmPath;
+        /// <summary><p>Help for manifest.</p></summary>
+        public virtual bool? Help { get; internal set; }
         /// <summary><p>Get the named release with revision.</p></summary>
         public virtual int? Revision { get; internal set; }
         /// <summary><p>Enable TLS for request.</p></summary>
@@ -708,6 +745,50 @@ namespace Nuke.Helm
         {
             arguments
               .Add("helm get manifest")
+              .Add("--help {value}", Help)
+              .Add("--revision {value}", Revision)
+              .Add("--tls {value}", Tls)
+              .Add("--tls-ca-cert {value}", TlsCaCert)
+              .Add("--tls-cert {value}", TlsCert)
+              .Add("--tls-hostname {value}", TlsHostname)
+              .Add("--tls-key {value}", TlsKey)
+              .Add("--tls-verify {value}", TlsVerify)
+              .Add("{value}", ReleaseName);
+            return base.ConfigureArguments(arguments);
+        }
+    }
+    #endregion
+    #region HelmGetNotesSettings
+    /// <summary><p>Used within <see cref="HelmTasks"/>.</p></summary>
+    [PublicAPI]
+    [ExcludeFromCodeCoverage]
+    [Serializable]
+    public partial class HelmGetNotesSettings : HelmToolSettings
+    {
+        /// <summary><p>Path to the Helm executable.</p></summary>
+        public override string ToolPath => base.ToolPath ?? HelmTasks.HelmPath;
+        /// <summary><p>Help for notes.</p></summary>
+        public virtual bool? Help { get; internal set; }
+        /// <summary><p>Get the notes of the named release with revision.</p></summary>
+        public virtual int? Revision { get; internal set; }
+        /// <summary><p>Enable TLS for request.</p></summary>
+        public virtual bool? Tls { get; internal set; }
+        /// <summary><p>Path to TLS CA certificate file (default "$HELM_HOME/ca.pem").</p></summary>
+        public virtual string TlsCaCert { get; internal set; }
+        /// <summary><p>Path to TLS certificate file (default "$HELM_HOME/cert.pem").</p></summary>
+        public virtual string TlsCert { get; internal set; }
+        /// <summary><p>The server name used to verify the hostname on the returned certificates from the server.</p></summary>
+        public virtual string TlsHostname { get; internal set; }
+        /// <summary><p>Path to TLS key file (default "$HELM_HOME/key.pem").</p></summary>
+        public virtual string TlsKey { get; internal set; }
+        /// <summary><p>Enable TLS for request and verify remote.</p></summary>
+        public virtual bool? TlsVerify { get; internal set; }
+        public virtual string ReleaseName { get; internal set; }
+        protected override Arguments ConfigureArguments(Arguments arguments)
+        {
+            arguments
+              .Add("helm get notes")
+              .Add("--help {value}", Help)
               .Add("--revision {value}", Revision)
               .Add("--tls {value}", Tls)
               .Add("--tls-ca-cert {value}", TlsCaCert)
@@ -731,6 +812,8 @@ namespace Nuke.Helm
         public override string ToolPath => base.ToolPath ?? HelmTasks.HelmPath;
         /// <summary><p>Dump all (computed) values.</p></summary>
         public virtual bool? All { get; internal set; }
+        /// <summary><p>Help for values.</p></summary>
+        public virtual bool? Help { get; internal set; }
         /// <summary><p>Get the named release with revision.</p></summary>
         public virtual int? Revision { get; internal set; }
         /// <summary><p>Enable TLS for request.</p></summary>
@@ -752,6 +835,7 @@ namespace Nuke.Helm
             arguments
               .Add("helm get values")
               .Add("--all {value}", All)
+              .Add("--help {value}", Help)
               .Add("--revision {value}", Revision)
               .Add("--tls {value}", Tls)
               .Add("--tls-ca-cert {value}", TlsCaCert)
@@ -775,6 +859,8 @@ namespace Nuke.Helm
         public override string ToolPath => base.ToolPath ?? HelmTasks.HelmPath;
         /// <summary><p>Specifies the max column width of output (default 60).</p></summary>
         public virtual uint? ColWidth { get; internal set; }
+        /// <summary><p>Help for history.</p></summary>
+        public virtual bool? Help { get; internal set; }
         /// <summary><p>Maximum number of revision to include in history (default 256).</p></summary>
         public virtual int? Max { get; internal set; }
         /// <summary><p>Prints the output in the specified format (json|table|yaml) (default "table").</p></summary>
@@ -798,6 +884,7 @@ namespace Nuke.Helm
             arguments
               .Add("helm history")
               .Add("--col-width {value}", ColWidth)
+              .Add("--help {value}", Help)
               .Add("--max {value}", Max)
               .Add("--output {value}", Output)
               .Add("--tls {value}", Tls)
@@ -820,10 +907,13 @@ namespace Nuke.Helm
     {
         /// <summary><p>Path to the Helm executable.</p></summary>
         public override string ToolPath => base.ToolPath ?? HelmTasks.HelmPath;
+        /// <summary><p>Help for home.</p></summary>
+        public virtual bool? Help { get; internal set; }
         protected override Arguments ConfigureArguments(Arguments arguments)
         {
             arguments
-              .Add("helm home");
+              .Add("helm home")
+              .Add("--help {value}", Help);
             return base.ConfigureArguments(arguments);
         }
     }
@@ -837,6 +927,8 @@ namespace Nuke.Helm
     {
         /// <summary><p>Path to the Helm executable.</p></summary>
         public override string ToolPath => base.ToolPath ?? HelmTasks.HelmPath;
+        /// <summary><p>Auto-mount the given service account to tiller (default true).</p></summary>
+        public virtual bool? AutomountServiceAccountToken { get; internal set; }
         /// <summary><p>Use the canary Tiller image.</p></summary>
         public virtual bool? CanaryImage { get; internal set; }
         /// <summary><p>If set does not install Tiller.</p></summary>
@@ -845,6 +937,8 @@ namespace Nuke.Helm
         public virtual bool? DryRun { get; internal set; }
         /// <summary><p>Force upgrade of Tiller to the current helm version.</p></summary>
         public virtual bool? ForceUpgrade { get; internal set; }
+        /// <summary><p>Help for init.</p></summary>
+        public virtual bool? Help { get; internal set; }
         /// <summary><p>Limit the maximum number of revisions saved per release. Use 0 for no limit.</p></summary>
         public virtual long? HistoryMax { get; internal set; }
         /// <summary><p>URL for local repository (default "http://127.0.0.1:8879/charts").</p></summary>
@@ -872,6 +966,8 @@ namespace Nuke.Helm
         public virtual bool? TillerTls { get; internal set; }
         /// <summary><p>Path to TLS certificate file to install with Tiller.</p></summary>
         public virtual string TillerTlsCert { get; internal set; }
+        /// <summary><p>The server name used to verify the hostname on the returned certificates from Tiller.</p></summary>
+        public virtual string TillerTlsHostname { get; internal set; }
         /// <summary><p>Path to TLS key file to install with Tiller.</p></summary>
         public virtual string TillerTlsKey { get; internal set; }
         /// <summary><p>Install Tiller with TLS enabled and to verify remote certificates.</p></summary>
@@ -886,10 +982,12 @@ namespace Nuke.Helm
         {
             arguments
               .Add("helm init")
+              .Add("--automount-service-account-token {value}", AutomountServiceAccountToken)
               .Add("--canary-image {value}", CanaryImage)
               .Add("--client-only {value}", ClientOnly)
               .Add("--dry-run {value}", DryRun)
               .Add("--force-upgrade {value}", ForceUpgrade)
+              .Add("--help {value}", Help)
               .Add("--history-max {value}", HistoryMax)
               .Add("--local-repo-url {value}", LocalRepoUrl)
               .Add("--net-host {value}", NetHost)
@@ -903,6 +1001,7 @@ namespace Nuke.Helm
               .Add("--tiller-image {value}", TillerImage)
               .Add("--tiller-tls {value}", TillerTls)
               .Add("--tiller-tls-cert {value}", TillerTlsCert)
+              .Add("--tiller-tls-hostname {value}", TillerTlsHostname)
               .Add("--tiller-tls-key {value}", TillerTlsKey)
               .Add("--tiller-tls-verify {value}", TillerTlsVerify)
               .Add("--tls-ca-cert {value}", TlsCaCert)
@@ -925,6 +1024,8 @@ namespace Nuke.Helm
         public virtual string CaFile { get; internal set; }
         /// <summary><p>Verify certificates of HTTPS-enabled servers using this CA bundle.</p></summary>
         public virtual string CertFile { get; internal set; }
+        /// <summary><p>Help for inspect.</p></summary>
+        public virtual bool? Help { get; internal set; }
         /// <summary><p>Identify HTTPS client using this SSL key file.</p></summary>
         public virtual string KeyFile { get; internal set; }
         /// <summary><p>Path to the keyring containing public verification keys (default "~/.gnupg/pubring.gpg").</p></summary>
@@ -947,9 +1048,10 @@ namespace Nuke.Helm
               .Add("helm inspect")
               .Add("--ca-file {value}", CaFile)
               .Add("--cert-file {value}", CertFile)
+              .Add("--help {value}", Help)
               .Add("--key-file {value}", KeyFile)
               .Add("--keyring {value}", Keyring)
-              .Add("--password {value}", Password)
+              .Add("--password {value}", Password, secret: true)
               .Add("--repo {value}", Repo)
               .Add("--username {value}", Username)
               .Add("--verify {value}", Verify)
@@ -972,6 +1074,8 @@ namespace Nuke.Helm
         public virtual string CaFile { get; internal set; }
         /// <summary><p>Verify certificates of HTTPS-enabled servers using this CA bundle.</p></summary>
         public virtual string CertFile { get; internal set; }
+        /// <summary><p>Help for chart.</p></summary>
+        public virtual bool? Help { get; internal set; }
         /// <summary><p>Identify HTTPS client using this SSL key file.</p></summary>
         public virtual string KeyFile { get; internal set; }
         /// <summary><p>Path to the keyring containing public verification keys (default "~/.gnupg/pubring.gpg").</p></summary>
@@ -994,9 +1098,10 @@ namespace Nuke.Helm
               .Add("helm inspect chart")
               .Add("--ca-file {value}", CaFile)
               .Add("--cert-file {value}", CertFile)
+              .Add("--help {value}", Help)
               .Add("--key-file {value}", KeyFile)
               .Add("--keyring {value}", Keyring)
-              .Add("--password {value}", Password)
+              .Add("--password {value}", Password, secret: true)
               .Add("--repo {value}", Repo)
               .Add("--username {value}", Username)
               .Add("--verify {value}", Verify)
@@ -1019,6 +1124,8 @@ namespace Nuke.Helm
         public virtual string CaFile { get; internal set; }
         /// <summary><p>Verify certificates of HTTPS-enabled servers using this CA bundle.</p></summary>
         public virtual string CertFile { get; internal set; }
+        /// <summary><p>Help for readme.</p></summary>
+        public virtual bool? Help { get; internal set; }
         /// <summary><p>Identify HTTPS client using this SSL key file.</p></summary>
         public virtual string KeyFile { get; internal set; }
         /// <summary><p>Path to the keyring containing public verification keys (default "~/.gnupg/pubring.gpg").</p></summary>
@@ -1037,6 +1144,7 @@ namespace Nuke.Helm
               .Add("helm inspect readme")
               .Add("--ca-file {value}", CaFile)
               .Add("--cert-file {value}", CertFile)
+              .Add("--help {value}", Help)
               .Add("--key-file {value}", KeyFile)
               .Add("--keyring {value}", Keyring)
               .Add("--repo {value}", Repo)
@@ -1060,6 +1168,8 @@ namespace Nuke.Helm
         public virtual string CaFile { get; internal set; }
         /// <summary><p>Verify certificates of HTTPS-enabled servers using this CA bundle.</p></summary>
         public virtual string CertFile { get; internal set; }
+        /// <summary><p>Help for values.</p></summary>
+        public virtual bool? Help { get; internal set; }
         /// <summary><p>Identify HTTPS client using this SSL key file.</p></summary>
         public virtual string KeyFile { get; internal set; }
         /// <summary><p>Path to the keyring containing public verification keys (default "~/.gnupg/pubring.gpg").</p></summary>
@@ -1082,9 +1192,10 @@ namespace Nuke.Helm
               .Add("helm inspect values")
               .Add("--ca-file {value}", CaFile)
               .Add("--cert-file {value}", CertFile)
+              .Add("--help {value}", Help)
               .Add("--key-file {value}", KeyFile)
               .Add("--keyring {value}", Keyring)
-              .Add("--password {value}", Password)
+              .Add("--password {value}", Password, secret: true)
               .Add("--repo {value}", Repo)
               .Add("--username {value}", Username)
               .Add("--verify {value}", Verify)
@@ -1115,6 +1226,8 @@ namespace Nuke.Helm
         public virtual bool? Devel { get; internal set; }
         /// <summary><p>Simulate an install.</p></summary>
         public virtual bool? DryRun { get; internal set; }
+        /// <summary><p>Help for install.</p></summary>
+        public virtual bool? Help { get; internal set; }
         /// <summary><p>Identify HTTPS client using this SSL key file.</p></summary>
         public virtual string KeyFile { get; internal set; }
         /// <summary><p>Location of public keys used for verification (default "~/.gnupg/pubring.gpg").</p></summary>
@@ -1181,6 +1294,7 @@ namespace Nuke.Helm
               .Add("--description {value}", Description)
               .Add("--devel {value}", Devel)
               .Add("--dry-run {value}", DryRun)
+              .Add("--help {value}", Help)
               .Add("--key-file {value}", KeyFile)
               .Add("--keyring {value}", Keyring)
               .Add("--name {value}", Name)
@@ -1188,7 +1302,7 @@ namespace Nuke.Helm
               .Add("--namespace {value}", Namespace)
               .Add("--no-crd-hook {value}", NoCrdHook)
               .Add("--no-hooks {value}", NoHooks)
-              .Add("--password {value}", Password)
+              .Add("--password {value}", Password, secret: true)
               .Add("--replace {value}", Replace)
               .Add("--repo {value}", Repo)
               .Add("--set {value}", Set, "{key}={value}", separator: ',')
@@ -1220,6 +1334,8 @@ namespace Nuke.Helm
     {
         /// <summary><p>Path to the Helm executable.</p></summary>
         public override string ToolPath => base.ToolPath ?? HelmTasks.HelmPath;
+        /// <summary><p>Help for lint.</p></summary>
+        public virtual bool? Help { get; internal set; }
         /// <summary><p>Namespace to put the release into (default "default").</p></summary>
         public virtual string Namespace { get; internal set; }
         /// <summary><p>Set values on the command line (can specify multiple or separate values with commas: key1=val1,key2=val2).</p></summary>
@@ -1242,6 +1358,7 @@ namespace Nuke.Helm
         {
             arguments
               .Add("helm lint")
+              .Add("--help {value}", Help)
               .Add("--namespace {value}", Namespace)
               .Add("--set {value}", Set, "{key}={value}", separator: ',')
               .Add("--set-file {value}", SetFile, "{key}={value}", separator: ',')
@@ -1264,6 +1381,8 @@ namespace Nuke.Helm
         public override string ToolPath => base.ToolPath ?? HelmTasks.HelmPath;
         /// <summary><p>Show all releases, not just the ones marked DEPLOYED.</p></summary>
         public virtual bool? All { get; internal set; }
+        /// <summary><p>Sort by chart name.</p></summary>
+        public virtual bool? ChartName { get; internal set; }
         /// <summary><p>Specifies the max column width of output (default 60).</p></summary>
         public virtual uint? ColWidth { get; internal set; }
         /// <summary><p>Sort by release date.</p></summary>
@@ -1276,6 +1395,8 @@ namespace Nuke.Helm
         public virtual bool? Deployed { get; internal set; }
         /// <summary><p>Show failed releases.</p></summary>
         public virtual bool? Failed { get; internal set; }
+        /// <summary><p>Help for list.</p></summary>
+        public virtual bool? Help { get; internal set; }
         /// <summary><p>Maximum number of releases to fetch (default 256).</p></summary>
         public virtual long? Max { get; internal set; }
         /// <summary><p>Show releases within a specific namespace.</p></summary>
@@ -1309,12 +1430,14 @@ namespace Nuke.Helm
             arguments
               .Add("helm list")
               .Add("--all {value}", All)
+              .Add("--chart-name {value}", ChartName)
               .Add("--col-width {value}", ColWidth)
               .Add("--date {value}", Date)
               .Add("--deleted {value}", Deleted)
               .Add("--deleting {value}", Deleting)
               .Add("--deployed {value}", Deployed)
               .Add("--failed {value}", Failed)
+              .Add("--help {value}", Help)
               .Add("--max {value}", Max)
               .Add("--namespace {value}", Namespace)
               .Add("--offset {value}", Offset)
@@ -1348,6 +1471,8 @@ namespace Nuke.Helm
         public virtual bool? DependencyUpdate { get; internal set; }
         /// <summary><p>Location to write the chart. (default ".").</p></summary>
         public virtual string Destination { get; internal set; }
+        /// <summary><p>Help for package.</p></summary>
+        public virtual bool? Help { get; internal set; }
         /// <summary><p>Name of the key to use when signing. Used if --sign is true.</p></summary>
         public virtual string Key { get; internal set; }
         /// <summary><p>Location of a public keyring (default "~/.gnupg/pubring.gpg").</p></summary>
@@ -1368,6 +1493,7 @@ namespace Nuke.Helm
               .Add("--app-version {value}", AppVersion)
               .Add("--dependency-update {value}", DependencyUpdate)
               .Add("--destination {value}", Destination)
+              .Add("--help {value}", Help)
               .Add("--key {value}", Key)
               .Add("--keyring {value}", Keyring)
               .Add("--save {value}", Save)
@@ -1387,6 +1513,8 @@ namespace Nuke.Helm
     {
         /// <summary><p>Path to the Helm executable.</p></summary>
         public override string ToolPath => base.ToolPath ?? HelmTasks.HelmPath;
+        /// <summary><p>Help for install.</p></summary>
+        public virtual bool? Help { get; internal set; }
         /// <summary><p>Specify a version constraint. If this is not specified, the latest version is installed.</p></summary>
         public virtual string Version { get; internal set; }
         public virtual string Options { get; internal set; }
@@ -1397,6 +1525,7 @@ namespace Nuke.Helm
         {
             arguments
               .Add("helm plugin install")
+              .Add("--help {value}", Help)
               .Add("--version {value}", Version)
               .Add("{value}", Options)
               .Add("{value}", Paths, separator: ' ');
@@ -1413,10 +1542,13 @@ namespace Nuke.Helm
     {
         /// <summary><p>Path to the Helm executable.</p></summary>
         public override string ToolPath => base.ToolPath ?? HelmTasks.HelmPath;
+        /// <summary><p>Help for list.</p></summary>
+        public virtual bool? Help { get; internal set; }
         protected override Arguments ConfigureArguments(Arguments arguments)
         {
             arguments
-              .Add("helm plugin list");
+              .Add("helm plugin list")
+              .Add("--help {value}", Help);
             return base.ConfigureArguments(arguments);
         }
     }
@@ -1430,6 +1562,8 @@ namespace Nuke.Helm
     {
         /// <summary><p>Path to the Helm executable.</p></summary>
         public override string ToolPath => base.ToolPath ?? HelmTasks.HelmPath;
+        /// <summary><p>Help for remove.</p></summary>
+        public virtual bool? Help { get; internal set; }
         /// <summary><p>List of plugins to remove.</p></summary>
         public virtual IReadOnlyList<string> Plugins => PluginsInternal.AsReadOnly();
         internal List<string> PluginsInternal { get; set; } = new List<string>();
@@ -1437,6 +1571,7 @@ namespace Nuke.Helm
         {
             arguments
               .Add("helm plugin remove")
+              .Add("--help {value}", Help)
               .Add("{value}", Plugins, separator: ' ');
             return base.ConfigureArguments(arguments);
         }
@@ -1451,6 +1586,8 @@ namespace Nuke.Helm
     {
         /// <summary><p>Path to the Helm executable.</p></summary>
         public override string ToolPath => base.ToolPath ?? HelmTasks.HelmPath;
+        /// <summary><p>Help for update.</p></summary>
+        public virtual bool? Help { get; internal set; }
         /// <summary><p>List of plugins to update.</p></summary>
         public virtual IReadOnlyList<string> Plugins => PluginsInternal.AsReadOnly();
         internal List<string> PluginsInternal { get; set; } = new List<string>();
@@ -1458,6 +1595,7 @@ namespace Nuke.Helm
         {
             arguments
               .Add("helm plugin update")
+              .Add("--help {value}", Help)
               .Add("{value}", Plugins, separator: ' ');
             return base.ConfigureArguments(arguments);
         }
@@ -1476,6 +1614,8 @@ namespace Nuke.Helm
         public virtual string CaFile { get; internal set; }
         /// <summary><p>Identify HTTPS client using this SSL certificate file.</p></summary>
         public virtual string CertFile { get; internal set; }
+        /// <summary><p>Help for add.</p></summary>
+        public virtual bool? Help { get; internal set; }
         /// <summary><p>Identify HTTPS client using this SSL key file.</p></summary>
         public virtual string KeyFile { get; internal set; }
         /// <summary><p>Raise error if repo is already registered.</p></summary>
@@ -1494,9 +1634,10 @@ namespace Nuke.Helm
               .Add("helm repo add")
               .Add("--ca-file {value}", CaFile)
               .Add("--cert-file {value}", CertFile)
+              .Add("--help {value}", Help)
               .Add("--key-file {value}", KeyFile)
               .Add("--no-update {value}", NoUpdate)
-              .Add("--password {value}", Password)
+              .Add("--password {value}", Password, secret: true)
               .Add("--username {value}", Username)
               .Add("{value}", Name)
               .Add("{value}", Url);
@@ -1513,6 +1654,8 @@ namespace Nuke.Helm
     {
         /// <summary><p>Path to the Helm executable.</p></summary>
         public override string ToolPath => base.ToolPath ?? HelmTasks.HelmPath;
+        /// <summary><p>Help for index.</p></summary>
+        public virtual bool? Help { get; internal set; }
         /// <summary><p>Merge the generated index into the given index.</p></summary>
         public virtual string Merge { get; internal set; }
         /// <summary><p>Url of chart repository.</p></summary>
@@ -1523,6 +1666,7 @@ namespace Nuke.Helm
         {
             arguments
               .Add("helm repo index")
+              .Add("--help {value}", Help)
               .Add("--merge {value}", Merge)
               .Add("--url {value}", Url)
               .Add("{value}", Directory);
@@ -1539,10 +1683,13 @@ namespace Nuke.Helm
     {
         /// <summary><p>Path to the Helm executable.</p></summary>
         public override string ToolPath => base.ToolPath ?? HelmTasks.HelmPath;
+        /// <summary><p>Help for list.</p></summary>
+        public virtual bool? Help { get; internal set; }
         protected override Arguments ConfigureArguments(Arguments arguments)
         {
             arguments
-              .Add("helm repo list");
+              .Add("helm repo list")
+              .Add("--help {value}", Help);
             return base.ConfigureArguments(arguments);
         }
     }
@@ -1556,12 +1703,15 @@ namespace Nuke.Helm
     {
         /// <summary><p>Path to the Helm executable.</p></summary>
         public override string ToolPath => base.ToolPath ?? HelmTasks.HelmPath;
+        /// <summary><p>Help for remove.</p></summary>
+        public virtual bool? Help { get; internal set; }
         /// <summary><p>The name of the repository.</p></summary>
         public virtual string Name { get; internal set; }
         protected override Arguments ConfigureArguments(Arguments arguments)
         {
             arguments
               .Add("helm repo remove")
+              .Add("--help {value}", Help)
               .Add("{value}", Name);
             return base.ConfigureArguments(arguments);
         }
@@ -1576,10 +1726,13 @@ namespace Nuke.Helm
     {
         /// <summary><p>Path to the Helm executable.</p></summary>
         public override string ToolPath => base.ToolPath ?? HelmTasks.HelmPath;
+        /// <summary><p>Help for update.</p></summary>
+        public virtual bool? Help { get; internal set; }
         protected override Arguments ConfigureArguments(Arguments arguments)
         {
             arguments
-              .Add("helm repo update");
+              .Add("helm repo update")
+              .Add("--help {value}", Help);
             return base.ConfigureArguments(arguments);
         }
     }
@@ -1595,6 +1748,8 @@ namespace Nuke.Helm
         public override string ToolPath => base.ToolPath ?? HelmTasks.HelmPath;
         /// <summary><p>Forces Tiller uninstall even if there are releases installed, or if Tiller is not in ready state. Releases are not deleted.).</p></summary>
         public virtual bool? Force { get; internal set; }
+        /// <summary><p>Help for reset.</p></summary>
+        public virtual bool? Help { get; internal set; }
         /// <summary><p>If set deletes $HELM_HOME.</p></summary>
         public virtual bool? RemoveHelmHome { get; internal set; }
         /// <summary><p>Enable TLS for request.</p></summary>
@@ -1614,6 +1769,7 @@ namespace Nuke.Helm
             arguments
               .Add("helm reset")
               .Add("--force {value}", Force)
+              .Add("--help {value}", Help)
               .Add("--remove-helm-home {value}", RemoveHelmHome)
               .Add("--tls {value}", Tls)
               .Add("--tls-ca-cert {value}", TlsCaCert)
@@ -1640,6 +1796,8 @@ namespace Nuke.Helm
         public virtual bool? DryRun { get; internal set; }
         /// <summary><p>Force resource update through delete/recreate if needed.</p></summary>
         public virtual bool? Force { get; internal set; }
+        /// <summary><p>Help for rollback.</p></summary>
+        public virtual bool? Help { get; internal set; }
         /// <summary><p>Prevent hooks from running during rollback.</p></summary>
         public virtual bool? NoHooks { get; internal set; }
         /// <summary><p>Performs pods restart for the resource if applicable.</p></summary>
@@ -1671,6 +1829,7 @@ namespace Nuke.Helm
               .Add("--description {value}", Description)
               .Add("--dry-run {value}", DryRun)
               .Add("--force {value}", Force)
+              .Add("--help {value}", Help)
               .Add("--no-hooks {value}", NoHooks)
               .Add("--recreate-pods {value}", RecreatePods)
               .Add("--timeout {value}", Timeout)
@@ -1698,6 +1857,8 @@ namespace Nuke.Helm
         public override string ToolPath => base.ToolPath ?? HelmTasks.HelmPath;
         /// <summary><p>Specifies the max column width of output (default 60).</p></summary>
         public virtual uint? ColWidth { get; internal set; }
+        /// <summary><p>Help for search.</p></summary>
+        public virtual bool? Help { get; internal set; }
         /// <summary><p>Use regular expressions for searching.</p></summary>
         public virtual bool? Regexp { get; internal set; }
         /// <summary><p>Search using semantic versioning constraints.</p></summary>
@@ -1711,6 +1872,7 @@ namespace Nuke.Helm
             arguments
               .Add("helm search")
               .Add("--col-width {value}", ColWidth)
+              .Add("--help {value}", Help)
               .Add("--regexp {value}", Regexp)
               .Add("--version {value}", Version)
               .Add("--versions {value}", Versions)
@@ -1730,6 +1892,8 @@ namespace Nuke.Helm
         public override string ToolPath => base.ToolPath ?? HelmTasks.HelmPath;
         /// <summary><p>Address to listen on (default "127.0.0.1:8879").</p></summary>
         public virtual string Address { get; internal set; }
+        /// <summary><p>Help for serve.</p></summary>
+        public virtual bool? Help { get; internal set; }
         /// <summary><p>Local directory path from which to serve charts.</p></summary>
         public virtual string RepoPath { get; internal set; }
         /// <summary><p>External URL of chart repository.</p></summary>
@@ -1739,6 +1903,7 @@ namespace Nuke.Helm
             arguments
               .Add("helm serve")
               .Add("--address {value}", Address)
+              .Add("--help {value}", Help)
               .Add("--repo-path {value}", RepoPath)
               .Add("--url {value}", Url);
             return base.ConfigureArguments(arguments);
@@ -1754,6 +1919,8 @@ namespace Nuke.Helm
     {
         /// <summary><p>Path to the Helm executable.</p></summary>
         public override string ToolPath => base.ToolPath ?? HelmTasks.HelmPath;
+        /// <summary><p>Help for status.</p></summary>
+        public virtual bool? Help { get; internal set; }
         /// <summary><p>Output the status in the specified format (json or yaml).</p></summary>
         public virtual HelmOutputFormat Output { get; internal set; }
         /// <summary><p>If set, display the status of the named release with revision.</p></summary>
@@ -1776,6 +1943,7 @@ namespace Nuke.Helm
         {
             arguments
               .Add("helm status")
+              .Add("--help {value}", Help)
               .Add("--output {value}", Output)
               .Add("--revision {value}", Revision)
               .Add("--tls {value}", Tls)
@@ -1801,6 +1969,8 @@ namespace Nuke.Helm
         /// <summary><p>Only execute the given templates.</p></summary>
         public virtual IReadOnlyDictionary<string, object> Execute => ExecuteInternal.AsReadOnly();
         internal Dictionary<string, object> ExecuteInternal { get; set; } = new Dictionary<string, object>(StringComparer.OrdinalIgnoreCase);
+        /// <summary><p>Help for template.</p></summary>
+        public virtual bool? Help { get; internal set; }
         /// <summary><p>Set .Release.IsUpgrade instead of .Release.IsInstall.</p></summary>
         public virtual bool? IsUpgrade { get; internal set; }
         /// <summary><p>Kubernetes version used as Capabilities.KubeVersion.Major/Minor (default "1.9").</p></summary>
@@ -1833,6 +2003,7 @@ namespace Nuke.Helm
             arguments
               .Add("helm template")
               .Add("--execute {value}", Execute, "{key}={value}", separator: ',')
+              .Add("--help {value}", Help)
               .Add("--is-upgrade {value}", IsUpgrade)
               .Add("--kube-version {value}", KubeVersion)
               .Add("--name {value}", Name)
@@ -1860,6 +2031,8 @@ namespace Nuke.Helm
         public override string ToolPath => base.ToolPath ?? HelmTasks.HelmPath;
         /// <summary><p>Delete test pods upon completion.</p></summary>
         public virtual bool? Cleanup { get; internal set; }
+        /// <summary><p>Help for test.</p></summary>
+        public virtual bool? Help { get; internal set; }
         /// <summary><p>Time in seconds to wait for any individual Kubernetes operation (like Jobs for hooks) (default 300).</p></summary>
         public virtual long? Timeout { get; internal set; }
         /// <summary><p>Enable TLS for request.</p></summary>
@@ -1881,6 +2054,7 @@ namespace Nuke.Helm
             arguments
               .Add("helm test")
               .Add("--cleanup {value}", Cleanup)
+              .Add("--help {value}", Help)
               .Add("--timeout {value}", Timeout)
               .Add("--tls {value}", Tls)
               .Add("--tls-ca-cert {value}", TlsCaCert)
@@ -1914,6 +2088,8 @@ namespace Nuke.Helm
         public virtual bool? DryRun { get; internal set; }
         /// <summary><p>Force resource update through delete/recreate if needed.</p></summary>
         public virtual bool? Force { get; internal set; }
+        /// <summary><p>Help for upgrade.</p></summary>
+        public virtual bool? Help { get; internal set; }
         /// <summary><p>If a release by this name doesn't already exist, run an install.</p></summary>
         public virtual bool? Install { get; internal set; }
         /// <summary><p>Identify HTTPS client using this SSL key file.</p></summary>
@@ -1982,12 +2158,13 @@ namespace Nuke.Helm
               .Add("--devel {value}", Devel)
               .Add("--dry-run {value}", DryRun)
               .Add("--force {value}", Force)
+              .Add("--help {value}", Help)
               .Add("--install {value}", Install)
               .Add("--key-file {value}", KeyFile)
               .Add("--keyring {value}", Keyring)
               .Add("--namespace {value}", Namespace)
               .Add("--no-hooks {value}", NoHooks)
-              .Add("--password {value}", Password)
+              .Add("--password {value}", Password, secret: true)
               .Add("--recreate-pods {value}", RecreatePods)
               .Add("--repo {value}", Repo)
               .Add("--reset-values {value}", ResetValues)
@@ -2022,6 +2199,8 @@ namespace Nuke.Helm
     {
         /// <summary><p>Path to the Helm executable.</p></summary>
         public override string ToolPath => base.ToolPath ?? HelmTasks.HelmPath;
+        /// <summary><p>Help for verify.</p></summary>
+        public virtual bool? Help { get; internal set; }
         /// <summary><p>Keyring containing public keys (default "~/.gnupg/pubring.gpg").</p></summary>
         public virtual string Keyring { get; internal set; }
         /// <summary><p>The path to the chart to verify.</p></summary>
@@ -2030,6 +2209,7 @@ namespace Nuke.Helm
         {
             arguments
               .Add("helm verify")
+              .Add("--help {value}", Help)
               .Add("--keyring {value}", Keyring)
               .Add("{value}", Path);
             return base.ConfigureArguments(arguments);
@@ -2047,6 +2227,8 @@ namespace Nuke.Helm
         public override string ToolPath => base.ToolPath ?? HelmTasks.HelmPath;
         /// <summary><p>Client version only.</p></summary>
         public virtual bool? Client { get; internal set; }
+        /// <summary><p>Help for version.</p></summary>
+        public virtual bool? Help { get; internal set; }
         /// <summary><p>Server version only.</p></summary>
         public virtual bool? Server { get; internal set; }
         /// <summary><p>Print the version number.</p></summary>
@@ -2070,6 +2252,7 @@ namespace Nuke.Helm
             arguments
               .Add("helm version")
               .Add("--client {value}", Client)
+              .Add("--help {value}", Help)
               .Add("--server {value}", Server)
               .Add("--short {value}", Short)
               .Add("--template {value}", Template)
@@ -2092,6 +2275,8 @@ namespace Nuke.Helm
     {
         /// <summary><p>Enable verbose output.</p></summary>
         public virtual bool? Debug { get; internal set; }
+        /// <summary><p>Help for helm.</p></summary>
+        public virtual bool? Help { get; internal set; }
         /// <summary><p>Location of your Helm config. Overrides $HELM_HOME (default "~/.helm").</p></summary>
         public virtual string Home { get; internal set; }
         /// <summary><p>Address of Tiller. Overrides $HELM_HOST.</p></summary>
@@ -2109,6 +2294,7 @@ namespace Nuke.Helm
             arguments
             
               .Add("--debug {value}", Debug)
+              .Add("--help {value}", Help)
               .Add("--home {value}", Home)
               .Add("--host {value}", Host)
               .Add("--kube-context {value}", KubeContext)
@@ -2125,6 +2311,48 @@ namespace Nuke.Helm
     [ExcludeFromCodeCoverage]
     public static partial class HelmCompletionSettingsExtensions
     {
+        #region Help
+        /// <summary><p><em>Sets <see cref="HelmCompletionSettings.Help"/>.</em></p><p>Help for completion.</p></summary>
+        [Pure]
+        public static HelmCompletionSettings SetHelp(this HelmCompletionSettings toolSettings, bool? help)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = help;
+            return toolSettings;
+        }
+        /// <summary><p><em>Resets <see cref="HelmCompletionSettings.Help"/>.</em></p><p>Help for completion.</p></summary>
+        [Pure]
+        public static HelmCompletionSettings ResetHelp(this HelmCompletionSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = null;
+            return toolSettings;
+        }
+        /// <summary><p><em>Enables <see cref="HelmCompletionSettings.Help"/>.</em></p><p>Help for completion.</p></summary>
+        [Pure]
+        public static HelmCompletionSettings EnableHelp(this HelmCompletionSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = true;
+            return toolSettings;
+        }
+        /// <summary><p><em>Disables <see cref="HelmCompletionSettings.Help"/>.</em></p><p>Help for completion.</p></summary>
+        [Pure]
+        public static HelmCompletionSettings DisableHelp(this HelmCompletionSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = false;
+            return toolSettings;
+        }
+        /// <summary><p><em>Toggles <see cref="HelmCompletionSettings.Help"/>.</em></p><p>Help for completion.</p></summary>
+        [Pure]
+        public static HelmCompletionSettings ToggleHelp(this HelmCompletionSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = !toolSettings.Help;
+            return toolSettings;
+        }
+        #endregion
         #region Shell
         /// <summary><p><em>Sets <see cref="HelmCompletionSettings.Shell"/>.</em></p></summary>
         [Pure]
@@ -2151,6 +2379,48 @@ namespace Nuke.Helm
     [ExcludeFromCodeCoverage]
     public static partial class HelmCreateSettingsExtensions
     {
+        #region Help
+        /// <summary><p><em>Sets <see cref="HelmCreateSettings.Help"/>.</em></p><p>Help for create.</p></summary>
+        [Pure]
+        public static HelmCreateSettings SetHelp(this HelmCreateSettings toolSettings, bool? help)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = help;
+            return toolSettings;
+        }
+        /// <summary><p><em>Resets <see cref="HelmCreateSettings.Help"/>.</em></p><p>Help for create.</p></summary>
+        [Pure]
+        public static HelmCreateSettings ResetHelp(this HelmCreateSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = null;
+            return toolSettings;
+        }
+        /// <summary><p><em>Enables <see cref="HelmCreateSettings.Help"/>.</em></p><p>Help for create.</p></summary>
+        [Pure]
+        public static HelmCreateSettings EnableHelp(this HelmCreateSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = true;
+            return toolSettings;
+        }
+        /// <summary><p><em>Disables <see cref="HelmCreateSettings.Help"/>.</em></p><p>Help for create.</p></summary>
+        [Pure]
+        public static HelmCreateSettings DisableHelp(this HelmCreateSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = false;
+            return toolSettings;
+        }
+        /// <summary><p><em>Toggles <see cref="HelmCreateSettings.Help"/>.</em></p><p>Help for create.</p></summary>
+        [Pure]
+        public static HelmCreateSettings ToggleHelp(this HelmCreateSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = !toolSettings.Help;
+            return toolSettings;
+        }
+        #endregion
         #region Starter
         /// <summary><p><em>Sets <see cref="HelmCreateSettings.Starter"/>.</em></p><p>The named Helm starter scaffold.</p></summary>
         [Pure]
@@ -2252,6 +2522,48 @@ namespace Nuke.Helm
         {
             toolSettings = toolSettings.NewInstance();
             toolSettings.DryRun = !toolSettings.DryRun;
+            return toolSettings;
+        }
+        #endregion
+        #region Help
+        /// <summary><p><em>Sets <see cref="HelmDeleteSettings.Help"/>.</em></p><p>Help for delete.</p></summary>
+        [Pure]
+        public static HelmDeleteSettings SetHelp(this HelmDeleteSettings toolSettings, bool? help)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = help;
+            return toolSettings;
+        }
+        /// <summary><p><em>Resets <see cref="HelmDeleteSettings.Help"/>.</em></p><p>Help for delete.</p></summary>
+        [Pure]
+        public static HelmDeleteSettings ResetHelp(this HelmDeleteSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = null;
+            return toolSettings;
+        }
+        /// <summary><p><em>Enables <see cref="HelmDeleteSettings.Help"/>.</em></p><p>Help for delete.</p></summary>
+        [Pure]
+        public static HelmDeleteSettings EnableHelp(this HelmDeleteSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = true;
+            return toolSettings;
+        }
+        /// <summary><p><em>Disables <see cref="HelmDeleteSettings.Help"/>.</em></p><p>Help for delete.</p></summary>
+        [Pure]
+        public static HelmDeleteSettings DisableHelp(this HelmDeleteSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = false;
+            return toolSettings;
+        }
+        /// <summary><p><em>Toggles <see cref="HelmDeleteSettings.Help"/>.</em></p><p>Help for delete.</p></summary>
+        [Pure]
+        public static HelmDeleteSettings ToggleHelp(this HelmDeleteSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = !toolSettings.Help;
             return toolSettings;
         }
         #endregion
@@ -2581,6 +2893,48 @@ namespace Nuke.Helm
     [ExcludeFromCodeCoverage]
     public static partial class HelmDependencyBuildSettingsExtensions
     {
+        #region Help
+        /// <summary><p><em>Sets <see cref="HelmDependencyBuildSettings.Help"/>.</em></p><p>Help for build.</p></summary>
+        [Pure]
+        public static HelmDependencyBuildSettings SetHelp(this HelmDependencyBuildSettings toolSettings, bool? help)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = help;
+            return toolSettings;
+        }
+        /// <summary><p><em>Resets <see cref="HelmDependencyBuildSettings.Help"/>.</em></p><p>Help for build.</p></summary>
+        [Pure]
+        public static HelmDependencyBuildSettings ResetHelp(this HelmDependencyBuildSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = null;
+            return toolSettings;
+        }
+        /// <summary><p><em>Enables <see cref="HelmDependencyBuildSettings.Help"/>.</em></p><p>Help for build.</p></summary>
+        [Pure]
+        public static HelmDependencyBuildSettings EnableHelp(this HelmDependencyBuildSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = true;
+            return toolSettings;
+        }
+        /// <summary><p><em>Disables <see cref="HelmDependencyBuildSettings.Help"/>.</em></p><p>Help for build.</p></summary>
+        [Pure]
+        public static HelmDependencyBuildSettings DisableHelp(this HelmDependencyBuildSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = false;
+            return toolSettings;
+        }
+        /// <summary><p><em>Toggles <see cref="HelmDependencyBuildSettings.Help"/>.</em></p><p>Help for build.</p></summary>
+        [Pure]
+        public static HelmDependencyBuildSettings ToggleHelp(this HelmDependencyBuildSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = !toolSettings.Help;
+            return toolSettings;
+        }
+        #endregion
         #region Keyring
         /// <summary><p><em>Sets <see cref="HelmDependencyBuildSettings.Keyring"/>.</em></p><p>Keyring containing public keys (default "~/.gnupg/pubring.gpg").</p></summary>
         [Pure]
@@ -2667,6 +3021,48 @@ namespace Nuke.Helm
     [ExcludeFromCodeCoverage]
     public static partial class HelmDependencyListSettingsExtensions
     {
+        #region Help
+        /// <summary><p><em>Sets <see cref="HelmDependencyListSettings.Help"/>.</em></p><p>Help for list.</p></summary>
+        [Pure]
+        public static HelmDependencyListSettings SetHelp(this HelmDependencyListSettings toolSettings, bool? help)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = help;
+            return toolSettings;
+        }
+        /// <summary><p><em>Resets <see cref="HelmDependencyListSettings.Help"/>.</em></p><p>Help for list.</p></summary>
+        [Pure]
+        public static HelmDependencyListSettings ResetHelp(this HelmDependencyListSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = null;
+            return toolSettings;
+        }
+        /// <summary><p><em>Enables <see cref="HelmDependencyListSettings.Help"/>.</em></p><p>Help for list.</p></summary>
+        [Pure]
+        public static HelmDependencyListSettings EnableHelp(this HelmDependencyListSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = true;
+            return toolSettings;
+        }
+        /// <summary><p><em>Disables <see cref="HelmDependencyListSettings.Help"/>.</em></p><p>Help for list.</p></summary>
+        [Pure]
+        public static HelmDependencyListSettings DisableHelp(this HelmDependencyListSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = false;
+            return toolSettings;
+        }
+        /// <summary><p><em>Toggles <see cref="HelmDependencyListSettings.Help"/>.</em></p><p>Help for list.</p></summary>
+        [Pure]
+        public static HelmDependencyListSettings ToggleHelp(this HelmDependencyListSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = !toolSettings.Help;
+            return toolSettings;
+        }
+        #endregion
         #region Chart
         /// <summary><p><em>Sets <see cref="HelmDependencyListSettings.Chart"/>.</em></p><p>The name of the chart to list.</p></summary>
         [Pure]
@@ -2693,6 +3089,48 @@ namespace Nuke.Helm
     [ExcludeFromCodeCoverage]
     public static partial class HelmDependencyUpdateSettingsExtensions
     {
+        #region Help
+        /// <summary><p><em>Sets <see cref="HelmDependencyUpdateSettings.Help"/>.</em></p><p>Help for update.</p></summary>
+        [Pure]
+        public static HelmDependencyUpdateSettings SetHelp(this HelmDependencyUpdateSettings toolSettings, bool? help)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = help;
+            return toolSettings;
+        }
+        /// <summary><p><em>Resets <see cref="HelmDependencyUpdateSettings.Help"/>.</em></p><p>Help for update.</p></summary>
+        [Pure]
+        public static HelmDependencyUpdateSettings ResetHelp(this HelmDependencyUpdateSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = null;
+            return toolSettings;
+        }
+        /// <summary><p><em>Enables <see cref="HelmDependencyUpdateSettings.Help"/>.</em></p><p>Help for update.</p></summary>
+        [Pure]
+        public static HelmDependencyUpdateSettings EnableHelp(this HelmDependencyUpdateSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = true;
+            return toolSettings;
+        }
+        /// <summary><p><em>Disables <see cref="HelmDependencyUpdateSettings.Help"/>.</em></p><p>Help for update.</p></summary>
+        [Pure]
+        public static HelmDependencyUpdateSettings DisableHelp(this HelmDependencyUpdateSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = false;
+            return toolSettings;
+        }
+        /// <summary><p><em>Toggles <see cref="HelmDependencyUpdateSettings.Help"/>.</em></p><p>Help for update.</p></summary>
+        [Pure]
+        public static HelmDependencyUpdateSettings ToggleHelp(this HelmDependencyUpdateSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = !toolSettings.Help;
+            return toolSettings;
+        }
+        #endregion
         #region Keyring
         /// <summary><p><em>Sets <see cref="HelmDependencyUpdateSettings.Keyring"/>.</em></p><p>Keyring containing public keys (default "~/.gnupg/pubring.gpg").</p></summary>
         [Pure]
@@ -2914,6 +3352,48 @@ namespace Nuke.Helm
         {
             toolSettings = toolSettings.NewInstance();
             toolSettings.Devel = !toolSettings.Devel;
+            return toolSettings;
+        }
+        #endregion
+        #region Help
+        /// <summary><p><em>Sets <see cref="HelmFetchSettings.Help"/>.</em></p><p>Help for fetch.</p></summary>
+        [Pure]
+        public static HelmFetchSettings SetHelp(this HelmFetchSettings toolSettings, bool? help)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = help;
+            return toolSettings;
+        }
+        /// <summary><p><em>Resets <see cref="HelmFetchSettings.Help"/>.</em></p><p>Help for fetch.</p></summary>
+        [Pure]
+        public static HelmFetchSettings ResetHelp(this HelmFetchSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = null;
+            return toolSettings;
+        }
+        /// <summary><p><em>Enables <see cref="HelmFetchSettings.Help"/>.</em></p><p>Help for fetch.</p></summary>
+        [Pure]
+        public static HelmFetchSettings EnableHelp(this HelmFetchSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = true;
+            return toolSettings;
+        }
+        /// <summary><p><em>Disables <see cref="HelmFetchSettings.Help"/>.</em></p><p>Help for fetch.</p></summary>
+        [Pure]
+        public static HelmFetchSettings DisableHelp(this HelmFetchSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = false;
+            return toolSettings;
+        }
+        /// <summary><p><em>Toggles <see cref="HelmFetchSettings.Help"/>.</em></p><p>Help for fetch.</p></summary>
+        [Pure]
+        public static HelmFetchSettings ToggleHelp(this HelmFetchSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = !toolSettings.Help;
             return toolSettings;
         }
         #endregion
@@ -3237,6 +3717,48 @@ namespace Nuke.Helm
     [ExcludeFromCodeCoverage]
     public static partial class HelmGetSettingsExtensions
     {
+        #region Help
+        /// <summary><p><em>Sets <see cref="HelmGetSettings.Help"/>.</em></p><p>Help for get.</p></summary>
+        [Pure]
+        public static HelmGetSettings SetHelp(this HelmGetSettings toolSettings, bool? help)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = help;
+            return toolSettings;
+        }
+        /// <summary><p><em>Resets <see cref="HelmGetSettings.Help"/>.</em></p><p>Help for get.</p></summary>
+        [Pure]
+        public static HelmGetSettings ResetHelp(this HelmGetSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = null;
+            return toolSettings;
+        }
+        /// <summary><p><em>Enables <see cref="HelmGetSettings.Help"/>.</em></p><p>Help for get.</p></summary>
+        [Pure]
+        public static HelmGetSettings EnableHelp(this HelmGetSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = true;
+            return toolSettings;
+        }
+        /// <summary><p><em>Disables <see cref="HelmGetSettings.Help"/>.</em></p><p>Help for get.</p></summary>
+        [Pure]
+        public static HelmGetSettings DisableHelp(this HelmGetSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = false;
+            return toolSettings;
+        }
+        /// <summary><p><em>Toggles <see cref="HelmGetSettings.Help"/>.</em></p><p>Help for get.</p></summary>
+        [Pure]
+        public static HelmGetSettings ToggleHelp(this HelmGetSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = !toolSettings.Help;
+            return toolSettings;
+        }
+        #endregion
         #region Revision
         /// <summary><p><em>Sets <see cref="HelmGetSettings.Revision"/>.</em></p><p>Get the named release with revision.</p></summary>
         [Pure]
@@ -3437,6 +3959,48 @@ namespace Nuke.Helm
     [ExcludeFromCodeCoverage]
     public static partial class HelmGetHooksSettingsExtensions
     {
+        #region Help
+        /// <summary><p><em>Sets <see cref="HelmGetHooksSettings.Help"/>.</em></p><p>Help for hooks.</p></summary>
+        [Pure]
+        public static HelmGetHooksSettings SetHelp(this HelmGetHooksSettings toolSettings, bool? help)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = help;
+            return toolSettings;
+        }
+        /// <summary><p><em>Resets <see cref="HelmGetHooksSettings.Help"/>.</em></p><p>Help for hooks.</p></summary>
+        [Pure]
+        public static HelmGetHooksSettings ResetHelp(this HelmGetHooksSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = null;
+            return toolSettings;
+        }
+        /// <summary><p><em>Enables <see cref="HelmGetHooksSettings.Help"/>.</em></p><p>Help for hooks.</p></summary>
+        [Pure]
+        public static HelmGetHooksSettings EnableHelp(this HelmGetHooksSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = true;
+            return toolSettings;
+        }
+        /// <summary><p><em>Disables <see cref="HelmGetHooksSettings.Help"/>.</em></p><p>Help for hooks.</p></summary>
+        [Pure]
+        public static HelmGetHooksSettings DisableHelp(this HelmGetHooksSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = false;
+            return toolSettings;
+        }
+        /// <summary><p><em>Toggles <see cref="HelmGetHooksSettings.Help"/>.</em></p><p>Help for hooks.</p></summary>
+        [Pure]
+        public static HelmGetHooksSettings ToggleHelp(this HelmGetHooksSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = !toolSettings.Help;
+            return toolSettings;
+        }
+        #endregion
         #region Revision
         /// <summary><p><em>Sets <see cref="HelmGetHooksSettings.Revision"/>.</em></p><p>Get the named release with revision.</p></summary>
         [Pure]
@@ -3637,6 +4201,48 @@ namespace Nuke.Helm
     [ExcludeFromCodeCoverage]
     public static partial class HelmGetManifestSettingsExtensions
     {
+        #region Help
+        /// <summary><p><em>Sets <see cref="HelmGetManifestSettings.Help"/>.</em></p><p>Help for manifest.</p></summary>
+        [Pure]
+        public static HelmGetManifestSettings SetHelp(this HelmGetManifestSettings toolSettings, bool? help)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = help;
+            return toolSettings;
+        }
+        /// <summary><p><em>Resets <see cref="HelmGetManifestSettings.Help"/>.</em></p><p>Help for manifest.</p></summary>
+        [Pure]
+        public static HelmGetManifestSettings ResetHelp(this HelmGetManifestSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = null;
+            return toolSettings;
+        }
+        /// <summary><p><em>Enables <see cref="HelmGetManifestSettings.Help"/>.</em></p><p>Help for manifest.</p></summary>
+        [Pure]
+        public static HelmGetManifestSettings EnableHelp(this HelmGetManifestSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = true;
+            return toolSettings;
+        }
+        /// <summary><p><em>Disables <see cref="HelmGetManifestSettings.Help"/>.</em></p><p>Help for manifest.</p></summary>
+        [Pure]
+        public static HelmGetManifestSettings DisableHelp(this HelmGetManifestSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = false;
+            return toolSettings;
+        }
+        /// <summary><p><em>Toggles <see cref="HelmGetManifestSettings.Help"/>.</em></p><p>Help for manifest.</p></summary>
+        [Pure]
+        public static HelmGetManifestSettings ToggleHelp(this HelmGetManifestSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = !toolSettings.Help;
+            return toolSettings;
+        }
+        #endregion
         #region Revision
         /// <summary><p><em>Sets <see cref="HelmGetManifestSettings.Revision"/>.</em></p><p>Get the named release with revision.</p></summary>
         [Pure]
@@ -3831,6 +4437,248 @@ namespace Nuke.Helm
         #endregion
     }
     #endregion
+    #region HelmGetNotesSettingsExtensions
+    /// <summary><p>Used within <see cref="HelmTasks"/>.</p></summary>
+    [PublicAPI]
+    [ExcludeFromCodeCoverage]
+    public static partial class HelmGetNotesSettingsExtensions
+    {
+        #region Help
+        /// <summary><p><em>Sets <see cref="HelmGetNotesSettings.Help"/>.</em></p><p>Help for notes.</p></summary>
+        [Pure]
+        public static HelmGetNotesSettings SetHelp(this HelmGetNotesSettings toolSettings, bool? help)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = help;
+            return toolSettings;
+        }
+        /// <summary><p><em>Resets <see cref="HelmGetNotesSettings.Help"/>.</em></p><p>Help for notes.</p></summary>
+        [Pure]
+        public static HelmGetNotesSettings ResetHelp(this HelmGetNotesSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = null;
+            return toolSettings;
+        }
+        /// <summary><p><em>Enables <see cref="HelmGetNotesSettings.Help"/>.</em></p><p>Help for notes.</p></summary>
+        [Pure]
+        public static HelmGetNotesSettings EnableHelp(this HelmGetNotesSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = true;
+            return toolSettings;
+        }
+        /// <summary><p><em>Disables <see cref="HelmGetNotesSettings.Help"/>.</em></p><p>Help for notes.</p></summary>
+        [Pure]
+        public static HelmGetNotesSettings DisableHelp(this HelmGetNotesSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = false;
+            return toolSettings;
+        }
+        /// <summary><p><em>Toggles <see cref="HelmGetNotesSettings.Help"/>.</em></p><p>Help for notes.</p></summary>
+        [Pure]
+        public static HelmGetNotesSettings ToggleHelp(this HelmGetNotesSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = !toolSettings.Help;
+            return toolSettings;
+        }
+        #endregion
+        #region Revision
+        /// <summary><p><em>Sets <see cref="HelmGetNotesSettings.Revision"/>.</em></p><p>Get the notes of the named release with revision.</p></summary>
+        [Pure]
+        public static HelmGetNotesSettings SetRevision(this HelmGetNotesSettings toolSettings, int? revision)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Revision = revision;
+            return toolSettings;
+        }
+        /// <summary><p><em>Resets <see cref="HelmGetNotesSettings.Revision"/>.</em></p><p>Get the notes of the named release with revision.</p></summary>
+        [Pure]
+        public static HelmGetNotesSettings ResetRevision(this HelmGetNotesSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Revision = null;
+            return toolSettings;
+        }
+        #endregion
+        #region Tls
+        /// <summary><p><em>Sets <see cref="HelmGetNotesSettings.Tls"/>.</em></p><p>Enable TLS for request.</p></summary>
+        [Pure]
+        public static HelmGetNotesSettings SetTls(this HelmGetNotesSettings toolSettings, bool? tls)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Tls = tls;
+            return toolSettings;
+        }
+        /// <summary><p><em>Resets <see cref="HelmGetNotesSettings.Tls"/>.</em></p><p>Enable TLS for request.</p></summary>
+        [Pure]
+        public static HelmGetNotesSettings ResetTls(this HelmGetNotesSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Tls = null;
+            return toolSettings;
+        }
+        /// <summary><p><em>Enables <see cref="HelmGetNotesSettings.Tls"/>.</em></p><p>Enable TLS for request.</p></summary>
+        [Pure]
+        public static HelmGetNotesSettings EnableTls(this HelmGetNotesSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Tls = true;
+            return toolSettings;
+        }
+        /// <summary><p><em>Disables <see cref="HelmGetNotesSettings.Tls"/>.</em></p><p>Enable TLS for request.</p></summary>
+        [Pure]
+        public static HelmGetNotesSettings DisableTls(this HelmGetNotesSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Tls = false;
+            return toolSettings;
+        }
+        /// <summary><p><em>Toggles <see cref="HelmGetNotesSettings.Tls"/>.</em></p><p>Enable TLS for request.</p></summary>
+        [Pure]
+        public static HelmGetNotesSettings ToggleTls(this HelmGetNotesSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Tls = !toolSettings.Tls;
+            return toolSettings;
+        }
+        #endregion
+        #region TlsCaCert
+        /// <summary><p><em>Sets <see cref="HelmGetNotesSettings.TlsCaCert"/>.</em></p><p>Path to TLS CA certificate file (default "$HELM_HOME/ca.pem").</p></summary>
+        [Pure]
+        public static HelmGetNotesSettings SetTlsCaCert(this HelmGetNotesSettings toolSettings, string tlsCaCert)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.TlsCaCert = tlsCaCert;
+            return toolSettings;
+        }
+        /// <summary><p><em>Resets <see cref="HelmGetNotesSettings.TlsCaCert"/>.</em></p><p>Path to TLS CA certificate file (default "$HELM_HOME/ca.pem").</p></summary>
+        [Pure]
+        public static HelmGetNotesSettings ResetTlsCaCert(this HelmGetNotesSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.TlsCaCert = null;
+            return toolSettings;
+        }
+        #endregion
+        #region TlsCert
+        /// <summary><p><em>Sets <see cref="HelmGetNotesSettings.TlsCert"/>.</em></p><p>Path to TLS certificate file (default "$HELM_HOME/cert.pem").</p></summary>
+        [Pure]
+        public static HelmGetNotesSettings SetTlsCert(this HelmGetNotesSettings toolSettings, string tlsCert)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.TlsCert = tlsCert;
+            return toolSettings;
+        }
+        /// <summary><p><em>Resets <see cref="HelmGetNotesSettings.TlsCert"/>.</em></p><p>Path to TLS certificate file (default "$HELM_HOME/cert.pem").</p></summary>
+        [Pure]
+        public static HelmGetNotesSettings ResetTlsCert(this HelmGetNotesSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.TlsCert = null;
+            return toolSettings;
+        }
+        #endregion
+        #region TlsHostname
+        /// <summary><p><em>Sets <see cref="HelmGetNotesSettings.TlsHostname"/>.</em></p><p>The server name used to verify the hostname on the returned certificates from the server.</p></summary>
+        [Pure]
+        public static HelmGetNotesSettings SetTlsHostname(this HelmGetNotesSettings toolSettings, string tlsHostname)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.TlsHostname = tlsHostname;
+            return toolSettings;
+        }
+        /// <summary><p><em>Resets <see cref="HelmGetNotesSettings.TlsHostname"/>.</em></p><p>The server name used to verify the hostname on the returned certificates from the server.</p></summary>
+        [Pure]
+        public static HelmGetNotesSettings ResetTlsHostname(this HelmGetNotesSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.TlsHostname = null;
+            return toolSettings;
+        }
+        #endregion
+        #region TlsKey
+        /// <summary><p><em>Sets <see cref="HelmGetNotesSettings.TlsKey"/>.</em></p><p>Path to TLS key file (default "$HELM_HOME/key.pem").</p></summary>
+        [Pure]
+        public static HelmGetNotesSettings SetTlsKey(this HelmGetNotesSettings toolSettings, string tlsKey)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.TlsKey = tlsKey;
+            return toolSettings;
+        }
+        /// <summary><p><em>Resets <see cref="HelmGetNotesSettings.TlsKey"/>.</em></p><p>Path to TLS key file (default "$HELM_HOME/key.pem").</p></summary>
+        [Pure]
+        public static HelmGetNotesSettings ResetTlsKey(this HelmGetNotesSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.TlsKey = null;
+            return toolSettings;
+        }
+        #endregion
+        #region TlsVerify
+        /// <summary><p><em>Sets <see cref="HelmGetNotesSettings.TlsVerify"/>.</em></p><p>Enable TLS for request and verify remote.</p></summary>
+        [Pure]
+        public static HelmGetNotesSettings SetTlsVerify(this HelmGetNotesSettings toolSettings, bool? tlsVerify)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.TlsVerify = tlsVerify;
+            return toolSettings;
+        }
+        /// <summary><p><em>Resets <see cref="HelmGetNotesSettings.TlsVerify"/>.</em></p><p>Enable TLS for request and verify remote.</p></summary>
+        [Pure]
+        public static HelmGetNotesSettings ResetTlsVerify(this HelmGetNotesSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.TlsVerify = null;
+            return toolSettings;
+        }
+        /// <summary><p><em>Enables <see cref="HelmGetNotesSettings.TlsVerify"/>.</em></p><p>Enable TLS for request and verify remote.</p></summary>
+        [Pure]
+        public static HelmGetNotesSettings EnableTlsVerify(this HelmGetNotesSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.TlsVerify = true;
+            return toolSettings;
+        }
+        /// <summary><p><em>Disables <see cref="HelmGetNotesSettings.TlsVerify"/>.</em></p><p>Enable TLS for request and verify remote.</p></summary>
+        [Pure]
+        public static HelmGetNotesSettings DisableTlsVerify(this HelmGetNotesSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.TlsVerify = false;
+            return toolSettings;
+        }
+        /// <summary><p><em>Toggles <see cref="HelmGetNotesSettings.TlsVerify"/>.</em></p><p>Enable TLS for request and verify remote.</p></summary>
+        [Pure]
+        public static HelmGetNotesSettings ToggleTlsVerify(this HelmGetNotesSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.TlsVerify = !toolSettings.TlsVerify;
+            return toolSettings;
+        }
+        #endregion
+        #region ReleaseName
+        /// <summary><p><em>Sets <see cref="HelmGetNotesSettings.ReleaseName"/>.</em></p></summary>
+        [Pure]
+        public static HelmGetNotesSettings SetReleaseName(this HelmGetNotesSettings toolSettings, string releaseName)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.ReleaseName = releaseName;
+            return toolSettings;
+        }
+        /// <summary><p><em>Resets <see cref="HelmGetNotesSettings.ReleaseName"/>.</em></p></summary>
+        [Pure]
+        public static HelmGetNotesSettings ResetReleaseName(this HelmGetNotesSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.ReleaseName = null;
+            return toolSettings;
+        }
+        #endregion
+    }
+    #endregion
     #region HelmGetValuesSettingsExtensions
     /// <summary><p>Used within <see cref="HelmTasks"/>.</p></summary>
     [PublicAPI]
@@ -3876,6 +4724,48 @@ namespace Nuke.Helm
         {
             toolSettings = toolSettings.NewInstance();
             toolSettings.All = !toolSettings.All;
+            return toolSettings;
+        }
+        #endregion
+        #region Help
+        /// <summary><p><em>Sets <see cref="HelmGetValuesSettings.Help"/>.</em></p><p>Help for values.</p></summary>
+        [Pure]
+        public static HelmGetValuesSettings SetHelp(this HelmGetValuesSettings toolSettings, bool? help)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = help;
+            return toolSettings;
+        }
+        /// <summary><p><em>Resets <see cref="HelmGetValuesSettings.Help"/>.</em></p><p>Help for values.</p></summary>
+        [Pure]
+        public static HelmGetValuesSettings ResetHelp(this HelmGetValuesSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = null;
+            return toolSettings;
+        }
+        /// <summary><p><em>Enables <see cref="HelmGetValuesSettings.Help"/>.</em></p><p>Help for values.</p></summary>
+        [Pure]
+        public static HelmGetValuesSettings EnableHelp(this HelmGetValuesSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = true;
+            return toolSettings;
+        }
+        /// <summary><p><em>Disables <see cref="HelmGetValuesSettings.Help"/>.</em></p><p>Help for values.</p></summary>
+        [Pure]
+        public static HelmGetValuesSettings DisableHelp(this HelmGetValuesSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = false;
+            return toolSettings;
+        }
+        /// <summary><p><em>Toggles <see cref="HelmGetValuesSettings.Help"/>.</em></p><p>Help for values.</p></summary>
+        [Pure]
+        public static HelmGetValuesSettings ToggleHelp(this HelmGetValuesSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = !toolSettings.Help;
             return toolSettings;
         }
         #endregion
@@ -4097,6 +4987,48 @@ namespace Nuke.Helm
             return toolSettings;
         }
         #endregion
+        #region Help
+        /// <summary><p><em>Sets <see cref="HelmHistorySettings.Help"/>.</em></p><p>Help for history.</p></summary>
+        [Pure]
+        public static HelmHistorySettings SetHelp(this HelmHistorySettings toolSettings, bool? help)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = help;
+            return toolSettings;
+        }
+        /// <summary><p><em>Resets <see cref="HelmHistorySettings.Help"/>.</em></p><p>Help for history.</p></summary>
+        [Pure]
+        public static HelmHistorySettings ResetHelp(this HelmHistorySettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = null;
+            return toolSettings;
+        }
+        /// <summary><p><em>Enables <see cref="HelmHistorySettings.Help"/>.</em></p><p>Help for history.</p></summary>
+        [Pure]
+        public static HelmHistorySettings EnableHelp(this HelmHistorySettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = true;
+            return toolSettings;
+        }
+        /// <summary><p><em>Disables <see cref="HelmHistorySettings.Help"/>.</em></p><p>Help for history.</p></summary>
+        [Pure]
+        public static HelmHistorySettings DisableHelp(this HelmHistorySettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = false;
+            return toolSettings;
+        }
+        /// <summary><p><em>Toggles <see cref="HelmHistorySettings.Help"/>.</em></p><p>Help for history.</p></summary>
+        [Pure]
+        public static HelmHistorySettings ToggleHelp(this HelmHistorySettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = !toolSettings.Help;
+            return toolSettings;
+        }
+        #endregion
         #region Max
         /// <summary><p><em>Sets <see cref="HelmHistorySettings.Max"/>.</em></p><p>Maximum number of revision to include in history (default 256).</p></summary>
         [Pure]
@@ -4315,6 +5247,48 @@ namespace Nuke.Helm
     [ExcludeFromCodeCoverage]
     public static partial class HelmHomeSettingsExtensions
     {
+        #region Help
+        /// <summary><p><em>Sets <see cref="HelmHomeSettings.Help"/>.</em></p><p>Help for home.</p></summary>
+        [Pure]
+        public static HelmHomeSettings SetHelp(this HelmHomeSettings toolSettings, bool? help)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = help;
+            return toolSettings;
+        }
+        /// <summary><p><em>Resets <see cref="HelmHomeSettings.Help"/>.</em></p><p>Help for home.</p></summary>
+        [Pure]
+        public static HelmHomeSettings ResetHelp(this HelmHomeSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = null;
+            return toolSettings;
+        }
+        /// <summary><p><em>Enables <see cref="HelmHomeSettings.Help"/>.</em></p><p>Help for home.</p></summary>
+        [Pure]
+        public static HelmHomeSettings EnableHelp(this HelmHomeSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = true;
+            return toolSettings;
+        }
+        /// <summary><p><em>Disables <see cref="HelmHomeSettings.Help"/>.</em></p><p>Help for home.</p></summary>
+        [Pure]
+        public static HelmHomeSettings DisableHelp(this HelmHomeSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = false;
+            return toolSettings;
+        }
+        /// <summary><p><em>Toggles <see cref="HelmHomeSettings.Help"/>.</em></p><p>Help for home.</p></summary>
+        [Pure]
+        public static HelmHomeSettings ToggleHelp(this HelmHomeSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = !toolSettings.Help;
+            return toolSettings;
+        }
+        #endregion
     }
     #endregion
     #region HelmInitSettingsExtensions
@@ -4323,6 +5297,48 @@ namespace Nuke.Helm
     [ExcludeFromCodeCoverage]
     public static partial class HelmInitSettingsExtensions
     {
+        #region AutomountServiceAccountToken
+        /// <summary><p><em>Sets <see cref="HelmInitSettings.AutomountServiceAccountToken"/>.</em></p><p>Auto-mount the given service account to tiller (default true).</p></summary>
+        [Pure]
+        public static HelmInitSettings SetAutomountServiceAccountToken(this HelmInitSettings toolSettings, bool? automountServiceAccountToken)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.AutomountServiceAccountToken = automountServiceAccountToken;
+            return toolSettings;
+        }
+        /// <summary><p><em>Resets <see cref="HelmInitSettings.AutomountServiceAccountToken"/>.</em></p><p>Auto-mount the given service account to tiller (default true).</p></summary>
+        [Pure]
+        public static HelmInitSettings ResetAutomountServiceAccountToken(this HelmInitSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.AutomountServiceAccountToken = null;
+            return toolSettings;
+        }
+        /// <summary><p><em>Enables <see cref="HelmInitSettings.AutomountServiceAccountToken"/>.</em></p><p>Auto-mount the given service account to tiller (default true).</p></summary>
+        [Pure]
+        public static HelmInitSettings EnableAutomountServiceAccountToken(this HelmInitSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.AutomountServiceAccountToken = true;
+            return toolSettings;
+        }
+        /// <summary><p><em>Disables <see cref="HelmInitSettings.AutomountServiceAccountToken"/>.</em></p><p>Auto-mount the given service account to tiller (default true).</p></summary>
+        [Pure]
+        public static HelmInitSettings DisableAutomountServiceAccountToken(this HelmInitSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.AutomountServiceAccountToken = false;
+            return toolSettings;
+        }
+        /// <summary><p><em>Toggles <see cref="HelmInitSettings.AutomountServiceAccountToken"/>.</em></p><p>Auto-mount the given service account to tiller (default true).</p></summary>
+        [Pure]
+        public static HelmInitSettings ToggleAutomountServiceAccountToken(this HelmInitSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.AutomountServiceAccountToken = !toolSettings.AutomountServiceAccountToken;
+            return toolSettings;
+        }
+        #endregion
         #region CanaryImage
         /// <summary><p><em>Sets <see cref="HelmInitSettings.CanaryImage"/>.</em></p><p>Use the canary Tiller image.</p></summary>
         [Pure]
@@ -4488,6 +5504,48 @@ namespace Nuke.Helm
         {
             toolSettings = toolSettings.NewInstance();
             toolSettings.ForceUpgrade = !toolSettings.ForceUpgrade;
+            return toolSettings;
+        }
+        #endregion
+        #region Help
+        /// <summary><p><em>Sets <see cref="HelmInitSettings.Help"/>.</em></p><p>Help for init.</p></summary>
+        [Pure]
+        public static HelmInitSettings SetHelp(this HelmInitSettings toolSettings, bool? help)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = help;
+            return toolSettings;
+        }
+        /// <summary><p><em>Resets <see cref="HelmInitSettings.Help"/>.</em></p><p>Help for init.</p></summary>
+        [Pure]
+        public static HelmInitSettings ResetHelp(this HelmInitSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = null;
+            return toolSettings;
+        }
+        /// <summary><p><em>Enables <see cref="HelmInitSettings.Help"/>.</em></p><p>Help for init.</p></summary>
+        [Pure]
+        public static HelmInitSettings EnableHelp(this HelmInitSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = true;
+            return toolSettings;
+        }
+        /// <summary><p><em>Disables <see cref="HelmInitSettings.Help"/>.</em></p><p>Help for init.</p></summary>
+        [Pure]
+        public static HelmInitSettings DisableHelp(this HelmInitSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = false;
+            return toolSettings;
+        }
+        /// <summary><p><em>Toggles <see cref="HelmInitSettings.Help"/>.</em></p><p>Help for init.</p></summary>
+        [Pure]
+        public static HelmInitSettings ToggleHelp(this HelmInitSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = !toolSettings.Help;
             return toolSettings;
         }
         #endregion
@@ -4821,6 +5879,24 @@ namespace Nuke.Helm
             return toolSettings;
         }
         #endregion
+        #region TillerTlsHostname
+        /// <summary><p><em>Sets <see cref="HelmInitSettings.TillerTlsHostname"/>.</em></p><p>The server name used to verify the hostname on the returned certificates from Tiller.</p></summary>
+        [Pure]
+        public static HelmInitSettings SetTillerTlsHostname(this HelmInitSettings toolSettings, string tillerTlsHostname)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.TillerTlsHostname = tillerTlsHostname;
+            return toolSettings;
+        }
+        /// <summary><p><em>Resets <see cref="HelmInitSettings.TillerTlsHostname"/>.</em></p><p>The server name used to verify the hostname on the returned certificates from Tiller.</p></summary>
+        [Pure]
+        public static HelmInitSettings ResetTillerTlsHostname(this HelmInitSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.TillerTlsHostname = null;
+            return toolSettings;
+        }
+        #endregion
         #region TillerTlsKey
         /// <summary><p><em>Sets <see cref="HelmInitSettings.TillerTlsKey"/>.</em></p><p>Path to TLS key file to install with Tiller.</p></summary>
         [Pure]
@@ -5024,6 +6100,48 @@ namespace Nuke.Helm
         {
             toolSettings = toolSettings.NewInstance();
             toolSettings.CertFile = null;
+            return toolSettings;
+        }
+        #endregion
+        #region Help
+        /// <summary><p><em>Sets <see cref="HelmInspectSettings.Help"/>.</em></p><p>Help for inspect.</p></summary>
+        [Pure]
+        public static HelmInspectSettings SetHelp(this HelmInspectSettings toolSettings, bool? help)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = help;
+            return toolSettings;
+        }
+        /// <summary><p><em>Resets <see cref="HelmInspectSettings.Help"/>.</em></p><p>Help for inspect.</p></summary>
+        [Pure]
+        public static HelmInspectSettings ResetHelp(this HelmInspectSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = null;
+            return toolSettings;
+        }
+        /// <summary><p><em>Enables <see cref="HelmInspectSettings.Help"/>.</em></p><p>Help for inspect.</p></summary>
+        [Pure]
+        public static HelmInspectSettings EnableHelp(this HelmInspectSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = true;
+            return toolSettings;
+        }
+        /// <summary><p><em>Disables <see cref="HelmInspectSettings.Help"/>.</em></p><p>Help for inspect.</p></summary>
+        [Pure]
+        public static HelmInspectSettings DisableHelp(this HelmInspectSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = false;
+            return toolSettings;
+        }
+        /// <summary><p><em>Toggles <see cref="HelmInspectSettings.Help"/>.</em></p><p>Help for inspect.</p></summary>
+        [Pure]
+        public static HelmInspectSettings ToggleHelp(this HelmInspectSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = !toolSettings.Help;
             return toolSettings;
         }
         #endregion
@@ -5239,6 +6357,48 @@ namespace Nuke.Helm
             return toolSettings;
         }
         #endregion
+        #region Help
+        /// <summary><p><em>Sets <see cref="HelmInspectChartSettings.Help"/>.</em></p><p>Help for chart.</p></summary>
+        [Pure]
+        public static HelmInspectChartSettings SetHelp(this HelmInspectChartSettings toolSettings, bool? help)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = help;
+            return toolSettings;
+        }
+        /// <summary><p><em>Resets <see cref="HelmInspectChartSettings.Help"/>.</em></p><p>Help for chart.</p></summary>
+        [Pure]
+        public static HelmInspectChartSettings ResetHelp(this HelmInspectChartSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = null;
+            return toolSettings;
+        }
+        /// <summary><p><em>Enables <see cref="HelmInspectChartSettings.Help"/>.</em></p><p>Help for chart.</p></summary>
+        [Pure]
+        public static HelmInspectChartSettings EnableHelp(this HelmInspectChartSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = true;
+            return toolSettings;
+        }
+        /// <summary><p><em>Disables <see cref="HelmInspectChartSettings.Help"/>.</em></p><p>Help for chart.</p></summary>
+        [Pure]
+        public static HelmInspectChartSettings DisableHelp(this HelmInspectChartSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = false;
+            return toolSettings;
+        }
+        /// <summary><p><em>Toggles <see cref="HelmInspectChartSettings.Help"/>.</em></p><p>Help for chart.</p></summary>
+        [Pure]
+        public static HelmInspectChartSettings ToggleHelp(this HelmInspectChartSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = !toolSettings.Help;
+            return toolSettings;
+        }
+        #endregion
         #region KeyFile
         /// <summary><p><em>Sets <see cref="HelmInspectChartSettings.KeyFile"/>.</em></p><p>Identify HTTPS client using this SSL key file.</p></summary>
         [Pure]
@@ -5451,6 +6611,48 @@ namespace Nuke.Helm
             return toolSettings;
         }
         #endregion
+        #region Help
+        /// <summary><p><em>Sets <see cref="HelmInspectReadmeSettings.Help"/>.</em></p><p>Help for readme.</p></summary>
+        [Pure]
+        public static HelmInspectReadmeSettings SetHelp(this HelmInspectReadmeSettings toolSettings, bool? help)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = help;
+            return toolSettings;
+        }
+        /// <summary><p><em>Resets <see cref="HelmInspectReadmeSettings.Help"/>.</em></p><p>Help for readme.</p></summary>
+        [Pure]
+        public static HelmInspectReadmeSettings ResetHelp(this HelmInspectReadmeSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = null;
+            return toolSettings;
+        }
+        /// <summary><p><em>Enables <see cref="HelmInspectReadmeSettings.Help"/>.</em></p><p>Help for readme.</p></summary>
+        [Pure]
+        public static HelmInspectReadmeSettings EnableHelp(this HelmInspectReadmeSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = true;
+            return toolSettings;
+        }
+        /// <summary><p><em>Disables <see cref="HelmInspectReadmeSettings.Help"/>.</em></p><p>Help for readme.</p></summary>
+        [Pure]
+        public static HelmInspectReadmeSettings DisableHelp(this HelmInspectReadmeSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = false;
+            return toolSettings;
+        }
+        /// <summary><p><em>Toggles <see cref="HelmInspectReadmeSettings.Help"/>.</em></p><p>Help for readme.</p></summary>
+        [Pure]
+        public static HelmInspectReadmeSettings ToggleHelp(this HelmInspectReadmeSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = !toolSettings.Help;
+            return toolSettings;
+        }
+        #endregion
         #region KeyFile
         /// <summary><p><em>Sets <see cref="HelmInspectReadmeSettings.KeyFile"/>.</em></p><p>Identify HTTPS client using this SSL key file.</p></summary>
         [Pure]
@@ -5624,6 +6826,48 @@ namespace Nuke.Helm
         {
             toolSettings = toolSettings.NewInstance();
             toolSettings.CertFile = null;
+            return toolSettings;
+        }
+        #endregion
+        #region Help
+        /// <summary><p><em>Sets <see cref="HelmInspectValuesSettings.Help"/>.</em></p><p>Help for values.</p></summary>
+        [Pure]
+        public static HelmInspectValuesSettings SetHelp(this HelmInspectValuesSettings toolSettings, bool? help)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = help;
+            return toolSettings;
+        }
+        /// <summary><p><em>Resets <see cref="HelmInspectValuesSettings.Help"/>.</em></p><p>Help for values.</p></summary>
+        [Pure]
+        public static HelmInspectValuesSettings ResetHelp(this HelmInspectValuesSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = null;
+            return toolSettings;
+        }
+        /// <summary><p><em>Enables <see cref="HelmInspectValuesSettings.Help"/>.</em></p><p>Help for values.</p></summary>
+        [Pure]
+        public static HelmInspectValuesSettings EnableHelp(this HelmInspectValuesSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = true;
+            return toolSettings;
+        }
+        /// <summary><p><em>Disables <see cref="HelmInspectValuesSettings.Help"/>.</em></p><p>Help for values.</p></summary>
+        [Pure]
+        public static HelmInspectValuesSettings DisableHelp(this HelmInspectValuesSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = false;
+            return toolSettings;
+        }
+        /// <summary><p><em>Toggles <see cref="HelmInspectValuesSettings.Help"/>.</em></p><p>Help for values.</p></summary>
+        [Pure]
+        public static HelmInspectValuesSettings ToggleHelp(this HelmInspectValuesSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = !toolSettings.Help;
             return toolSettings;
         }
         #endregion
@@ -5980,6 +7224,48 @@ namespace Nuke.Helm
         {
             toolSettings = toolSettings.NewInstance();
             toolSettings.DryRun = !toolSettings.DryRun;
+            return toolSettings;
+        }
+        #endregion
+        #region Help
+        /// <summary><p><em>Sets <see cref="HelmInstallSettings.Help"/>.</em></p><p>Help for install.</p></summary>
+        [Pure]
+        public static HelmInstallSettings SetHelp(this HelmInstallSettings toolSettings, bool? help)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = help;
+            return toolSettings;
+        }
+        /// <summary><p><em>Resets <see cref="HelmInstallSettings.Help"/>.</em></p><p>Help for install.</p></summary>
+        [Pure]
+        public static HelmInstallSettings ResetHelp(this HelmInstallSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = null;
+            return toolSettings;
+        }
+        /// <summary><p><em>Enables <see cref="HelmInstallSettings.Help"/>.</em></p><p>Help for install.</p></summary>
+        [Pure]
+        public static HelmInstallSettings EnableHelp(this HelmInstallSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = true;
+            return toolSettings;
+        }
+        /// <summary><p><em>Disables <see cref="HelmInstallSettings.Help"/>.</em></p><p>Help for install.</p></summary>
+        [Pure]
+        public static HelmInstallSettings DisableHelp(this HelmInstallSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = false;
+            return toolSettings;
+        }
+        /// <summary><p><em>Toggles <see cref="HelmInstallSettings.Help"/>.</em></p><p>Help for install.</p></summary>
+        [Pure]
+        public static HelmInstallSettings ToggleHelp(this HelmInstallSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = !toolSettings.Help;
             return toolSettings;
         }
         #endregion
@@ -6741,6 +8027,48 @@ namespace Nuke.Helm
     [ExcludeFromCodeCoverage]
     public static partial class HelmLintSettingsExtensions
     {
+        #region Help
+        /// <summary><p><em>Sets <see cref="HelmLintSettings.Help"/>.</em></p><p>Help for lint.</p></summary>
+        [Pure]
+        public static HelmLintSettings SetHelp(this HelmLintSettings toolSettings, bool? help)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = help;
+            return toolSettings;
+        }
+        /// <summary><p><em>Resets <see cref="HelmLintSettings.Help"/>.</em></p><p>Help for lint.</p></summary>
+        [Pure]
+        public static HelmLintSettings ResetHelp(this HelmLintSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = null;
+            return toolSettings;
+        }
+        /// <summary><p><em>Enables <see cref="HelmLintSettings.Help"/>.</em></p><p>Help for lint.</p></summary>
+        [Pure]
+        public static HelmLintSettings EnableHelp(this HelmLintSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = true;
+            return toolSettings;
+        }
+        /// <summary><p><em>Disables <see cref="HelmLintSettings.Help"/>.</em></p><p>Help for lint.</p></summary>
+        [Pure]
+        public static HelmLintSettings DisableHelp(this HelmLintSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = false;
+            return toolSettings;
+        }
+        /// <summary><p><em>Toggles <see cref="HelmLintSettings.Help"/>.</em></p><p>Help for lint.</p></summary>
+        [Pure]
+        public static HelmLintSettings ToggleHelp(this HelmLintSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = !toolSettings.Help;
+            return toolSettings;
+        }
+        #endregion
         #region Namespace
         /// <summary><p><em>Sets <see cref="HelmLintSettings.Namespace"/>.</em></p><p>Namespace to put the release into (default "default").</p></summary>
         [Pure]
@@ -7055,6 +8383,48 @@ namespace Nuke.Helm
             return toolSettings;
         }
         #endregion
+        #region ChartName
+        /// <summary><p><em>Sets <see cref="HelmListSettings.ChartName"/>.</em></p><p>Sort by chart name.</p></summary>
+        [Pure]
+        public static HelmListSettings SetChartName(this HelmListSettings toolSettings, bool? chartName)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.ChartName = chartName;
+            return toolSettings;
+        }
+        /// <summary><p><em>Resets <see cref="HelmListSettings.ChartName"/>.</em></p><p>Sort by chart name.</p></summary>
+        [Pure]
+        public static HelmListSettings ResetChartName(this HelmListSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.ChartName = null;
+            return toolSettings;
+        }
+        /// <summary><p><em>Enables <see cref="HelmListSettings.ChartName"/>.</em></p><p>Sort by chart name.</p></summary>
+        [Pure]
+        public static HelmListSettings EnableChartName(this HelmListSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.ChartName = true;
+            return toolSettings;
+        }
+        /// <summary><p><em>Disables <see cref="HelmListSettings.ChartName"/>.</em></p><p>Sort by chart name.</p></summary>
+        [Pure]
+        public static HelmListSettings DisableChartName(this HelmListSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.ChartName = false;
+            return toolSettings;
+        }
+        /// <summary><p><em>Toggles <see cref="HelmListSettings.ChartName"/>.</em></p><p>Sort by chart name.</p></summary>
+        [Pure]
+        public static HelmListSettings ToggleChartName(this HelmListSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.ChartName = !toolSettings.ChartName;
+            return toolSettings;
+        }
+        #endregion
         #region ColWidth
         /// <summary><p><em>Sets <see cref="HelmListSettings.ColWidth"/>.</em></p><p>Specifies the max column width of output (default 60).</p></summary>
         [Pure]
@@ -7280,6 +8650,48 @@ namespace Nuke.Helm
         {
             toolSettings = toolSettings.NewInstance();
             toolSettings.Failed = !toolSettings.Failed;
+            return toolSettings;
+        }
+        #endregion
+        #region Help
+        /// <summary><p><em>Sets <see cref="HelmListSettings.Help"/>.</em></p><p>Help for list.</p></summary>
+        [Pure]
+        public static HelmListSettings SetHelp(this HelmListSettings toolSettings, bool? help)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = help;
+            return toolSettings;
+        }
+        /// <summary><p><em>Resets <see cref="HelmListSettings.Help"/>.</em></p><p>Help for list.</p></summary>
+        [Pure]
+        public static HelmListSettings ResetHelp(this HelmListSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = null;
+            return toolSettings;
+        }
+        /// <summary><p><em>Enables <see cref="HelmListSettings.Help"/>.</em></p><p>Help for list.</p></summary>
+        [Pure]
+        public static HelmListSettings EnableHelp(this HelmListSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = true;
+            return toolSettings;
+        }
+        /// <summary><p><em>Disables <see cref="HelmListSettings.Help"/>.</em></p><p>Help for list.</p></summary>
+        [Pure]
+        public static HelmListSettings DisableHelp(this HelmListSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = false;
+            return toolSettings;
+        }
+        /// <summary><p><em>Toggles <see cref="HelmListSettings.Help"/>.</em></p><p>Help for list.</p></summary>
+        [Pure]
+        public static HelmListSettings ToggleHelp(this HelmListSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = !toolSettings.Help;
             return toolSettings;
         }
         #endregion
@@ -7741,6 +9153,48 @@ namespace Nuke.Helm
             return toolSettings;
         }
         #endregion
+        #region Help
+        /// <summary><p><em>Sets <see cref="HelmPackageSettings.Help"/>.</em></p><p>Help for package.</p></summary>
+        [Pure]
+        public static HelmPackageSettings SetHelp(this HelmPackageSettings toolSettings, bool? help)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = help;
+            return toolSettings;
+        }
+        /// <summary><p><em>Resets <see cref="HelmPackageSettings.Help"/>.</em></p><p>Help for package.</p></summary>
+        [Pure]
+        public static HelmPackageSettings ResetHelp(this HelmPackageSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = null;
+            return toolSettings;
+        }
+        /// <summary><p><em>Enables <see cref="HelmPackageSettings.Help"/>.</em></p><p>Help for package.</p></summary>
+        [Pure]
+        public static HelmPackageSettings EnableHelp(this HelmPackageSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = true;
+            return toolSettings;
+        }
+        /// <summary><p><em>Disables <see cref="HelmPackageSettings.Help"/>.</em></p><p>Help for package.</p></summary>
+        [Pure]
+        public static HelmPackageSettings DisableHelp(this HelmPackageSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = false;
+            return toolSettings;
+        }
+        /// <summary><p><em>Toggles <see cref="HelmPackageSettings.Help"/>.</em></p><p>Help for package.</p></summary>
+        [Pure]
+        public static HelmPackageSettings ToggleHelp(this HelmPackageSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = !toolSettings.Help;
+            return toolSettings;
+        }
+        #endregion
         #region Key
         /// <summary><p><em>Sets <see cref="HelmPackageSettings.Key"/>.</em></p><p>Name of the key to use when signing. Used if --sign is true.</p></summary>
         [Pure]
@@ -7947,6 +9401,48 @@ namespace Nuke.Helm
     [ExcludeFromCodeCoverage]
     public static partial class HelmPluginInstallSettingsExtensions
     {
+        #region Help
+        /// <summary><p><em>Sets <see cref="HelmPluginInstallSettings.Help"/>.</em></p><p>Help for install.</p></summary>
+        [Pure]
+        public static HelmPluginInstallSettings SetHelp(this HelmPluginInstallSettings toolSettings, bool? help)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = help;
+            return toolSettings;
+        }
+        /// <summary><p><em>Resets <see cref="HelmPluginInstallSettings.Help"/>.</em></p><p>Help for install.</p></summary>
+        [Pure]
+        public static HelmPluginInstallSettings ResetHelp(this HelmPluginInstallSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = null;
+            return toolSettings;
+        }
+        /// <summary><p><em>Enables <see cref="HelmPluginInstallSettings.Help"/>.</em></p><p>Help for install.</p></summary>
+        [Pure]
+        public static HelmPluginInstallSettings EnableHelp(this HelmPluginInstallSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = true;
+            return toolSettings;
+        }
+        /// <summary><p><em>Disables <see cref="HelmPluginInstallSettings.Help"/>.</em></p><p>Help for install.</p></summary>
+        [Pure]
+        public static HelmPluginInstallSettings DisableHelp(this HelmPluginInstallSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = false;
+            return toolSettings;
+        }
+        /// <summary><p><em>Toggles <see cref="HelmPluginInstallSettings.Help"/>.</em></p><p>Help for install.</p></summary>
+        [Pure]
+        public static HelmPluginInstallSettings ToggleHelp(this HelmPluginInstallSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = !toolSettings.Help;
+            return toolSettings;
+        }
+        #endregion
         #region Version
         /// <summary><p><em>Sets <see cref="HelmPluginInstallSettings.Version"/>.</em></p><p>Specify a version constraint. If this is not specified, the latest version is installed.</p></summary>
         [Pure]
@@ -8051,6 +9547,48 @@ namespace Nuke.Helm
     [ExcludeFromCodeCoverage]
     public static partial class HelmPluginListSettingsExtensions
     {
+        #region Help
+        /// <summary><p><em>Sets <see cref="HelmPluginListSettings.Help"/>.</em></p><p>Help for list.</p></summary>
+        [Pure]
+        public static HelmPluginListSettings SetHelp(this HelmPluginListSettings toolSettings, bool? help)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = help;
+            return toolSettings;
+        }
+        /// <summary><p><em>Resets <see cref="HelmPluginListSettings.Help"/>.</em></p><p>Help for list.</p></summary>
+        [Pure]
+        public static HelmPluginListSettings ResetHelp(this HelmPluginListSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = null;
+            return toolSettings;
+        }
+        /// <summary><p><em>Enables <see cref="HelmPluginListSettings.Help"/>.</em></p><p>Help for list.</p></summary>
+        [Pure]
+        public static HelmPluginListSettings EnableHelp(this HelmPluginListSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = true;
+            return toolSettings;
+        }
+        /// <summary><p><em>Disables <see cref="HelmPluginListSettings.Help"/>.</em></p><p>Help for list.</p></summary>
+        [Pure]
+        public static HelmPluginListSettings DisableHelp(this HelmPluginListSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = false;
+            return toolSettings;
+        }
+        /// <summary><p><em>Toggles <see cref="HelmPluginListSettings.Help"/>.</em></p><p>Help for list.</p></summary>
+        [Pure]
+        public static HelmPluginListSettings ToggleHelp(this HelmPluginListSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = !toolSettings.Help;
+            return toolSettings;
+        }
+        #endregion
     }
     #endregion
     #region HelmPluginRemoveSettingsExtensions
@@ -8059,6 +9597,48 @@ namespace Nuke.Helm
     [ExcludeFromCodeCoverage]
     public static partial class HelmPluginRemoveSettingsExtensions
     {
+        #region Help
+        /// <summary><p><em>Sets <see cref="HelmPluginRemoveSettings.Help"/>.</em></p><p>Help for remove.</p></summary>
+        [Pure]
+        public static HelmPluginRemoveSettings SetHelp(this HelmPluginRemoveSettings toolSettings, bool? help)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = help;
+            return toolSettings;
+        }
+        /// <summary><p><em>Resets <see cref="HelmPluginRemoveSettings.Help"/>.</em></p><p>Help for remove.</p></summary>
+        [Pure]
+        public static HelmPluginRemoveSettings ResetHelp(this HelmPluginRemoveSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = null;
+            return toolSettings;
+        }
+        /// <summary><p><em>Enables <see cref="HelmPluginRemoveSettings.Help"/>.</em></p><p>Help for remove.</p></summary>
+        [Pure]
+        public static HelmPluginRemoveSettings EnableHelp(this HelmPluginRemoveSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = true;
+            return toolSettings;
+        }
+        /// <summary><p><em>Disables <see cref="HelmPluginRemoveSettings.Help"/>.</em></p><p>Help for remove.</p></summary>
+        [Pure]
+        public static HelmPluginRemoveSettings DisableHelp(this HelmPluginRemoveSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = false;
+            return toolSettings;
+        }
+        /// <summary><p><em>Toggles <see cref="HelmPluginRemoveSettings.Help"/>.</em></p><p>Help for remove.</p></summary>
+        [Pure]
+        public static HelmPluginRemoveSettings ToggleHelp(this HelmPluginRemoveSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = !toolSettings.Help;
+            return toolSettings;
+        }
+        #endregion
         #region Plugins
         /// <summary><p><em>Sets <see cref="HelmPluginRemoveSettings.Plugins"/> to a new list.</em></p><p>List of plugins to remove.</p></summary>
         [Pure]
@@ -8127,6 +9707,48 @@ namespace Nuke.Helm
     [ExcludeFromCodeCoverage]
     public static partial class HelmPluginUpdateSettingsExtensions
     {
+        #region Help
+        /// <summary><p><em>Sets <see cref="HelmPluginUpdateSettings.Help"/>.</em></p><p>Help for update.</p></summary>
+        [Pure]
+        public static HelmPluginUpdateSettings SetHelp(this HelmPluginUpdateSettings toolSettings, bool? help)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = help;
+            return toolSettings;
+        }
+        /// <summary><p><em>Resets <see cref="HelmPluginUpdateSettings.Help"/>.</em></p><p>Help for update.</p></summary>
+        [Pure]
+        public static HelmPluginUpdateSettings ResetHelp(this HelmPluginUpdateSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = null;
+            return toolSettings;
+        }
+        /// <summary><p><em>Enables <see cref="HelmPluginUpdateSettings.Help"/>.</em></p><p>Help for update.</p></summary>
+        [Pure]
+        public static HelmPluginUpdateSettings EnableHelp(this HelmPluginUpdateSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = true;
+            return toolSettings;
+        }
+        /// <summary><p><em>Disables <see cref="HelmPluginUpdateSettings.Help"/>.</em></p><p>Help for update.</p></summary>
+        [Pure]
+        public static HelmPluginUpdateSettings DisableHelp(this HelmPluginUpdateSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = false;
+            return toolSettings;
+        }
+        /// <summary><p><em>Toggles <see cref="HelmPluginUpdateSettings.Help"/>.</em></p><p>Help for update.</p></summary>
+        [Pure]
+        public static HelmPluginUpdateSettings ToggleHelp(this HelmPluginUpdateSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = !toolSettings.Help;
+            return toolSettings;
+        }
+        #endregion
         #region Plugins
         /// <summary><p><em>Sets <see cref="HelmPluginUpdateSettings.Plugins"/> to a new list.</em></p><p>List of plugins to update.</p></summary>
         [Pure]
@@ -8228,6 +9850,48 @@ namespace Nuke.Helm
         {
             toolSettings = toolSettings.NewInstance();
             toolSettings.CertFile = null;
+            return toolSettings;
+        }
+        #endregion
+        #region Help
+        /// <summary><p><em>Sets <see cref="HelmRepoAddSettings.Help"/>.</em></p><p>Help for add.</p></summary>
+        [Pure]
+        public static HelmRepoAddSettings SetHelp(this HelmRepoAddSettings toolSettings, bool? help)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = help;
+            return toolSettings;
+        }
+        /// <summary><p><em>Resets <see cref="HelmRepoAddSettings.Help"/>.</em></p><p>Help for add.</p></summary>
+        [Pure]
+        public static HelmRepoAddSettings ResetHelp(this HelmRepoAddSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = null;
+            return toolSettings;
+        }
+        /// <summary><p><em>Enables <see cref="HelmRepoAddSettings.Help"/>.</em></p><p>Help for add.</p></summary>
+        [Pure]
+        public static HelmRepoAddSettings EnableHelp(this HelmRepoAddSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = true;
+            return toolSettings;
+        }
+        /// <summary><p><em>Disables <see cref="HelmRepoAddSettings.Help"/>.</em></p><p>Help for add.</p></summary>
+        [Pure]
+        public static HelmRepoAddSettings DisableHelp(this HelmRepoAddSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = false;
+            return toolSettings;
+        }
+        /// <summary><p><em>Toggles <see cref="HelmRepoAddSettings.Help"/>.</em></p><p>Help for add.</p></summary>
+        [Pure]
+        public static HelmRepoAddSettings ToggleHelp(this HelmRepoAddSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = !toolSettings.Help;
             return toolSettings;
         }
         #endregion
@@ -8371,6 +10035,48 @@ namespace Nuke.Helm
     [ExcludeFromCodeCoverage]
     public static partial class HelmRepoIndexSettingsExtensions
     {
+        #region Help
+        /// <summary><p><em>Sets <see cref="HelmRepoIndexSettings.Help"/>.</em></p><p>Help for index.</p></summary>
+        [Pure]
+        public static HelmRepoIndexSettings SetHelp(this HelmRepoIndexSettings toolSettings, bool? help)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = help;
+            return toolSettings;
+        }
+        /// <summary><p><em>Resets <see cref="HelmRepoIndexSettings.Help"/>.</em></p><p>Help for index.</p></summary>
+        [Pure]
+        public static HelmRepoIndexSettings ResetHelp(this HelmRepoIndexSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = null;
+            return toolSettings;
+        }
+        /// <summary><p><em>Enables <see cref="HelmRepoIndexSettings.Help"/>.</em></p><p>Help for index.</p></summary>
+        [Pure]
+        public static HelmRepoIndexSettings EnableHelp(this HelmRepoIndexSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = true;
+            return toolSettings;
+        }
+        /// <summary><p><em>Disables <see cref="HelmRepoIndexSettings.Help"/>.</em></p><p>Help for index.</p></summary>
+        [Pure]
+        public static HelmRepoIndexSettings DisableHelp(this HelmRepoIndexSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = false;
+            return toolSettings;
+        }
+        /// <summary><p><em>Toggles <see cref="HelmRepoIndexSettings.Help"/>.</em></p><p>Help for index.</p></summary>
+        [Pure]
+        public static HelmRepoIndexSettings ToggleHelp(this HelmRepoIndexSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = !toolSettings.Help;
+            return toolSettings;
+        }
+        #endregion
         #region Merge
         /// <summary><p><em>Sets <see cref="HelmRepoIndexSettings.Merge"/>.</em></p><p>Merge the generated index into the given index.</p></summary>
         [Pure]
@@ -8433,6 +10139,48 @@ namespace Nuke.Helm
     [ExcludeFromCodeCoverage]
     public static partial class HelmRepoListSettingsExtensions
     {
+        #region Help
+        /// <summary><p><em>Sets <see cref="HelmRepoListSettings.Help"/>.</em></p><p>Help for list.</p></summary>
+        [Pure]
+        public static HelmRepoListSettings SetHelp(this HelmRepoListSettings toolSettings, bool? help)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = help;
+            return toolSettings;
+        }
+        /// <summary><p><em>Resets <see cref="HelmRepoListSettings.Help"/>.</em></p><p>Help for list.</p></summary>
+        [Pure]
+        public static HelmRepoListSettings ResetHelp(this HelmRepoListSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = null;
+            return toolSettings;
+        }
+        /// <summary><p><em>Enables <see cref="HelmRepoListSettings.Help"/>.</em></p><p>Help for list.</p></summary>
+        [Pure]
+        public static HelmRepoListSettings EnableHelp(this HelmRepoListSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = true;
+            return toolSettings;
+        }
+        /// <summary><p><em>Disables <see cref="HelmRepoListSettings.Help"/>.</em></p><p>Help for list.</p></summary>
+        [Pure]
+        public static HelmRepoListSettings DisableHelp(this HelmRepoListSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = false;
+            return toolSettings;
+        }
+        /// <summary><p><em>Toggles <see cref="HelmRepoListSettings.Help"/>.</em></p><p>Help for list.</p></summary>
+        [Pure]
+        public static HelmRepoListSettings ToggleHelp(this HelmRepoListSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = !toolSettings.Help;
+            return toolSettings;
+        }
+        #endregion
     }
     #endregion
     #region HelmRepoRemoveSettingsExtensions
@@ -8441,6 +10189,48 @@ namespace Nuke.Helm
     [ExcludeFromCodeCoverage]
     public static partial class HelmRepoRemoveSettingsExtensions
     {
+        #region Help
+        /// <summary><p><em>Sets <see cref="HelmRepoRemoveSettings.Help"/>.</em></p><p>Help for remove.</p></summary>
+        [Pure]
+        public static HelmRepoRemoveSettings SetHelp(this HelmRepoRemoveSettings toolSettings, bool? help)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = help;
+            return toolSettings;
+        }
+        /// <summary><p><em>Resets <see cref="HelmRepoRemoveSettings.Help"/>.</em></p><p>Help for remove.</p></summary>
+        [Pure]
+        public static HelmRepoRemoveSettings ResetHelp(this HelmRepoRemoveSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = null;
+            return toolSettings;
+        }
+        /// <summary><p><em>Enables <see cref="HelmRepoRemoveSettings.Help"/>.</em></p><p>Help for remove.</p></summary>
+        [Pure]
+        public static HelmRepoRemoveSettings EnableHelp(this HelmRepoRemoveSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = true;
+            return toolSettings;
+        }
+        /// <summary><p><em>Disables <see cref="HelmRepoRemoveSettings.Help"/>.</em></p><p>Help for remove.</p></summary>
+        [Pure]
+        public static HelmRepoRemoveSettings DisableHelp(this HelmRepoRemoveSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = false;
+            return toolSettings;
+        }
+        /// <summary><p><em>Toggles <see cref="HelmRepoRemoveSettings.Help"/>.</em></p><p>Help for remove.</p></summary>
+        [Pure]
+        public static HelmRepoRemoveSettings ToggleHelp(this HelmRepoRemoveSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = !toolSettings.Help;
+            return toolSettings;
+        }
+        #endregion
         #region Name
         /// <summary><p><em>Sets <see cref="HelmRepoRemoveSettings.Name"/>.</em></p><p>The name of the repository.</p></summary>
         [Pure]
@@ -8467,6 +10257,48 @@ namespace Nuke.Helm
     [ExcludeFromCodeCoverage]
     public static partial class HelmRepoUpdateSettingsExtensions
     {
+        #region Help
+        /// <summary><p><em>Sets <see cref="HelmRepoUpdateSettings.Help"/>.</em></p><p>Help for update.</p></summary>
+        [Pure]
+        public static HelmRepoUpdateSettings SetHelp(this HelmRepoUpdateSettings toolSettings, bool? help)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = help;
+            return toolSettings;
+        }
+        /// <summary><p><em>Resets <see cref="HelmRepoUpdateSettings.Help"/>.</em></p><p>Help for update.</p></summary>
+        [Pure]
+        public static HelmRepoUpdateSettings ResetHelp(this HelmRepoUpdateSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = null;
+            return toolSettings;
+        }
+        /// <summary><p><em>Enables <see cref="HelmRepoUpdateSettings.Help"/>.</em></p><p>Help for update.</p></summary>
+        [Pure]
+        public static HelmRepoUpdateSettings EnableHelp(this HelmRepoUpdateSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = true;
+            return toolSettings;
+        }
+        /// <summary><p><em>Disables <see cref="HelmRepoUpdateSettings.Help"/>.</em></p><p>Help for update.</p></summary>
+        [Pure]
+        public static HelmRepoUpdateSettings DisableHelp(this HelmRepoUpdateSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = false;
+            return toolSettings;
+        }
+        /// <summary><p><em>Toggles <see cref="HelmRepoUpdateSettings.Help"/>.</em></p><p>Help for update.</p></summary>
+        [Pure]
+        public static HelmRepoUpdateSettings ToggleHelp(this HelmRepoUpdateSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = !toolSettings.Help;
+            return toolSettings;
+        }
+        #endregion
     }
     #endregion
     #region HelmResetSettingsExtensions
@@ -8514,6 +10346,48 @@ namespace Nuke.Helm
         {
             toolSettings = toolSettings.NewInstance();
             toolSettings.Force = !toolSettings.Force;
+            return toolSettings;
+        }
+        #endregion
+        #region Help
+        /// <summary><p><em>Sets <see cref="HelmResetSettings.Help"/>.</em></p><p>Help for reset.</p></summary>
+        [Pure]
+        public static HelmResetSettings SetHelp(this HelmResetSettings toolSettings, bool? help)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = help;
+            return toolSettings;
+        }
+        /// <summary><p><em>Resets <see cref="HelmResetSettings.Help"/>.</em></p><p>Help for reset.</p></summary>
+        [Pure]
+        public static HelmResetSettings ResetHelp(this HelmResetSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = null;
+            return toolSettings;
+        }
+        /// <summary><p><em>Enables <see cref="HelmResetSettings.Help"/>.</em></p><p>Help for reset.</p></summary>
+        [Pure]
+        public static HelmResetSettings EnableHelp(this HelmResetSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = true;
+            return toolSettings;
+        }
+        /// <summary><p><em>Disables <see cref="HelmResetSettings.Help"/>.</em></p><p>Help for reset.</p></summary>
+        [Pure]
+        public static HelmResetSettings DisableHelp(this HelmResetSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = false;
+            return toolSettings;
+        }
+        /// <summary><p><em>Toggles <see cref="HelmResetSettings.Help"/>.</em></p><p>Help for reset.</p></summary>
+        [Pure]
+        public static HelmResetSettings ToggleHelp(this HelmResetSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = !toolSettings.Help;
             return toolSettings;
         }
         #endregion
@@ -8822,6 +10696,48 @@ namespace Nuke.Helm
         {
             toolSettings = toolSettings.NewInstance();
             toolSettings.Force = !toolSettings.Force;
+            return toolSettings;
+        }
+        #endregion
+        #region Help
+        /// <summary><p><em>Sets <see cref="HelmRollbackSettings.Help"/>.</em></p><p>Help for rollback.</p></summary>
+        [Pure]
+        public static HelmRollbackSettings SetHelp(this HelmRollbackSettings toolSettings, bool? help)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = help;
+            return toolSettings;
+        }
+        /// <summary><p><em>Resets <see cref="HelmRollbackSettings.Help"/>.</em></p><p>Help for rollback.</p></summary>
+        [Pure]
+        public static HelmRollbackSettings ResetHelp(this HelmRollbackSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = null;
+            return toolSettings;
+        }
+        /// <summary><p><em>Enables <see cref="HelmRollbackSettings.Help"/>.</em></p><p>Help for rollback.</p></summary>
+        [Pure]
+        public static HelmRollbackSettings EnableHelp(this HelmRollbackSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = true;
+            return toolSettings;
+        }
+        /// <summary><p><em>Disables <see cref="HelmRollbackSettings.Help"/>.</em></p><p>Help for rollback.</p></summary>
+        [Pure]
+        public static HelmRollbackSettings DisableHelp(this HelmRollbackSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = false;
+            return toolSettings;
+        }
+        /// <summary><p><em>Toggles <see cref="HelmRollbackSettings.Help"/>.</em></p><p>Help for rollback.</p></summary>
+        [Pure]
+        public static HelmRollbackSettings ToggleHelp(this HelmRollbackSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = !toolSettings.Help;
             return toolSettings;
         }
         #endregion
@@ -9187,6 +11103,48 @@ namespace Nuke.Helm
             return toolSettings;
         }
         #endregion
+        #region Help
+        /// <summary><p><em>Sets <see cref="HelmSearchSettings.Help"/>.</em></p><p>Help for search.</p></summary>
+        [Pure]
+        public static HelmSearchSettings SetHelp(this HelmSearchSettings toolSettings, bool? help)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = help;
+            return toolSettings;
+        }
+        /// <summary><p><em>Resets <see cref="HelmSearchSettings.Help"/>.</em></p><p>Help for search.</p></summary>
+        [Pure]
+        public static HelmSearchSettings ResetHelp(this HelmSearchSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = null;
+            return toolSettings;
+        }
+        /// <summary><p><em>Enables <see cref="HelmSearchSettings.Help"/>.</em></p><p>Help for search.</p></summary>
+        [Pure]
+        public static HelmSearchSettings EnableHelp(this HelmSearchSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = true;
+            return toolSettings;
+        }
+        /// <summary><p><em>Disables <see cref="HelmSearchSettings.Help"/>.</em></p><p>Help for search.</p></summary>
+        [Pure]
+        public static HelmSearchSettings DisableHelp(this HelmSearchSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = false;
+            return toolSettings;
+        }
+        /// <summary><p><em>Toggles <see cref="HelmSearchSettings.Help"/>.</em></p><p>Help for search.</p></summary>
+        [Pure]
+        public static HelmSearchSettings ToggleHelp(this HelmSearchSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = !toolSettings.Help;
+            return toolSettings;
+        }
+        #endregion
         #region Regexp
         /// <summary><p><em>Sets <see cref="HelmSearchSettings.Regexp"/>.</em></p><p>Use regular expressions for searching.</p></summary>
         [Pure]
@@ -9333,6 +11291,48 @@ namespace Nuke.Helm
             return toolSettings;
         }
         #endregion
+        #region Help
+        /// <summary><p><em>Sets <see cref="HelmServeSettings.Help"/>.</em></p><p>Help for serve.</p></summary>
+        [Pure]
+        public static HelmServeSettings SetHelp(this HelmServeSettings toolSettings, bool? help)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = help;
+            return toolSettings;
+        }
+        /// <summary><p><em>Resets <see cref="HelmServeSettings.Help"/>.</em></p><p>Help for serve.</p></summary>
+        [Pure]
+        public static HelmServeSettings ResetHelp(this HelmServeSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = null;
+            return toolSettings;
+        }
+        /// <summary><p><em>Enables <see cref="HelmServeSettings.Help"/>.</em></p><p>Help for serve.</p></summary>
+        [Pure]
+        public static HelmServeSettings EnableHelp(this HelmServeSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = true;
+            return toolSettings;
+        }
+        /// <summary><p><em>Disables <see cref="HelmServeSettings.Help"/>.</em></p><p>Help for serve.</p></summary>
+        [Pure]
+        public static HelmServeSettings DisableHelp(this HelmServeSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = false;
+            return toolSettings;
+        }
+        /// <summary><p><em>Toggles <see cref="HelmServeSettings.Help"/>.</em></p><p>Help for serve.</p></summary>
+        [Pure]
+        public static HelmServeSettings ToggleHelp(this HelmServeSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = !toolSettings.Help;
+            return toolSettings;
+        }
+        #endregion
         #region RepoPath
         /// <summary><p><em>Sets <see cref="HelmServeSettings.RepoPath"/>.</em></p><p>Local directory path from which to serve charts.</p></summary>
         [Pure]
@@ -9377,6 +11377,48 @@ namespace Nuke.Helm
     [ExcludeFromCodeCoverage]
     public static partial class HelmStatusSettingsExtensions
     {
+        #region Help
+        /// <summary><p><em>Sets <see cref="HelmStatusSettings.Help"/>.</em></p><p>Help for status.</p></summary>
+        [Pure]
+        public static HelmStatusSettings SetHelp(this HelmStatusSettings toolSettings, bool? help)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = help;
+            return toolSettings;
+        }
+        /// <summary><p><em>Resets <see cref="HelmStatusSettings.Help"/>.</em></p><p>Help for status.</p></summary>
+        [Pure]
+        public static HelmStatusSettings ResetHelp(this HelmStatusSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = null;
+            return toolSettings;
+        }
+        /// <summary><p><em>Enables <see cref="HelmStatusSettings.Help"/>.</em></p><p>Help for status.</p></summary>
+        [Pure]
+        public static HelmStatusSettings EnableHelp(this HelmStatusSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = true;
+            return toolSettings;
+        }
+        /// <summary><p><em>Disables <see cref="HelmStatusSettings.Help"/>.</em></p><p>Help for status.</p></summary>
+        [Pure]
+        public static HelmStatusSettings DisableHelp(this HelmStatusSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = false;
+            return toolSettings;
+        }
+        /// <summary><p><em>Toggles <see cref="HelmStatusSettings.Help"/>.</em></p><p>Help for status.</p></summary>
+        [Pure]
+        public static HelmStatusSettings ToggleHelp(this HelmStatusSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = !toolSettings.Help;
+            return toolSettings;
+        }
+        #endregion
         #region Output
         /// <summary><p><em>Sets <see cref="HelmStatusSettings.Output"/>.</em></p><p>Output the status in the specified format (json or yaml).</p></summary>
         [Pure]
@@ -9634,6 +11676,48 @@ namespace Nuke.Helm
         {
             toolSettings = toolSettings.NewInstance();
             toolSettings.ExecuteInternal[executeKey] = executeValue;
+            return toolSettings;
+        }
+        #endregion
+        #region Help
+        /// <summary><p><em>Sets <see cref="HelmTemplateSettings.Help"/>.</em></p><p>Help for template.</p></summary>
+        [Pure]
+        public static HelmTemplateSettings SetHelp(this HelmTemplateSettings toolSettings, bool? help)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = help;
+            return toolSettings;
+        }
+        /// <summary><p><em>Resets <see cref="HelmTemplateSettings.Help"/>.</em></p><p>Help for template.</p></summary>
+        [Pure]
+        public static HelmTemplateSettings ResetHelp(this HelmTemplateSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = null;
+            return toolSettings;
+        }
+        /// <summary><p><em>Enables <see cref="HelmTemplateSettings.Help"/>.</em></p><p>Help for template.</p></summary>
+        [Pure]
+        public static HelmTemplateSettings EnableHelp(this HelmTemplateSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = true;
+            return toolSettings;
+        }
+        /// <summary><p><em>Disables <see cref="HelmTemplateSettings.Help"/>.</em></p><p>Help for template.</p></summary>
+        [Pure]
+        public static HelmTemplateSettings DisableHelp(this HelmTemplateSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = false;
+            return toolSettings;
+        }
+        /// <summary><p><em>Toggles <see cref="HelmTemplateSettings.Help"/>.</em></p><p>Help for template.</p></summary>
+        [Pure]
+        public static HelmTemplateSettings ToggleHelp(this HelmTemplateSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = !toolSettings.Help;
             return toolSettings;
         }
         #endregion
@@ -10065,6 +12149,48 @@ namespace Nuke.Helm
             return toolSettings;
         }
         #endregion
+        #region Help
+        /// <summary><p><em>Sets <see cref="HelmTestSettings.Help"/>.</em></p><p>Help for test.</p></summary>
+        [Pure]
+        public static HelmTestSettings SetHelp(this HelmTestSettings toolSettings, bool? help)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = help;
+            return toolSettings;
+        }
+        /// <summary><p><em>Resets <see cref="HelmTestSettings.Help"/>.</em></p><p>Help for test.</p></summary>
+        [Pure]
+        public static HelmTestSettings ResetHelp(this HelmTestSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = null;
+            return toolSettings;
+        }
+        /// <summary><p><em>Enables <see cref="HelmTestSettings.Help"/>.</em></p><p>Help for test.</p></summary>
+        [Pure]
+        public static HelmTestSettings EnableHelp(this HelmTestSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = true;
+            return toolSettings;
+        }
+        /// <summary><p><em>Disables <see cref="HelmTestSettings.Help"/>.</em></p><p>Help for test.</p></summary>
+        [Pure]
+        public static HelmTestSettings DisableHelp(this HelmTestSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = false;
+            return toolSettings;
+        }
+        /// <summary><p><em>Toggles <see cref="HelmTestSettings.Help"/>.</em></p><p>Help for test.</p></summary>
+        [Pure]
+        public static HelmTestSettings ToggleHelp(this HelmTestSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = !toolSettings.Help;
+            return toolSettings;
+        }
+        #endregion
         #region Timeout
         /// <summary><p><em>Sets <see cref="HelmTestSettings.Timeout"/>.</em></p><p>Time in seconds to wait for any individual Kubernetes operation (like Jobs for hooks) (default 300).</p></summary>
         [Pure]
@@ -10442,6 +12568,48 @@ namespace Nuke.Helm
         {
             toolSettings = toolSettings.NewInstance();
             toolSettings.Force = !toolSettings.Force;
+            return toolSettings;
+        }
+        #endregion
+        #region Help
+        /// <summary><p><em>Sets <see cref="HelmUpgradeSettings.Help"/>.</em></p><p>Help for upgrade.</p></summary>
+        [Pure]
+        public static HelmUpgradeSettings SetHelp(this HelmUpgradeSettings toolSettings, bool? help)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = help;
+            return toolSettings;
+        }
+        /// <summary><p><em>Resets <see cref="HelmUpgradeSettings.Help"/>.</em></p><p>Help for upgrade.</p></summary>
+        [Pure]
+        public static HelmUpgradeSettings ResetHelp(this HelmUpgradeSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = null;
+            return toolSettings;
+        }
+        /// <summary><p><em>Enables <see cref="HelmUpgradeSettings.Help"/>.</em></p><p>Help for upgrade.</p></summary>
+        [Pure]
+        public static HelmUpgradeSettings EnableHelp(this HelmUpgradeSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = true;
+            return toolSettings;
+        }
+        /// <summary><p><em>Disables <see cref="HelmUpgradeSettings.Help"/>.</em></p><p>Help for upgrade.</p></summary>
+        [Pure]
+        public static HelmUpgradeSettings DisableHelp(this HelmUpgradeSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = false;
+            return toolSettings;
+        }
+        /// <summary><p><em>Toggles <see cref="HelmUpgradeSettings.Help"/>.</em></p><p>Help for upgrade.</p></summary>
+        [Pure]
+        public static HelmUpgradeSettings ToggleHelp(this HelmUpgradeSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = !toolSettings.Help;
             return toolSettings;
         }
         #endregion
@@ -11269,6 +13437,48 @@ namespace Nuke.Helm
     [ExcludeFromCodeCoverage]
     public static partial class HelmVerifySettingsExtensions
     {
+        #region Help
+        /// <summary><p><em>Sets <see cref="HelmVerifySettings.Help"/>.</em></p><p>Help for verify.</p></summary>
+        [Pure]
+        public static HelmVerifySettings SetHelp(this HelmVerifySettings toolSettings, bool? help)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = help;
+            return toolSettings;
+        }
+        /// <summary><p><em>Resets <see cref="HelmVerifySettings.Help"/>.</em></p><p>Help for verify.</p></summary>
+        [Pure]
+        public static HelmVerifySettings ResetHelp(this HelmVerifySettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = null;
+            return toolSettings;
+        }
+        /// <summary><p><em>Enables <see cref="HelmVerifySettings.Help"/>.</em></p><p>Help for verify.</p></summary>
+        [Pure]
+        public static HelmVerifySettings EnableHelp(this HelmVerifySettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = true;
+            return toolSettings;
+        }
+        /// <summary><p><em>Disables <see cref="HelmVerifySettings.Help"/>.</em></p><p>Help for verify.</p></summary>
+        [Pure]
+        public static HelmVerifySettings DisableHelp(this HelmVerifySettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = false;
+            return toolSettings;
+        }
+        /// <summary><p><em>Toggles <see cref="HelmVerifySettings.Help"/>.</em></p><p>Help for verify.</p></summary>
+        [Pure]
+        public static HelmVerifySettings ToggleHelp(this HelmVerifySettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = !toolSettings.Help;
+            return toolSettings;
+        }
+        #endregion
         #region Keyring
         /// <summary><p><em>Sets <see cref="HelmVerifySettings.Keyring"/>.</em></p><p>Keyring containing public keys (default "~/.gnupg/pubring.gpg").</p></summary>
         [Pure]
@@ -11352,6 +13562,48 @@ namespace Nuke.Helm
         {
             toolSettings = toolSettings.NewInstance();
             toolSettings.Client = !toolSettings.Client;
+            return toolSettings;
+        }
+        #endregion
+        #region Help
+        /// <summary><p><em>Sets <see cref="HelmVersionSettings.Help"/>.</em></p><p>Help for version.</p></summary>
+        [Pure]
+        public static HelmVersionSettings SetHelp(this HelmVersionSettings toolSettings, bool? help)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = help;
+            return toolSettings;
+        }
+        /// <summary><p><em>Resets <see cref="HelmVersionSettings.Help"/>.</em></p><p>Help for version.</p></summary>
+        [Pure]
+        public static HelmVersionSettings ResetHelp(this HelmVersionSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = null;
+            return toolSettings;
+        }
+        /// <summary><p><em>Enables <see cref="HelmVersionSettings.Help"/>.</em></p><p>Help for version.</p></summary>
+        [Pure]
+        public static HelmVersionSettings EnableHelp(this HelmVersionSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = true;
+            return toolSettings;
+        }
+        /// <summary><p><em>Disables <see cref="HelmVersionSettings.Help"/>.</em></p><p>Help for version.</p></summary>
+        [Pure]
+        public static HelmVersionSettings DisableHelp(this HelmVersionSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = false;
+            return toolSettings;
+        }
+        /// <summary><p><em>Toggles <see cref="HelmVersionSettings.Help"/>.</em></p><p>Help for version.</p></summary>
+        [Pure]
+        public static HelmVersionSettings ToggleHelp(this HelmVersionSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = !toolSettings.Help;
             return toolSettings;
         }
         #endregion
@@ -11660,6 +13912,48 @@ namespace Nuke.Helm
         {
             toolSettings = toolSettings.NewInstance();
             toolSettings.Debug = !toolSettings.Debug;
+            return toolSettings;
+        }
+        #endregion
+        #region Help
+        /// <summary><p><em>Sets <see cref="HelmCommonSettings.Help"/>.</em></p><p>Help for helm.</p></summary>
+        [Pure]
+        public static HelmCommonSettings SetHelp(this HelmCommonSettings toolSettings, bool? help)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = help;
+            return toolSettings;
+        }
+        /// <summary><p><em>Resets <see cref="HelmCommonSettings.Help"/>.</em></p><p>Help for helm.</p></summary>
+        [Pure]
+        public static HelmCommonSettings ResetHelp(this HelmCommonSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = null;
+            return toolSettings;
+        }
+        /// <summary><p><em>Enables <see cref="HelmCommonSettings.Help"/>.</em></p><p>Help for helm.</p></summary>
+        [Pure]
+        public static HelmCommonSettings EnableHelp(this HelmCommonSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = true;
+            return toolSettings;
+        }
+        /// <summary><p><em>Disables <see cref="HelmCommonSettings.Help"/>.</em></p><p>Help for helm.</p></summary>
+        [Pure]
+        public static HelmCommonSettings DisableHelp(this HelmCommonSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = false;
+            return toolSettings;
+        }
+        /// <summary><p><em>Toggles <see cref="HelmCommonSettings.Help"/>.</em></p><p>Help for helm.</p></summary>
+        [Pure]
+        public static HelmCommonSettings ToggleHelp(this HelmCommonSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Help = !toolSettings.Help;
             return toolSettings;
         }
         #endregion

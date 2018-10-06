@@ -6,51 +6,52 @@
     "https://github.com/nuke-build/kubernetes/blob/master/LICENSE"
   ],
   "references": [
-    "https://raw.githubusercontent.com/helm/helm/v2.10.0/docs/helm/helm.md",
-    "https://raw.githubusercontent.com/helm/helm/v2.10.0/docs/helm/helm_completion.md",
-    "https://raw.githubusercontent.com/helm/helm/v2.10.0/docs/helm/helm_create.md",
-    "https://raw.githubusercontent.com/helm/helm/v2.10.0/docs/helm/helm_delete.md",
-    "https://raw.githubusercontent.com/helm/helm/v2.10.0/docs/helm/helm_dependency.md",
-    "https://raw.githubusercontent.com/helm/helm/v2.10.0/docs/helm/helm_dependency_build.md",
-    "https://raw.githubusercontent.com/helm/helm/v2.10.0/docs/helm/helm_dependency_list.md",
-    "https://raw.githubusercontent.com/helm/helm/v2.10.0/docs/helm/helm_dependency_update.md",
-    "https://raw.githubusercontent.com/helm/helm/v2.10.0/docs/helm/helm_fetch.md",
-    "https://raw.githubusercontent.com/helm/helm/v2.10.0/docs/helm/helm_get.md",
-    "https://raw.githubusercontent.com/helm/helm/v2.10.0/docs/helm/helm_get_hooks.md",
-    "https://raw.githubusercontent.com/helm/helm/v2.10.0/docs/helm/helm_get_manifest.md",
-    "https://raw.githubusercontent.com/helm/helm/v2.10.0/docs/helm/helm_get_values.md",
-    "https://raw.githubusercontent.com/helm/helm/v2.10.0/docs/helm/helm_history.md",
-    "https://raw.githubusercontent.com/helm/helm/v2.10.0/docs/helm/helm_home.md",
-    "https://raw.githubusercontent.com/helm/helm/v2.10.0/docs/helm/helm_init.md",
-    "https://raw.githubusercontent.com/helm/helm/v2.10.0/docs/helm/helm_inspect.md",
-    "https://raw.githubusercontent.com/helm/helm/v2.10.0/docs/helm/helm_inspect_chart.md",
-    "https://raw.githubusercontent.com/helm/helm/v2.10.0/docs/helm/helm_inspect_readme.md",
-    "https://raw.githubusercontent.com/helm/helm/v2.10.0/docs/helm/helm_inspect_values.md",
-    "https://raw.githubusercontent.com/helm/helm/v2.10.0/docs/helm/helm_install.md",
-    "https://raw.githubusercontent.com/helm/helm/v2.10.0/docs/helm/helm_lint.md",
-    "https://raw.githubusercontent.com/helm/helm/v2.10.0/docs/helm/helm_list.md",
-    "https://raw.githubusercontent.com/helm/helm/v2.10.0/docs/helm/helm_package.md",
-    "https://raw.githubusercontent.com/helm/helm/v2.10.0/docs/helm/helm_plugin.md",
-    "https://raw.githubusercontent.com/helm/helm/v2.10.0/docs/helm/helm_plugin_install.md",
-    "https://raw.githubusercontent.com/helm/helm/v2.10.0/docs/helm/helm_plugin_list.md",
-    "https://raw.githubusercontent.com/helm/helm/v2.10.0/docs/helm/helm_plugin_remove.md",
-    "https://raw.githubusercontent.com/helm/helm/v2.10.0/docs/helm/helm_plugin_update.md",
-    "https://raw.githubusercontent.com/helm/helm/v2.10.0/docs/helm/helm_repo.md",
-    "https://raw.githubusercontent.com/helm/helm/v2.10.0/docs/helm/helm_repo_add.md",
-    "https://raw.githubusercontent.com/helm/helm/v2.10.0/docs/helm/helm_repo_index.md",
-    "https://raw.githubusercontent.com/helm/helm/v2.10.0/docs/helm/helm_repo_list.md",
-    "https://raw.githubusercontent.com/helm/helm/v2.10.0/docs/helm/helm_repo_remove.md",
-    "https://raw.githubusercontent.com/helm/helm/v2.10.0/docs/helm/helm_repo_update.md",
-    "https://raw.githubusercontent.com/helm/helm/v2.10.0/docs/helm/helm_reset.md",
-    "https://raw.githubusercontent.com/helm/helm/v2.10.0/docs/helm/helm_rollback.md",
-    "https://raw.githubusercontent.com/helm/helm/v2.10.0/docs/helm/helm_search.md",
-    "https://raw.githubusercontent.com/helm/helm/v2.10.0/docs/helm/helm_serve.md",
-    "https://raw.githubusercontent.com/helm/helm/v2.10.0/docs/helm/helm_status.md",
-    "https://raw.githubusercontent.com/helm/helm/v2.10.0/docs/helm/helm_template.md",
-    "https://raw.githubusercontent.com/helm/helm/v2.10.0/docs/helm/helm_test.md",
-    "https://raw.githubusercontent.com/helm/helm/v2.10.0/docs/helm/helm_upgrade.md",
-    "https://raw.githubusercontent.com/helm/helm/v2.10.0/docs/helm/helm_verify.md",
-    "https://raw.githubusercontent.com/helm/helm/v2.10.0/docs/helm/helm_version.md"
+    "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm.md",
+    "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_completion.md",
+    "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_create.md",
+    "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_delete.md",
+    "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_dependency.md",
+    "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_dependency_build.md",
+    "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_dependency_list.md",
+    "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_dependency_update.md",
+    "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_fetch.md",
+    "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_get.md",
+    "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_get_hooks.md",
+    "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_get_manifest.md",
+    "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_get_notes.md",
+    "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_get_values.md",
+    "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_history.md",
+    "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_home.md",
+    "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_init.md",
+    "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_inspect.md",
+    "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_inspect_chart.md",
+    "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_inspect_readme.md",
+    "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_inspect_values.md",
+    "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_install.md",
+    "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_lint.md",
+    "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_list.md",
+    "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_package.md",
+    "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_plugin.md",
+    "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_plugin_install.md",
+    "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_plugin_list.md",
+    "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_plugin_remove.md",
+    "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_plugin_update.md",
+    "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_repo.md",
+    "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_repo_add.md",
+    "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_repo_index.md",
+    "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_repo_list.md",
+    "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_repo_remove.md",
+    "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_repo_update.md",
+    "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_reset.md",
+    "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_rollback.md",
+    "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_search.md",
+    "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_serve.md",
+    "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_status.md",
+    "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_template.md",
+    "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_test.md",
+    "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_upgrade.md",
+    "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_verify.md",
+    "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_version.md"
   ],
   "name": "Helm",
   "officialUrl": "https://helm.sh/",
@@ -63,6 +64,12 @@
       "settingsClass": {
         "baseClass": "HelmToolSettings",
         "properties": [
+          {
+            "name": "Help",
+            "type": "bool",
+            "format": "--help {value}",
+            "help": "Help for completion."
+          },
           {
             "name": "Shell",
             "type": "string",
@@ -78,6 +85,12 @@
       "settingsClass": {
         "baseClass": "HelmToolSettings",
         "properties": [
+          {
+            "name": "Help",
+            "type": "bool",
+            "format": "--help {value}",
+            "help": "Help for create."
+          },
           {
             "name": "Starter",
             "type": "string",
@@ -111,6 +124,12 @@
             "type": "bool",
             "format": "--dry-run {value}",
             "help": "Simulate a delete."
+          },
+          {
+            "name": "Help",
+            "type": "bool",
+            "format": "--help {value}",
+            "help": "Help for delete."
           },
           {
             "name": "NoHooks",
@@ -184,6 +203,12 @@
         "baseClass": "HelmToolSettings",
         "properties": [
           {
+            "name": "Help",
+            "type": "bool",
+            "format": "--help {value}",
+            "help": "Help for build."
+          },
+          {
             "name": "Keyring",
             "type": "string",
             "format": "--keyring {value}",
@@ -212,6 +237,12 @@
         "baseClass": "HelmToolSettings",
         "properties": [
           {
+            "name": "Help",
+            "type": "bool",
+            "format": "--help {value}",
+            "help": "Help for list."
+          },
+          {
             "name": "Chart",
             "type": "string",
             "format": "{value}",
@@ -227,6 +258,12 @@
       "settingsClass": {
         "baseClass": "HelmToolSettings",
         "properties": [
+          {
+            "name": "Help",
+            "type": "bool",
+            "format": "--help {value}",
+            "help": "Help for update."
+          },
           {
             "name": "Keyring",
             "type": "string",
@@ -286,6 +323,12 @@
             "help": "Use development versions, too. Equivalent to version '&gt;0.0.0-0'. If --version is set, this is ignored."
           },
           {
+            "name": "Help",
+            "type": "bool",
+            "format": "--help {value}",
+            "help": "Help for fetch."
+          },
+          {
             "name": "KeyFile",
             "type": "string",
             "format": "--key-file {value}",
@@ -301,6 +344,7 @@
             "name": "Password",
             "type": "string",
             "format": "--password {value}",
+            "secret": true,
             "help": "Chart repository password."
           },
           {
@@ -363,6 +407,12 @@
         "baseClass": "HelmToolSettings",
         "properties": [
           {
+            "name": "Help",
+            "type": "bool",
+            "format": "--help {value}",
+            "help": "Help for get."
+          },
+          {
             "name": "Revision",
             "type": "int",
             "format": "--revision {value}",
@@ -420,6 +470,12 @@
       "settingsClass": {
         "baseClass": "HelmToolSettings",
         "properties": [
+          {
+            "name": "Help",
+            "type": "bool",
+            "format": "--help {value}",
+            "help": "Help for hooks."
+          },
           {
             "name": "Revision",
             "type": "int",
@@ -479,6 +535,12 @@
         "baseClass": "HelmToolSettings",
         "properties": [
           {
+            "name": "Help",
+            "type": "bool",
+            "format": "--help {value}",
+            "help": "Help for manifest."
+          },
+          {
             "name": "Revision",
             "type": "int",
             "format": "--revision {value}",
@@ -530,6 +592,69 @@
       }
     },
     {
+      "help": "This command shows notes provided by the chart of a named release.",
+      "postfix": "GetNotes",
+      "definiteArgument": "helm get notes",
+      "settingsClass": {
+        "baseClass": "HelmToolSettings",
+        "properties": [
+          {
+            "name": "Help",
+            "type": "bool",
+            "format": "--help {value}",
+            "help": "Help for notes."
+          },
+          {
+            "name": "Revision",
+            "type": "int",
+            "format": "--revision {value}",
+            "help": "Get the notes of the named release with revision."
+          },
+          {
+            "name": "Tls",
+            "type": "bool",
+            "format": "--tls {value}",
+            "help": "Enable TLS for request."
+          },
+          {
+            "name": "TlsCaCert",
+            "type": "string",
+            "format": "--tls-ca-cert {value}",
+            "help": "Path to TLS CA certificate file (default \"$HELM_HOME/ca.pem\")."
+          },
+          {
+            "name": "TlsCert",
+            "type": "string",
+            "format": "--tls-cert {value}",
+            "help": "Path to TLS certificate file (default \"$HELM_HOME/cert.pem\")."
+          },
+          {
+            "name": "TlsHostname",
+            "type": "string",
+            "format": "--tls-hostname {value}",
+            "help": "The server name used to verify the hostname on the returned certificates from the server."
+          },
+          {
+            "name": "TlsKey",
+            "type": "string",
+            "format": "--tls-key {value}",
+            "help": "Path to TLS key file (default \"$HELM_HOME/key.pem\")."
+          },
+          {
+            "name": "TlsVerify",
+            "type": "bool",
+            "format": "--tls-verify {value}",
+            "help": "Enable TLS for request and verify remote."
+          },
+          {
+            "name": "ReleaseName",
+            "type": "string",
+            "format": "{value}"
+          }
+        ]
+      }
+    },
+    {
       "help": "This command downloads a values file for a given release.",
       "postfix": "GetValues",
       "definiteArgument": "helm get values",
@@ -541,6 +666,12 @@
             "type": "bool",
             "format": "--all {value}",
             "help": "Dump all (computed) values."
+          },
+          {
+            "name": "Help",
+            "type": "bool",
+            "format": "--help {value}",
+            "help": "Help for values."
           },
           {
             "name": "Revision",
@@ -607,6 +738,12 @@
             "help": "Specifies the max column width of output (default 60)."
           },
           {
+            "name": "Help",
+            "type": "bool",
+            "format": "--help {value}",
+            "help": "Help for history."
+          },
+          {
             "name": "Max",
             "type": "int",
             "format": "--max {value}",
@@ -668,7 +805,15 @@
       "postfix": "Home",
       "definiteArgument": "helm home",
       "settingsClass": {
-        "baseClass": "HelmToolSettings"
+        "baseClass": "HelmToolSettings",
+        "properties": [
+          {
+            "name": "Help",
+            "type": "bool",
+            "format": "--help {value}",
+            "help": "Help for home."
+          }
+        ]
       }
     },
     {
@@ -678,6 +823,12 @@
       "settingsClass": {
         "baseClass": "HelmToolSettings",
         "properties": [
+          {
+            "name": "AutomountServiceAccountToken",
+            "type": "bool",
+            "format": "--automount-service-account-token {value}",
+            "help": "Auto-mount the given service account to tiller (default true)."
+          },
           {
             "name": "CanaryImage",
             "type": "bool",
@@ -701,6 +852,12 @@
             "type": "bool",
             "format": "--force-upgrade {value}",
             "help": "Force upgrade of Tiller to the current helm version."
+          },
+          {
+            "name": "Help",
+            "type": "bool",
+            "format": "--help {value}",
+            "help": "Help for init."
           },
           {
             "name": "HistoryMax",
@@ -783,6 +940,12 @@
             "help": "Path to TLS certificate file to install with Tiller."
           },
           {
+            "name": "TillerTlsHostname",
+            "type": "string",
+            "format": "--tiller-tls-hostname {value}",
+            "help": "The server name used to verify the hostname on the returned certificates from Tiller."
+          },
+          {
             "name": "TillerTlsKey",
             "type": "string",
             "format": "--tiller-tls-key {value}",
@@ -835,6 +998,12 @@
             "help": "Verify certificates of HTTPS-enabled servers using this CA bundle."
           },
           {
+            "name": "Help",
+            "type": "bool",
+            "format": "--help {value}",
+            "help": "Help for inspect."
+          },
+          {
             "name": "KeyFile",
             "type": "string",
             "format": "--key-file {value}",
@@ -850,6 +1019,7 @@
             "name": "Password",
             "type": "string",
             "format": "--password {value}",
+            "secret": true,
             "help": "Chart repository password where to locate the requested chart."
           },
           {
@@ -905,6 +1075,12 @@
             "help": "Verify certificates of HTTPS-enabled servers using this CA bundle."
           },
           {
+            "name": "Help",
+            "type": "bool",
+            "format": "--help {value}",
+            "help": "Help for chart."
+          },
+          {
             "name": "KeyFile",
             "type": "string",
             "format": "--key-file {value}",
@@ -920,6 +1096,7 @@
             "name": "Password",
             "type": "string",
             "format": "--password {value}",
+            "secret": true,
             "help": "Chart repository password where to locate the requested chart."
           },
           {
@@ -973,6 +1150,12 @@
             "type": "string",
             "format": "--cert-file {value}",
             "help": "Verify certificates of HTTPS-enabled servers using this CA bundle."
+          },
+          {
+            "name": "Help",
+            "type": "bool",
+            "format": "--help {value}",
+            "help": "Help for readme."
           },
           {
             "name": "KeyFile",
@@ -1033,6 +1216,12 @@
             "help": "Verify certificates of HTTPS-enabled servers using this CA bundle."
           },
           {
+            "name": "Help",
+            "type": "bool",
+            "format": "--help {value}",
+            "help": "Help for values."
+          },
+          {
             "name": "KeyFile",
             "type": "string",
             "format": "--key-file {value}",
@@ -1048,6 +1237,7 @@
             "name": "Password",
             "type": "string",
             "format": "--password {value}",
+            "secret": true,
             "help": "Chart repository password where to locate the requested chart."
           },
           {
@@ -1127,6 +1317,12 @@
             "help": "Simulate an install."
           },
           {
+            "name": "Help",
+            "type": "bool",
+            "format": "--help {value}",
+            "help": "Help for install."
+          },
+          {
             "name": "KeyFile",
             "type": "string",
             "format": "--key-file {value}",
@@ -1172,6 +1368,7 @@
             "name": "Password",
             "type": "string",
             "format": "--password {value}",
+            "secret": true,
             "help": "Chart repository password where to locate the requested chart."
           },
           {
@@ -1300,6 +1497,12 @@
         "baseClass": "HelmToolSettings",
         "properties": [
           {
+            "name": "Help",
+            "type": "bool",
+            "format": "--help {value}",
+            "help": "Help for lint."
+          },
+          {
             "name": "Namespace",
             "type": "string",
             "format": "--namespace {value}",
@@ -1365,6 +1568,12 @@
             "help": "Show all releases, not just the ones marked DEPLOYED."
           },
           {
+            "name": "ChartName",
+            "type": "bool",
+            "format": "--chart-name {value}",
+            "help": "Sort by chart name."
+          },
+          {
             "name": "ColWidth",
             "type": "uint?",
             "format": "--col-width {value}",
@@ -1399,6 +1608,12 @@
             "type": "bool",
             "format": "--failed {value}",
             "help": "Show failed releases."
+          },
+          {
+            "name": "Help",
+            "type": "bool",
+            "format": "--help {value}",
+            "help": "Help for list."
           },
           {
             "name": "Max",
@@ -1513,6 +1728,12 @@
             "help": "Location to write the chart. (default \".\")."
           },
           {
+            "name": "Help",
+            "type": "bool",
+            "format": "--help {value}",
+            "help": "Help for package."
+          },
+          {
             "name": "Key",
             "type": "string",
             "format": "--key {value}",
@@ -1560,6 +1781,12 @@
         "baseClass": "HelmToolSettings",
         "properties": [
           {
+            "name": "Help",
+            "type": "bool",
+            "format": "--help {value}",
+            "help": "Help for install."
+          },
+          {
             "name": "Version",
             "type": "string",
             "format": "--version {value}",
@@ -1585,7 +1812,15 @@
       "postfix": "PluginList",
       "definiteArgument": "helm plugin list",
       "settingsClass": {
-        "baseClass": "HelmToolSettings"
+        "baseClass": "HelmToolSettings",
+        "properties": [
+          {
+            "name": "Help",
+            "type": "bool",
+            "format": "--help {value}",
+            "help": "Help for list."
+          }
+        ]
       }
     },
     {
@@ -1595,6 +1830,12 @@
       "settingsClass": {
         "baseClass": "HelmToolSettings",
         "properties": [
+          {
+            "name": "Help",
+            "type": "bool",
+            "format": "--help {value}",
+            "help": "Help for remove."
+          },
           {
             "name": "Plugins",
             "type": "List<string>",
@@ -1612,6 +1853,12 @@
       "settingsClass": {
         "baseClass": "HelmToolSettings",
         "properties": [
+          {
+            "name": "Help",
+            "type": "bool",
+            "format": "--help {value}",
+            "help": "Help for update."
+          },
           {
             "name": "Plugins",
             "type": "List<string>",
@@ -1642,6 +1889,12 @@
             "help": "Identify HTTPS client using this SSL certificate file."
           },
           {
+            "name": "Help",
+            "type": "bool",
+            "format": "--help {value}",
+            "help": "Help for add."
+          },
+          {
             "name": "KeyFile",
             "type": "string",
             "format": "--key-file {value}",
@@ -1657,6 +1910,7 @@
             "name": "Password",
             "type": "string",
             "format": "--password {value}",
+            "secret": true,
             "help": "Chart repository password."
           },
           {
@@ -1688,6 +1942,12 @@
         "baseClass": "HelmToolSettings",
         "properties": [
           {
+            "name": "Help",
+            "type": "bool",
+            "format": "--help {value}",
+            "help": "Help for index."
+          },
+          {
             "name": "Merge",
             "type": "string",
             "format": "--merge {value}",
@@ -1713,7 +1973,15 @@
       "postfix": "RepoList",
       "definiteArgument": "helm repo list",
       "settingsClass": {
-        "baseClass": "HelmToolSettings"
+        "baseClass": "HelmToolSettings",
+        "properties": [
+          {
+            "name": "Help",
+            "type": "bool",
+            "format": "--help {value}",
+            "help": "Help for list."
+          }
+        ]
       }
     },
     {
@@ -1723,6 +1991,12 @@
       "settingsClass": {
         "baseClass": "HelmToolSettings",
         "properties": [
+          {
+            "name": "Help",
+            "type": "bool",
+            "format": "--help {value}",
+            "help": "Help for remove."
+          },
           {
             "name": "Name",
             "type": "string",
@@ -1737,7 +2011,15 @@
       "postfix": "RepoUpdate",
       "definiteArgument": "helm repo update",
       "settingsClass": {
-        "baseClass": "HelmToolSettings"
+        "baseClass": "HelmToolSettings",
+        "properties": [
+          {
+            "name": "Help",
+            "type": "bool",
+            "format": "--help {value}",
+            "help": "Help for update."
+          }
+        ]
       }
     },
     {
@@ -1752,6 +2034,12 @@
             "type": "bool",
             "format": "--force {value}",
             "help": "Forces Tiller uninstall even if there are releases installed, or if Tiller is not in ready state. Releases are not deleted.)."
+          },
+          {
+            "name": "Help",
+            "type": "bool",
+            "format": "--help {value}",
+            "help": "Help for reset."
           },
           {
             "name": "RemoveHelmHome",
@@ -1822,6 +2110,12 @@
             "type": "bool",
             "format": "--force {value}",
             "help": "Force resource update through delete/recreate if needed."
+          },
+          {
+            "name": "Help",
+            "type": "bool",
+            "format": "--help {value}",
+            "help": "Help for rollback."
           },
           {
             "name": "NoHooks",
@@ -1912,6 +2206,12 @@
             "help": "Specifies the max column width of output (default 60)."
           },
           {
+            "name": "Help",
+            "type": "bool",
+            "format": "--help {value}",
+            "help": "Help for search."
+          },
+          {
             "name": "Regexp",
             "type": "bool",
             "format": "--regexp {value}",
@@ -1952,6 +2252,12 @@
             "help": "Address to listen on (default \"127.0.0.1:8879\")."
           },
           {
+            "name": "Help",
+            "type": "bool",
+            "format": "--help {value}",
+            "help": "Help for serve."
+          },
+          {
             "name": "RepoPath",
             "type": "string",
             "format": "--repo-path {value}",
@@ -1973,6 +2279,12 @@
       "settingsClass": {
         "baseClass": "HelmToolSettings",
         "properties": [
+          {
+            "name": "Help",
+            "type": "bool",
+            "format": "--help {value}",
+            "help": "Help for status."
+          },
           {
             "name": "Output",
             "type": "HelmOutputFormat",
@@ -2044,6 +2356,12 @@
             "itemFormat": "{key}={value}",
             "separator": ",",
             "help": "Only execute the given templates."
+          },
+          {
+            "name": "Help",
+            "type": "bool",
+            "format": "--help {value}",
+            "help": "Help for template."
           },
           {
             "name": "IsUpgrade",
@@ -2140,6 +2458,12 @@
             "help": "Delete test pods upon completion."
           },
           {
+            "name": "Help",
+            "type": "bool",
+            "format": "--help {value}",
+            "help": "Help for test."
+          },
+          {
             "name": "Timeout",
             "type": "long?",
             "format": "--timeout {value}",
@@ -2191,7 +2515,7 @@
       }
     },
     {
-      "help": "This command upgrades a release to a new version of a chart. The upgrade arguments must be a release and chart. The chart argument can be either: a chart reference('stable/mariadb'), a path to a chart directory, a packaged chart, or a fully qualified URL. For chart references, the latest version will be specified unless the '--version' flag is set. To override values in a chart, use either the '--values' flag and pass in a file or use the '--set' flag and pass configuration from the command line. To force string values in '--set', use '--set-string' instead. In case a value is large and therefore you want not to use neither '--values' nor '--set', use '--set-file' to read the single large value from file. You can specify the '--values'/'-f' flag multiple times. The priority will be given to the last (right-most) file specified. For example, if both myvalues.yaml and override.yaml contained a key called 'Test', the value set in override.yaml would take precedence: \t$ helm upgrade -f myvalues.yaml -f override.yaml redis ./redis You can specify the '--set' flag multiple times. The priority will be given to the last (right-most) set specified. For example, if both 'bar' and 'newbar' values are set for a key called 'foo', the 'newbar' value would take precedence: \t$ helm upgrade --set foo=bar --set foo=newbar redis ./redis.",
+      "help": "This command upgrades a release to a specified version of a chart and/or updates chart values. Required arguments are release and chart. The chart argument can be one of:  - a chart reference('stable/mariadb'); use '--version' and '--devel' flags for versions other than latest,  - a path to a chart directory,  - a packaged chart,  - a fully qualified URL. To customize the chart values, use any of  - '--values'/'-f' to pass in a yaml file holding settings,  - '--set' to provide one or more key=val pairs directly,  - '--set-string' to provide key=val forcing val to be stored as a string,  - '--set-file' to provide key=path to read a single large value from a file at path. To edit or append to the existing customized values, add the   '--reuse-values' flag, otherwise any existing customized values are ignored. If no chart value arguments are provided on the command line, any existing customized values are carried forward. If you want to revert to just the values provided in the chart, use the '--reset-values' flag. You can specify any of the chart value flags multiple times. The priority will be given to the last (right-most) value specified. For example, if both myvalues.yaml and override.yaml contained a key called 'Test', the value set in override.yaml would take precedence: \t$ helm upgrade -f myvalues.yaml -f override.yaml redis ./redis Note that the key name provided to the '--set', '--set-string' and '--set-file' flags can reference structure elements. Examples:   - mybool=TRUE   - livenessProbe.timeoutSeconds=10   - metrics.annotations[0]=hey,metrics.annotations[1]=ho which sets the top level key mybool to true, the nested timeoutSeconds to 10, and two array values, respectively. Note that the value side of the key=val provided to '--set' and '--set-string' flags will pass through shell evaluation followed by yaml type parsing to produce the final value. This may alter inputs with special characters in unexpected ways, for example \t$ helm upgrade --set pwd=3jk$o2,z=f\\30.e redis ./redis results in \"pwd: 3jk\" and \"z: f30.e\". Use single quotes to avoid shell evaluation and argument delimiters, and use backslash to escape yaml special characters: \t$ helm upgrade --set pwd='3jk$o2z=f\\\\30.e' redis ./redis which results in the expected \"pwd: 3jk$o2z=f\\30.e\". If a single quote occurs in your value then follow your shell convention for escaping it; for example in bash: \t$ helm upgrade --set pwd='3jk$o2z=f\\\\30with'\\''quote' which results in \"pwd: 3jk$o2z=f\\30with'quote\".",
       "postfix": "Upgrade",
       "definiteArgument": "helm upgrade",
       "settingsClass": {
@@ -2234,6 +2558,12 @@
             "help": "Force resource update through delete/recreate if needed."
           },
           {
+            "name": "Help",
+            "type": "bool",
+            "format": "--help {value}",
+            "help": "Help for upgrade."
+          },
+          {
             "name": "Install",
             "type": "bool",
             "format": "--install {value}",
@@ -2267,6 +2597,7 @@
             "name": "Password",
             "type": "string",
             "format": "--password {value}",
+            "secret": true,
             "help": "Chart repository password where to locate the requested chart."
           },
           {
@@ -2413,6 +2744,12 @@
         "baseClass": "HelmToolSettings",
         "properties": [
           {
+            "name": "Help",
+            "type": "bool",
+            "format": "--help {value}",
+            "help": "Help for verify."
+          },
+          {
             "name": "Keyring",
             "type": "string",
             "format": "--keyring {value}",
@@ -2439,6 +2776,12 @@
             "type": "bool",
             "format": "--client {value}",
             "help": "Client version only."
+          },
+          {
+            "name": "Help",
+            "type": "bool",
+            "format": "--help {value}",
+            "help": "Help for version."
           },
           {
             "name": "Server",
@@ -2509,6 +2852,12 @@
           "type": "bool",
           "format": "--debug {value}",
           "help": "Enable verbose output."
+        },
+        {
+          "name": "Help",
+          "type": "bool",
+          "format": "--help {value}",
+          "help": "Help for helm."
         },
         {
           "name": "Home",
