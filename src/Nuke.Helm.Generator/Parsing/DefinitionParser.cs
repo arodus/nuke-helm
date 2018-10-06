@@ -70,11 +70,13 @@ namespace Nuke.Helm.Generator.Parsing
 
         private Property ParseProperty(Option option)
         {
+            var propertyName = option.Flag.Trim(trimChar: '-').ToPascalCase(separator: '-');
             var property = new Property
                            {
-                               Name = option.Flag.Trim(trimChar: '-').ToPascalCase(separator: '-'),
+                               Name = propertyName,
                                Help = (char.ToUpper(option.Usage[index: 0]) + option.Usage.Substring(startIndex: 1)).FormatForXmlDoc(),
-                               Format = $"{option.Flag} {{value}}"
+                               Format = $"{option.Flag} {{value}}",
+                               Secret = propertyName == "Password"
                            };
             _typeResolver.PopulateTypeInformation(option, ref property);
             return property;
