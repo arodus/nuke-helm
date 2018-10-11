@@ -117,12 +117,6 @@ namespace Nuke.Helm.Generator.Parsing
                    {
                        Name = "Helm",
                        PathExecutable = "helm",
-                       License = new[]
-                                 {
-                                     $"Copyright Matthias Koch, Sebastian Karasek {DateTime.Now.Year}.",
-                                     "Distributed under the MIT License.",
-                                     "https://github.com/nuke-build/kubernetes/blob/master/LICENSE"
-                                 },
                        OfficialUrl = "https://helm.sh/",
                        References = _definitions
                            .Select(x => x.Name.Replace(oldChar: ' ', newChar: '_'))

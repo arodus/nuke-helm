@@ -41,9 +41,12 @@ partial class Build : NukeBuild
     [GitVersion] readonly GitVersion GitVersion;
     [Solution] readonly Solution Solution;
 
+    [Parameter] readonly string Configuration = IsLocalBuild ? "Debug" : "Release";
     [Parameter("Api key to push packages to NuGet.org")] readonly string NuGetApiKey;
     [Parameter("Api key to access the GitHub")] readonly string GitHubApiKey;
 
+    AbsolutePath SourceDirectory => RootDirectory / "src";
+    AbsolutePath OutputDirectory => RootDirectory / "output";
     ChangeLog ChangeLogContent => ReadChangelog(ChangelogFile);
     Project AddonProject => Solution.GetProject(c_toolNamespace).NotNull();
 
@@ -59,11 +62,18 @@ partial class Build : NukeBuild
         .DependsOn(Clean)
         .Executes(() =>
         {
-            DotNetRestore(s => DefaultDotNetRestore);
-            DotNetBuild(x => DefaultDotNetBuild.EnableNoRestore());
+            DotNetRestore(s => s
+                .SetProjectFile(Solution));
+            DotNetBuild(x => x
+                .SetProjectFile(Solution)
+                .EnableNoRestore()
+                .SetConfiguration(Configuration)
+                .SetAssemblyVersion(GitVersion.GetNormalizedAssemblyVersion())
+                .SetFileVersion(GitVersion.GetNormalizedFileVersion())
+                .SetInformationalVersion(GitVersion.InformationalVersion));
 
             var xUnitSettings = new Xunit2Settings()
-                .AddTargetAssemblies(GlobFiles(SolutionDirectory / "tests", $"*/bin/{Configuration}/netcoreapp2.1*/Nuke.*.Tests.dll").NotEmpty())
+                .AddTargetAssemblies(GlobFiles(Solution.Directory / "tests", $"*/bin/{Configuration}/netcoreapp2.1*/Nuke.*.Tests.dll").NotEmpty())
                 .AddResultReport(Xunit2ResultFormat.Xml, OutputDirectory / "tests.xml")
                 .SetToolPath(ToolPathResolver.GetPackageExecutable("xunit.runner.console", "xunit.console.dll", "netcoreapp2.0"));
 
@@ -74,8 +84,15 @@ partial class Build : NukeBuild
         .DependsOn(Clean, GenerateAddon)
         .Executes(() =>
         {
-            DotNetRestore(s => DefaultDotNetRestore.SetProjectFile(AddonProject));
-            DotNetBuild(s => DefaultDotNetBuild.SetProjectFile(AddonProject).EnableNoRestore());
+            DotNetRestore(s => s
+                .SetProjectFile(AddonProject));
+            DotNetBuild(s => s
+                .SetProjectFile(AddonProject)
+                .EnableNoRestore()
+                .SetConfiguration(Configuration)
+                .SetAssemblyVersion(GitVersion.GetNormalizedAssemblyVersion())
+                .SetFileVersion(GitVersion.GetNormalizedFileVersion())
+                .SetInformationalVersion(GitVersion.InformationalVersion));
         });
 
     Target Pack => _ => _
@@ -88,10 +105,12 @@ partial class Build : NukeBuild
                 .Concat($"Full changelog at {GitRepository.SetBranch("master").GetGitHubBrowseUrl(ChangelogFile)}")
                 .JoinNewLine();
 
-            DotNetPack(s => DefaultDotNetPack
+            DotNetPack(s => new DotNetPackSettings()
                 .SetProject(AddonProject)
                 .EnableNoBuild()
-                .EnableNoRestore()
+                .SetConfiguration(Configuration)
+                .EnableIncludeSymbols()
+                .SetOutputDirectory(OutputDirectory)
                 .SetVersion(GitVersion.NuGetVersionV2)
                 .SetPackageReleaseNotes(releaseNotes));
         });

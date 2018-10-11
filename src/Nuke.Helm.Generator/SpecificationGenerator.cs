@@ -29,9 +29,9 @@ namespace Nuke.Helm.Generator
             if (overwrites != null)
                 SpecificationModifier.Overwrite(tool, overwrites);
 
-            tool.DefinitionFile = PathConstruction.Combine(settings.OutputFolder, "Helm.json");
+            tool.SpecificationFile = PathConstruction.Combine(settings.OutputFolder, "Helm.json");
             Directory.CreateDirectory(settings.OutputFolder);
-            ToolSerializer.Save(tool);
+            ToolSerializer.Save(tool, tool.SpecificationFile);
 
             Console.WriteLine();
             Console.WriteLine("Generation finished.");
