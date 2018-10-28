@@ -6,42 +6,41 @@
     "https://github.com/nuke-build/kubernetes/blob/master/LICENSE"
   ],
   "references": [
-    "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm.md",
     "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_completion.md",
     "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_create.md",
     "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_delete.md",
-    "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_dependency.md",
     "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_dependency_build.md",
     "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_dependency_list.md",
     "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_dependency_update.md",
+    "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_dependency.md",
     "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_fetch.md",
-    "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_get.md",
     "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_get_hooks.md",
     "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_get_manifest.md",
     "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_get_notes.md",
     "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_get_values.md",
+    "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_get.md",
     "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_history.md",
     "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_home.md",
     "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_init.md",
-    "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_inspect.md",
     "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_inspect_chart.md",
     "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_inspect_readme.md",
     "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_inspect_values.md",
+    "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_inspect.md",
     "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_install.md",
     "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_lint.md",
     "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_list.md",
     "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_package.md",
-    "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_plugin.md",
     "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_plugin_install.md",
     "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_plugin_list.md",
     "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_plugin_remove.md",
     "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_plugin_update.md",
-    "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_repo.md",
+    "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_plugin.md",
     "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_repo_add.md",
     "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_repo_index.md",
     "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_repo_list.md",
     "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_repo_remove.md",
     "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_repo_update.md",
+    "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_repo.md",
     "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_reset.md",
     "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_rollback.md",
     "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_search.md",
@@ -51,418 +50,13 @@
     "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_test.md",
     "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_upgrade.md",
     "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_verify.md",
-    "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_version.md"
+    "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_version.md",
+    "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm.md"
   ],
   "name": "Helm",
   "officialUrl": "https://helm.sh/",
   "pathExecutable": "helm",
   "tasks": [
-    {
-      "help": "Generate autocompletions script for Helm for the specified shell (bash or zsh). This command can generate shell autocompletions. e.g. \t$ helm completion bash Can be sourced as such \t$ source &lt;(helm completion bash).",
-      "postfix": "Completion",
-      "definiteArgument": "helm completion",
-      "settingsClass": {
-        "baseClass": "HelmToolSettings",
-        "properties": [
-          {
-            "name": "Help",
-            "type": "bool",
-            "format": "--help {value}",
-            "help": "Help for completion."
-          },
-          {
-            "name": "Shell",
-            "type": "string",
-            "format": "{value}"
-          }
-        ]
-      }
-    },
-    {
-      "help": "This command creates a chart directory along with the common files and directories used in a chart. For example, 'helm create foo' will create a directory structure that looks something like this: \tfoo/ \t  | \t  |- .helmignore   # Contains patterns to ignore when packaging Helm charts. \t  | \t  |- Chart.yaml    # Information about your chart \t  | \t  |- values.yaml   # The default values for your templates \t  | \t  |- charts/       # Charts that this chart depends on \t  | \t  |- templates/    # The template files 'helm create' takes a path for an argument. If directories in the given path do not exist, Helm will attempt to create them as it goes. If the given destination exists and there are files in that directory, conflicting files will be overwritten, but other files will be left alone.",
-      "postfix": "Create",
-      "definiteArgument": "helm create",
-      "settingsClass": {
-        "baseClass": "HelmToolSettings",
-        "properties": [
-          {
-            "name": "Help",
-            "type": "bool",
-            "format": "--help {value}",
-            "help": "Help for create."
-          },
-          {
-            "name": "Starter",
-            "type": "string",
-            "format": "--starter {value}",
-            "help": "The named Helm starter scaffold."
-          },
-          {
-            "name": "Name",
-            "type": "string",
-            "format": "{value}",
-            "help": "The name of chart directory to create."
-          }
-        ]
-      }
-    },
-    {
-      "help": "This command takes a release name, and then deletes the release from Kubernetes. It removes all of the resources associated with the last release of the chart. Use the '--dry-run' flag to see which releases will be deleted without actually deleting them.",
-      "postfix": "Delete",
-      "definiteArgument": "helm delete",
-      "settingsClass": {
-        "baseClass": "HelmToolSettings",
-        "properties": [
-          {
-            "name": "Description",
-            "type": "string",
-            "format": "--description {value}",
-            "help": "Specify a description for the release."
-          },
-          {
-            "name": "DryRun",
-            "type": "bool",
-            "format": "--dry-run {value}",
-            "help": "Simulate a delete."
-          },
-          {
-            "name": "Help",
-            "type": "bool",
-            "format": "--help {value}",
-            "help": "Help for delete."
-          },
-          {
-            "name": "NoHooks",
-            "type": "bool",
-            "format": "--no-hooks {value}",
-            "help": "Prevent hooks from running during deletion."
-          },
-          {
-            "name": "Purge",
-            "type": "bool",
-            "format": "--purge {value}",
-            "help": "Remove the release from the store and make its name free for later use."
-          },
-          {
-            "name": "Timeout",
-            "type": "long?",
-            "format": "--timeout {value}",
-            "help": "Time in seconds to wait for any individual Kubernetes operation (like Jobs for hooks) (default 300)."
-          },
-          {
-            "name": "Tls",
-            "type": "bool",
-            "format": "--tls {value}",
-            "help": "Enable TLS for request."
-          },
-          {
-            "name": "TlsCaCert",
-            "type": "string",
-            "format": "--tls-ca-cert {value}",
-            "help": "Path to TLS CA certificate file (default \"$HELM_HOME/ca.pem\")."
-          },
-          {
-            "name": "TlsCert",
-            "type": "string",
-            "format": "--tls-cert {value}",
-            "help": "Path to TLS certificate file (default \"$HELM_HOME/cert.pem\")."
-          },
-          {
-            "name": "TlsHostname",
-            "type": "string",
-            "format": "--tls-hostname {value}",
-            "help": "The server name used to verify the hostname on the returned certificates from the server."
-          },
-          {
-            "name": "TlsKey",
-            "type": "string",
-            "format": "--tls-key {value}",
-            "help": "Path to TLS key file (default \"$HELM_HOME/key.pem\")."
-          },
-          {
-            "name": "TlsVerify",
-            "type": "bool",
-            "format": "--tls-verify {value}",
-            "help": "Enable TLS for request and verify remote."
-          },
-          {
-            "name": "ReleaseNames",
-            "type": "List<string>",
-            "format": "{value}",
-            "separator": " ",
-            "help": "The name of the releases to delete."
-          }
-        ]
-      }
-    },
-    {
-      "help": "Build out the charts/ directory from the requirements.lock file. Build is used to reconstruct a chart's dependencies to the state specified in the lock file. This will not re-negotiate dependencies, as 'helm dependency update' does. If no lock file is found, 'helm dependency build' will mirror the behavior of 'helm dependency update'.",
-      "postfix": "DependencyBuild",
-      "definiteArgument": "helm dependency build",
-      "settingsClass": {
-        "baseClass": "HelmToolSettings",
-        "properties": [
-          {
-            "name": "Help",
-            "type": "bool",
-            "format": "--help {value}",
-            "help": "Help for build."
-          },
-          {
-            "name": "Keyring",
-            "type": "string",
-            "format": "--keyring {value}",
-            "help": "Keyring containing public keys (default \"~/.gnupg/pubring.gpg\")."
-          },
-          {
-            "name": "Verify",
-            "type": "bool",
-            "format": "--verify {value}",
-            "help": "Verify the packages against signatures."
-          },
-          {
-            "name": "Chart",
-            "type": "string",
-            "format": "{value}",
-            "help": "The name of the chart to build."
-          }
-        ]
-      }
-    },
-    {
-      "help": "List all of the dependencies declared in a chart. This can take chart archives and chart directories as input. It will not alter the contents of a chart. This will produce an error if the chart cannot be loaded. It will emit a warning if it cannot find a requirements.yaml.",
-      "postfix": "DependencyList",
-      "definiteArgument": "helm dependency list",
-      "settingsClass": {
-        "baseClass": "HelmToolSettings",
-        "properties": [
-          {
-            "name": "Help",
-            "type": "bool",
-            "format": "--help {value}",
-            "help": "Help for list."
-          },
-          {
-            "name": "Chart",
-            "type": "string",
-            "format": "{value}",
-            "help": "The name of the chart to list."
-          }
-        ]
-      }
-    },
-    {
-      "help": "Update the on-disk dependencies to mirror the requirements.yaml file. This command verifies that the required charts, as expressed in 'requirements.yaml', are present in 'charts/' and are at an acceptable version. It will pull down the latest charts that satisfy the dependencies, and clean up old dependencies. On successful update, this will generate a lock file that can be used to rebuild the requirements to an exact version. Dependencies are not required to be represented in 'requirements.yaml'. For that reason, an update command will not remove charts unless they are (a) present in the requirements.yaml file, but (b) at the wrong version.",
-      "postfix": "DependencyUpdate",
-      "definiteArgument": "helm dependency update",
-      "settingsClass": {
-        "baseClass": "HelmToolSettings",
-        "properties": [
-          {
-            "name": "Help",
-            "type": "bool",
-            "format": "--help {value}",
-            "help": "Help for update."
-          },
-          {
-            "name": "Keyring",
-            "type": "string",
-            "format": "--keyring {value}",
-            "help": "Keyring containing public keys (default \"~/.gnupg/pubring.gpg\")."
-          },
-          {
-            "name": "SkipRefresh",
-            "type": "bool",
-            "format": "--skip-refresh {value}",
-            "help": "Do not refresh the local repository cache."
-          },
-          {
-            "name": "Verify",
-            "type": "bool",
-            "format": "--verify {value}",
-            "help": "Verify the packages against signatures."
-          },
-          {
-            "name": "Chart",
-            "type": "string",
-            "format": "{value}",
-            "help": "The name of the chart to update."
-          }
-        ]
-      }
-    },
-    {
-      "help": "Retrieve a package from a package repository, and download it locally. This is useful for fetching packages to inspect, modify, or repackage. It can also be used to perform cryptographic verification of a chart without installing the chart. There are options for unpacking the chart after download. This will create a directory for the chart and uncompress into that directory. If the --verify flag is specified, the requested chart MUST have a provenance file, and MUST pass the verification process. Failure in any part of this will result in an error, and the chart will not be saved locally.",
-      "postfix": "Fetch",
-      "definiteArgument": "helm fetch",
-      "settingsClass": {
-        "baseClass": "HelmToolSettings",
-        "properties": [
-          {
-            "name": "CaFile",
-            "type": "string",
-            "format": "--ca-file {value}",
-            "help": "Verify certificates of HTTPS-enabled servers using this CA bundle."
-          },
-          {
-            "name": "CertFile",
-            "type": "string",
-            "format": "--cert-file {value}",
-            "help": "Identify HTTPS client using this SSL certificate file."
-          },
-          {
-            "name": "Destination",
-            "type": "string",
-            "format": "--destination {value}",
-            "help": "Location to write the chart. If this and tardir are specified, tardir is appended to this (default \".\")."
-          },
-          {
-            "name": "Devel",
-            "type": "bool",
-            "format": "--devel {value}",
-            "help": "Use development versions, too. Equivalent to version '&gt;0.0.0-0'. If --version is set, this is ignored."
-          },
-          {
-            "name": "Help",
-            "type": "bool",
-            "format": "--help {value}",
-            "help": "Help for fetch."
-          },
-          {
-            "name": "KeyFile",
-            "type": "string",
-            "format": "--key-file {value}",
-            "help": "Identify HTTPS client using this SSL key file."
-          },
-          {
-            "name": "Keyring",
-            "type": "string",
-            "format": "--keyring {value}",
-            "help": "Keyring containing public keys (default \"~/.gnupg/pubring.gpg\")."
-          },
-          {
-            "name": "Password",
-            "type": "string",
-            "format": "--password {value}",
-            "secret": true,
-            "help": "Chart repository password."
-          },
-          {
-            "name": "Prov",
-            "type": "bool",
-            "format": "--prov {value}",
-            "help": "Fetch the provenance file, but don't perform verification."
-          },
-          {
-            "name": "Repo",
-            "type": "string",
-            "format": "--repo {value}",
-            "help": "Chart repository url where to locate the requested chart."
-          },
-          {
-            "name": "Untar",
-            "type": "bool",
-            "format": "--untar {value}",
-            "help": "If set to true, will untar the chart after downloading it."
-          },
-          {
-            "name": "Untardir",
-            "type": "string",
-            "format": "--untardir {value}",
-            "help": "If untar is specified, this flag specifies the name of the directory into which the chart is expanded (default \".\")."
-          },
-          {
-            "name": "Username",
-            "type": "string",
-            "format": "--username {value}",
-            "help": "Chart repository username."
-          },
-          {
-            "name": "Verify",
-            "type": "bool",
-            "format": "--verify {value}",
-            "help": "Verify the package against its signature."
-          },
-          {
-            "name": "Version",
-            "type": "string",
-            "format": "--version {value}",
-            "help": "Specific version of a chart. Without this, the latest version is fetched."
-          },
-          {
-            "name": "Charts",
-            "type": "List<string>",
-            "format": "{value}",
-            "separator": " ",
-            "help": "The charts to fetch. Can either be specified by <c>repoName/chartName</c> or directly by an url."
-          }
-        ]
-      }
-    },
-    {
-      "help": "This command shows the details of a named release. It can be used to get extended information about the release, including:   - The values used to generate the release   - The chart used to generate the release   - The generated manifest file By default, this prints a human readable collection of information about the chart, the supplied values, and the generated manifest file.",
-      "postfix": "Get",
-      "definiteArgument": "helm get",
-      "settingsClass": {
-        "baseClass": "HelmToolSettings",
-        "properties": [
-          {
-            "name": "Help",
-            "type": "bool",
-            "format": "--help {value}",
-            "help": "Help for get."
-          },
-          {
-            "name": "Revision",
-            "type": "int",
-            "format": "--revision {value}",
-            "help": "Get the named release with revision."
-          },
-          {
-            "name": "Tls",
-            "type": "bool",
-            "format": "--tls {value}",
-            "help": "Enable TLS for request."
-          },
-          {
-            "name": "TlsCaCert",
-            "type": "string",
-            "format": "--tls-ca-cert {value}",
-            "help": "Path to TLS CA certificate file (default \"$HELM_HOME/ca.pem\")."
-          },
-          {
-            "name": "TlsCert",
-            "type": "string",
-            "format": "--tls-cert {value}",
-            "help": "Path to TLS certificate file (default \"$HELM_HOME/cert.pem\")."
-          },
-          {
-            "name": "TlsHostname",
-            "type": "string",
-            "format": "--tls-hostname {value}",
-            "help": "The server name used to verify the hostname on the returned certificates from the server."
-          },
-          {
-            "name": "TlsKey",
-            "type": "string",
-            "format": "--tls-key {value}",
-            "help": "Path to TLS key file (default \"$HELM_HOME/key.pem\")."
-          },
-          {
-            "name": "TlsVerify",
-            "type": "bool",
-            "format": "--tls-verify {value}",
-            "help": "Enable TLS for request and verify remote."
-          },
-          {
-            "name": "ReleaseName",
-            "type": "string",
-            "format": "{value}",
-            "help": "The name of the release to get."
-          }
-        ]
-      }
-    },
     {
       "help": "This command downloads hooks for a given release. Hooks are formatted in YAML and separated by the YAML '---\\n' separator.",
       "postfix": "GetHooks",
@@ -528,9 +122,9 @@
       }
     },
     {
-      "help": "This command fetches the generated manifest for a given release. A manifest is a YAML-encoded representation of the Kubernetes resources that were generated from this release's chart(s). If a chart is dependent on other charts, those resources will also be included in the manifest.",
-      "postfix": "GetManifest",
-      "definiteArgument": "helm get manifest",
+      "help": "This command takes a path to a chart and runs a series of tests to verify that the chart is well-formed. If the linter encounters things that will cause the chart to fail installation, it will emit [ERROR] messages. If it encounters issues that break with convention or recommendation, it will emit [WARNING] messages.",
+      "postfix": "Lint",
+      "definiteArgument": "helm lint",
       "settingsClass": {
         "baseClass": "HelmToolSettings",
         "properties": [
@@ -538,519 +132,56 @@
             "name": "Help",
             "type": "bool",
             "format": "--help {value}",
-            "help": "Help for manifest."
+            "help": "Help for lint."
           },
           {
-            "name": "Revision",
-            "type": "int",
-            "format": "--revision {value}",
-            "help": "Get the named release with revision."
-          },
-          {
-            "name": "Tls",
-            "type": "bool",
-            "format": "--tls {value}",
-            "help": "Enable TLS for request."
-          },
-          {
-            "name": "TlsCaCert",
+            "name": "Namespace",
             "type": "string",
-            "format": "--tls-ca-cert {value}",
-            "help": "Path to TLS CA certificate file (default \"$HELM_HOME/ca.pem\")."
+            "format": "--namespace {value}",
+            "help": "Namespace to put the release into (default \"default\")."
           },
           {
-            "name": "TlsCert",
-            "type": "string",
-            "format": "--tls-cert {value}",
-            "help": "Path to TLS certificate file (default \"$HELM_HOME/cert.pem\")."
-          },
-          {
-            "name": "TlsHostname",
-            "type": "string",
-            "format": "--tls-hostname {value}",
-            "help": "The server name used to verify the hostname on the returned certificates from the server."
-          },
-          {
-            "name": "TlsKey",
-            "type": "string",
-            "format": "--tls-key {value}",
-            "help": "Path to TLS key file (default \"$HELM_HOME/key.pem\")."
-          },
-          {
-            "name": "TlsVerify",
-            "type": "bool",
-            "format": "--tls-verify {value}",
-            "help": "Enable TLS for request and verify remote."
-          },
-          {
-            "name": "ReleaseName",
-            "type": "string",
-            "format": "{value}",
-            "help": "The name of the release to get the manifest for."
-          }
-        ]
-      }
-    },
-    {
-      "help": "This command shows notes provided by the chart of a named release.",
-      "postfix": "GetNotes",
-      "definiteArgument": "helm get notes",
-      "settingsClass": {
-        "baseClass": "HelmToolSettings",
-        "properties": [
-          {
-            "name": "Help",
-            "type": "bool",
-            "format": "--help {value}",
-            "help": "Help for notes."
-          },
-          {
-            "name": "Revision",
-            "type": "int",
-            "format": "--revision {value}",
-            "help": "Get the notes of the named release with revision."
-          },
-          {
-            "name": "Tls",
-            "type": "bool",
-            "format": "--tls {value}",
-            "help": "Enable TLS for request."
-          },
-          {
-            "name": "TlsCaCert",
-            "type": "string",
-            "format": "--tls-ca-cert {value}",
-            "help": "Path to TLS CA certificate file (default \"$HELM_HOME/ca.pem\")."
-          },
-          {
-            "name": "TlsCert",
-            "type": "string",
-            "format": "--tls-cert {value}",
-            "help": "Path to TLS certificate file (default \"$HELM_HOME/cert.pem\")."
-          },
-          {
-            "name": "TlsHostname",
-            "type": "string",
-            "format": "--tls-hostname {value}",
-            "help": "The server name used to verify the hostname on the returned certificates from the server."
-          },
-          {
-            "name": "TlsKey",
-            "type": "string",
-            "format": "--tls-key {value}",
-            "help": "Path to TLS key file (default \"$HELM_HOME/key.pem\")."
-          },
-          {
-            "name": "TlsVerify",
-            "type": "bool",
-            "format": "--tls-verify {value}",
-            "help": "Enable TLS for request and verify remote."
-          },
-          {
-            "name": "ReleaseName",
-            "type": "string",
-            "format": "{value}"
-          }
-        ]
-      }
-    },
-    {
-      "help": "This command downloads a values file for a given release.",
-      "postfix": "GetValues",
-      "definiteArgument": "helm get values",
-      "settingsClass": {
-        "baseClass": "HelmToolSettings",
-        "properties": [
-          {
-            "name": "All",
-            "type": "bool",
-            "format": "--all {value}",
-            "help": "Dump all (computed) values."
-          },
-          {
-            "name": "Help",
-            "type": "bool",
-            "format": "--help {value}",
-            "help": "Help for values."
-          },
-          {
-            "name": "Revision",
-            "type": "int",
-            "format": "--revision {value}",
-            "help": "Get the named release with revision."
-          },
-          {
-            "name": "Tls",
-            "type": "bool",
-            "format": "--tls {value}",
-            "help": "Enable TLS for request."
-          },
-          {
-            "name": "TlsCaCert",
-            "type": "string",
-            "format": "--tls-ca-cert {value}",
-            "help": "Path to TLS CA certificate file (default \"$HELM_HOME/ca.pem\")."
-          },
-          {
-            "name": "TlsCert",
-            "type": "string",
-            "format": "--tls-cert {value}",
-            "help": "Path to TLS certificate file (default \"$HELM_HOME/cert.pem\")."
-          },
-          {
-            "name": "TlsHostname",
-            "type": "string",
-            "format": "--tls-hostname {value}",
-            "help": "The server name used to verify the hostname on the returned certificates from the server."
-          },
-          {
-            "name": "TlsKey",
-            "type": "string",
-            "format": "--tls-key {value}",
-            "help": "Path to TLS key file (default \"$HELM_HOME/key.pem\")."
-          },
-          {
-            "name": "TlsVerify",
-            "type": "bool",
-            "format": "--tls-verify {value}",
-            "help": "Enable TLS for request and verify remote."
-          },
-          {
-            "name": "ReleaseName",
-            "type": "string",
-            "format": "{value}",
-            "help": "The name of the release to get the values for."
-          }
-        ]
-      }
-    },
-    {
-      "help": "History prints historical revisions for a given release. A default maximum of 256 revisions will be returned. Setting '--max' configures the maximum length of the revision list returned. The historical release set is printed as a formatted table, e.g:     $ helm history angry-bird --max=4     REVISION   UPDATED                      STATUS           CHART        DESCRIPTION     1           Mon Oct 3 10:15:13 2016     SUPERSEDED      alpine-0.1.0  Initial install     2           Mon Oct 3 10:15:13 2016     SUPERSEDED      alpine-0.1.0  Upgraded successfully     3           Mon Oct 3 10:15:13 2016     SUPERSEDED      alpine-0.1.0  Rolled back to 2     4           Mon Oct 3 10:15:13 2016     DEPLOYED        alpine-0.1.0  Upgraded successfully.",
-      "postfix": "History",
-      "definiteArgument": "helm history",
-      "settingsClass": {
-        "baseClass": "HelmToolSettings",
-        "properties": [
-          {
-            "name": "ColWidth",
-            "type": "uint?",
-            "format": "--col-width {value}",
-            "help": "Specifies the max column width of output (default 60)."
-          },
-          {
-            "name": "Help",
-            "type": "bool",
-            "format": "--help {value}",
-            "help": "Help for history."
-          },
-          {
-            "name": "Max",
-            "type": "int",
-            "format": "--max {value}",
-            "help": "Maximum number of revision to include in history (default 256)."
-          },
-          {
-            "name": "Output",
-            "type": "string",
-            "format": "--output {value}",
-            "help": "Prints the output in the specified format (json|table|yaml) (default \"table\")."
-          },
-          {
-            "name": "Tls",
-            "type": "bool",
-            "format": "--tls {value}",
-            "help": "Enable TLS for request."
-          },
-          {
-            "name": "TlsCaCert",
-            "type": "string",
-            "format": "--tls-ca-cert {value}",
-            "help": "Path to TLS CA certificate file (default \"$HELM_HOME/ca.pem\")."
-          },
-          {
-            "name": "TlsCert",
-            "type": "string",
-            "format": "--tls-cert {value}",
-            "help": "Path to TLS certificate file (default \"$HELM_HOME/cert.pem\")."
-          },
-          {
-            "name": "TlsHostname",
-            "type": "string",
-            "format": "--tls-hostname {value}",
-            "help": "The server name used to verify the hostname on the returned certificates from the server."
-          },
-          {
-            "name": "TlsKey",
-            "type": "string",
-            "format": "--tls-key {value}",
-            "help": "Path to TLS key file (default \"$HELM_HOME/key.pem\")."
-          },
-          {
-            "name": "TlsVerify",
-            "type": "bool",
-            "format": "--tls-verify {value}",
-            "help": "Enable TLS for request and verify remote."
-          },
-          {
-            "name": "ReleaseName",
-            "type": "string",
-            "format": "{value}",
-            "help": "The name of the release to get the history for."
-          }
-        ]
-      }
-    },
-    {
-      "help": "This command displays the location of HELM_HOME. This is where any helm configuration files live.",
-      "postfix": "Home",
-      "definiteArgument": "helm home",
-      "settingsClass": {
-        "baseClass": "HelmToolSettings",
-        "properties": [
-          {
-            "name": "Help",
-            "type": "bool",
-            "format": "--help {value}",
-            "help": "Help for home."
-          }
-        ]
-      }
-    },
-    {
-      "help": "This command installs Tiller (the Helm server-side component) onto your Kubernetes Cluster and sets up local configuration in $HELM_HOME (default ~/.helm/). As with the rest of the Helm commands, 'helm init' discovers Kubernetes clusters by reading $KUBECONFIG (default '~/.kube/config') and using the default context. To set up just a local environment, use '--client-only'. That will configure $HELM_HOME, but not attempt to connect to a Kubernetes cluster and install the Tiller deployment. When installing Tiller, 'helm init' will attempt to install the latest released version. You can specify an alternative image with '--tiller-image'. For those frequently working on the latest code, the flag '--canary-image' will install the latest pre-release version of Tiller (e.g. the HEAD commit in the GitHub repository on the master branch). To dump a manifest containing the Tiller deployment YAML, combine the '--dry-run' and '--debug' flags.",
-      "postfix": "Init",
-      "definiteArgument": "helm init",
-      "settingsClass": {
-        "baseClass": "HelmToolSettings",
-        "properties": [
-          {
-            "name": "AutomountServiceAccountToken",
-            "type": "bool",
-            "format": "--automount-service-account-token {value}",
-            "help": "Auto-mount the given service account to tiller (default true)."
-          },
-          {
-            "name": "CanaryImage",
-            "type": "bool",
-            "format": "--canary-image {value}",
-            "help": "Use the canary Tiller image."
-          },
-          {
-            "name": "ClientOnly",
-            "type": "bool",
-            "format": "--client-only {value}",
-            "help": "If set does not install Tiller."
-          },
-          {
-            "name": "DryRun",
-            "type": "bool",
-            "format": "--dry-run {value}",
-            "help": "Do not install local or remote."
-          },
-          {
-            "name": "ForceUpgrade",
-            "type": "bool",
-            "format": "--force-upgrade {value}",
-            "help": "Force upgrade of Tiller to the current helm version."
-          },
-          {
-            "name": "Help",
-            "type": "bool",
-            "format": "--help {value}",
-            "help": "Help for init."
-          },
-          {
-            "name": "HistoryMax",
-            "type": "long?",
-            "format": "--history-max {value}",
-            "help": "Limit the maximum number of revisions saved per release. Use 0 for no limit."
-          },
-          {
-            "name": "LocalRepoUrl",
-            "type": "string",
-            "format": "--local-repo-url {value}",
-            "help": "URL for local repository (default \"http://127.0.0.1:8879/charts\")."
-          },
-          {
-            "name": "NetHost",
-            "type": "bool",
-            "format": "--net-host {value}",
-            "help": "Install Tiller with net=host."
-          },
-          {
-            "name": "NodeSelectors",
-            "type": "string",
-            "format": "--node-selectors {value}",
-            "help": "Labels to specify the node on which Tiller is installed (app=tiller,helm=rocks)."
-          },
-          {
-            "name": "Output",
-            "type": "HelmOutputFormat",
-            "format": "--output {value}",
-            "help": "Skip installation and output Tiller's manifest in specified format (json or yaml)."
-          },
-          {
-            "name": "Override",
+            "name": "Set",
             "type": "Dictionary<string, object>",
-            "format": "--override {value}",
+            "format": "--set {value}",
             "itemFormat": "{key}={value}",
             "separator": ",",
-            "help": "Override values for the Tiller Deployment manifest (can specify multiple or separate values with commas: key1=val1,key2=val2)."
+            "help": "Set values on the command line (can specify multiple or separate values with commas: key1=val1,key2=val2)."
           },
           {
-            "name": "Replicas",
-            "type": "long?",
-            "format": "--replicas {value}",
-            "help": "Amount of tiller instances to run on the cluster (default 1)."
+            "name": "SetFile",
+            "type": "Dictionary<string, object>",
+            "format": "--set-file {value}",
+            "itemFormat": "{key}={value}",
+            "separator": ",",
+            "help": "Set values from respective files specified via the command line (can specify multiple or separate values with commas: key1=path1,key2=path2)."
           },
           {
-            "name": "ServiceAccount",
-            "type": "string",
-            "format": "--service-account {value}",
-            "help": "Name of service account."
+            "name": "SetString",
+            "type": "Dictionary<string, object>",
+            "format": "--set-string {value}",
+            "itemFormat": "{key}={value}",
+            "separator": ",",
+            "help": "Set STRING values on the command line (can specify multiple or separate values with commas: key1=val1,key2=val2)."
           },
           {
-            "name": "SkipRefresh",
+            "name": "Strict",
             "type": "bool",
-            "format": "--skip-refresh {value}",
-            "help": "Do not refresh (download) the local repository cache."
+            "format": "--strict {value}",
+            "help": "Fail on lint warnings."
           },
           {
-            "name": "StableRepoUrl",
-            "type": "string",
-            "format": "--stable-repo-url {value}",
-            "help": "URL for stable repository (default \"https://kubernetes-charts.storage.googleapis.com\")."
+            "name": "Values",
+            "type": "List<string>",
+            "format": "--values {value}",
+            "separator": " ",
+            "help": "Specify values in a YAML file (can specify multiple) (default [])."
           },
           {
-            "name": "TillerImage",
-            "type": "string",
-            "format": "--tiller-image {value}",
-            "help": "Override Tiller image."
-          },
-          {
-            "name": "TillerTls",
-            "type": "bool",
-            "format": "--tiller-tls {value}",
-            "help": "Install Tiller with TLS enabled."
-          },
-          {
-            "name": "TillerTlsCert",
-            "type": "string",
-            "format": "--tiller-tls-cert {value}",
-            "help": "Path to TLS certificate file to install with Tiller."
-          },
-          {
-            "name": "TillerTlsHostname",
-            "type": "string",
-            "format": "--tiller-tls-hostname {value}",
-            "help": "The server name used to verify the hostname on the returned certificates from Tiller."
-          },
-          {
-            "name": "TillerTlsKey",
-            "type": "string",
-            "format": "--tiller-tls-key {value}",
-            "help": "Path to TLS key file to install with Tiller."
-          },
-          {
-            "name": "TillerTlsVerify",
-            "type": "bool",
-            "format": "--tiller-tls-verify {value}",
-            "help": "Install Tiller with TLS enabled and to verify remote certificates."
-          },
-          {
-            "name": "TlsCaCert",
-            "type": "string",
-            "format": "--tls-ca-cert {value}",
-            "help": "Path to CA root certificate."
-          },
-          {
-            "name": "Upgrade",
-            "type": "bool",
-            "format": "--upgrade {value}",
-            "help": "Upgrade if Tiller is already installed."
-          },
-          {
-            "name": "Wait",
-            "type": "bool",
-            "format": "--wait {value}",
-            "help": "Block until Tiller is running and ready to receive requests."
-          }
-        ]
-      }
-    },
-    {
-      "help": "This command inspects a chart and displays information. It takes a chart reference ('stable/drupal'), a full path to a directory or packaged chart, or a URL. Inspect prints the contents of the Chart.yaml file and the values.yaml file.",
-      "postfix": "Inspect",
-      "definiteArgument": "helm inspect",
-      "settingsClass": {
-        "baseClass": "HelmToolSettings",
-        "properties": [
-          {
-            "name": "CaFile",
-            "type": "string",
-            "format": "--ca-file {value}",
-            "help": "Chart repository url where to locate the requested chart."
-          },
-          {
-            "name": "CertFile",
-            "type": "string",
-            "format": "--cert-file {value}",
-            "help": "Verify certificates of HTTPS-enabled servers using this CA bundle."
-          },
-          {
-            "name": "Help",
-            "type": "bool",
-            "format": "--help {value}",
-            "help": "Help for inspect."
-          },
-          {
-            "name": "KeyFile",
-            "type": "string",
-            "format": "--key-file {value}",
-            "help": "Identify HTTPS client using this SSL key file."
-          },
-          {
-            "name": "Keyring",
-            "type": "string",
-            "format": "--keyring {value}",
-            "help": "Path to the keyring containing public verification keys (default \"~/.gnupg/pubring.gpg\")."
-          },
-          {
-            "name": "Password",
-            "type": "string",
-            "format": "--password {value}",
-            "secret": true,
-            "help": "Chart repository password where to locate the requested chart."
-          },
-          {
-            "name": "Repo",
-            "type": "string",
-            "format": "--repo {value}",
-            "help": "Chart repository url where to locate the requested chart."
-          },
-          {
-            "name": "Username",
-            "type": "string",
-            "format": "--username {value}",
-            "help": "Chart repository username where to locate the requested chart."
-          },
-          {
-            "name": "Verify",
-            "type": "bool",
-            "format": "--verify {value}",
-            "help": "Verify the provenance data for this chart."
-          },
-          {
-            "name": "Version",
-            "type": "string",
-            "format": "--version {value}",
-            "help": "Version of the chart. By default, the newest chart is shown."
-          },
-          {
-            "name": "Chart",
+            "name": "Path",
             "type": "string",
             "format": "{value}",
-            "help": "The name of the chart to inspect."
+            "help": "The Path to a chart."
           }
         ]
       }
@@ -1133,366 +264,71 @@
       }
     },
     {
-      "help": "This command inspects a chart (directory, file, or URL) and displays the contents of the README file.",
-      "postfix": "InspectReadme",
-      "definiteArgument": "helm inspect readme",
+      "help": "Read the current directory and generate an index file based on the charts found. This tool is used for creating an 'index.yaml' file for a chart repository. To set an absolute URL to the charts, use '--url' flag. To merge the generated index with an existing index file, use the '--merge' flag. In this case, the charts found in the current directory will be merged into the existing index, with local charts taking priority over existing charts.",
+      "postfix": "RepoIndex",
+      "definiteArgument": "helm repo index",
       "settingsClass": {
         "baseClass": "HelmToolSettings",
         "properties": [
           {
-            "name": "CaFile",
-            "type": "string",
-            "format": "--ca-file {value}",
-            "help": "Chart repository url where to locate the requested chart."
-          },
-          {
-            "name": "CertFile",
-            "type": "string",
-            "format": "--cert-file {value}",
-            "help": "Verify certificates of HTTPS-enabled servers using this CA bundle."
-          },
-          {
             "name": "Help",
             "type": "bool",
             "format": "--help {value}",
-            "help": "Help for readme."
+            "help": "Help for index."
           },
           {
-            "name": "KeyFile",
+            "name": "Merge",
             "type": "string",
-            "format": "--key-file {value}",
-            "help": "Identify HTTPS client using this SSL key file."
+            "format": "--merge {value}",
+            "help": "Merge the generated index into the given index."
           },
           {
-            "name": "Keyring",
+            "name": "Url",
             "type": "string",
-            "format": "--keyring {value}",
-            "help": "Path to the keyring containing public verification keys (default \"~/.gnupg/pubring.gpg\")."
+            "format": "--url {value}",
+            "help": "Url of chart repository."
           },
           {
-            "name": "Repo",
-            "type": "string",
-            "format": "--repo {value}",
-            "help": "Chart repository url where to locate the requested chart."
-          },
-          {
-            "name": "Verify",
-            "type": "bool",
-            "format": "--verify {value}",
-            "help": "Verify the provenance data for this chart."
-          },
-          {
-            "name": "Version",
-            "type": "string",
-            "format": "--version {value}",
-            "help": "Version of the chart. By default, the newest chart is shown."
-          },
-          {
-            "name": "Chart",
+            "name": "Directory",
             "type": "string",
             "format": "{value}",
-            "help": "The name of the chart to inspect."
+            "help": "The directory of the repository."
           }
         ]
       }
     },
     {
-      "help": "This command inspects a chart (directory, file, or URL) and displays the contents of the values.yaml file.",
-      "postfix": "InspectValues",
-      "definiteArgument": "helm inspect values",
+      "help": "This command creates a chart directory along with the common files and directories used in a chart. For example, 'helm create foo' will create a directory structure that looks something like this: \tfoo/ \t  | \t  |- .helmignore   # Contains patterns to ignore when packaging Helm charts. \t  | \t  |- Chart.yaml    # Information about your chart \t  | \t  |- values.yaml   # The default values for your templates \t  | \t  |- charts/       # Charts that this chart depends on \t  | \t  |- templates/    # The template files 'helm create' takes a path for an argument. If directories in the given path do not exist, Helm will attempt to create them as it goes. If the given destination exists and there are files in that directory, conflicting files will be overwritten, but other files will be left alone.",
+      "postfix": "Create",
+      "definiteArgument": "helm create",
       "settingsClass": {
         "baseClass": "HelmToolSettings",
         "properties": [
           {
-            "name": "CaFile",
-            "type": "string",
-            "format": "--ca-file {value}",
-            "help": "Chart repository url where to locate the requested chart."
-          },
-          {
-            "name": "CertFile",
-            "type": "string",
-            "format": "--cert-file {value}",
-            "help": "Verify certificates of HTTPS-enabled servers using this CA bundle."
-          },
-          {
             "name": "Help",
             "type": "bool",
             "format": "--help {value}",
-            "help": "Help for values."
+            "help": "Help for create."
           },
           {
-            "name": "KeyFile",
+            "name": "Starter",
             "type": "string",
-            "format": "--key-file {value}",
-            "help": "Identify HTTPS client using this SSL key file."
-          },
-          {
-            "name": "Keyring",
-            "type": "string",
-            "format": "--keyring {value}",
-            "help": "Path to the keyring containing public verification keys (default \"~/.gnupg/pubring.gpg\")."
-          },
-          {
-            "name": "Password",
-            "type": "string",
-            "format": "--password {value}",
-            "secret": true,
-            "help": "Chart repository password where to locate the requested chart."
-          },
-          {
-            "name": "Repo",
-            "type": "string",
-            "format": "--repo {value}",
-            "help": "Chart repository url where to locate the requested chart."
-          },
-          {
-            "name": "Username",
-            "type": "string",
-            "format": "--username {value}",
-            "help": "Chart repository username where to locate the requested chart."
-          },
-          {
-            "name": "Verify",
-            "type": "bool",
-            "format": "--verify {value}",
-            "help": "Verify the provenance data for this chart."
-          },
-          {
-            "name": "Version",
-            "type": "string",
-            "format": "--version {value}",
-            "help": "Version of the chart. By default, the newest chart is shown."
-          },
-          {
-            "name": "Chart",
-            "type": "string",
-            "format": "{value}",
-            "help": "The name of the chart to inspect."
-          }
-        ]
-      }
-    },
-    {
-      "help": "This command installs a chart archive. The install argument must be a chart reference, a path to a packaged chart, a path to an unpacked chart directory or a URL. To override values in a chart, use either the '--values' flag and pass in a file or use the '--set' flag and pass configuration from the command line.  To force string values in '--set', use '--set-string' instead. In case a value is large and therefore you want not to use neither '--values' nor '--set', use '--set-file' to read the single large value from file. \t$ helm install -f myvalues.yaml ./redis or \t$ helm install --set name=prod ./redis or \t$ helm install --set-string long_int=1234567890 ./redis or     $ helm install --set-file multiline_text=path/to/textfile You can specify the '--values'/'-f' flag multiple times. The priority will be given to the last (right-most) file specified. For example, if both myvalues.yaml and override.yaml contained a key called 'Test', the value set in override.yaml would take precedence: \t$ helm install -f myvalues.yaml -f override.yaml ./redis You can specify the '--set' flag multiple times. The priority will be given to the last (right-most) set specified. For example, if both 'bar' and 'newbar' values are set for a key called 'foo', the 'newbar' value would take precedence: \t$ helm install --set foo=bar --set foo=newbar ./redis To check the generated manifests of a release without installing the chart, the '--debug' and '--dry-run' flags can be combined. This will still require a round-trip to the Tiller server. If --verify is set, the chart MUST have a provenance file, and the provenance file MUST pass all verification steps. There are five different ways you can express the chart you want to install: 1. By chart reference: helm install stable/mariadb 2. By path to a packaged chart: helm install ./nginx-1.2.3.tgz 3. By path to an unpacked chart directory: helm install ./nginx 4. By absolute URL: helm install https://example.com/charts/nginx-1.2.3.tgz 5. By chart reference and repo url: helm install --repo https://example.com/charts/ nginx CHART REFERENCES A chart reference is a convenient way of reference a chart in a chart repository. When you use a chart reference with a repo prefix ('stable/mariadb'), Helm will look in the local configuration for a chart repository named 'stable', and will then look for a chart in that repository whose name is 'mariadb'. It will install the latest version of that chart unless you also supply a version number with the '--version' flag. To see the list of chart repositories, use 'helm repo list'. To search for charts in a repository, use 'helm search'.",
-      "postfix": "Install",
-      "definiteArgument": "helm install",
-      "settingsClass": {
-        "baseClass": "HelmToolSettings",
-        "properties": [
-          {
-            "name": "CaFile",
-            "type": "string",
-            "format": "--ca-file {value}",
-            "help": "Verify certificates of HTTPS-enabled servers using this CA bundle."
-          },
-          {
-            "name": "CertFile",
-            "type": "string",
-            "format": "--cert-file {value}",
-            "help": "Identify HTTPS client using this SSL certificate file."
-          },
-          {
-            "name": "DepUp",
-            "type": "bool",
-            "format": "--dep-up {value}",
-            "help": "Run helm dependency update before installing the chart."
-          },
-          {
-            "name": "Description",
-            "type": "string",
-            "format": "--description {value}",
-            "help": "Specify a description for the release."
-          },
-          {
-            "name": "Devel",
-            "type": "bool",
-            "format": "--devel {value}",
-            "help": "Use development versions, too. Equivalent to version '&gt;0.0.0-0'. If --version is set, this is ignored."
-          },
-          {
-            "name": "DryRun",
-            "type": "bool",
-            "format": "--dry-run {value}",
-            "help": "Simulate an install."
-          },
-          {
-            "name": "Help",
-            "type": "bool",
-            "format": "--help {value}",
-            "help": "Help for install."
-          },
-          {
-            "name": "KeyFile",
-            "type": "string",
-            "format": "--key-file {value}",
-            "help": "Identify HTTPS client using this SSL key file."
-          },
-          {
-            "name": "Keyring",
-            "type": "string",
-            "format": "--keyring {value}",
-            "help": "Location of public keys used for verification (default \"~/.gnupg/pubring.gpg\")."
+            "format": "--starter {value}",
+            "help": "The named Helm starter scaffold."
           },
           {
             "name": "Name",
             "type": "string",
-            "format": "--name {value}",
-            "help": "Release name. If unspecified, it will autogenerate one for you."
-          },
-          {
-            "name": "NameTemplate",
-            "type": "string",
-            "format": "--name-template {value}",
-            "help": "Specify template used to name the release."
-          },
-          {
-            "name": "Namespace",
-            "type": "string",
-            "format": "--namespace {value}",
-            "help": "Namespace to install the release into. Defaults to the current kube config namespace."
-          },
-          {
-            "name": "NoCrdHook",
-            "type": "bool",
-            "format": "--no-crd-hook {value}",
-            "help": "Prevent CRD hooks from running, but run other hooks."
-          },
-          {
-            "name": "NoHooks",
-            "type": "bool",
-            "format": "--no-hooks {value}",
-            "help": "Prevent hooks from running during install."
-          },
-          {
-            "name": "Password",
-            "type": "string",
-            "format": "--password {value}",
-            "secret": true,
-            "help": "Chart repository password where to locate the requested chart."
-          },
-          {
-            "name": "Replace",
-            "type": "bool",
-            "format": "--replace {value}",
-            "help": "Re-use the given name, even if that name is already used. This is unsafe in production."
-          },
-          {
-            "name": "Repo",
-            "type": "string",
-            "format": "--repo {value}",
-            "help": "Chart repository url where to locate the requested chart."
-          },
-          {
-            "name": "Set",
-            "type": "Dictionary<string, object>",
-            "format": "--set {value}",
-            "itemFormat": "{key}={value}",
-            "separator": ",",
-            "help": "Set values on the command line (can specify multiple or separate values with commas: key1=val1,key2=val2)."
-          },
-          {
-            "name": "SetFile",
-            "type": "Dictionary<string, object>",
-            "format": "--set-file {value}",
-            "itemFormat": "{key}={value}",
-            "separator": ",",
-            "help": "Set values from respective files specified via the command line (can specify multiple or separate values with commas: key1=path1,key2=path2)."
-          },
-          {
-            "name": "SetString",
-            "type": "Dictionary<string, object>",
-            "format": "--set-string {value}",
-            "itemFormat": "{key}={value}",
-            "separator": ",",
-            "help": "Set STRING values on the command line (can specify multiple or separate values with commas: key1=val1,key2=val2)."
-          },
-          {
-            "name": "Timeout",
-            "type": "long?",
-            "format": "--timeout {value}",
-            "help": "Time in seconds to wait for any individual Kubernetes operation (like Jobs for hooks) (default 300)."
-          },
-          {
-            "name": "Tls",
-            "type": "bool",
-            "format": "--tls {value}",
-            "help": "Enable TLS for request."
-          },
-          {
-            "name": "TlsCaCert",
-            "type": "string",
-            "format": "--tls-ca-cert {value}",
-            "help": "Path to TLS CA certificate file (default \"$HELM_HOME/ca.pem\")."
-          },
-          {
-            "name": "TlsCert",
-            "type": "string",
-            "format": "--tls-cert {value}",
-            "help": "Path to TLS certificate file (default \"$HELM_HOME/cert.pem\")."
-          },
-          {
-            "name": "TlsHostname",
-            "type": "string",
-            "format": "--tls-hostname {value}",
-            "help": "The server name used to verify the hostname on the returned certificates from the server."
-          },
-          {
-            "name": "TlsKey",
-            "type": "string",
-            "format": "--tls-key {value}",
-            "help": "Path to TLS key file (default \"$HELM_HOME/key.pem\")."
-          },
-          {
-            "name": "TlsVerify",
-            "type": "bool",
-            "format": "--tls-verify {value}",
-            "help": "Enable TLS for request and verify remote."
-          },
-          {
-            "name": "Username",
-            "type": "string",
-            "format": "--username {value}",
-            "help": "Chart repository username where to locate the requested chart."
-          },
-          {
-            "name": "Values",
-            "type": "List<string>",
-            "format": "--values {value}",
-            "separator": " ",
-            "help": "Specify values in a YAML file or a URL(can specify multiple) (default [])."
-          },
-          {
-            "name": "Verify",
-            "type": "bool",
-            "format": "--verify {value}",
-            "help": "Verify the package before installing it."
-          },
-          {
-            "name": "Version",
-            "type": "string",
-            "format": "--version {value}",
-            "help": "Specify the exact chart version to install. If this is not specified, the latest version is installed."
-          },
-          {
-            "name": "Wait",
-            "type": "bool",
-            "format": "--wait {value}",
-            "help": "If set, will wait until all Pods, PVCs, Services, and minimum number of Pods of a Deployment are in a ready state before marking the release as successful. It will wait for as long as --timeout."
-          },
-          {
-            "name": "Chart",
-            "type": "string",
             "format": "{value}",
-            "help": "The name of the chart to install."
+            "help": "The name of chart directory to create."
           }
         ]
       }
     },
     {
-      "help": "This command takes a path to a chart and runs a series of tests to verify that the chart is well-formed. If the linter encounters things that will cause the chart to fail installation, it will emit [ERROR] messages. If it encounters issues that break with convention or recommendation, it will emit [WARNING] messages.",
-      "postfix": "Lint",
-      "definiteArgument": "helm lint",
+      "help": "Verify that the given chart has a valid provenance file. Provenance files provide crytographic verification that a chart has not been tampered with, and was packaged by a trusted provider. This command can be used to verify a local chart. Several other commands provide '--verify' flags that run the same validation. To generate a signed package, use the 'helm package --sign' command.",
+      "postfix": "Verify",
+      "definiteArgument": "helm verify",
       "settingsClass": {
         "baseClass": "HelmToolSettings",
         "properties": [
@@ -1500,79 +336,30 @@
             "name": "Help",
             "type": "bool",
             "format": "--help {value}",
-            "help": "Help for lint."
+            "help": "Help for verify."
           },
           {
-            "name": "Namespace",
+            "name": "Keyring",
             "type": "string",
-            "format": "--namespace {value}",
-            "help": "Namespace to put the release into (default \"default\")."
-          },
-          {
-            "name": "Set",
-            "type": "Dictionary<string, object>",
-            "format": "--set {value}",
-            "itemFormat": "{key}={value}",
-            "separator": ",",
-            "help": "Set values on the command line (can specify multiple or separate values with commas: key1=val1,key2=val2)."
-          },
-          {
-            "name": "SetFile",
-            "type": "Dictionary<string, object>",
-            "format": "--set-file {value}",
-            "itemFormat": "{key}={value}",
-            "separator": ",",
-            "help": "Set values from respective files specified via the command line (can specify multiple or separate values with commas: key1=path1,key2=path2)."
-          },
-          {
-            "name": "SetString",
-            "type": "Dictionary<string, object>",
-            "format": "--set-string {value}",
-            "itemFormat": "{key}={value}",
-            "separator": ",",
-            "help": "Set STRING values on the command line (can specify multiple or separate values with commas: key1=val1,key2=val2)."
-          },
-          {
-            "name": "Strict",
-            "type": "bool",
-            "format": "--strict {value}",
-            "help": "Fail on lint warnings."
-          },
-          {
-            "name": "Values",
-            "type": "List<string>",
-            "format": "--values {value}",
-            "separator": " ",
-            "help": "Specify values in a YAML file (can specify multiple) (default [])."
+            "format": "--keyring {value}",
+            "help": "Keyring containing public keys (default \"~/.gnupg/pubring.gpg\")."
           },
           {
             "name": "Path",
             "type": "string",
             "format": "{value}",
-            "help": "The Path to a chart."
+            "help": "The path to the chart to verify."
           }
         ]
       }
     },
     {
-      "help": "This command lists all of the releases. By default, it lists only releases that are deployed or failed. Flags like '--deleted' and '--all' will alter this behavior. Such flags can be combined: '--deleted --failed'. By default, items are sorted alphabetically. Use the '-d' flag to sort by release date. If an argument is provided, it will be treated as a filter. Filters are regular expressions (Perl compatible) that are applied to the list of releases. Only items that match the filter will be returned. \t$ helm list 'ara[a-z]+' \tNAME            \tUPDATED                 \tCHART \tmaudlin-arachnid\tMon May  9 16:07:08 2016\talpine-0.1.0 If no results are found, 'helm list' will exit 0, but with no output (or in the case of no '-q' flag, only headers). By default, up to 256 items may be returned. To limit this, use the '--max' flag. Setting '--max' to 0 will not return all results. Rather, it will return the server's default, which may be much higher than 256. Pairing the '--max' flag with the '--offset' flag allows you to page through results.",
-      "postfix": "List",
-      "definiteArgument": "helm list",
+      "help": "Search reads through all of the repositories configured on the system, and looks for matches. Repositories are managed with 'helm repo' commands.",
+      "postfix": "Search",
+      "definiteArgument": "helm search",
       "settingsClass": {
         "baseClass": "HelmToolSettings",
         "properties": [
-          {
-            "name": "All",
-            "type": "bool",
-            "format": "--all {value}",
-            "help": "Show all releases, not just the ones marked DEPLOYED."
-          },
-          {
-            "name": "ChartName",
-            "type": "bool",
-            "format": "--chart-name {value}",
-            "help": "Sort by chart name."
-          },
           {
             "name": "ColWidth",
             "type": "uint?",
@@ -1580,195 +367,34 @@
             "help": "Specifies the max column width of output (default 60)."
           },
           {
-            "name": "Date",
-            "type": "bool",
-            "format": "--date {value}",
-            "help": "Sort by release date."
-          },
-          {
-            "name": "Deleted",
-            "type": "bool",
-            "format": "--deleted {value}",
-            "help": "Show deleted releases."
-          },
-          {
-            "name": "Deleting",
-            "type": "bool",
-            "format": "--deleting {value}",
-            "help": "Show releases that are currently being deleted."
-          },
-          {
-            "name": "Deployed",
-            "type": "bool",
-            "format": "--deployed {value}",
-            "help": "Show deployed releases. If no other is specified, this will be automatically enabled."
-          },
-          {
-            "name": "Failed",
-            "type": "bool",
-            "format": "--failed {value}",
-            "help": "Show failed releases."
-          },
-          {
             "name": "Help",
             "type": "bool",
             "format": "--help {value}",
-            "help": "Help for list."
+            "help": "Help for search."
           },
           {
-            "name": "Max",
-            "type": "long?",
-            "format": "--max {value}",
-            "help": "Maximum number of releases to fetch (default 256)."
-          },
-          {
-            "name": "Namespace",
-            "type": "string",
-            "format": "--namespace {value}",
-            "help": "Show releases within a specific namespace."
-          },
-          {
-            "name": "Offset",
-            "type": "string",
-            "format": "--offset {value}",
-            "help": "Next release name in the list, used to offset from start value."
-          },
-          {
-            "name": "Output",
-            "type": "HelmOutputFormat",
-            "format": "--output {value}",
-            "help": "Output the specified format (json or yaml)."
-          },
-          {
-            "name": "Pending",
+            "name": "Regexp",
             "type": "bool",
-            "format": "--pending {value}",
-            "help": "Show pending releases."
-          },
-          {
-            "name": "Reverse",
-            "type": "bool",
-            "format": "--reverse {value}",
-            "help": "Reverse the sort order."
-          },
-          {
-            "name": "Short",
-            "type": "bool",
-            "format": "--short {value}",
-            "help": "Output short (quiet) listing format."
-          },
-          {
-            "name": "Tls",
-            "type": "bool",
-            "format": "--tls {value}",
-            "help": "Enable TLS for request."
-          },
-          {
-            "name": "TlsCaCert",
-            "type": "string",
-            "format": "--tls-ca-cert {value}",
-            "help": "Path to TLS CA certificate file (default \"$HELM_HOME/ca.pem\")."
-          },
-          {
-            "name": "TlsCert",
-            "type": "string",
-            "format": "--tls-cert {value}",
-            "help": "Path to TLS certificate file (default \"$HELM_HOME/cert.pem\")."
-          },
-          {
-            "name": "TlsHostname",
-            "type": "string",
-            "format": "--tls-hostname {value}",
-            "help": "The server name used to verify the hostname on the returned certificates from the server."
-          },
-          {
-            "name": "TlsKey",
-            "type": "string",
-            "format": "--tls-key {value}",
-            "help": "Path to TLS key file (default \"$HELM_HOME/key.pem\")."
-          },
-          {
-            "name": "TlsVerify",
-            "type": "bool",
-            "format": "--tls-verify {value}",
-            "help": "Enable TLS for request and verify remote."
-          },
-          {
-            "name": "Filter",
-            "type": "string",
-            "format": "{value}",
-            "help": "The filter to use."
-          }
-        ]
-      }
-    },
-    {
-      "help": "This command packages a chart into a versioned chart archive file. If a path is given, this will look at that path for a chart (which must contain a Chart.yaml file) and then package that directory. If no path is given, this will look in the present working directory for a Chart.yaml file, and (if found) build the current directory into a chart. Versioned chart archives are used by Helm package repositories.",
-      "postfix": "Package",
-      "definiteArgument": "helm package",
-      "settingsClass": {
-        "baseClass": "HelmToolSettings",
-        "properties": [
-          {
-            "name": "AppVersion",
-            "type": "string",
-            "format": "--app-version {value}",
-            "help": "Set the appVersion on the chart to this version."
-          },
-          {
-            "name": "DependencyUpdate",
-            "type": "bool",
-            "format": "--dependency-update {value}",
-            "help": "Update dependencies from \"requirements.yaml\" to dir \"charts/\" before packaging."
-          },
-          {
-            "name": "Destination",
-            "type": "string",
-            "format": "--destination {value}",
-            "help": "Location to write the chart. (default \".\")."
-          },
-          {
-            "name": "Help",
-            "type": "bool",
-            "format": "--help {value}",
-            "help": "Help for package."
-          },
-          {
-            "name": "Key",
-            "type": "string",
-            "format": "--key {value}",
-            "help": "Name of the key to use when signing. Used if --sign is true."
-          },
-          {
-            "name": "Keyring",
-            "type": "string",
-            "format": "--keyring {value}",
-            "help": "Location of a public keyring (default \"~/.gnupg/pubring.gpg\")."
-          },
-          {
-            "name": "Save",
-            "type": "bool",
-            "format": "--save {value}",
-            "help": "Save packaged chart to local chart repository (default true)."
-          },
-          {
-            "name": "Sign",
-            "type": "bool",
-            "format": "--sign {value}",
-            "help": "Use a PGP private key to sign this package."
+            "format": "--regexp {value}",
+            "help": "Use regular expressions for searching."
           },
           {
             "name": "Version",
             "type": "string",
             "format": "--version {value}",
-            "help": "Set the version on the chart to this semver version."
+            "help": "Search using semantic versioning constraints."
           },
           {
-            "name": "ChartPaths",
-            "type": "List<string>",
+            "name": "Versions",
+            "type": "bool",
+            "format": "--versions {value}",
+            "help": "Show the long listing, with each version of each chart on its own line."
+          },
+          {
+            "name": "Keyword",
+            "type": "string",
             "format": "{value}",
-            "separator": " ",
-            "help": "The paths to the charts to package."
+            "help": "The keyword to search for."
           }
         ]
       }
@@ -1808,45 +434,6 @@
       }
     },
     {
-      "help": "List installed Helm plugins.",
-      "postfix": "PluginList",
-      "definiteArgument": "helm plugin list",
-      "settingsClass": {
-        "baseClass": "HelmToolSettings",
-        "properties": [
-          {
-            "name": "Help",
-            "type": "bool",
-            "format": "--help {value}",
-            "help": "Help for list."
-          }
-        ]
-      }
-    },
-    {
-      "help": "Remove one or more Helm plugins.",
-      "postfix": "PluginRemove",
-      "definiteArgument": "helm plugin remove",
-      "settingsClass": {
-        "baseClass": "HelmToolSettings",
-        "properties": [
-          {
-            "name": "Help",
-            "type": "bool",
-            "format": "--help {value}",
-            "help": "Help for remove."
-          },
-          {
-            "name": "Plugins",
-            "type": "List<string>",
-            "format": "{value}",
-            "separator": " ",
-            "help": "List of plugins to remove."
-          }
-        ]
-      }
-    },
-    {
       "help": "Update one or more Helm plugins.",
       "postfix": "PluginUpdate",
       "definiteArgument": "helm plugin update",
@@ -1870,182 +457,57 @@
       }
     },
     {
-      "help": "Add a chart repository.",
-      "postfix": "RepoAdd",
-      "definiteArgument": "helm repo add",
+      "help": "This command displays the location of HELM_HOME. This is where any helm configuration files live.",
+      "postfix": "Home",
+      "definiteArgument": "helm home",
       "settingsClass": {
         "baseClass": "HelmToolSettings",
         "properties": [
           {
-            "name": "CaFile",
-            "type": "string",
-            "format": "--ca-file {value}",
-            "help": "Verify certificates of HTTPS-enabled servers using this CA bundle."
-          },
-          {
-            "name": "CertFile",
-            "type": "string",
-            "format": "--cert-file {value}",
-            "help": "Identify HTTPS client using this SSL certificate file."
-          },
-          {
             "name": "Help",
             "type": "bool",
             "format": "--help {value}",
-            "help": "Help for add."
-          },
-          {
-            "name": "KeyFile",
-            "type": "string",
-            "format": "--key-file {value}",
-            "help": "Identify HTTPS client using this SSL key file."
-          },
-          {
-            "name": "NoUpdate",
-            "type": "bool",
-            "format": "--no-update {value}",
-            "help": "Raise error if repo is already registered."
-          },
-          {
-            "name": "Password",
-            "type": "string",
-            "format": "--password {value}",
-            "secret": true,
-            "help": "Chart repository password."
-          },
-          {
-            "name": "Username",
-            "type": "string",
-            "format": "--username {value}",
-            "help": "Chart repository username."
-          },
-          {
-            "name": "Name",
-            "type": "string",
-            "format": "{value}",
-            "help": "The name of the repository to add."
-          },
-          {
-            "name": "Url",
-            "type": "string",
-            "format": "{value}",
-            "help": "The url of the repository to add."
+            "help": "Help for home."
           }
         ]
       }
     },
     {
-      "help": "Read the current directory and generate an index file based on the charts found. This tool is used for creating an 'index.yaml' file for a chart repository. To set an absolute URL to the charts, use '--url' flag. To merge the generated index with an existing index file, use the '--merge' flag. In this case, the charts found in the current directory will be merged into the existing index, with local charts taking priority over existing charts.",
-      "postfix": "RepoIndex",
-      "definiteArgument": "helm repo index",
+      "help": "Show the client and server versions for Helm and tiller. This will print a representation of the client and server versions of Helm and Tiller. The output will look something like this: Client: &amp;version.Version{SemVer:\"v2.0.0\", GitCommit:\"ff52399e51bb880526e9cd0ed8386f6433b74da1\", GitTreeState:\"clean\"} Server: &amp;version.Version{SemVer:\"v2.0.0\", GitCommit:\"b0c113dfb9f612a9add796549da66c0d294508a3\", GitTreeState:\"clean\"} - SemVer is the semantic version of the release. - GitCommit is the SHA for the commit that this version was built from. - GitTreeState is \"clean\" if there are no local code changes when this binary was   built, and \"dirty\" if the binary was built from locally modified code. To print just the client version, use '--client'. To print just the server version, use '--server'.",
+      "postfix": "Version",
+      "definiteArgument": "helm version",
       "settingsClass": {
         "baseClass": "HelmToolSettings",
         "properties": [
           {
+            "name": "Client",
+            "type": "bool",
+            "format": "--client {value}",
+            "help": "Client version only."
+          },
+          {
             "name": "Help",
             "type": "bool",
             "format": "--help {value}",
-            "help": "Help for index."
+            "help": "Help for version."
           },
           {
-            "name": "Merge",
+            "name": "Server",
+            "type": "bool",
+            "format": "--server {value}",
+            "help": "Server version only."
+          },
+          {
+            "name": "Short",
+            "type": "bool",
+            "format": "--short {value}",
+            "help": "Print the version number."
+          },
+          {
+            "name": "Template",
             "type": "string",
-            "format": "--merge {value}",
-            "help": "Merge the generated index into the given index."
-          },
-          {
-            "name": "Url",
-            "type": "string",
-            "format": "--url {value}",
-            "help": "Url of chart repository."
-          },
-          {
-            "name": "Directory",
-            "type": "string",
-            "format": "{value}",
-            "help": "The directory of the repository."
-          }
-        ]
-      }
-    },
-    {
-      "help": "List chart repositories.",
-      "postfix": "RepoList",
-      "definiteArgument": "helm repo list",
-      "settingsClass": {
-        "baseClass": "HelmToolSettings",
-        "properties": [
-          {
-            "name": "Help",
-            "type": "bool",
-            "format": "--help {value}",
-            "help": "Help for list."
-          }
-        ]
-      }
-    },
-    {
-      "help": "Remove a chart repository.",
-      "postfix": "RepoRemove",
-      "definiteArgument": "helm repo remove",
-      "settingsClass": {
-        "baseClass": "HelmToolSettings",
-        "properties": [
-          {
-            "name": "Help",
-            "type": "bool",
-            "format": "--help {value}",
-            "help": "Help for remove."
-          },
-          {
-            "name": "Name",
-            "type": "string",
-            "format": "{value}",
-            "help": "The name of the repository."
-          }
-        ]
-      }
-    },
-    {
-      "help": "Update gets the latest information about charts from the respective chart repositories. Information is cached locally, where it is used by commands like 'helm search'. 'helm update' is the deprecated form of 'helm repo update'. It will be removed in future releases.",
-      "postfix": "RepoUpdate",
-      "definiteArgument": "helm repo update",
-      "settingsClass": {
-        "baseClass": "HelmToolSettings",
-        "properties": [
-          {
-            "name": "Help",
-            "type": "bool",
-            "format": "--help {value}",
-            "help": "Help for update."
-          }
-        ]
-      }
-    },
-    {
-      "help": "This command uninstalls Tiller (the Helm server-side component) from your Kubernetes Cluster and optionally deletes local configuration in $HELM_HOME (default ~/.helm/).",
-      "postfix": "Reset",
-      "definiteArgument": "helm reset",
-      "settingsClass": {
-        "baseClass": "HelmToolSettings",
-        "properties": [
-          {
-            "name": "Force",
-            "type": "bool",
-            "format": "--force {value}",
-            "help": "Forces Tiller uninstall even if there are releases installed, or if Tiller is not in ready state. Releases are not deleted.)."
-          },
-          {
-            "name": "Help",
-            "type": "bool",
-            "format": "--help {value}",
-            "help": "Help for reset."
-          },
-          {
-            "name": "RemoveHelmHome",
-            "type": "bool",
-            "format": "--remove-helm-home {value}",
-            "help": "If set deletes $HELM_HOME."
+            "format": "--template {value}",
+            "help": "Template for version string format."
           },
           {
             "name": "Tls",
@@ -2082,6 +544,40 @@
             "type": "bool",
             "format": "--tls-verify {value}",
             "help": "Enable TLS for request and verify remote."
+          }
+        ]
+      }
+    },
+    {
+      "help": "Build out the charts/ directory from the requirements.lock file. Build is used to reconstruct a chart's dependencies to the state specified in the lock file. This will not re-negotiate dependencies, as 'helm dependency update' does. If no lock file is found, 'helm dependency build' will mirror the behavior of 'helm dependency update'.",
+      "postfix": "DependencyBuild",
+      "definiteArgument": "helm dependency build",
+      "settingsClass": {
+        "baseClass": "HelmToolSettings",
+        "properties": [
+          {
+            "name": "Help",
+            "type": "bool",
+            "format": "--help {value}",
+            "help": "Help for build."
+          },
+          {
+            "name": "Keyring",
+            "type": "string",
+            "format": "--keyring {value}",
+            "help": "Keyring containing public keys (default \"~/.gnupg/pubring.gpg\")."
+          },
+          {
+            "name": "Verify",
+            "type": "bool",
+            "format": "--verify {value}",
+            "help": "Verify the packages against signatures."
+          },
+          {
+            "name": "Chart",
+            "type": "string",
+            "format": "{value}",
+            "help": "The name of the chart to build."
           }
         ]
       }
@@ -2193,81 +689,234 @@
       }
     },
     {
-      "help": "Search reads through all of the repositories configured on the system, and looks for matches. Repositories are managed with 'helm repo' commands.",
-      "postfix": "Search",
-      "definiteArgument": "helm search",
+      "help": "This command inspects a chart and displays information. It takes a chart reference ('stable/drupal'), a full path to a directory or packaged chart, or a URL. Inspect prints the contents of the Chart.yaml file and the values.yaml file.",
+      "postfix": "Inspect",
+      "definiteArgument": "helm inspect",
       "settingsClass": {
         "baseClass": "HelmToolSettings",
         "properties": [
           {
-            "name": "ColWidth",
-            "type": "uint?",
-            "format": "--col-width {value}",
-            "help": "Specifies the max column width of output (default 60)."
+            "name": "CaFile",
+            "type": "string",
+            "format": "--ca-file {value}",
+            "help": "Chart repository url where to locate the requested chart."
+          },
+          {
+            "name": "CertFile",
+            "type": "string",
+            "format": "--cert-file {value}",
+            "help": "Verify certificates of HTTPS-enabled servers using this CA bundle."
           },
           {
             "name": "Help",
             "type": "bool",
             "format": "--help {value}",
-            "help": "Help for search."
+            "help": "Help for inspect."
           },
           {
-            "name": "Regexp",
+            "name": "KeyFile",
+            "type": "string",
+            "format": "--key-file {value}",
+            "help": "Identify HTTPS client using this SSL key file."
+          },
+          {
+            "name": "Keyring",
+            "type": "string",
+            "format": "--keyring {value}",
+            "help": "Path to the keyring containing public verification keys (default \"~/.gnupg/pubring.gpg\")."
+          },
+          {
+            "name": "Password",
+            "type": "string",
+            "format": "--password {value}",
+            "secret": true,
+            "help": "Chart repository password where to locate the requested chart."
+          },
+          {
+            "name": "Repo",
+            "type": "string",
+            "format": "--repo {value}",
+            "help": "Chart repository url where to locate the requested chart."
+          },
+          {
+            "name": "Username",
+            "type": "string",
+            "format": "--username {value}",
+            "help": "Chart repository username where to locate the requested chart."
+          },
+          {
+            "name": "Verify",
             "type": "bool",
-            "format": "--regexp {value}",
-            "help": "Use regular expressions for searching."
+            "format": "--verify {value}",
+            "help": "Verify the provenance data for this chart."
           },
           {
             "name": "Version",
             "type": "string",
             "format": "--version {value}",
-            "help": "Search using semantic versioning constraints."
+            "help": "Version of the chart. By default, the newest chart is shown."
           },
           {
-            "name": "Versions",
-            "type": "bool",
-            "format": "--versions {value}",
-            "help": "Show the long listing, with each version of each chart on its own line."
-          },
-          {
-            "name": "Keyword",
+            "name": "Chart",
             "type": "string",
             "format": "{value}",
-            "help": "The keyword to search for."
+            "help": "The name of the chart to inspect."
           }
         ]
       }
     },
     {
-      "help": "This command starts a local chart repository server that serves charts from a local directory. The new server will provide HTTP access to a repository. By default, it will scan all of the charts in '$HELM_HOME/repository/local' and serve those over the local IPv4 TCP port (default '127.0.0.1:8879'). This command is intended to be used for educational and testing purposes only. It is best to rely on a dedicated web server or a cloud-hosted solution like Google Cloud Storage for production use. See https://github.com/kubernetes/helm/blob/master/docs/chart_repository.md#hosting-chart-repositories for more information on hosting chart repositories in a production setting.",
-      "postfix": "Serve",
-      "definiteArgument": "helm serve",
+      "help": "Generate autocompletions script for Helm for the specified shell (bash or zsh). This command can generate shell autocompletions. e.g. \t$ helm completion bash Can be sourced as such \t$ source &lt;(helm completion bash).",
+      "postfix": "Completion",
+      "definiteArgument": "helm completion",
       "settingsClass": {
         "baseClass": "HelmToolSettings",
         "properties": [
           {
-            "name": "Address",
+            "name": "Help",
+            "type": "bool",
+            "format": "--help {value}",
+            "help": "Help for completion."
+          },
+          {
+            "name": "Shell",
             "type": "string",
-            "format": "--address {value}",
-            "help": "Address to listen on (default \"127.0.0.1:8879\")."
+            "format": "{value}"
+          }
+        ]
+      }
+    },
+    {
+      "help": "This command shows the details of a named release. It can be used to get extended information about the release, including:   - The values used to generate the release   - The chart used to generate the release   - The generated manifest file By default, this prints a human readable collection of information about the chart, the supplied values, and the generated manifest file.",
+      "postfix": "Get",
+      "definiteArgument": "helm get",
+      "settingsClass": {
+        "baseClass": "HelmToolSettings",
+        "properties": [
+          {
+            "name": "Help",
+            "type": "bool",
+            "format": "--help {value}",
+            "help": "Help for get."
+          },
+          {
+            "name": "Revision",
+            "type": "int",
+            "format": "--revision {value}",
+            "help": "Get the named release with revision."
+          },
+          {
+            "name": "Tls",
+            "type": "bool",
+            "format": "--tls {value}",
+            "help": "Enable TLS for request."
+          },
+          {
+            "name": "TlsCaCert",
+            "type": "string",
+            "format": "--tls-ca-cert {value}",
+            "help": "Path to TLS CA certificate file (default \"$HELM_HOME/ca.pem\")."
+          },
+          {
+            "name": "TlsCert",
+            "type": "string",
+            "format": "--tls-cert {value}",
+            "help": "Path to TLS certificate file (default \"$HELM_HOME/cert.pem\")."
+          },
+          {
+            "name": "TlsHostname",
+            "type": "string",
+            "format": "--tls-hostname {value}",
+            "help": "The server name used to verify the hostname on the returned certificates from the server."
+          },
+          {
+            "name": "TlsKey",
+            "type": "string",
+            "format": "--tls-key {value}",
+            "help": "Path to TLS key file (default \"$HELM_HOME/key.pem\")."
+          },
+          {
+            "name": "TlsVerify",
+            "type": "bool",
+            "format": "--tls-verify {value}",
+            "help": "Enable TLS for request and verify remote."
+          },
+          {
+            "name": "ReleaseName",
+            "type": "string",
+            "format": "{value}",
+            "help": "The name of the release to get."
+          }
+        ]
+      }
+    },
+    {
+      "help": "This command packages a chart into a versioned chart archive file. If a path is given, this will look at that path for a chart (which must contain a Chart.yaml file) and then package that directory. If no path is given, this will look in the present working directory for a Chart.yaml file, and (if found) build the current directory into a chart. Versioned chart archives are used by Helm package repositories.",
+      "postfix": "Package",
+      "definiteArgument": "helm package",
+      "settingsClass": {
+        "baseClass": "HelmToolSettings",
+        "properties": [
+          {
+            "name": "AppVersion",
+            "type": "string",
+            "format": "--app-version {value}",
+            "help": "Set the appVersion on the chart to this version."
+          },
+          {
+            "name": "DependencyUpdate",
+            "type": "bool",
+            "format": "--dependency-update {value}",
+            "help": "Update dependencies from \"requirements.yaml\" to dir \"charts/\" before packaging."
+          },
+          {
+            "name": "Destination",
+            "type": "string",
+            "format": "--destination {value}",
+            "help": "Location to write the chart. (default \".\")."
           },
           {
             "name": "Help",
             "type": "bool",
             "format": "--help {value}",
-            "help": "Help for serve."
+            "help": "Help for package."
           },
           {
-            "name": "RepoPath",
+            "name": "Key",
             "type": "string",
-            "format": "--repo-path {value}",
-            "help": "Local directory path from which to serve charts."
+            "format": "--key {value}",
+            "help": "Name of the key to use when signing. Used if --sign is true."
           },
           {
-            "name": "Url",
+            "name": "Keyring",
             "type": "string",
-            "format": "--url {value}",
-            "help": "External URL of chart repository."
+            "format": "--keyring {value}",
+            "help": "Location of a public keyring (default \"~/.gnupg/pubring.gpg\")."
+          },
+          {
+            "name": "Save",
+            "type": "bool",
+            "format": "--save {value}",
+            "help": "Save packaged chart to local chart repository (default true)."
+          },
+          {
+            "name": "Sign",
+            "type": "bool",
+            "format": "--sign {value}",
+            "help": "Use a PGP private key to sign this package."
+          },
+          {
+            "name": "Version",
+            "type": "string",
+            "format": "--version {value}",
+            "help": "Set the version on the chart to this semver version."
+          },
+          {
+            "name": "ChartPaths",
+            "type": "List<string>",
+            "format": "{value}",
+            "separator": " ",
+            "help": "The paths to the charts to package."
           }
         ]
       }
@@ -2445,6 +1094,344 @@
       }
     },
     {
+      "help": "This command downloads a values file for a given release.",
+      "postfix": "GetValues",
+      "definiteArgument": "helm get values",
+      "settingsClass": {
+        "baseClass": "HelmToolSettings",
+        "properties": [
+          {
+            "name": "All",
+            "type": "bool",
+            "format": "--all {value}",
+            "help": "Dump all (computed) values."
+          },
+          {
+            "name": "Help",
+            "type": "bool",
+            "format": "--help {value}",
+            "help": "Help for values."
+          },
+          {
+            "name": "Revision",
+            "type": "int",
+            "format": "--revision {value}",
+            "help": "Get the named release with revision."
+          },
+          {
+            "name": "Tls",
+            "type": "bool",
+            "format": "--tls {value}",
+            "help": "Enable TLS for request."
+          },
+          {
+            "name": "TlsCaCert",
+            "type": "string",
+            "format": "--tls-ca-cert {value}",
+            "help": "Path to TLS CA certificate file (default \"$HELM_HOME/ca.pem\")."
+          },
+          {
+            "name": "TlsCert",
+            "type": "string",
+            "format": "--tls-cert {value}",
+            "help": "Path to TLS certificate file (default \"$HELM_HOME/cert.pem\")."
+          },
+          {
+            "name": "TlsHostname",
+            "type": "string",
+            "format": "--tls-hostname {value}",
+            "help": "The server name used to verify the hostname on the returned certificates from the server."
+          },
+          {
+            "name": "TlsKey",
+            "type": "string",
+            "format": "--tls-key {value}",
+            "help": "Path to TLS key file (default \"$HELM_HOME/key.pem\")."
+          },
+          {
+            "name": "TlsVerify",
+            "type": "bool",
+            "format": "--tls-verify {value}",
+            "help": "Enable TLS for request and verify remote."
+          },
+          {
+            "name": "ReleaseName",
+            "type": "string",
+            "format": "{value}",
+            "help": "The name of the release to get the values for."
+          }
+        ]
+      }
+    },
+    {
+      "help": "History prints historical revisions for a given release. A default maximum of 256 revisions will be returned. Setting '--max' configures the maximum length of the revision list returned. The historical release set is printed as a formatted table, e.g:     $ helm history angry-bird --max=4     REVISION   UPDATED                      STATUS           CHART        DESCRIPTION     1           Mon Oct 3 10:15:13 2016     SUPERSEDED      alpine-0.1.0  Initial install     2           Mon Oct 3 10:15:13 2016     SUPERSEDED      alpine-0.1.0  Upgraded successfully     3           Mon Oct 3 10:15:13 2016     SUPERSEDED      alpine-0.1.0  Rolled back to 2     4           Mon Oct 3 10:15:13 2016     DEPLOYED        alpine-0.1.0  Upgraded successfully.",
+      "postfix": "History",
+      "definiteArgument": "helm history",
+      "settingsClass": {
+        "baseClass": "HelmToolSettings",
+        "properties": [
+          {
+            "name": "ColWidth",
+            "type": "uint?",
+            "format": "--col-width {value}",
+            "help": "Specifies the max column width of output (default 60)."
+          },
+          {
+            "name": "Help",
+            "type": "bool",
+            "format": "--help {value}",
+            "help": "Help for history."
+          },
+          {
+            "name": "Max",
+            "type": "int",
+            "format": "--max {value}",
+            "help": "Maximum number of revision to include in history (default 256)."
+          },
+          {
+            "name": "Output",
+            "type": "string",
+            "format": "--output {value}",
+            "help": "Prints the output in the specified format (json|table|yaml) (default \"table\")."
+          },
+          {
+            "name": "Tls",
+            "type": "bool",
+            "format": "--tls {value}",
+            "help": "Enable TLS for request."
+          },
+          {
+            "name": "TlsCaCert",
+            "type": "string",
+            "format": "--tls-ca-cert {value}",
+            "help": "Path to TLS CA certificate file (default \"$HELM_HOME/ca.pem\")."
+          },
+          {
+            "name": "TlsCert",
+            "type": "string",
+            "format": "--tls-cert {value}",
+            "help": "Path to TLS certificate file (default \"$HELM_HOME/cert.pem\")."
+          },
+          {
+            "name": "TlsHostname",
+            "type": "string",
+            "format": "--tls-hostname {value}",
+            "help": "The server name used to verify the hostname on the returned certificates from the server."
+          },
+          {
+            "name": "TlsKey",
+            "type": "string",
+            "format": "--tls-key {value}",
+            "help": "Path to TLS key file (default \"$HELM_HOME/key.pem\")."
+          },
+          {
+            "name": "TlsVerify",
+            "type": "bool",
+            "format": "--tls-verify {value}",
+            "help": "Enable TLS for request and verify remote."
+          },
+          {
+            "name": "ReleaseName",
+            "type": "string",
+            "format": "{value}",
+            "help": "The name of the release to get the history for."
+          }
+        ]
+      }
+    },
+    {
+      "help": "List chart repositories.",
+      "postfix": "RepoList",
+      "definiteArgument": "helm repo list",
+      "settingsClass": {
+        "baseClass": "HelmToolSettings",
+        "properties": [
+          {
+            "name": "Help",
+            "type": "bool",
+            "format": "--help {value}",
+            "help": "Help for list."
+          }
+        ]
+      }
+    },
+    {
+      "help": "This command inspects a chart (directory, file, or URL) and displays the contents of the values.yaml file.",
+      "postfix": "InspectValues",
+      "definiteArgument": "helm inspect values",
+      "settingsClass": {
+        "baseClass": "HelmToolSettings",
+        "properties": [
+          {
+            "name": "CaFile",
+            "type": "string",
+            "format": "--ca-file {value}",
+            "help": "Chart repository url where to locate the requested chart."
+          },
+          {
+            "name": "CertFile",
+            "type": "string",
+            "format": "--cert-file {value}",
+            "help": "Verify certificates of HTTPS-enabled servers using this CA bundle."
+          },
+          {
+            "name": "Help",
+            "type": "bool",
+            "format": "--help {value}",
+            "help": "Help for values."
+          },
+          {
+            "name": "KeyFile",
+            "type": "string",
+            "format": "--key-file {value}",
+            "help": "Identify HTTPS client using this SSL key file."
+          },
+          {
+            "name": "Keyring",
+            "type": "string",
+            "format": "--keyring {value}",
+            "help": "Path to the keyring containing public verification keys (default \"~/.gnupg/pubring.gpg\")."
+          },
+          {
+            "name": "Password",
+            "type": "string",
+            "format": "--password {value}",
+            "secret": true,
+            "help": "Chart repository password where to locate the requested chart."
+          },
+          {
+            "name": "Repo",
+            "type": "string",
+            "format": "--repo {value}",
+            "help": "Chart repository url where to locate the requested chart."
+          },
+          {
+            "name": "Username",
+            "type": "string",
+            "format": "--username {value}",
+            "help": "Chart repository username where to locate the requested chart."
+          },
+          {
+            "name": "Verify",
+            "type": "bool",
+            "format": "--verify {value}",
+            "help": "Verify the provenance data for this chart."
+          },
+          {
+            "name": "Version",
+            "type": "string",
+            "format": "--version {value}",
+            "help": "Version of the chart. By default, the newest chart is shown."
+          },
+          {
+            "name": "Chart",
+            "type": "string",
+            "format": "{value}",
+            "help": "The name of the chart to inspect."
+          }
+        ]
+      }
+    },
+    {
+      "help": "Add a chart repository.",
+      "postfix": "RepoAdd",
+      "definiteArgument": "helm repo add",
+      "settingsClass": {
+        "baseClass": "HelmToolSettings",
+        "properties": [
+          {
+            "name": "CaFile",
+            "type": "string",
+            "format": "--ca-file {value}",
+            "help": "Verify certificates of HTTPS-enabled servers using this CA bundle."
+          },
+          {
+            "name": "CertFile",
+            "type": "string",
+            "format": "--cert-file {value}",
+            "help": "Identify HTTPS client using this SSL certificate file."
+          },
+          {
+            "name": "Help",
+            "type": "bool",
+            "format": "--help {value}",
+            "help": "Help for add."
+          },
+          {
+            "name": "KeyFile",
+            "type": "string",
+            "format": "--key-file {value}",
+            "help": "Identify HTTPS client using this SSL key file."
+          },
+          {
+            "name": "NoUpdate",
+            "type": "bool",
+            "format": "--no-update {value}",
+            "help": "Raise error if repo is already registered."
+          },
+          {
+            "name": "Password",
+            "type": "string",
+            "format": "--password {value}",
+            "secret": true,
+            "help": "Chart repository password."
+          },
+          {
+            "name": "Username",
+            "type": "string",
+            "format": "--username {value}",
+            "help": "Chart repository username."
+          },
+          {
+            "name": "Name",
+            "type": "string",
+            "format": "{value}",
+            "help": "The name of the repository to add."
+          },
+          {
+            "name": "Url",
+            "type": "string",
+            "format": "{value}",
+            "help": "The url of the repository to add."
+          }
+        ]
+      }
+    },
+    {
+      "help": "This command starts a local chart repository server that serves charts from a local directory. The new server will provide HTTP access to a repository. By default, it will scan all of the charts in '$HELM_HOME/repository/local' and serve those over the local IPv4 TCP port (default '127.0.0.1:8879'). This command is intended to be used for educational and testing purposes only. It is best to rely on a dedicated web server or a cloud-hosted solution like Google Cloud Storage for production use. See https://github.com/kubernetes/helm/blob/master/docs/chart_repository.md#hosting-chart-repositories for more information on hosting chart repositories in a production setting.",
+      "postfix": "Serve",
+      "definiteArgument": "helm serve",
+      "settingsClass": {
+        "baseClass": "HelmToolSettings",
+        "properties": [
+          {
+            "name": "Address",
+            "type": "string",
+            "format": "--address {value}",
+            "help": "Address to listen on (default \"127.0.0.1:8879\")."
+          },
+          {
+            "name": "Help",
+            "type": "bool",
+            "format": "--help {value}",
+            "help": "Help for serve."
+          },
+          {
+            "name": "RepoPath",
+            "type": "string",
+            "format": "--repo-path {value}",
+            "help": "Local directory path from which to serve charts."
+          },
+          {
+            "name": "Url",
+            "type": "string",
+            "format": "--url {value}",
+            "help": "External URL of chart repository."
+          }
+        ]
+      }
+    },
+    {
       "help": "The test command runs the tests for a release. The argument this command takes is the name of a deployed release. The tests to be run are defined in the chart that was installed.",
       "postfix": "Test",
       "definiteArgument": "helm test",
@@ -2510,6 +1497,316 @@
             "type": "string",
             "format": "{value}",
             "help": "The name of the release to test."
+          }
+        ]
+      }
+    },
+    {
+      "help": "Update the on-disk dependencies to mirror the requirements.yaml file. This command verifies that the required charts, as expressed in 'requirements.yaml', are present in 'charts/' and are at an acceptable version. It will pull down the latest charts that satisfy the dependencies, and clean up old dependencies. On successful update, this will generate a lock file that can be used to rebuild the requirements to an exact version. Dependencies are not required to be represented in 'requirements.yaml'. For that reason, an update command will not remove charts unless they are (a) present in the requirements.yaml file, but (b) at the wrong version.",
+      "postfix": "DependencyUpdate",
+      "definiteArgument": "helm dependency update",
+      "settingsClass": {
+        "baseClass": "HelmToolSettings",
+        "properties": [
+          {
+            "name": "Help",
+            "type": "bool",
+            "format": "--help {value}",
+            "help": "Help for update."
+          },
+          {
+            "name": "Keyring",
+            "type": "string",
+            "format": "--keyring {value}",
+            "help": "Keyring containing public keys (default \"~/.gnupg/pubring.gpg\")."
+          },
+          {
+            "name": "SkipRefresh",
+            "type": "bool",
+            "format": "--skip-refresh {value}",
+            "help": "Do not refresh the local repository cache."
+          },
+          {
+            "name": "Verify",
+            "type": "bool",
+            "format": "--verify {value}",
+            "help": "Verify the packages against signatures."
+          },
+          {
+            "name": "Chart",
+            "type": "string",
+            "format": "{value}",
+            "help": "The name of the chart to update."
+          }
+        ]
+      }
+    },
+    {
+      "help": "Retrieve a package from a package repository, and download it locally. This is useful for fetching packages to inspect, modify, or repackage. It can also be used to perform cryptographic verification of a chart without installing the chart. There are options for unpacking the chart after download. This will create a directory for the chart and uncompress into that directory. If the --verify flag is specified, the requested chart MUST have a provenance file, and MUST pass the verification process. Failure in any part of this will result in an error, and the chart will not be saved locally.",
+      "postfix": "Fetch",
+      "definiteArgument": "helm fetch",
+      "settingsClass": {
+        "baseClass": "HelmToolSettings",
+        "properties": [
+          {
+            "name": "CaFile",
+            "type": "string",
+            "format": "--ca-file {value}",
+            "help": "Verify certificates of HTTPS-enabled servers using this CA bundle."
+          },
+          {
+            "name": "CertFile",
+            "type": "string",
+            "format": "--cert-file {value}",
+            "help": "Identify HTTPS client using this SSL certificate file."
+          },
+          {
+            "name": "Destination",
+            "type": "string",
+            "format": "--destination {value}",
+            "help": "Location to write the chart. If this and tardir are specified, tardir is appended to this (default \".\")."
+          },
+          {
+            "name": "Devel",
+            "type": "bool",
+            "format": "--devel {value}",
+            "help": "Use development versions, too. Equivalent to version '&gt;0.0.0-0'. If --version is set, this is ignored."
+          },
+          {
+            "name": "Help",
+            "type": "bool",
+            "format": "--help {value}",
+            "help": "Help for fetch."
+          },
+          {
+            "name": "KeyFile",
+            "type": "string",
+            "format": "--key-file {value}",
+            "help": "Identify HTTPS client using this SSL key file."
+          },
+          {
+            "name": "Keyring",
+            "type": "string",
+            "format": "--keyring {value}",
+            "help": "Keyring containing public keys (default \"~/.gnupg/pubring.gpg\")."
+          },
+          {
+            "name": "Password",
+            "type": "string",
+            "format": "--password {value}",
+            "secret": true,
+            "help": "Chart repository password."
+          },
+          {
+            "name": "Prov",
+            "type": "bool",
+            "format": "--prov {value}",
+            "help": "Fetch the provenance file, but don't perform verification."
+          },
+          {
+            "name": "Repo",
+            "type": "string",
+            "format": "--repo {value}",
+            "help": "Chart repository url where to locate the requested chart."
+          },
+          {
+            "name": "Untar",
+            "type": "bool",
+            "format": "--untar {value}",
+            "help": "If set to true, will untar the chart after downloading it."
+          },
+          {
+            "name": "Untardir",
+            "type": "string",
+            "format": "--untardir {value}",
+            "help": "If untar is specified, this flag specifies the name of the directory into which the chart is expanded (default \".\")."
+          },
+          {
+            "name": "Username",
+            "type": "string",
+            "format": "--username {value}",
+            "help": "Chart repository username."
+          },
+          {
+            "name": "Verify",
+            "type": "bool",
+            "format": "--verify {value}",
+            "help": "Verify the package against its signature."
+          },
+          {
+            "name": "Version",
+            "type": "string",
+            "format": "--version {value}",
+            "help": "Specific version of a chart. Without this, the latest version is fetched."
+          },
+          {
+            "name": "Charts",
+            "type": "List<string>",
+            "format": "{value}",
+            "separator": " ",
+            "help": "The charts to fetch. Can either be specified by <c>repoName/chartName</c> or directly by an url."
+          }
+        ]
+      }
+    },
+    {
+      "help": "This command installs Tiller (the Helm server-side component) onto your Kubernetes Cluster and sets up local configuration in $HELM_HOME (default ~/.helm/). As with the rest of the Helm commands, 'helm init' discovers Kubernetes clusters by reading $KUBECONFIG (default '~/.kube/config') and using the default context. To set up just a local environment, use '--client-only'. That will configure $HELM_HOME, but not attempt to connect to a Kubernetes cluster and install the Tiller deployment. When installing Tiller, 'helm init' will attempt to install the latest released version. You can specify an alternative image with '--tiller-image'. For those frequently working on the latest code, the flag '--canary-image' will install the latest pre-release version of Tiller (e.g. the HEAD commit in the GitHub repository on the master branch). To dump a manifest containing the Tiller deployment YAML, combine the '--dry-run' and '--debug' flags.",
+      "postfix": "Init",
+      "definiteArgument": "helm init",
+      "settingsClass": {
+        "baseClass": "HelmToolSettings",
+        "properties": [
+          {
+            "name": "AutomountServiceAccountToken",
+            "type": "bool",
+            "format": "--automount-service-account-token {value}",
+            "help": "Auto-mount the given service account to tiller (default true)."
+          },
+          {
+            "name": "CanaryImage",
+            "type": "bool",
+            "format": "--canary-image {value}",
+            "help": "Use the canary Tiller image."
+          },
+          {
+            "name": "ClientOnly",
+            "type": "bool",
+            "format": "--client-only {value}",
+            "help": "If set does not install Tiller."
+          },
+          {
+            "name": "DryRun",
+            "type": "bool",
+            "format": "--dry-run {value}",
+            "help": "Do not install local or remote."
+          },
+          {
+            "name": "ForceUpgrade",
+            "type": "bool",
+            "format": "--force-upgrade {value}",
+            "help": "Force upgrade of Tiller to the current helm version."
+          },
+          {
+            "name": "Help",
+            "type": "bool",
+            "format": "--help {value}",
+            "help": "Help for init."
+          },
+          {
+            "name": "HistoryMax",
+            "type": "long?",
+            "format": "--history-max {value}",
+            "help": "Limit the maximum number of revisions saved per release. Use 0 for no limit."
+          },
+          {
+            "name": "LocalRepoUrl",
+            "type": "string",
+            "format": "--local-repo-url {value}",
+            "help": "URL for local repository (default \"http://127.0.0.1:8879/charts\")."
+          },
+          {
+            "name": "NetHost",
+            "type": "bool",
+            "format": "--net-host {value}",
+            "help": "Install Tiller with net=host."
+          },
+          {
+            "name": "NodeSelectors",
+            "type": "string",
+            "format": "--node-selectors {value}",
+            "help": "Labels to specify the node on which Tiller is installed (app=tiller,helm=rocks)."
+          },
+          {
+            "name": "Output",
+            "type": "HelmOutputFormat",
+            "format": "--output {value}",
+            "help": "Skip installation and output Tiller's manifest in specified format (json or yaml)."
+          },
+          {
+            "name": "Override",
+            "type": "Dictionary<string, object>",
+            "format": "--override {value}",
+            "itemFormat": "{key}={value}",
+            "separator": ",",
+            "help": "Override values for the Tiller Deployment manifest (can specify multiple or separate values with commas: key1=val1,key2=val2)."
+          },
+          {
+            "name": "Replicas",
+            "type": "long?",
+            "format": "--replicas {value}",
+            "help": "Amount of tiller instances to run on the cluster (default 1)."
+          },
+          {
+            "name": "ServiceAccount",
+            "type": "string",
+            "format": "--service-account {value}",
+            "help": "Name of service account."
+          },
+          {
+            "name": "SkipRefresh",
+            "type": "bool",
+            "format": "--skip-refresh {value}",
+            "help": "Do not refresh (download) the local repository cache."
+          },
+          {
+            "name": "StableRepoUrl",
+            "type": "string",
+            "format": "--stable-repo-url {value}",
+            "help": "URL for stable repository (default \"https://kubernetes-charts.storage.googleapis.com\")."
+          },
+          {
+            "name": "TillerImage",
+            "type": "string",
+            "format": "--tiller-image {value}",
+            "help": "Override Tiller image."
+          },
+          {
+            "name": "TillerTls",
+            "type": "bool",
+            "format": "--tiller-tls {value}",
+            "help": "Install Tiller with TLS enabled."
+          },
+          {
+            "name": "TillerTlsCert",
+            "type": "string",
+            "format": "--tiller-tls-cert {value}",
+            "help": "Path to TLS certificate file to install with Tiller."
+          },
+          {
+            "name": "TillerTlsHostname",
+            "type": "string",
+            "format": "--tiller-tls-hostname {value}",
+            "help": "The server name used to verify the hostname on the returned certificates from Tiller."
+          },
+          {
+            "name": "TillerTlsKey",
+            "type": "string",
+            "format": "--tiller-tls-key {value}",
+            "help": "Path to TLS key file to install with Tiller."
+          },
+          {
+            "name": "TillerTlsVerify",
+            "type": "bool",
+            "format": "--tiller-tls-verify {value}",
+            "help": "Install Tiller with TLS enabled and to verify remote certificates."
+          },
+          {
+            "name": "TlsCaCert",
+            "type": "string",
+            "format": "--tls-ca-cert {value}",
+            "help": "Path to CA root certificate."
+          },
+          {
+            "name": "Upgrade",
+            "type": "bool",
+            "format": "--upgrade {value}",
+            "help": "Upgrade if Tiller is already installed."
+          },
+          {
+            "name": "Wait",
+            "type": "bool",
+            "format": "--wait {value}",
+            "help": "Block until Tiller is running and ready to receive requests."
           }
         ]
       }
@@ -2737,9 +2034,9 @@
       }
     },
     {
-      "help": "Verify that the given chart has a valid provenance file. Provenance files provide crytographic verification that a chart has not been tampered with, and was packaged by a trusted provider. This command can be used to verify a local chart. Several other commands provide '--verify' flags that run the same validation. To generate a signed package, use the 'helm package --sign' command.",
-      "postfix": "Verify",
-      "definiteArgument": "helm verify",
+      "help": "List all of the dependencies declared in a chart. This can take chart archives and chart directories as input. It will not alter the contents of a chart. This will produce an error if the chart cannot be loaded. It will emit a warning if it cannot find a requirements.yaml.",
+      "postfix": "DependencyList",
+      "definiteArgument": "helm dependency list",
       "settingsClass": {
         "baseClass": "HelmToolSettings",
         "properties": [
@@ -2747,59 +2044,99 @@
             "name": "Help",
             "type": "bool",
             "format": "--help {value}",
-            "help": "Help for verify."
+            "help": "Help for list."
           },
           {
-            "name": "Keyring",
-            "type": "string",
-            "format": "--keyring {value}",
-            "help": "Keyring containing public keys (default \"~/.gnupg/pubring.gpg\")."
-          },
-          {
-            "name": "Path",
+            "name": "Chart",
             "type": "string",
             "format": "{value}",
-            "help": "The path to the chart to verify."
+            "help": "The name of the chart to list."
           }
         ]
       }
     },
     {
-      "help": "Show the client and server versions for Helm and tiller. This will print a representation of the client and server versions of Helm and Tiller. The output will look something like this: Client: &amp;version.Version{SemVer:\"v2.0.0\", GitCommit:\"ff52399e51bb880526e9cd0ed8386f6433b74da1\", GitTreeState:\"clean\"} Server: &amp;version.Version{SemVer:\"v2.0.0\", GitCommit:\"b0c113dfb9f612a9add796549da66c0d294508a3\", GitTreeState:\"clean\"} - SemVer is the semantic version of the release. - GitCommit is the SHA for the commit that this version was built from. - GitTreeState is \"clean\" if there are no local code changes when this binary was   built, and \"dirty\" if the binary was built from locally modified code. To print just the client version, use '--client'. To print just the server version, use '--server'.",
-      "postfix": "Version",
-      "definiteArgument": "helm version",
+      "help": "This command inspects a chart (directory, file, or URL) and displays the contents of the README file.",
+      "postfix": "InspectReadme",
+      "definiteArgument": "helm inspect readme",
       "settingsClass": {
         "baseClass": "HelmToolSettings",
         "properties": [
           {
-            "name": "Client",
-            "type": "bool",
-            "format": "--client {value}",
-            "help": "Client version only."
+            "name": "CaFile",
+            "type": "string",
+            "format": "--ca-file {value}",
+            "help": "Chart repository url where to locate the requested chart."
+          },
+          {
+            "name": "CertFile",
+            "type": "string",
+            "format": "--cert-file {value}",
+            "help": "Verify certificates of HTTPS-enabled servers using this CA bundle."
           },
           {
             "name": "Help",
             "type": "bool",
             "format": "--help {value}",
-            "help": "Help for version."
+            "help": "Help for readme."
           },
           {
-            "name": "Server",
-            "type": "bool",
-            "format": "--server {value}",
-            "help": "Server version only."
-          },
-          {
-            "name": "Short",
-            "type": "bool",
-            "format": "--short {value}",
-            "help": "Print the version number."
-          },
-          {
-            "name": "Template",
+            "name": "KeyFile",
             "type": "string",
-            "format": "--template {value}",
-            "help": "Template for version string format."
+            "format": "--key-file {value}",
+            "help": "Identify HTTPS client using this SSL key file."
+          },
+          {
+            "name": "Keyring",
+            "type": "string",
+            "format": "--keyring {value}",
+            "help": "Path to the keyring containing public verification keys (default \"~/.gnupg/pubring.gpg\")."
+          },
+          {
+            "name": "Repo",
+            "type": "string",
+            "format": "--repo {value}",
+            "help": "Chart repository url where to locate the requested chart."
+          },
+          {
+            "name": "Verify",
+            "type": "bool",
+            "format": "--verify {value}",
+            "help": "Verify the provenance data for this chart."
+          },
+          {
+            "name": "Version",
+            "type": "string",
+            "format": "--version {value}",
+            "help": "Version of the chart. By default, the newest chart is shown."
+          },
+          {
+            "name": "Chart",
+            "type": "string",
+            "format": "{value}",
+            "help": "The name of the chart to inspect."
+          }
+        ]
+      }
+    },
+    {
+      "help": "This command shows notes provided by the chart of a named release.",
+      "postfix": "GetNotes",
+      "definiteArgument": "helm get notes",
+      "settingsClass": {
+        "baseClass": "HelmToolSettings",
+        "properties": [
+          {
+            "name": "Help",
+            "type": "bool",
+            "format": "--help {value}",
+            "help": "Help for notes."
+          },
+          {
+            "name": "Revision",
+            "type": "int",
+            "format": "--revision {value}",
+            "help": "Get the notes of the named release with revision."
           },
           {
             "name": "Tls",
@@ -2836,6 +2173,669 @@
             "type": "bool",
             "format": "--tls-verify {value}",
             "help": "Enable TLS for request and verify remote."
+          },
+          {
+            "name": "ReleaseName",
+            "type": "string",
+            "format": "{value}"
+          }
+        ]
+      }
+    },
+    {
+      "help": "This command fetches the generated manifest for a given release. A manifest is a YAML-encoded representation of the Kubernetes resources that were generated from this release's chart(s). If a chart is dependent on other charts, those resources will also be included in the manifest.",
+      "postfix": "GetManifest",
+      "definiteArgument": "helm get manifest",
+      "settingsClass": {
+        "baseClass": "HelmToolSettings",
+        "properties": [
+          {
+            "name": "Help",
+            "type": "bool",
+            "format": "--help {value}",
+            "help": "Help for manifest."
+          },
+          {
+            "name": "Revision",
+            "type": "int",
+            "format": "--revision {value}",
+            "help": "Get the named release with revision."
+          },
+          {
+            "name": "Tls",
+            "type": "bool",
+            "format": "--tls {value}",
+            "help": "Enable TLS for request."
+          },
+          {
+            "name": "TlsCaCert",
+            "type": "string",
+            "format": "--tls-ca-cert {value}",
+            "help": "Path to TLS CA certificate file (default \"$HELM_HOME/ca.pem\")."
+          },
+          {
+            "name": "TlsCert",
+            "type": "string",
+            "format": "--tls-cert {value}",
+            "help": "Path to TLS certificate file (default \"$HELM_HOME/cert.pem\")."
+          },
+          {
+            "name": "TlsHostname",
+            "type": "string",
+            "format": "--tls-hostname {value}",
+            "help": "The server name used to verify the hostname on the returned certificates from the server."
+          },
+          {
+            "name": "TlsKey",
+            "type": "string",
+            "format": "--tls-key {value}",
+            "help": "Path to TLS key file (default \"$HELM_HOME/key.pem\")."
+          },
+          {
+            "name": "TlsVerify",
+            "type": "bool",
+            "format": "--tls-verify {value}",
+            "help": "Enable TLS for request and verify remote."
+          },
+          {
+            "name": "ReleaseName",
+            "type": "string",
+            "format": "{value}",
+            "help": "The name of the release to get the manifest for."
+          }
+        ]
+      }
+    },
+    {
+      "help": "This command uninstalls Tiller (the Helm server-side component) from your Kubernetes Cluster and optionally deletes local configuration in $HELM_HOME (default ~/.helm/).",
+      "postfix": "Reset",
+      "definiteArgument": "helm reset",
+      "settingsClass": {
+        "baseClass": "HelmToolSettings",
+        "properties": [
+          {
+            "name": "Force",
+            "type": "bool",
+            "format": "--force {value}",
+            "help": "Forces Tiller uninstall even if there are releases installed, or if Tiller is not in ready state. Releases are not deleted.)."
+          },
+          {
+            "name": "Help",
+            "type": "bool",
+            "format": "--help {value}",
+            "help": "Help for reset."
+          },
+          {
+            "name": "RemoveHelmHome",
+            "type": "bool",
+            "format": "--remove-helm-home {value}",
+            "help": "If set deletes $HELM_HOME."
+          },
+          {
+            "name": "Tls",
+            "type": "bool",
+            "format": "--tls {value}",
+            "help": "Enable TLS for request."
+          },
+          {
+            "name": "TlsCaCert",
+            "type": "string",
+            "format": "--tls-ca-cert {value}",
+            "help": "Path to TLS CA certificate file (default \"$HELM_HOME/ca.pem\")."
+          },
+          {
+            "name": "TlsCert",
+            "type": "string",
+            "format": "--tls-cert {value}",
+            "help": "Path to TLS certificate file (default \"$HELM_HOME/cert.pem\")."
+          },
+          {
+            "name": "TlsHostname",
+            "type": "string",
+            "format": "--tls-hostname {value}",
+            "help": "The server name used to verify the hostname on the returned certificates from the server."
+          },
+          {
+            "name": "TlsKey",
+            "type": "string",
+            "format": "--tls-key {value}",
+            "help": "Path to TLS key file (default \"$HELM_HOME/key.pem\")."
+          },
+          {
+            "name": "TlsVerify",
+            "type": "bool",
+            "format": "--tls-verify {value}",
+            "help": "Enable TLS for request and verify remote."
+          }
+        ]
+      }
+    },
+    {
+      "help": "This command installs a chart archive. The install argument must be a chart reference, a path to a packaged chart, a path to an unpacked chart directory or a URL. To override values in a chart, use either the '--values' flag and pass in a file or use the '--set' flag and pass configuration from the command line.  To force string values in '--set', use '--set-string' instead. In case a value is large and therefore you want not to use neither '--values' nor '--set', use '--set-file' to read the single large value from file. \t$ helm install -f myvalues.yaml ./redis or \t$ helm install --set name=prod ./redis or \t$ helm install --set-string long_int=1234567890 ./redis or     $ helm install --set-file multiline_text=path/to/textfile You can specify the '--values'/'-f' flag multiple times. The priority will be given to the last (right-most) file specified. For example, if both myvalues.yaml and override.yaml contained a key called 'Test', the value set in override.yaml would take precedence: \t$ helm install -f myvalues.yaml -f override.yaml ./redis You can specify the '--set' flag multiple times. The priority will be given to the last (right-most) set specified. For example, if both 'bar' and 'newbar' values are set for a key called 'foo', the 'newbar' value would take precedence: \t$ helm install --set foo=bar --set foo=newbar ./redis To check the generated manifests of a release without installing the chart, the '--debug' and '--dry-run' flags can be combined. This will still require a round-trip to the Tiller server. If --verify is set, the chart MUST have a provenance file, and the provenance file MUST pass all verification steps. There are five different ways you can express the chart you want to install: 1. By chart reference: helm install stable/mariadb 2. By path to a packaged chart: helm install ./nginx-1.2.3.tgz 3. By path to an unpacked chart directory: helm install ./nginx 4. By absolute URL: helm install https://example.com/charts/nginx-1.2.3.tgz 5. By chart reference and repo url: helm install --repo https://example.com/charts/ nginx CHART REFERENCES A chart reference is a convenient way of reference a chart in a chart repository. When you use a chart reference with a repo prefix ('stable/mariadb'), Helm will look in the local configuration for a chart repository named 'stable', and will then look for a chart in that repository whose name is 'mariadb'. It will install the latest version of that chart unless you also supply a version number with the '--version' flag. To see the list of chart repositories, use 'helm repo list'. To search for charts in a repository, use 'helm search'.",
+      "postfix": "Install",
+      "definiteArgument": "helm install",
+      "settingsClass": {
+        "baseClass": "HelmToolSettings",
+        "properties": [
+          {
+            "name": "CaFile",
+            "type": "string",
+            "format": "--ca-file {value}",
+            "help": "Verify certificates of HTTPS-enabled servers using this CA bundle."
+          },
+          {
+            "name": "CertFile",
+            "type": "string",
+            "format": "--cert-file {value}",
+            "help": "Identify HTTPS client using this SSL certificate file."
+          },
+          {
+            "name": "DepUp",
+            "type": "bool",
+            "format": "--dep-up {value}",
+            "help": "Run helm dependency update before installing the chart."
+          },
+          {
+            "name": "Description",
+            "type": "string",
+            "format": "--description {value}",
+            "help": "Specify a description for the release."
+          },
+          {
+            "name": "Devel",
+            "type": "bool",
+            "format": "--devel {value}",
+            "help": "Use development versions, too. Equivalent to version '&gt;0.0.0-0'. If --version is set, this is ignored."
+          },
+          {
+            "name": "DryRun",
+            "type": "bool",
+            "format": "--dry-run {value}",
+            "help": "Simulate an install."
+          },
+          {
+            "name": "Help",
+            "type": "bool",
+            "format": "--help {value}",
+            "help": "Help for install."
+          },
+          {
+            "name": "KeyFile",
+            "type": "string",
+            "format": "--key-file {value}",
+            "help": "Identify HTTPS client using this SSL key file."
+          },
+          {
+            "name": "Keyring",
+            "type": "string",
+            "format": "--keyring {value}",
+            "help": "Location of public keys used for verification (default \"~/.gnupg/pubring.gpg\")."
+          },
+          {
+            "name": "Name",
+            "type": "string",
+            "format": "--name {value}",
+            "help": "Release name. If unspecified, it will autogenerate one for you."
+          },
+          {
+            "name": "NameTemplate",
+            "type": "string",
+            "format": "--name-template {value}",
+            "help": "Specify template used to name the release."
+          },
+          {
+            "name": "Namespace",
+            "type": "string",
+            "format": "--namespace {value}",
+            "help": "Namespace to install the release into. Defaults to the current kube config namespace."
+          },
+          {
+            "name": "NoCrdHook",
+            "type": "bool",
+            "format": "--no-crd-hook {value}",
+            "help": "Prevent CRD hooks from running, but run other hooks."
+          },
+          {
+            "name": "NoHooks",
+            "type": "bool",
+            "format": "--no-hooks {value}",
+            "help": "Prevent hooks from running during install."
+          },
+          {
+            "name": "Password",
+            "type": "string",
+            "format": "--password {value}",
+            "secret": true,
+            "help": "Chart repository password where to locate the requested chart."
+          },
+          {
+            "name": "Replace",
+            "type": "bool",
+            "format": "--replace {value}",
+            "help": "Re-use the given name, even if that name is already used. This is unsafe in production."
+          },
+          {
+            "name": "Repo",
+            "type": "string",
+            "format": "--repo {value}",
+            "help": "Chart repository url where to locate the requested chart."
+          },
+          {
+            "name": "Set",
+            "type": "Dictionary<string, object>",
+            "format": "--set {value}",
+            "itemFormat": "{key}={value}",
+            "separator": ",",
+            "help": "Set values on the command line (can specify multiple or separate values with commas: key1=val1,key2=val2)."
+          },
+          {
+            "name": "SetFile",
+            "type": "Dictionary<string, object>",
+            "format": "--set-file {value}",
+            "itemFormat": "{key}={value}",
+            "separator": ",",
+            "help": "Set values from respective files specified via the command line (can specify multiple or separate values with commas: key1=path1,key2=path2)."
+          },
+          {
+            "name": "SetString",
+            "type": "Dictionary<string, object>",
+            "format": "--set-string {value}",
+            "itemFormat": "{key}={value}",
+            "separator": ",",
+            "help": "Set STRING values on the command line (can specify multiple or separate values with commas: key1=val1,key2=val2)."
+          },
+          {
+            "name": "Timeout",
+            "type": "long?",
+            "format": "--timeout {value}",
+            "help": "Time in seconds to wait for any individual Kubernetes operation (like Jobs for hooks) (default 300)."
+          },
+          {
+            "name": "Tls",
+            "type": "bool",
+            "format": "--tls {value}",
+            "help": "Enable TLS for request."
+          },
+          {
+            "name": "TlsCaCert",
+            "type": "string",
+            "format": "--tls-ca-cert {value}",
+            "help": "Path to TLS CA certificate file (default \"$HELM_HOME/ca.pem\")."
+          },
+          {
+            "name": "TlsCert",
+            "type": "string",
+            "format": "--tls-cert {value}",
+            "help": "Path to TLS certificate file (default \"$HELM_HOME/cert.pem\")."
+          },
+          {
+            "name": "TlsHostname",
+            "type": "string",
+            "format": "--tls-hostname {value}",
+            "help": "The server name used to verify the hostname on the returned certificates from the server."
+          },
+          {
+            "name": "TlsKey",
+            "type": "string",
+            "format": "--tls-key {value}",
+            "help": "Path to TLS key file (default \"$HELM_HOME/key.pem\")."
+          },
+          {
+            "name": "TlsVerify",
+            "type": "bool",
+            "format": "--tls-verify {value}",
+            "help": "Enable TLS for request and verify remote."
+          },
+          {
+            "name": "Username",
+            "type": "string",
+            "format": "--username {value}",
+            "help": "Chart repository username where to locate the requested chart."
+          },
+          {
+            "name": "Values",
+            "type": "List<string>",
+            "format": "--values {value}",
+            "separator": " ",
+            "help": "Specify values in a YAML file or a URL(can specify multiple) (default [])."
+          },
+          {
+            "name": "Verify",
+            "type": "bool",
+            "format": "--verify {value}",
+            "help": "Verify the package before installing it."
+          },
+          {
+            "name": "Version",
+            "type": "string",
+            "format": "--version {value}",
+            "help": "Specify the exact chart version to install. If this is not specified, the latest version is installed."
+          },
+          {
+            "name": "Wait",
+            "type": "bool",
+            "format": "--wait {value}",
+            "help": "If set, will wait until all Pods, PVCs, Services, and minimum number of Pods of a Deployment are in a ready state before marking the release as successful. It will wait for as long as --timeout."
+          },
+          {
+            "name": "Chart",
+            "type": "string",
+            "format": "{value}",
+            "help": "The name of the chart to install."
+          }
+        ]
+      }
+    },
+    {
+      "help": "This command takes a release name, and then deletes the release from Kubernetes. It removes all of the resources associated with the last release of the chart. Use the '--dry-run' flag to see which releases will be deleted without actually deleting them.",
+      "postfix": "Delete",
+      "definiteArgument": "helm delete",
+      "settingsClass": {
+        "baseClass": "HelmToolSettings",
+        "properties": [
+          {
+            "name": "Description",
+            "type": "string",
+            "format": "--description {value}",
+            "help": "Specify a description for the release."
+          },
+          {
+            "name": "DryRun",
+            "type": "bool",
+            "format": "--dry-run {value}",
+            "help": "Simulate a delete."
+          },
+          {
+            "name": "Help",
+            "type": "bool",
+            "format": "--help {value}",
+            "help": "Help for delete."
+          },
+          {
+            "name": "NoHooks",
+            "type": "bool",
+            "format": "--no-hooks {value}",
+            "help": "Prevent hooks from running during deletion."
+          },
+          {
+            "name": "Purge",
+            "type": "bool",
+            "format": "--purge {value}",
+            "help": "Remove the release from the store and make its name free for later use."
+          },
+          {
+            "name": "Timeout",
+            "type": "long?",
+            "format": "--timeout {value}",
+            "help": "Time in seconds to wait for any individual Kubernetes operation (like Jobs for hooks) (default 300)."
+          },
+          {
+            "name": "Tls",
+            "type": "bool",
+            "format": "--tls {value}",
+            "help": "Enable TLS for request."
+          },
+          {
+            "name": "TlsCaCert",
+            "type": "string",
+            "format": "--tls-ca-cert {value}",
+            "help": "Path to TLS CA certificate file (default \"$HELM_HOME/ca.pem\")."
+          },
+          {
+            "name": "TlsCert",
+            "type": "string",
+            "format": "--tls-cert {value}",
+            "help": "Path to TLS certificate file (default \"$HELM_HOME/cert.pem\")."
+          },
+          {
+            "name": "TlsHostname",
+            "type": "string",
+            "format": "--tls-hostname {value}",
+            "help": "The server name used to verify the hostname on the returned certificates from the server."
+          },
+          {
+            "name": "TlsKey",
+            "type": "string",
+            "format": "--tls-key {value}",
+            "help": "Path to TLS key file (default \"$HELM_HOME/key.pem\")."
+          },
+          {
+            "name": "TlsVerify",
+            "type": "bool",
+            "format": "--tls-verify {value}",
+            "help": "Enable TLS for request and verify remote."
+          },
+          {
+            "name": "ReleaseNames",
+            "type": "List<string>",
+            "format": "{value}",
+            "separator": " ",
+            "help": "The name of the releases to delete."
+          }
+        ]
+      }
+    },
+    {
+      "help": "Remove a chart repository.",
+      "postfix": "RepoRemove",
+      "definiteArgument": "helm repo remove",
+      "settingsClass": {
+        "baseClass": "HelmToolSettings",
+        "properties": [
+          {
+            "name": "Help",
+            "type": "bool",
+            "format": "--help {value}",
+            "help": "Help for remove."
+          },
+          {
+            "name": "Name",
+            "type": "string",
+            "format": "{value}",
+            "help": "The name of the repository."
+          }
+        ]
+      }
+    },
+    {
+      "help": "List installed Helm plugins.",
+      "postfix": "PluginList",
+      "definiteArgument": "helm plugin list",
+      "settingsClass": {
+        "baseClass": "HelmToolSettings",
+        "properties": [
+          {
+            "name": "Help",
+            "type": "bool",
+            "format": "--help {value}",
+            "help": "Help for list."
+          }
+        ]
+      }
+    },
+    {
+      "help": "This command lists all of the releases. By default, it lists only releases that are deployed or failed. Flags like '--deleted' and '--all' will alter this behavior. Such flags can be combined: '--deleted --failed'. By default, items are sorted alphabetically. Use the '-d' flag to sort by release date. If an argument is provided, it will be treated as a filter. Filters are regular expressions (Perl compatible) that are applied to the list of releases. Only items that match the filter will be returned. \t$ helm list 'ara[a-z]+' \tNAME            \tUPDATED                 \tCHART \tmaudlin-arachnid\tMon May  9 16:07:08 2016\talpine-0.1.0 If no results are found, 'helm list' will exit 0, but with no output (or in the case of no '-q' flag, only headers). By default, up to 256 items may be returned. To limit this, use the '--max' flag. Setting '--max' to 0 will not return all results. Rather, it will return the server's default, which may be much higher than 256. Pairing the '--max' flag with the '--offset' flag allows you to page through results.",
+      "postfix": "List",
+      "definiteArgument": "helm list",
+      "settingsClass": {
+        "baseClass": "HelmToolSettings",
+        "properties": [
+          {
+            "name": "All",
+            "type": "bool",
+            "format": "--all {value}",
+            "help": "Show all releases, not just the ones marked DEPLOYED."
+          },
+          {
+            "name": "ChartName",
+            "type": "bool",
+            "format": "--chart-name {value}",
+            "help": "Sort by chart name."
+          },
+          {
+            "name": "ColWidth",
+            "type": "uint?",
+            "format": "--col-width {value}",
+            "help": "Specifies the max column width of output (default 60)."
+          },
+          {
+            "name": "Date",
+            "type": "bool",
+            "format": "--date {value}",
+            "help": "Sort by release date."
+          },
+          {
+            "name": "Deleted",
+            "type": "bool",
+            "format": "--deleted {value}",
+            "help": "Show deleted releases."
+          },
+          {
+            "name": "Deleting",
+            "type": "bool",
+            "format": "--deleting {value}",
+            "help": "Show releases that are currently being deleted."
+          },
+          {
+            "name": "Deployed",
+            "type": "bool",
+            "format": "--deployed {value}",
+            "help": "Show deployed releases. If no other is specified, this will be automatically enabled."
+          },
+          {
+            "name": "Failed",
+            "type": "bool",
+            "format": "--failed {value}",
+            "help": "Show failed releases."
+          },
+          {
+            "name": "Help",
+            "type": "bool",
+            "format": "--help {value}",
+            "help": "Help for list."
+          },
+          {
+            "name": "Max",
+            "type": "long?",
+            "format": "--max {value}",
+            "help": "Maximum number of releases to fetch (default 256)."
+          },
+          {
+            "name": "Namespace",
+            "type": "string",
+            "format": "--namespace {value}",
+            "help": "Show releases within a specific namespace."
+          },
+          {
+            "name": "Offset",
+            "type": "string",
+            "format": "--offset {value}",
+            "help": "Next release name in the list, used to offset from start value."
+          },
+          {
+            "name": "Output",
+            "type": "HelmOutputFormat",
+            "format": "--output {value}",
+            "help": "Output the specified format (json or yaml)."
+          },
+          {
+            "name": "Pending",
+            "type": "bool",
+            "format": "--pending {value}",
+            "help": "Show pending releases."
+          },
+          {
+            "name": "Reverse",
+            "type": "bool",
+            "format": "--reverse {value}",
+            "help": "Reverse the sort order."
+          },
+          {
+            "name": "Short",
+            "type": "bool",
+            "format": "--short {value}",
+            "help": "Output short (quiet) listing format."
+          },
+          {
+            "name": "Tls",
+            "type": "bool",
+            "format": "--tls {value}",
+            "help": "Enable TLS for request."
+          },
+          {
+            "name": "TlsCaCert",
+            "type": "string",
+            "format": "--tls-ca-cert {value}",
+            "help": "Path to TLS CA certificate file (default \"$HELM_HOME/ca.pem\")."
+          },
+          {
+            "name": "TlsCert",
+            "type": "string",
+            "format": "--tls-cert {value}",
+            "help": "Path to TLS certificate file (default \"$HELM_HOME/cert.pem\")."
+          },
+          {
+            "name": "TlsHostname",
+            "type": "string",
+            "format": "--tls-hostname {value}",
+            "help": "The server name used to verify the hostname on the returned certificates from the server."
+          },
+          {
+            "name": "TlsKey",
+            "type": "string",
+            "format": "--tls-key {value}",
+            "help": "Path to TLS key file (default \"$HELM_HOME/key.pem\")."
+          },
+          {
+            "name": "TlsVerify",
+            "type": "bool",
+            "format": "--tls-verify {value}",
+            "help": "Enable TLS for request and verify remote."
+          },
+          {
+            "name": "Filter",
+            "type": "string",
+            "format": "{value}",
+            "help": "The filter to use."
+          }
+        ]
+      }
+    },
+    {
+      "help": "Remove one or more Helm plugins.",
+      "postfix": "PluginRemove",
+      "definiteArgument": "helm plugin remove",
+      "settingsClass": {
+        "baseClass": "HelmToolSettings",
+        "properties": [
+          {
+            "name": "Help",
+            "type": "bool",
+            "format": "--help {value}",
+            "help": "Help for remove."
+          },
+          {
+            "name": "Plugins",
+            "type": "List<string>",
+            "format": "{value}",
+            "separator": " ",
+            "help": "List of plugins to remove."
+          }
+        ]
+      }
+    },
+    {
+      "help": "Update gets the latest information about charts from the respective chart repositories. Information is cached locally, where it is used by commands like 'helm search'. 'helm update' is the deprecated form of 'helm repo update'. It will be removed in future releases.",
+      "postfix": "RepoUpdate",
+      "definiteArgument": "helm repo update",
+      "settingsClass": {
+        "baseClass": "HelmToolSettings",
+        "properties": [
+          {
+            "name": "Help",
+            "type": "bool",
+            "format": "--help {value}",
+            "help": "Help for update."
           }
         ]
       }
