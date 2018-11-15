@@ -150,7 +150,7 @@ namespace Nuke.Helm.Generator.Parsing
                        {
                            Postfix = isRootTask ? null : definition.InstanceName,
                            Help = help,
-                           DefiniteArgument = definition.Name,
+                           DefiniteArgument = definition.Name.Replace("helm", string.Empty).Trim(),
                            Tool = _tool,
                            SettingsClass = settingsClass
                        };

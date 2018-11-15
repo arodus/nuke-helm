@@ -5,7 +5,7 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/en/1.0.0/)
 and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.html).
 
 ## [vNext]
-
+- Fixed commands.
 ## [0.3.0] / 2018-10-28
 - Changed supported version to [Helm v2.11.0](https://github.com/helm/helm/releases/tag/v2.11.0).
 ## [0.2.0] / 2018-10-06
