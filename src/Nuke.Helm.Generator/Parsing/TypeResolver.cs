@@ -19,6 +19,7 @@ namespace Nuke.Helm.Generator.Parsing
             property.Type = typeReference.Type;
             property.ItemFormat = typeReference.ItemFormat;
             property.Separator = typeReference.Separator;
+            property.Format = typeReference.Type == "bool" ? option.Flag : property.Format;
         }
 
         //Todo: load mapping from file

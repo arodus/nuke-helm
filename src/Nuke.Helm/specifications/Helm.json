@@ -6,52 +6,52 @@
     "https://github.com/nuke-build/kubernetes/blob/master/LICENSE"
   ],
   "references": [
-    "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm.md",
-    "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_completion.md",
-    "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_create.md",
-    "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_delete.md",
-    "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_dependency.md",
-    "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_dependency_build.md",
-    "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_dependency_list.md",
-    "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_dependency_update.md",
-    "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_fetch.md",
-    "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_get.md",
-    "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_get_hooks.md",
-    "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_get_manifest.md",
-    "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_get_notes.md",
-    "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_get_values.md",
-    "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_history.md",
-    "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_home.md",
-    "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_init.md",
-    "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_inspect.md",
-    "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_inspect_chart.md",
-    "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_inspect_readme.md",
-    "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_inspect_values.md",
-    "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_install.md",
-    "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_lint.md",
-    "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_list.md",
-    "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_package.md",
-    "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_plugin.md",
-    "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_plugin_install.md",
-    "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_plugin_list.md",
-    "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_plugin_remove.md",
-    "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_plugin_update.md",
-    "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_repo.md",
-    "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_repo_add.md",
-    "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_repo_index.md",
-    "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_repo_list.md",
-    "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_repo_remove.md",
-    "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_repo_update.md",
-    "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_reset.md",
-    "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_rollback.md",
-    "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_search.md",
-    "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_serve.md",
-    "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_status.md",
-    "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_template.md",
-    "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_test.md",
-    "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_upgrade.md",
-    "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_verify.md",
-    "https://raw.githubusercontent.com/helm/helm/v2.11.0/docs/helm/helm_version.md"
+    "https://raw.githubusercontent.com/helm/helm/v2.12.0/docs/helm/helm.md",
+    "https://raw.githubusercontent.com/helm/helm/v2.12.0/docs/helm/helm_completion.md",
+    "https://raw.githubusercontent.com/helm/helm/v2.12.0/docs/helm/helm_create.md",
+    "https://raw.githubusercontent.com/helm/helm/v2.12.0/docs/helm/helm_delete.md",
+    "https://raw.githubusercontent.com/helm/helm/v2.12.0/docs/helm/helm_dependency.md",
+    "https://raw.githubusercontent.com/helm/helm/v2.12.0/docs/helm/helm_dependency_build.md",
+    "https://raw.githubusercontent.com/helm/helm/v2.12.0/docs/helm/helm_dependency_list.md",
+    "https://raw.githubusercontent.com/helm/helm/v2.12.0/docs/helm/helm_dependency_update.md",
+    "https://raw.githubusercontent.com/helm/helm/v2.12.0/docs/helm/helm_fetch.md",
+    "https://raw.githubusercontent.com/helm/helm/v2.12.0/docs/helm/helm_get.md",
+    "https://raw.githubusercontent.com/helm/helm/v2.12.0/docs/helm/helm_get_hooks.md",
+    "https://raw.githubusercontent.com/helm/helm/v2.12.0/docs/helm/helm_get_manifest.md",
+    "https://raw.githubusercontent.com/helm/helm/v2.12.0/docs/helm/helm_get_notes.md",
+    "https://raw.githubusercontent.com/helm/helm/v2.12.0/docs/helm/helm_get_values.md",
+    "https://raw.githubusercontent.com/helm/helm/v2.12.0/docs/helm/helm_history.md",
+    "https://raw.githubusercontent.com/helm/helm/v2.12.0/docs/helm/helm_home.md",
+    "https://raw.githubusercontent.com/helm/helm/v2.12.0/docs/helm/helm_init.md",
+    "https://raw.githubusercontent.com/helm/helm/v2.12.0/docs/helm/helm_inspect.md",
+    "https://raw.githubusercontent.com/helm/helm/v2.12.0/docs/helm/helm_inspect_chart.md",
+    "https://raw.githubusercontent.com/helm/helm/v2.12.0/docs/helm/helm_inspect_readme.md",
+    "https://raw.githubusercontent.com/helm/helm/v2.12.0/docs/helm/helm_inspect_values.md",
+    "https://raw.githubusercontent.com/helm/helm/v2.12.0/docs/helm/helm_install.md",
+    "https://raw.githubusercontent.com/helm/helm/v2.12.0/docs/helm/helm_lint.md",
+    "https://raw.githubusercontent.com/helm/helm/v2.12.0/docs/helm/helm_list.md",
+    "https://raw.githubusercontent.com/helm/helm/v2.12.0/docs/helm/helm_package.md",
+    "https://raw.githubusercontent.com/helm/helm/v2.12.0/docs/helm/helm_plugin.md",
+    "https://raw.githubusercontent.com/helm/helm/v2.12.0/docs/helm/helm_plugin_install.md",
+    "https://raw.githubusercontent.com/helm/helm/v2.12.0/docs/helm/helm_plugin_list.md",
+    "https://raw.githubusercontent.com/helm/helm/v2.12.0/docs/helm/helm_plugin_remove.md",
+    "https://raw.githubusercontent.com/helm/helm/v2.12.0/docs/helm/helm_plugin_update.md",
+    "https://raw.githubusercontent.com/helm/helm/v2.12.0/docs/helm/helm_repo.md",
+    "https://raw.githubusercontent.com/helm/helm/v2.12.0/docs/helm/helm_repo_add.md",
+    "https://raw.githubusercontent.com/helm/helm/v2.12.0/docs/helm/helm_repo_index.md",
+    "https://raw.githubusercontent.com/helm/helm/v2.12.0/docs/helm/helm_repo_list.md",
+    "https://raw.githubusercontent.com/helm/helm/v2.12.0/docs/helm/helm_repo_remove.md",
+    "https://raw.githubusercontent.com/helm/helm/v2.12.0/docs/helm/helm_repo_update.md",
+    "https://raw.githubusercontent.com/helm/helm/v2.12.0/docs/helm/helm_reset.md",
+    "https://raw.githubusercontent.com/helm/helm/v2.12.0/docs/helm/helm_rollback.md",
+    "https://raw.githubusercontent.com/helm/helm/v2.12.0/docs/helm/helm_search.md",
+    "https://raw.githubusercontent.com/helm/helm/v2.12.0/docs/helm/helm_serve.md",
+    "https://raw.githubusercontent.com/helm/helm/v2.12.0/docs/helm/helm_status.md",
+    "https://raw.githubusercontent.com/helm/helm/v2.12.0/docs/helm/helm_template.md",
+    "https://raw.githubusercontent.com/helm/helm/v2.12.0/docs/helm/helm_test.md",
+    "https://raw.githubusercontent.com/helm/helm/v2.12.0/docs/helm/helm_upgrade.md",
+    "https://raw.githubusercontent.com/helm/helm/v2.12.0/docs/helm/helm_verify.md",
+    "https://raw.githubusercontent.com/helm/helm/v2.12.0/docs/helm/helm_version.md"
   ],
   "name": "Helm",
   "officialUrl": "https://helm.sh/",
@@ -67,7 +67,7 @@
           {
             "name": "Help",
             "type": "bool",
-            "format": "--help {value}",
+            "format": "--help",
             "help": "Help for completion."
           },
           {
@@ -79,7 +79,7 @@
       }
     },
     {
-      "help": "This command creates a chart directory along with the common files and directories used in a chart. For example, 'helm create foo' will create a directory structure that looks something like this: \tfoo/ \t  | \t  |- .helmignore   # Contains patterns to ignore when packaging Helm charts. \t  | \t  |- Chart.yaml    # Information about your chart \t  | \t  |- values.yaml   # The default values for your templates \t  | \t  |- charts/       # Charts that this chart depends on \t  | \t  |- templates/    # The template files 'helm create' takes a path for an argument. If directories in the given path do not exist, Helm will attempt to create them as it goes. If the given destination exists and there are files in that directory, conflicting files will be overwritten, but other files will be left alone.",
+      "help": "This command creates a chart directory along with the common files and directories used in a chart. For example, 'helm create foo' will create a directory structure that looks something like this: \tfoo/ \t  | \t  |- .helmignore        # Contains patterns to ignore when packaging Helm charts. \t  | \t  |- Chart.yaml         # Information about your chart \t  | \t  |- values.yaml        # The default values for your templates \t  | \t  |- charts/            # Charts that this chart depends on \t  | \t  |- templates/         # The template files \t  | \t  |- templates/tests/   # The test files 'helm create' takes a path for an argument. If directories in the given path do not exist, Helm will attempt to create them as it goes. If the given destination exists and there are files in that directory, conflicting files will be overwritten, but other files will be left alone.",
       "postfix": "Create",
       "definiteArgument": "create",
       "settingsClass": {
@@ -88,7 +88,7 @@
           {
             "name": "Help",
             "type": "bool",
-            "format": "--help {value}",
+            "format": "--help",
             "help": "Help for create."
           },
           {
@@ -122,25 +122,25 @@
           {
             "name": "DryRun",
             "type": "bool",
-            "format": "--dry-run {value}",
+            "format": "--dry-run",
             "help": "Simulate a delete."
           },
           {
             "name": "Help",
             "type": "bool",
-            "format": "--help {value}",
+            "format": "--help",
             "help": "Help for delete."
           },
           {
             "name": "NoHooks",
             "type": "bool",
-            "format": "--no-hooks {value}",
+            "format": "--no-hooks",
             "help": "Prevent hooks from running during deletion."
           },
           {
             "name": "Purge",
             "type": "bool",
-            "format": "--purge {value}",
+            "format": "--purge",
             "help": "Remove the release from the store and make its name free for later use."
           },
           {
@@ -152,7 +152,7 @@
           {
             "name": "Tls",
             "type": "bool",
-            "format": "--tls {value}",
+            "format": "--tls",
             "help": "Enable TLS for request."
           },
           {
@@ -182,7 +182,7 @@
           {
             "name": "TlsVerify",
             "type": "bool",
-            "format": "--tls-verify {value}",
+            "format": "--tls-verify",
             "help": "Enable TLS for request and verify remote."
           },
           {
@@ -205,7 +205,7 @@
           {
             "name": "Help",
             "type": "bool",
-            "format": "--help {value}",
+            "format": "--help",
             "help": "Help for build."
           },
           {
@@ -217,7 +217,7 @@
           {
             "name": "Verify",
             "type": "bool",
-            "format": "--verify {value}",
+            "format": "--verify",
             "help": "Verify the packages against signatures."
           },
           {
@@ -239,7 +239,7 @@
           {
             "name": "Help",
             "type": "bool",
-            "format": "--help {value}",
+            "format": "--help",
             "help": "Help for list."
           },
           {
@@ -261,7 +261,7 @@
           {
             "name": "Help",
             "type": "bool",
-            "format": "--help {value}",
+            "format": "--help",
             "help": "Help for update."
           },
           {
@@ -273,13 +273,13 @@
           {
             "name": "SkipRefresh",
             "type": "bool",
-            "format": "--skip-refresh {value}",
+            "format": "--skip-refresh",
             "help": "Do not refresh the local repository cache."
           },
           {
             "name": "Verify",
             "type": "bool",
-            "format": "--verify {value}",
+            "format": "--verify",
             "help": "Verify the packages against signatures."
           },
           {
@@ -319,13 +319,13 @@
           {
             "name": "Devel",
             "type": "bool",
-            "format": "--devel {value}",
+            "format": "--devel",
             "help": "Use development versions, too. Equivalent to version '&gt;0.0.0-0'. If --version is set, this is ignored."
           },
           {
             "name": "Help",
             "type": "bool",
-            "format": "--help {value}",
+            "format": "--help",
             "help": "Help for fetch."
           },
           {
@@ -350,7 +350,7 @@
           {
             "name": "Prov",
             "type": "bool",
-            "format": "--prov {value}",
+            "format": "--prov",
             "help": "Fetch the provenance file, but don't perform verification."
           },
           {
@@ -362,7 +362,7 @@
           {
             "name": "Untar",
             "type": "bool",
-            "format": "--untar {value}",
+            "format": "--untar",
             "help": "If set to true, will untar the chart after downloading it."
           },
           {
@@ -380,7 +380,7 @@
           {
             "name": "Verify",
             "type": "bool",
-            "format": "--verify {value}",
+            "format": "--verify",
             "help": "Verify the package against its signature."
           },
           {
@@ -409,7 +409,7 @@
           {
             "name": "Help",
             "type": "bool",
-            "format": "--help {value}",
+            "format": "--help",
             "help": "Help for get."
           },
           {
@@ -421,7 +421,7 @@
           {
             "name": "Tls",
             "type": "bool",
-            "format": "--tls {value}",
+            "format": "--tls",
             "help": "Enable TLS for request."
           },
           {
@@ -451,7 +451,7 @@
           {
             "name": "TlsVerify",
             "type": "bool",
-            "format": "--tls-verify {value}",
+            "format": "--tls-verify",
             "help": "Enable TLS for request and verify remote."
           },
           {
@@ -473,7 +473,7 @@
           {
             "name": "Help",
             "type": "bool",
-            "format": "--help {value}",
+            "format": "--help",
             "help": "Help for hooks."
           },
           {
@@ -485,7 +485,7 @@
           {
             "name": "Tls",
             "type": "bool",
-            "format": "--tls {value}",
+            "format": "--tls",
             "help": "Enable TLS for request."
           },
           {
@@ -515,7 +515,7 @@
           {
             "name": "TlsVerify",
             "type": "bool",
-            "format": "--tls-verify {value}",
+            "format": "--tls-verify",
             "help": "Enable TLS for request and verify remote."
           },
           {
@@ -537,7 +537,7 @@
           {
             "name": "Help",
             "type": "bool",
-            "format": "--help {value}",
+            "format": "--help",
             "help": "Help for manifest."
           },
           {
@@ -549,7 +549,7 @@
           {
             "name": "Tls",
             "type": "bool",
-            "format": "--tls {value}",
+            "format": "--tls",
             "help": "Enable TLS for request."
           },
           {
@@ -579,7 +579,7 @@
           {
             "name": "TlsVerify",
             "type": "bool",
-            "format": "--tls-verify {value}",
+            "format": "--tls-verify",
             "help": "Enable TLS for request and verify remote."
           },
           {
@@ -601,7 +601,7 @@
           {
             "name": "Help",
             "type": "bool",
-            "format": "--help {value}",
+            "format": "--help",
             "help": "Help for notes."
           },
           {
@@ -613,7 +613,7 @@
           {
             "name": "Tls",
             "type": "bool",
-            "format": "--tls {value}",
+            "format": "--tls",
             "help": "Enable TLS for request."
           },
           {
@@ -643,7 +643,7 @@
           {
             "name": "TlsVerify",
             "type": "bool",
-            "format": "--tls-verify {value}",
+            "format": "--tls-verify",
             "help": "Enable TLS for request and verify remote."
           },
           {
@@ -664,14 +664,20 @@
           {
             "name": "All",
             "type": "bool",
-            "format": "--all {value}",
+            "format": "--all",
             "help": "Dump all (computed) values."
           },
           {
             "name": "Help",
             "type": "bool",
-            "format": "--help {value}",
+            "format": "--help",
             "help": "Help for values."
+          },
+          {
+            "name": "Output",
+            "type": "string",
+            "format": "--output {value}",
+            "help": "Output the specified format (json or yaml) (default \"yaml\")."
           },
           {
             "name": "Revision",
@@ -682,7 +688,7 @@
           {
             "name": "Tls",
             "type": "bool",
-            "format": "--tls {value}",
+            "format": "--tls",
             "help": "Enable TLS for request."
           },
           {
@@ -712,7 +718,7 @@
           {
             "name": "TlsVerify",
             "type": "bool",
-            "format": "--tls-verify {value}",
+            "format": "--tls-verify",
             "help": "Enable TLS for request and verify remote."
           },
           {
@@ -740,7 +746,7 @@
           {
             "name": "Help",
             "type": "bool",
-            "format": "--help {value}",
+            "format": "--help",
             "help": "Help for history."
           },
           {
@@ -758,7 +764,7 @@
           {
             "name": "Tls",
             "type": "bool",
-            "format": "--tls {value}",
+            "format": "--tls",
             "help": "Enable TLS for request."
           },
           {
@@ -788,7 +794,7 @@
           {
             "name": "TlsVerify",
             "type": "bool",
-            "format": "--tls-verify {value}",
+            "format": "--tls-verify",
             "help": "Enable TLS for request and verify remote."
           },
           {
@@ -810,7 +816,7 @@
           {
             "name": "Help",
             "type": "bool",
-            "format": "--help {value}",
+            "format": "--help",
             "help": "Help for home."
           }
         ]
@@ -826,37 +832,37 @@
           {
             "name": "AutomountServiceAccountToken",
             "type": "bool",
-            "format": "--automount-service-account-token {value}",
+            "format": "--automount-service-account-token",
             "help": "Auto-mount the given service account to tiller (default true)."
           },
           {
             "name": "CanaryImage",
             "type": "bool",
-            "format": "--canary-image {value}",
+            "format": "--canary-image",
             "help": "Use the canary Tiller image."
           },
           {
             "name": "ClientOnly",
             "type": "bool",
-            "format": "--client-only {value}",
+            "format": "--client-only",
             "help": "If set does not install Tiller."
           },
           {
             "name": "DryRun",
             "type": "bool",
-            "format": "--dry-run {value}",
+            "format": "--dry-run",
             "help": "Do not install local or remote."
           },
           {
             "name": "ForceUpgrade",
             "type": "bool",
-            "format": "--force-upgrade {value}",
+            "format": "--force-upgrade",
             "help": "Force upgrade of Tiller to the current helm version."
           },
           {
             "name": "Help",
             "type": "bool",
-            "format": "--help {value}",
+            "format": "--help",
             "help": "Help for init."
           },
           {
@@ -874,7 +880,7 @@
           {
             "name": "NetHost",
             "type": "bool",
-            "format": "--net-host {value}",
+            "format": "--net-host",
             "help": "Install Tiller with net=host."
           },
           {
@@ -912,7 +918,7 @@
           {
             "name": "SkipRefresh",
             "type": "bool",
-            "format": "--skip-refresh {value}",
+            "format": "--skip-refresh",
             "help": "Do not refresh (download) the local repository cache."
           },
           {
@@ -930,7 +936,7 @@
           {
             "name": "TillerTls",
             "type": "bool",
-            "format": "--tiller-tls {value}",
+            "format": "--tiller-tls",
             "help": "Install Tiller with TLS enabled."
           },
           {
@@ -954,7 +960,7 @@
           {
             "name": "TillerTlsVerify",
             "type": "bool",
-            "format": "--tiller-tls-verify {value}",
+            "format": "--tiller-tls-verify",
             "help": "Install Tiller with TLS enabled and to verify remote certificates."
           },
           {
@@ -966,13 +972,13 @@
           {
             "name": "Upgrade",
             "type": "bool",
-            "format": "--upgrade {value}",
+            "format": "--upgrade",
             "help": "Upgrade if Tiller is already installed."
           },
           {
             "name": "Wait",
             "type": "bool",
-            "format": "--wait {value}",
+            "format": "--wait",
             "help": "Block until Tiller is running and ready to receive requests."
           }
         ]
@@ -1000,7 +1006,7 @@
           {
             "name": "Help",
             "type": "bool",
-            "format": "--help {value}",
+            "format": "--help",
             "help": "Help for inspect."
           },
           {
@@ -1037,7 +1043,7 @@
           {
             "name": "Verify",
             "type": "bool",
-            "format": "--verify {value}",
+            "format": "--verify",
             "help": "Verify the provenance data for this chart."
           },
           {
@@ -1077,7 +1083,7 @@
           {
             "name": "Help",
             "type": "bool",
-            "format": "--help {value}",
+            "format": "--help",
             "help": "Help for chart."
           },
           {
@@ -1114,7 +1120,7 @@
           {
             "name": "Verify",
             "type": "bool",
-            "format": "--verify {value}",
+            "format": "--verify",
             "help": "Verify the provenance data for this chart."
           },
           {
@@ -1154,7 +1160,7 @@
           {
             "name": "Help",
             "type": "bool",
-            "format": "--help {value}",
+            "format": "--help",
             "help": "Help for readme."
           },
           {
@@ -1178,7 +1184,7 @@
           {
             "name": "Verify",
             "type": "bool",
-            "format": "--verify {value}",
+            "format": "--verify",
             "help": "Verify the provenance data for this chart."
           },
           {
@@ -1218,7 +1224,7 @@
           {
             "name": "Help",
             "type": "bool",
-            "format": "--help {value}",
+            "format": "--help",
             "help": "Help for values."
           },
           {
@@ -1255,7 +1261,7 @@
           {
             "name": "Verify",
             "type": "bool",
-            "format": "--verify {value}",
+            "format": "--verify",
             "help": "Verify the provenance data for this chart."
           },
           {
@@ -1295,7 +1301,7 @@
           {
             "name": "DepUp",
             "type": "bool",
-            "format": "--dep-up {value}",
+            "format": "--dep-up",
             "help": "Run helm dependency update before installing the chart."
           },
           {
@@ -1307,19 +1313,19 @@
           {
             "name": "Devel",
             "type": "bool",
-            "format": "--devel {value}",
+            "format": "--devel",
             "help": "Use development versions, too. Equivalent to version '&gt;0.0.0-0'. If --version is set, this is ignored."
           },
           {
             "name": "DryRun",
             "type": "bool",
-            "format": "--dry-run {value}",
+            "format": "--dry-run",
             "help": "Simulate an install."
           },
           {
             "name": "Help",
             "type": "bool",
-            "format": "--help {value}",
+            "format": "--help",
             "help": "Help for install."
           },
           {
@@ -1355,13 +1361,13 @@
           {
             "name": "NoCrdHook",
             "type": "bool",
-            "format": "--no-crd-hook {value}",
+            "format": "--no-crd-hook",
             "help": "Prevent CRD hooks from running, but run other hooks."
           },
           {
             "name": "NoHooks",
             "type": "bool",
-            "format": "--no-hooks {value}",
+            "format": "--no-hooks",
             "help": "Prevent hooks from running during install."
           },
           {
@@ -1374,7 +1380,7 @@
           {
             "name": "Replace",
             "type": "bool",
-            "format": "--replace {value}",
+            "format": "--replace",
             "help": "Re-use the given name, even if that name is already used. This is unsafe in production."
           },
           {
@@ -1416,7 +1422,7 @@
           {
             "name": "Tls",
             "type": "bool",
-            "format": "--tls {value}",
+            "format": "--tls",
             "help": "Enable TLS for request."
           },
           {
@@ -1446,7 +1452,7 @@
           {
             "name": "TlsVerify",
             "type": "bool",
-            "format": "--tls-verify {value}",
+            "format": "--tls-verify",
             "help": "Enable TLS for request and verify remote."
           },
           {
@@ -1465,7 +1471,7 @@
           {
             "name": "Verify",
             "type": "bool",
-            "format": "--verify {value}",
+            "format": "--verify",
             "help": "Verify the package before installing it."
           },
           {
@@ -1477,7 +1483,7 @@
           {
             "name": "Wait",
             "type": "bool",
-            "format": "--wait {value}",
+            "format": "--wait",
             "help": "If set, will wait until all Pods, PVCs, Services, and minimum number of Pods of a Deployment are in a ready state before marking the release as successful. It will wait for as long as --timeout."
           },
           {
@@ -1499,7 +1505,7 @@
           {
             "name": "Help",
             "type": "bool",
-            "format": "--help {value}",
+            "format": "--help",
             "help": "Help for lint."
           },
           {
@@ -1535,7 +1541,7 @@
           {
             "name": "Strict",
             "type": "bool",
-            "format": "--strict {value}",
+            "format": "--strict",
             "help": "Fail on lint warnings."
           },
           {
@@ -1564,13 +1570,13 @@
           {
             "name": "All",
             "type": "bool",
-            "format": "--all {value}",
+            "format": "--all",
             "help": "Show all releases, not just the ones marked DEPLOYED."
           },
           {
             "name": "ChartName",
             "type": "bool",
-            "format": "--chart-name {value}",
+            "format": "--chart-name",
             "help": "Sort by chart name."
           },
           {
@@ -1582,37 +1588,37 @@
           {
             "name": "Date",
             "type": "bool",
-            "format": "--date {value}",
+            "format": "--date",
             "help": "Sort by release date."
           },
           {
             "name": "Deleted",
             "type": "bool",
-            "format": "--deleted {value}",
+            "format": "--deleted",
             "help": "Show deleted releases."
           },
           {
             "name": "Deleting",
             "type": "bool",
-            "format": "--deleting {value}",
+            "format": "--deleting",
             "help": "Show releases that are currently being deleted."
           },
           {
             "name": "Deployed",
             "type": "bool",
-            "format": "--deployed {value}",
+            "format": "--deployed",
             "help": "Show deployed releases. If no other is specified, this will be automatically enabled."
           },
           {
             "name": "Failed",
             "type": "bool",
-            "format": "--failed {value}",
+            "format": "--failed",
             "help": "Show failed releases."
           },
           {
             "name": "Help",
             "type": "bool",
-            "format": "--help {value}",
+            "format": "--help",
             "help": "Help for list."
           },
           {
@@ -1642,25 +1648,25 @@
           {
             "name": "Pending",
             "type": "bool",
-            "format": "--pending {value}",
+            "format": "--pending",
             "help": "Show pending releases."
           },
           {
             "name": "Reverse",
             "type": "bool",
-            "format": "--reverse {value}",
+            "format": "--reverse",
             "help": "Reverse the sort order."
           },
           {
             "name": "Short",
             "type": "bool",
-            "format": "--short {value}",
+            "format": "--short",
             "help": "Output short (quiet) listing format."
           },
           {
             "name": "Tls",
             "type": "bool",
-            "format": "--tls {value}",
+            "format": "--tls",
             "help": "Enable TLS for request."
           },
           {
@@ -1690,7 +1696,7 @@
           {
             "name": "TlsVerify",
             "type": "bool",
-            "format": "--tls-verify {value}",
+            "format": "--tls-verify",
             "help": "Enable TLS for request and verify remote."
           },
           {
@@ -1718,7 +1724,7 @@
           {
             "name": "DependencyUpdate",
             "type": "bool",
-            "format": "--dependency-update {value}",
+            "format": "--dependency-update",
             "help": "Update dependencies from \"requirements.yaml\" to dir \"charts/\" before packaging."
           },
           {
@@ -1730,7 +1736,7 @@
           {
             "name": "Help",
             "type": "bool",
-            "format": "--help {value}",
+            "format": "--help",
             "help": "Help for package."
           },
           {
@@ -1748,13 +1754,13 @@
           {
             "name": "Save",
             "type": "bool",
-            "format": "--save {value}",
+            "format": "--save",
             "help": "Save packaged chart to local chart repository (default true)."
           },
           {
             "name": "Sign",
             "type": "bool",
-            "format": "--sign {value}",
+            "format": "--sign",
             "help": "Use a PGP private key to sign this package."
           },
           {
@@ -1783,7 +1789,7 @@
           {
             "name": "Help",
             "type": "bool",
-            "format": "--help {value}",
+            "format": "--help",
             "help": "Help for install."
           },
           {
@@ -1817,7 +1823,7 @@
           {
             "name": "Help",
             "type": "bool",
-            "format": "--help {value}",
+            "format": "--help",
             "help": "Help for list."
           }
         ]
@@ -1833,7 +1839,7 @@
           {
             "name": "Help",
             "type": "bool",
-            "format": "--help {value}",
+            "format": "--help",
             "help": "Help for remove."
           },
           {
@@ -1856,7 +1862,7 @@
           {
             "name": "Help",
             "type": "bool",
-            "format": "--help {value}",
+            "format": "--help",
             "help": "Help for update."
           },
           {
@@ -1891,7 +1897,7 @@
           {
             "name": "Help",
             "type": "bool",
-            "format": "--help {value}",
+            "format": "--help",
             "help": "Help for add."
           },
           {
@@ -1903,7 +1909,7 @@
           {
             "name": "NoUpdate",
             "type": "bool",
-            "format": "--no-update {value}",
+            "format": "--no-update",
             "help": "Raise error if repo is already registered."
           },
           {
@@ -1944,7 +1950,7 @@
           {
             "name": "Help",
             "type": "bool",
-            "format": "--help {value}",
+            "format": "--help",
             "help": "Help for index."
           },
           {
@@ -1978,7 +1984,7 @@
           {
             "name": "Help",
             "type": "bool",
-            "format": "--help {value}",
+            "format": "--help",
             "help": "Help for list."
           }
         ]
@@ -1994,7 +2000,7 @@
           {
             "name": "Help",
             "type": "bool",
-            "format": "--help {value}",
+            "format": "--help",
             "help": "Help for remove."
           },
           {
@@ -2016,8 +2022,14 @@
           {
             "name": "Help",
             "type": "bool",
-            "format": "--help {value}",
+            "format": "--help",
             "help": "Help for update."
+          },
+          {
+            "name": "Strict",
+            "type": "bool",
+            "format": "--strict",
+            "help": "Fail on update warnings."
           }
         ]
       }
@@ -2032,25 +2044,25 @@
           {
             "name": "Force",
             "type": "bool",
-            "format": "--force {value}",
+            "format": "--force",
             "help": "Forces Tiller uninstall even if there are releases installed, or if Tiller is not in ready state. Releases are not deleted.)."
           },
           {
             "name": "Help",
             "type": "bool",
-            "format": "--help {value}",
+            "format": "--help",
             "help": "Help for reset."
           },
           {
             "name": "RemoveHelmHome",
             "type": "bool",
-            "format": "--remove-helm-home {value}",
+            "format": "--remove-helm-home",
             "help": "If set deletes $HELM_HOME."
           },
           {
             "name": "Tls",
             "type": "bool",
-            "format": "--tls {value}",
+            "format": "--tls",
             "help": "Enable TLS for request."
           },
           {
@@ -2080,7 +2092,7 @@
           {
             "name": "TlsVerify",
             "type": "bool",
-            "format": "--tls-verify {value}",
+            "format": "--tls-verify",
             "help": "Enable TLS for request and verify remote."
           }
         ]
@@ -2102,31 +2114,31 @@
           {
             "name": "DryRun",
             "type": "bool",
-            "format": "--dry-run {value}",
+            "format": "--dry-run",
             "help": "Simulate a rollback."
           },
           {
             "name": "Force",
             "type": "bool",
-            "format": "--force {value}",
+            "format": "--force",
             "help": "Force resource update through delete/recreate if needed."
           },
           {
             "name": "Help",
             "type": "bool",
-            "format": "--help {value}",
+            "format": "--help",
             "help": "Help for rollback."
           },
           {
             "name": "NoHooks",
             "type": "bool",
-            "format": "--no-hooks {value}",
+            "format": "--no-hooks",
             "help": "Prevent hooks from running during rollback."
           },
           {
             "name": "RecreatePods",
             "type": "bool",
-            "format": "--recreate-pods {value}",
+            "format": "--recreate-pods",
             "help": "Performs pods restart for the resource if applicable."
           },
           {
@@ -2138,7 +2150,7 @@
           {
             "name": "Tls",
             "type": "bool",
-            "format": "--tls {value}",
+            "format": "--tls",
             "help": "Enable TLS for request."
           },
           {
@@ -2168,13 +2180,13 @@
           {
             "name": "TlsVerify",
             "type": "bool",
-            "format": "--tls-verify {value}",
+            "format": "--tls-verify",
             "help": "Enable TLS for request and verify remote."
           },
           {
             "name": "Wait",
             "type": "bool",
-            "format": "--wait {value}",
+            "format": "--wait",
             "help": "If set, will wait until all Pods, PVCs, Services, and minimum number of Pods of a Deployment are in a ready state before marking the release as successful. It will wait for as long as --timeout."
           },
           {
@@ -2208,13 +2220,13 @@
           {
             "name": "Help",
             "type": "bool",
-            "format": "--help {value}",
+            "format": "--help",
             "help": "Help for search."
           },
           {
             "name": "Regexp",
             "type": "bool",
-            "format": "--regexp {value}",
+            "format": "--regexp",
             "help": "Use regular expressions for searching."
           },
           {
@@ -2226,7 +2238,7 @@
           {
             "name": "Versions",
             "type": "bool",
-            "format": "--versions {value}",
+            "format": "--versions",
             "help": "Show the long listing, with each version of each chart on its own line."
           },
           {
@@ -2239,7 +2251,7 @@
       }
     },
     {
-      "help": "This command starts a local chart repository server that serves charts from a local directory. The new server will provide HTTP access to a repository. By default, it will scan all of the charts in '$HELM_HOME/repository/local' and serve those over the local IPv4 TCP port (default '127.0.0.1:8879'). This command is intended to be used for educational and testing purposes only. It is best to rely on a dedicated web server or a cloud-hosted solution like Google Cloud Storage for production use. See https://github.com/kubernetes/helm/blob/master/docs/chart_repository.md#hosting-chart-repositories for more information on hosting chart repositories in a production setting.",
+      "help": "This command starts a local chart repository server that serves charts from a local directory. The new server will provide HTTP access to a repository. By default, it will scan all of the charts in '$HELM_HOME/repository/local' and serve those over the local IPv4 TCP port (default '127.0.0.1:8879'). This command is intended to be used for educational and testing purposes only. It is best to rely on a dedicated web server or a cloud-hosted solution like Google Cloud Storage for production use. See https://github.com/helm/helm/blob/master/docs/chart_repository.md#hosting-chart-repositories for more information on hosting chart repositories in a production setting.",
       "postfix": "Serve",
       "definiteArgument": "serve",
       "settingsClass": {
@@ -2254,7 +2266,7 @@
           {
             "name": "Help",
             "type": "bool",
-            "format": "--help {value}",
+            "format": "--help",
             "help": "Help for serve."
           },
           {
@@ -2282,7 +2294,7 @@
           {
             "name": "Help",
             "type": "bool",
-            "format": "--help {value}",
+            "format": "--help",
             "help": "Help for status."
           },
           {
@@ -2300,7 +2312,7 @@
           {
             "name": "Tls",
             "type": "bool",
-            "format": "--tls {value}",
+            "format": "--tls",
             "help": "Enable TLS for request."
           },
           {
@@ -2330,7 +2342,7 @@
           {
             "name": "TlsVerify",
             "type": "bool",
-            "format": "--tls-verify {value}",
+            "format": "--tls-verify",
             "help": "Enable TLS for request and verify remote."
           },
           {
@@ -2360,13 +2372,13 @@
           {
             "name": "Help",
             "type": "bool",
-            "format": "--help {value}",
+            "format": "--help",
             "help": "Help for template."
           },
           {
             "name": "IsUpgrade",
             "type": "bool",
-            "format": "--is-upgrade {value}",
+            "format": "--is-upgrade",
             "help": "Set .Release.IsUpgrade instead of .Release.IsInstall."
           },
           {
@@ -2379,7 +2391,7 @@
             "name": "Name",
             "type": "string",
             "format": "--name {value}",
-            "help": "Release name (default \"RELEASE-NAME\")."
+            "help": "Release name (default \"release-name\")."
           },
           {
             "name": "NameTemplate",
@@ -2396,7 +2408,7 @@
           {
             "name": "Notes",
             "type": "bool",
-            "format": "--notes {value}",
+            "format": "--notes",
             "help": "Show the computed NOTES.txt file as well."
           },
           {
@@ -2454,13 +2466,13 @@
           {
             "name": "Cleanup",
             "type": "bool",
-            "format": "--cleanup {value}",
+            "format": "--cleanup",
             "help": "Delete test pods upon completion."
           },
           {
             "name": "Help",
             "type": "bool",
-            "format": "--help {value}",
+            "format": "--help",
             "help": "Help for test."
           },
           {
@@ -2472,7 +2484,7 @@
           {
             "name": "Tls",
             "type": "bool",
-            "format": "--tls {value}",
+            "format": "--tls",
             "help": "Enable TLS for request."
           },
           {
@@ -2502,7 +2514,7 @@
           {
             "name": "TlsVerify",
             "type": "bool",
-            "format": "--tls-verify {value}",
+            "format": "--tls-verify",
             "help": "Enable TLS for request and verify remote."
           },
           {
@@ -2542,31 +2554,31 @@
           {
             "name": "Devel",
             "type": "bool",
-            "format": "--devel {value}",
+            "format": "--devel",
             "help": "Use development versions, too. Equivalent to version '&gt;0.0.0-0'. If --version is set, this is ignored."
           },
           {
             "name": "DryRun",
             "type": "bool",
-            "format": "--dry-run {value}",
+            "format": "--dry-run",
             "help": "Simulate an upgrade."
           },
           {
             "name": "Force",
             "type": "bool",
-            "format": "--force {value}",
+            "format": "--force",
             "help": "Force resource update through delete/recreate if needed."
           },
           {
             "name": "Help",
             "type": "bool",
-            "format": "--help {value}",
+            "format": "--help",
             "help": "Help for upgrade."
           },
           {
             "name": "Install",
             "type": "bool",
-            "format": "--install {value}",
+            "format": "--install",
             "help": "If a release by this name doesn't already exist, run an install."
           },
           {
@@ -2590,7 +2602,7 @@
           {
             "name": "NoHooks",
             "type": "bool",
-            "format": "--no-hooks {value}",
+            "format": "--no-hooks",
             "help": "Disable pre/post upgrade hooks."
           },
           {
@@ -2603,7 +2615,7 @@
           {
             "name": "RecreatePods",
             "type": "bool",
-            "format": "--recreate-pods {value}",
+            "format": "--recreate-pods",
             "help": "Performs pods restart for the resource if applicable."
           },
           {
@@ -2615,13 +2627,13 @@
           {
             "name": "ResetValues",
             "type": "bool",
-            "format": "--reset-values {value}",
+            "format": "--reset-values",
             "help": "When upgrading, reset the values to the ones built into the chart."
           },
           {
             "name": "ReuseValues",
             "type": "bool",
-            "format": "--reuse-values {value}",
+            "format": "--reuse-values",
             "help": "When upgrading, reuse the last release's values and merge in any overrides from the command line via --set and -f. If '--reset-values' is specified, this is ignored."
           },
           {
@@ -2657,7 +2669,7 @@
           {
             "name": "Tls",
             "type": "bool",
-            "format": "--tls {value}",
+            "format": "--tls",
             "help": "Enable TLS for request."
           },
           {
@@ -2687,7 +2699,7 @@
           {
             "name": "TlsVerify",
             "type": "bool",
-            "format": "--tls-verify {value}",
+            "format": "--tls-verify",
             "help": "Enable TLS for request and verify remote."
           },
           {
@@ -2706,7 +2718,7 @@
           {
             "name": "Verify",
             "type": "bool",
-            "format": "--verify {value}",
+            "format": "--verify",
             "help": "Verify the provenance of the chart before upgrading."
           },
           {
@@ -2718,7 +2730,7 @@
           {
             "name": "Wait",
             "type": "bool",
-            "format": "--wait {value}",
+            "format": "--wait",
             "help": "If set, will wait until all Pods, PVCs, Services, and minimum number of Pods of a Deployment are in a ready state before marking the release as successful. It will wait for as long as --timeout."
           },
           {
@@ -2746,7 +2758,7 @@
           {
             "name": "Help",
             "type": "bool",
-            "format": "--help {value}",
+            "format": "--help",
             "help": "Help for verify."
           },
           {
@@ -2774,25 +2786,25 @@
           {
             "name": "Client",
             "type": "bool",
-            "format": "--client {value}",
+            "format": "--client",
             "help": "Client version only."
           },
           {
             "name": "Help",
             "type": "bool",
-            "format": "--help {value}",
+            "format": "--help",
             "help": "Help for version."
           },
           {
             "name": "Server",
             "type": "bool",
-            "format": "--server {value}",
+            "format": "--server",
             "help": "Server version only."
           },
           {
             "name": "Short",
             "type": "bool",
-            "format": "--short {value}",
+            "format": "--short",
             "help": "Print the version number."
           },
           {
@@ -2804,7 +2816,7 @@
           {
             "name": "Tls",
             "type": "bool",
-            "format": "--tls {value}",
+            "format": "--tls",
             "help": "Enable TLS for request."
           },
           {
@@ -2834,7 +2846,7 @@
           {
             "name": "TlsVerify",
             "type": "bool",
-            "format": "--tls-verify {value}",
+            "format": "--tls-verify",
             "help": "Enable TLS for request and verify remote."
           }
         ]
@@ -2850,13 +2862,13 @@
         {
           "name": "Debug",
           "type": "bool",
-          "format": "--debug {value}",
+          "format": "--debug",
           "help": "Enable verbose output."
         },
         {
           "name": "Help",
           "type": "bool",
-          "format": "--help {value}",
+          "format": "--help",
           "help": "Help for helm."
         },
         {

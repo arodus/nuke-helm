@@ -42,7 +42,7 @@ namespace Nuke.Helm
             process.AssertZeroExitCode();
             return process.Output;
         }
-        /// <summary><p>This command creates a chart directory along with the common files and directories used in a chart. For example, 'helm create foo' will create a directory structure that looks something like this: 	foo/ 	  | 	  |- .helmignore   # Contains patterns to ignore when packaging Helm charts. 	  | 	  |- Chart.yaml    # Information about your chart 	  | 	  |- values.yaml   # The default values for your templates 	  | 	  |- charts/       # Charts that this chart depends on 	  | 	  |- templates/    # The template files 'helm create' takes a path for an argument. If directories in the given path do not exist, Helm will attempt to create them as it goes. If the given destination exists and there are files in that directory, conflicting files will be overwritten, but other files will be left alone.</p><p>For more details, visit the <a href="https://helm.sh/">official website</a>.</p></summary>
+        /// <summary><p>This command creates a chart directory along with the common files and directories used in a chart. For example, 'helm create foo' will create a directory structure that looks something like this: 	foo/ 	  | 	  |- .helmignore        # Contains patterns to ignore when packaging Helm charts. 	  | 	  |- Chart.yaml         # Information about your chart 	  | 	  |- values.yaml        # The default values for your templates 	  | 	  |- charts/            # Charts that this chart depends on 	  | 	  |- templates/         # The template files 	  | 	  |- templates/tests/   # The test files 'helm create' takes a path for an argument. If directories in the given path do not exist, Helm will attempt to create them as it goes. If the given destination exists and there are files in that directory, conflicting files will be overwritten, but other files will be left alone.</p><p>For more details, visit the <a href="https://helm.sh/">official website</a>.</p></summary>
         public static IReadOnlyCollection<Output> HelmCreate(Configure<HelmCreateSettings> configurator = null)
         {
             var toolSettings = configurator.InvokeSafe(new HelmCreateSettings());
@@ -314,7 +314,7 @@ namespace Nuke.Helm
             process.AssertZeroExitCode();
             return process.Output;
         }
-        /// <summary><p>This command starts a local chart repository server that serves charts from a local directory. The new server will provide HTTP access to a repository. By default, it will scan all of the charts in '$HELM_HOME/repository/local' and serve those over the local IPv4 TCP port (default '127.0.0.1:8879'). This command is intended to be used for educational and testing purposes only. It is best to rely on a dedicated web server or a cloud-hosted solution like Google Cloud Storage for production use. See https://github.com/kubernetes/helm/blob/master/docs/chart_repository.md#hosting-chart-repositories for more information on hosting chart repositories in a production setting.</p><p>For more details, visit the <a href="https://helm.sh/">official website</a>.</p></summary>
+        /// <summary><p>This command starts a local chart repository server that serves charts from a local directory. The new server will provide HTTP access to a repository. By default, it will scan all of the charts in '$HELM_HOME/repository/local' and serve those over the local IPv4 TCP port (default '127.0.0.1:8879'). This command is intended to be used for educational and testing purposes only. It is best to rely on a dedicated web server or a cloud-hosted solution like Google Cloud Storage for production use. See https://github.com/helm/helm/blob/master/docs/chart_repository.md#hosting-chart-repositories for more information on hosting chart repositories in a production setting.</p><p>For more details, visit the <a href="https://helm.sh/">official website</a>.</p></summary>
         public static IReadOnlyCollection<Output> HelmServe(Configure<HelmServeSettings> configurator = null)
         {
             var toolSettings = configurator.InvokeSafe(new HelmServeSettings());
@@ -387,7 +387,7 @@ namespace Nuke.Helm
         {
             arguments
               .Add("completion")
-              .Add("--help {value}", Help)
+              .Add("--help", Help)
               .Add("{value}", Shell);
             return base.ConfigureArguments(arguments);
         }
@@ -412,7 +412,7 @@ namespace Nuke.Helm
         {
             arguments
               .Add("create")
-              .Add("--help {value}", Help)
+              .Add("--help", Help)
               .Add("--starter {value}", Starter)
               .Add("{value}", Name);
             return base.ConfigureArguments(arguments);
@@ -460,17 +460,17 @@ namespace Nuke.Helm
             arguments
               .Add("delete")
               .Add("--description {value}", Description)
-              .Add("--dry-run {value}", DryRun)
-              .Add("--help {value}", Help)
-              .Add("--no-hooks {value}", NoHooks)
-              .Add("--purge {value}", Purge)
+              .Add("--dry-run", DryRun)
+              .Add("--help", Help)
+              .Add("--no-hooks", NoHooks)
+              .Add("--purge", Purge)
               .Add("--timeout {value}", Timeout)
-              .Add("--tls {value}", Tls)
+              .Add("--tls", Tls)
               .Add("--tls-ca-cert {value}", TlsCaCert)
               .Add("--tls-cert {value}", TlsCert)
               .Add("--tls-hostname {value}", TlsHostname)
               .Add("--tls-key {value}", TlsKey)
-              .Add("--tls-verify {value}", TlsVerify)
+              .Add("--tls-verify", TlsVerify)
               .Add("{value}", ReleaseNames, separator: ' ');
             return base.ConfigureArguments(arguments);
         }
@@ -497,9 +497,9 @@ namespace Nuke.Helm
         {
             arguments
               .Add("dependency build")
-              .Add("--help {value}", Help)
+              .Add("--help", Help)
               .Add("--keyring {value}", Keyring)
-              .Add("--verify {value}", Verify)
+              .Add("--verify", Verify)
               .Add("{value}", Chart);
             return base.ConfigureArguments(arguments);
         }
@@ -522,7 +522,7 @@ namespace Nuke.Helm
         {
             arguments
               .Add("dependency list")
-              .Add("--help {value}", Help)
+              .Add("--help", Help)
               .Add("{value}", Chart);
             return base.ConfigureArguments(arguments);
         }
@@ -551,10 +551,10 @@ namespace Nuke.Helm
         {
             arguments
               .Add("dependency update")
-              .Add("--help {value}", Help)
+              .Add("--help", Help)
               .Add("--keyring {value}", Keyring)
-              .Add("--skip-refresh {value}", SkipRefresh)
-              .Add("--verify {value}", Verify)
+              .Add("--skip-refresh", SkipRefresh)
+              .Add("--verify", Verify)
               .Add("{value}", Chart);
             return base.ConfigureArguments(arguments);
         }
@@ -609,17 +609,17 @@ namespace Nuke.Helm
               .Add("--ca-file {value}", CaFile)
               .Add("--cert-file {value}", CertFile)
               .Add("--destination {value}", Destination)
-              .Add("--devel {value}", Devel)
-              .Add("--help {value}", Help)
+              .Add("--devel", Devel)
+              .Add("--help", Help)
               .Add("--key-file {value}", KeyFile)
               .Add("--keyring {value}", Keyring)
               .Add("--password {value}", Password, secret: true)
-              .Add("--prov {value}", Prov)
+              .Add("--prov", Prov)
               .Add("--repo {value}", Repo)
-              .Add("--untar {value}", Untar)
+              .Add("--untar", Untar)
               .Add("--untardir {value}", Untardir)
               .Add("--username {value}", Username)
-              .Add("--verify {value}", Verify)
+              .Add("--verify", Verify)
               .Add("--version {value}", Version)
               .Add("{value}", Charts, separator: ' ');
             return base.ConfigureArguments(arguments);
@@ -657,14 +657,14 @@ namespace Nuke.Helm
         {
             arguments
               .Add("get")
-              .Add("--help {value}", Help)
+              .Add("--help", Help)
               .Add("--revision {value}", Revision)
-              .Add("--tls {value}", Tls)
+              .Add("--tls", Tls)
               .Add("--tls-ca-cert {value}", TlsCaCert)
               .Add("--tls-cert {value}", TlsCert)
               .Add("--tls-hostname {value}", TlsHostname)
               .Add("--tls-key {value}", TlsKey)
-              .Add("--tls-verify {value}", TlsVerify)
+              .Add("--tls-verify", TlsVerify)
               .Add("{value}", ReleaseName);
             return base.ConfigureArguments(arguments);
         }
@@ -701,14 +701,14 @@ namespace Nuke.Helm
         {
             arguments
               .Add("get hooks")
-              .Add("--help {value}", Help)
+              .Add("--help", Help)
               .Add("--revision {value}", Revision)
-              .Add("--tls {value}", Tls)
+              .Add("--tls", Tls)
               .Add("--tls-ca-cert {value}", TlsCaCert)
               .Add("--tls-cert {value}", TlsCert)
               .Add("--tls-hostname {value}", TlsHostname)
               .Add("--tls-key {value}", TlsKey)
-              .Add("--tls-verify {value}", TlsVerify)
+              .Add("--tls-verify", TlsVerify)
               .Add("{value}", ReleaseName);
             return base.ConfigureArguments(arguments);
         }
@@ -745,14 +745,14 @@ namespace Nuke.Helm
         {
             arguments
               .Add("get manifest")
-              .Add("--help {value}", Help)
+              .Add("--help", Help)
               .Add("--revision {value}", Revision)
-              .Add("--tls {value}", Tls)
+              .Add("--tls", Tls)
               .Add("--tls-ca-cert {value}", TlsCaCert)
               .Add("--tls-cert {value}", TlsCert)
               .Add("--tls-hostname {value}", TlsHostname)
               .Add("--tls-key {value}", TlsKey)
-              .Add("--tls-verify {value}", TlsVerify)
+              .Add("--tls-verify", TlsVerify)
               .Add("{value}", ReleaseName);
             return base.ConfigureArguments(arguments);
         }
@@ -788,14 +788,14 @@ namespace Nuke.Helm
         {
             arguments
               .Add("get notes")
-              .Add("--help {value}", Help)
+              .Add("--help", Help)
               .Add("--revision {value}", Revision)
-              .Add("--tls {value}", Tls)
+              .Add("--tls", Tls)
               .Add("--tls-ca-cert {value}", TlsCaCert)
               .Add("--tls-cert {value}", TlsCert)
               .Add("--tls-hostname {value}", TlsHostname)
               .Add("--tls-key {value}", TlsKey)
-              .Add("--tls-verify {value}", TlsVerify)
+              .Add("--tls-verify", TlsVerify)
               .Add("{value}", ReleaseName);
             return base.ConfigureArguments(arguments);
         }
@@ -814,6 +814,8 @@ namespace Nuke.Helm
         public virtual bool? All { get; internal set; }
         /// <summary><p>Help for values.</p></summary>
         public virtual bool? Help { get; internal set; }
+        /// <summary><p>Output the specified format (json or yaml) (default "yaml").</p></summary>
+        public virtual string Output { get; internal set; }
         /// <summary><p>Get the named release with revision.</p></summary>
         public virtual int? Revision { get; internal set; }
         /// <summary><p>Enable TLS for request.</p></summary>
@@ -834,15 +836,16 @@ namespace Nuke.Helm
         {
             arguments
               .Add("get values")
-              .Add("--all {value}", All)
-              .Add("--help {value}", Help)
+              .Add("--all", All)
+              .Add("--help", Help)
+              .Add("--output {value}", Output)
               .Add("--revision {value}", Revision)
-              .Add("--tls {value}", Tls)
+              .Add("--tls", Tls)
               .Add("--tls-ca-cert {value}", TlsCaCert)
               .Add("--tls-cert {value}", TlsCert)
               .Add("--tls-hostname {value}", TlsHostname)
               .Add("--tls-key {value}", TlsKey)
-              .Add("--tls-verify {value}", TlsVerify)
+              .Add("--tls-verify", TlsVerify)
               .Add("{value}", ReleaseName);
             return base.ConfigureArguments(arguments);
         }
@@ -884,15 +887,15 @@ namespace Nuke.Helm
             arguments
               .Add("history")
               .Add("--col-width {value}", ColWidth)
-              .Add("--help {value}", Help)
+              .Add("--help", Help)
               .Add("--max {value}", Max)
               .Add("--output {value}", Output)
-              .Add("--tls {value}", Tls)
+              .Add("--tls", Tls)
               .Add("--tls-ca-cert {value}", TlsCaCert)
               .Add("--tls-cert {value}", TlsCert)
               .Add("--tls-hostname {value}", TlsHostname)
               .Add("--tls-key {value}", TlsKey)
-              .Add("--tls-verify {value}", TlsVerify)
+              .Add("--tls-verify", TlsVerify)
               .Add("{value}", ReleaseName);
             return base.ConfigureArguments(arguments);
         }
@@ -913,7 +916,7 @@ namespace Nuke.Helm
         {
             arguments
               .Add("home")
-              .Add("--help {value}", Help);
+              .Add("--help", Help);
             return base.ConfigureArguments(arguments);
         }
     }
@@ -982,31 +985,31 @@ namespace Nuke.Helm
         {
             arguments
               .Add("init")
-              .Add("--automount-service-account-token {value}", AutomountServiceAccountToken)
-              .Add("--canary-image {value}", CanaryImage)
-              .Add("--client-only {value}", ClientOnly)
-              .Add("--dry-run {value}", DryRun)
-              .Add("--force-upgrade {value}", ForceUpgrade)
-              .Add("--help {value}", Help)
+              .Add("--automount-service-account-token", AutomountServiceAccountToken)
+              .Add("--canary-image", CanaryImage)
+              .Add("--client-only", ClientOnly)
+              .Add("--dry-run", DryRun)
+              .Add("--force-upgrade", ForceUpgrade)
+              .Add("--help", Help)
               .Add("--history-max {value}", HistoryMax)
               .Add("--local-repo-url {value}", LocalRepoUrl)
-              .Add("--net-host {value}", NetHost)
+              .Add("--net-host", NetHost)
               .Add("--node-selectors {value}", NodeSelectors)
               .Add("--output {value}", Output)
               .Add("--override {value}", Override, "{key}={value}", separator: ',')
               .Add("--replicas {value}", Replicas)
               .Add("--service-account {value}", ServiceAccount)
-              .Add("--skip-refresh {value}", SkipRefresh)
+              .Add("--skip-refresh", SkipRefresh)
               .Add("--stable-repo-url {value}", StableRepoUrl)
               .Add("--tiller-image {value}", TillerImage)
-              .Add("--tiller-tls {value}", TillerTls)
+              .Add("--tiller-tls", TillerTls)
               .Add("--tiller-tls-cert {value}", TillerTlsCert)
               .Add("--tiller-tls-hostname {value}", TillerTlsHostname)
               .Add("--tiller-tls-key {value}", TillerTlsKey)
-              .Add("--tiller-tls-verify {value}", TillerTlsVerify)
+              .Add("--tiller-tls-verify", TillerTlsVerify)
               .Add("--tls-ca-cert {value}", TlsCaCert)
-              .Add("--upgrade {value}", Upgrade)
-              .Add("--wait {value}", Wait);
+              .Add("--upgrade", Upgrade)
+              .Add("--wait", Wait);
             return base.ConfigureArguments(arguments);
         }
     }
@@ -1048,13 +1051,13 @@ namespace Nuke.Helm
               .Add("inspect")
               .Add("--ca-file {value}", CaFile)
               .Add("--cert-file {value}", CertFile)
-              .Add("--help {value}", Help)
+              .Add("--help", Help)
               .Add("--key-file {value}", KeyFile)
               .Add("--keyring {value}", Keyring)
               .Add("--password {value}", Password, secret: true)
               .Add("--repo {value}", Repo)
               .Add("--username {value}", Username)
-              .Add("--verify {value}", Verify)
+              .Add("--verify", Verify)
               .Add("--version {value}", Version)
               .Add("{value}", Chart);
             return base.ConfigureArguments(arguments);
@@ -1098,13 +1101,13 @@ namespace Nuke.Helm
               .Add("inspect chart")
               .Add("--ca-file {value}", CaFile)
               .Add("--cert-file {value}", CertFile)
-              .Add("--help {value}", Help)
+              .Add("--help", Help)
               .Add("--key-file {value}", KeyFile)
               .Add("--keyring {value}", Keyring)
               .Add("--password {value}", Password, secret: true)
               .Add("--repo {value}", Repo)
               .Add("--username {value}", Username)
-              .Add("--verify {value}", Verify)
+              .Add("--verify", Verify)
               .Add("--version {value}", Version)
               .Add("{value}", Chart);
             return base.ConfigureArguments(arguments);
@@ -1144,11 +1147,11 @@ namespace Nuke.Helm
               .Add("inspect readme")
               .Add("--ca-file {value}", CaFile)
               .Add("--cert-file {value}", CertFile)
-              .Add("--help {value}", Help)
+              .Add("--help", Help)
               .Add("--key-file {value}", KeyFile)
               .Add("--keyring {value}", Keyring)
               .Add("--repo {value}", Repo)
-              .Add("--verify {value}", Verify)
+              .Add("--verify", Verify)
               .Add("--version {value}", Version)
               .Add("{value}", Chart);
             return base.ConfigureArguments(arguments);
@@ -1192,13 +1195,13 @@ namespace Nuke.Helm
               .Add("inspect values")
               .Add("--ca-file {value}", CaFile)
               .Add("--cert-file {value}", CertFile)
-              .Add("--help {value}", Help)
+              .Add("--help", Help)
               .Add("--key-file {value}", KeyFile)
               .Add("--keyring {value}", Keyring)
               .Add("--password {value}", Password, secret: true)
               .Add("--repo {value}", Repo)
               .Add("--username {value}", Username)
-              .Add("--verify {value}", Verify)
+              .Add("--verify", Verify)
               .Add("--version {value}", Version)
               .Add("{value}", Chart);
             return base.ConfigureArguments(arguments);
@@ -1290,36 +1293,36 @@ namespace Nuke.Helm
               .Add("install")
               .Add("--ca-file {value}", CaFile)
               .Add("--cert-file {value}", CertFile)
-              .Add("--dep-up {value}", DepUp)
+              .Add("--dep-up", DepUp)
               .Add("--description {value}", Description)
-              .Add("--devel {value}", Devel)
-              .Add("--dry-run {value}", DryRun)
-              .Add("--help {value}", Help)
+              .Add("--devel", Devel)
+              .Add("--dry-run", DryRun)
+              .Add("--help", Help)
               .Add("--key-file {value}", KeyFile)
               .Add("--keyring {value}", Keyring)
               .Add("--name {value}", Name)
               .Add("--name-template {value}", NameTemplate)
               .Add("--namespace {value}", Namespace)
-              .Add("--no-crd-hook {value}", NoCrdHook)
-              .Add("--no-hooks {value}", NoHooks)
+              .Add("--no-crd-hook", NoCrdHook)
+              .Add("--no-hooks", NoHooks)
               .Add("--password {value}", Password, secret: true)
-              .Add("--replace {value}", Replace)
+              .Add("--replace", Replace)
               .Add("--repo {value}", Repo)
               .Add("--set {value}", Set, "{key}={value}", separator: ',')
               .Add("--set-file {value}", SetFile, "{key}={value}", separator: ',')
               .Add("--set-string {value}", SetString, "{key}={value}", separator: ',')
               .Add("--timeout {value}", Timeout)
-              .Add("--tls {value}", Tls)
+              .Add("--tls", Tls)
               .Add("--tls-ca-cert {value}", TlsCaCert)
               .Add("--tls-cert {value}", TlsCert)
               .Add("--tls-hostname {value}", TlsHostname)
               .Add("--tls-key {value}", TlsKey)
-              .Add("--tls-verify {value}", TlsVerify)
+              .Add("--tls-verify", TlsVerify)
               .Add("--username {value}", Username)
               .Add("--values {value}", Values, separator: ' ')
-              .Add("--verify {value}", Verify)
+              .Add("--verify", Verify)
               .Add("--version {value}", Version)
-              .Add("--wait {value}", Wait)
+              .Add("--wait", Wait)
               .Add("{value}", Chart);
             return base.ConfigureArguments(arguments);
         }
@@ -1358,12 +1361,12 @@ namespace Nuke.Helm
         {
             arguments
               .Add("lint")
-              .Add("--help {value}", Help)
+              .Add("--help", Help)
               .Add("--namespace {value}", Namespace)
               .Add("--set {value}", Set, "{key}={value}", separator: ',')
               .Add("--set-file {value}", SetFile, "{key}={value}", separator: ',')
               .Add("--set-string {value}", SetString, "{key}={value}", separator: ',')
-              .Add("--strict {value}", Strict)
+              .Add("--strict", Strict)
               .Add("--values {value}", Values, separator: ' ')
               .Add("{value}", Path);
             return base.ConfigureArguments(arguments);
@@ -1429,28 +1432,28 @@ namespace Nuke.Helm
         {
             arguments
               .Add("list")
-              .Add("--all {value}", All)
-              .Add("--chart-name {value}", ChartName)
+              .Add("--all", All)
+              .Add("--chart-name", ChartName)
               .Add("--col-width {value}", ColWidth)
-              .Add("--date {value}", Date)
-              .Add("--deleted {value}", Deleted)
-              .Add("--deleting {value}", Deleting)
-              .Add("--deployed {value}", Deployed)
-              .Add("--failed {value}", Failed)
-              .Add("--help {value}", Help)
+              .Add("--date", Date)
+              .Add("--deleted", Deleted)
+              .Add("--deleting", Deleting)
+              .Add("--deployed", Deployed)
+              .Add("--failed", Failed)
+              .Add("--help", Help)
               .Add("--max {value}", Max)
               .Add("--namespace {value}", Namespace)
               .Add("--offset {value}", Offset)
               .Add("--output {value}", Output)
-              .Add("--pending {value}", Pending)
-              .Add("--reverse {value}", Reverse)
-              .Add("--short {value}", Short)
-              .Add("--tls {value}", Tls)
+              .Add("--pending", Pending)
+              .Add("--reverse", Reverse)
+              .Add("--short", Short)
+              .Add("--tls", Tls)
               .Add("--tls-ca-cert {value}", TlsCaCert)
               .Add("--tls-cert {value}", TlsCert)
               .Add("--tls-hostname {value}", TlsHostname)
               .Add("--tls-key {value}", TlsKey)
-              .Add("--tls-verify {value}", TlsVerify)
+              .Add("--tls-verify", TlsVerify)
               .Add("{value}", Filter);
             return base.ConfigureArguments(arguments);
         }
@@ -1491,13 +1494,13 @@ namespace Nuke.Helm
             arguments
               .Add("package")
               .Add("--app-version {value}", AppVersion)
-              .Add("--dependency-update {value}", DependencyUpdate)
+              .Add("--dependency-update", DependencyUpdate)
               .Add("--destination {value}", Destination)
-              .Add("--help {value}", Help)
+              .Add("--help", Help)
               .Add("--key {value}", Key)
               .Add("--keyring {value}", Keyring)
-              .Add("--save {value}", Save)
-              .Add("--sign {value}", Sign)
+              .Add("--save", Save)
+              .Add("--sign", Sign)
               .Add("--version {value}", Version)
               .Add("{value}", ChartPaths, separator: ' ');
             return base.ConfigureArguments(arguments);
@@ -1525,7 +1528,7 @@ namespace Nuke.Helm
         {
             arguments
               .Add("plugin install")
-              .Add("--help {value}", Help)
+              .Add("--help", Help)
               .Add("--version {value}", Version)
               .Add("{value}", Options)
               .Add("{value}", Paths, separator: ' ');
@@ -1548,7 +1551,7 @@ namespace Nuke.Helm
         {
             arguments
               .Add("plugin list")
-              .Add("--help {value}", Help);
+              .Add("--help", Help);
             return base.ConfigureArguments(arguments);
         }
     }
@@ -1571,7 +1574,7 @@ namespace Nuke.Helm
         {
             arguments
               .Add("plugin remove")
-              .Add("--help {value}", Help)
+              .Add("--help", Help)
               .Add("{value}", Plugins, separator: ' ');
             return base.ConfigureArguments(arguments);
         }
@@ -1595,7 +1598,7 @@ namespace Nuke.Helm
         {
             arguments
               .Add("plugin update")
-              .Add("--help {value}", Help)
+              .Add("--help", Help)
               .Add("{value}", Plugins, separator: ' ');
             return base.ConfigureArguments(arguments);
         }
@@ -1634,9 +1637,9 @@ namespace Nuke.Helm
               .Add("repo add")
               .Add("--ca-file {value}", CaFile)
               .Add("--cert-file {value}", CertFile)
-              .Add("--help {value}", Help)
+              .Add("--help", Help)
               .Add("--key-file {value}", KeyFile)
-              .Add("--no-update {value}", NoUpdate)
+              .Add("--no-update", NoUpdate)
               .Add("--password {value}", Password, secret: true)
               .Add("--username {value}", Username)
               .Add("{value}", Name)
@@ -1666,7 +1669,7 @@ namespace Nuke.Helm
         {
             arguments
               .Add("repo index")
-              .Add("--help {value}", Help)
+              .Add("--help", Help)
               .Add("--merge {value}", Merge)
               .Add("--url {value}", Url)
               .Add("{value}", Directory);
@@ -1689,7 +1692,7 @@ namespace Nuke.Helm
         {
             arguments
               .Add("repo list")
-              .Add("--help {value}", Help);
+              .Add("--help", Help);
             return base.ConfigureArguments(arguments);
         }
     }
@@ -1711,7 +1714,7 @@ namespace Nuke.Helm
         {
             arguments
               .Add("repo remove")
-              .Add("--help {value}", Help)
+              .Add("--help", Help)
               .Add("{value}", Name);
             return base.ConfigureArguments(arguments);
         }
@@ -1728,11 +1731,14 @@ namespace Nuke.Helm
         public override string ToolPath => base.ToolPath ?? HelmTasks.HelmPath;
         /// <summary><p>Help for update.</p></summary>
         public virtual bool? Help { get; internal set; }
+        /// <summary><p>Fail on update warnings.</p></summary>
+        public virtual bool? Strict { get; internal set; }
         protected override Arguments ConfigureArguments(Arguments arguments)
         {
             arguments
               .Add("repo update")
-              .Add("--help {value}", Help);
+              .Add("--help", Help)
+              .Add("--strict", Strict);
             return base.ConfigureArguments(arguments);
         }
     }
@@ -1768,15 +1774,15 @@ namespace Nuke.Helm
         {
             arguments
               .Add("reset")
-              .Add("--force {value}", Force)
-              .Add("--help {value}", Help)
-              .Add("--remove-helm-home {value}", RemoveHelmHome)
-              .Add("--tls {value}", Tls)
+              .Add("--force", Force)
+              .Add("--help", Help)
+              .Add("--remove-helm-home", RemoveHelmHome)
+              .Add("--tls", Tls)
               .Add("--tls-ca-cert {value}", TlsCaCert)
               .Add("--tls-cert {value}", TlsCert)
               .Add("--tls-hostname {value}", TlsHostname)
               .Add("--tls-key {value}", TlsKey)
-              .Add("--tls-verify {value}", TlsVerify);
+              .Add("--tls-verify", TlsVerify);
             return base.ConfigureArguments(arguments);
         }
     }
@@ -1827,19 +1833,19 @@ namespace Nuke.Helm
             arguments
               .Add("rollback")
               .Add("--description {value}", Description)
-              .Add("--dry-run {value}", DryRun)
-              .Add("--force {value}", Force)
-              .Add("--help {value}", Help)
-              .Add("--no-hooks {value}", NoHooks)
-              .Add("--recreate-pods {value}", RecreatePods)
+              .Add("--dry-run", DryRun)
+              .Add("--force", Force)
+              .Add("--help", Help)
+              .Add("--no-hooks", NoHooks)
+              .Add("--recreate-pods", RecreatePods)
               .Add("--timeout {value}", Timeout)
-              .Add("--tls {value}", Tls)
+              .Add("--tls", Tls)
               .Add("--tls-ca-cert {value}", TlsCaCert)
               .Add("--tls-cert {value}", TlsCert)
               .Add("--tls-hostname {value}", TlsHostname)
               .Add("--tls-key {value}", TlsKey)
-              .Add("--tls-verify {value}", TlsVerify)
-              .Add("--wait {value}", Wait)
+              .Add("--tls-verify", TlsVerify)
+              .Add("--wait", Wait)
               .Add("{value}", Release)
               .Add("{value}", Revision);
             return base.ConfigureArguments(arguments);
@@ -1872,10 +1878,10 @@ namespace Nuke.Helm
             arguments
               .Add("search")
               .Add("--col-width {value}", ColWidth)
-              .Add("--help {value}", Help)
-              .Add("--regexp {value}", Regexp)
+              .Add("--help", Help)
+              .Add("--regexp", Regexp)
               .Add("--version {value}", Version)
-              .Add("--versions {value}", Versions)
+              .Add("--versions", Versions)
               .Add("{value}", Keyword);
             return base.ConfigureArguments(arguments);
         }
@@ -1903,7 +1909,7 @@ namespace Nuke.Helm
             arguments
               .Add("serve")
               .Add("--address {value}", Address)
-              .Add("--help {value}", Help)
+              .Add("--help", Help)
               .Add("--repo-path {value}", RepoPath)
               .Add("--url {value}", Url);
             return base.ConfigureArguments(arguments);
@@ -1943,15 +1949,15 @@ namespace Nuke.Helm
         {
             arguments
               .Add("status")
-              .Add("--help {value}", Help)
+              .Add("--help", Help)
               .Add("--output {value}", Output)
               .Add("--revision {value}", Revision)
-              .Add("--tls {value}", Tls)
+              .Add("--tls", Tls)
               .Add("--tls-ca-cert {value}", TlsCaCert)
               .Add("--tls-cert {value}", TlsCert)
               .Add("--tls-hostname {value}", TlsHostname)
               .Add("--tls-key {value}", TlsKey)
-              .Add("--tls-verify {value}", TlsVerify)
+              .Add("--tls-verify", TlsVerify)
               .Add("{value}", ReleaseName);
             return base.ConfigureArguments(arguments);
         }
@@ -1975,7 +1981,7 @@ namespace Nuke.Helm
         public virtual bool? IsUpgrade { get; internal set; }
         /// <summary><p>Kubernetes version used as Capabilities.KubeVersion.Major/Minor (default "1.9").</p></summary>
         public virtual string KubeVersion { get; internal set; }
-        /// <summary><p>Release name (default "RELEASE-NAME").</p></summary>
+        /// <summary><p>Release name (default "release-name").</p></summary>
         public virtual string Name { get; internal set; }
         /// <summary><p>Specify template used to name the release.</p></summary>
         public virtual string NameTemplate { get; internal set; }
@@ -2003,13 +2009,13 @@ namespace Nuke.Helm
             arguments
               .Add("template")
               .Add("--execute {value}", Execute, "{key}={value}", separator: ',')
-              .Add("--help {value}", Help)
-              .Add("--is-upgrade {value}", IsUpgrade)
+              .Add("--help", Help)
+              .Add("--is-upgrade", IsUpgrade)
               .Add("--kube-version {value}", KubeVersion)
               .Add("--name {value}", Name)
               .Add("--name-template {value}", NameTemplate)
               .Add("--namespace {value}", Namespace)
-              .Add("--notes {value}", Notes)
+              .Add("--notes", Notes)
               .Add("--output-dir {value}", OutputDir)
               .Add("--set {value}", Set, "{key}={value}", separator: ',')
               .Add("--set-file {value}", SetFile, "{key}={value}", separator: ',')
@@ -2053,15 +2059,15 @@ namespace Nuke.Helm
         {
             arguments
               .Add("test")
-              .Add("--cleanup {value}", Cleanup)
-              .Add("--help {value}", Help)
+              .Add("--cleanup", Cleanup)
+              .Add("--help", Help)
               .Add("--timeout {value}", Timeout)
-              .Add("--tls {value}", Tls)
+              .Add("--tls", Tls)
               .Add("--tls-ca-cert {value}", TlsCaCert)
               .Add("--tls-cert {value}", TlsCert)
               .Add("--tls-hostname {value}", TlsHostname)
               .Add("--tls-key {value}", TlsKey)
-              .Add("--tls-verify {value}", TlsVerify)
+              .Add("--tls-verify", TlsVerify)
               .Add("{value}", Release);
             return base.ConfigureArguments(arguments);
         }
@@ -2155,35 +2161,35 @@ namespace Nuke.Helm
               .Add("--ca-file {value}", CaFile)
               .Add("--cert-file {value}", CertFile)
               .Add("--description {value}", Description)
-              .Add("--devel {value}", Devel)
-              .Add("--dry-run {value}", DryRun)
-              .Add("--force {value}", Force)
-              .Add("--help {value}", Help)
-              .Add("--install {value}", Install)
+              .Add("--devel", Devel)
+              .Add("--dry-run", DryRun)
+              .Add("--force", Force)
+              .Add("--help", Help)
+              .Add("--install", Install)
               .Add("--key-file {value}", KeyFile)
               .Add("--keyring {value}", Keyring)
               .Add("--namespace {value}", Namespace)
-              .Add("--no-hooks {value}", NoHooks)
+              .Add("--no-hooks", NoHooks)
               .Add("--password {value}", Password, secret: true)
-              .Add("--recreate-pods {value}", RecreatePods)
+              .Add("--recreate-pods", RecreatePods)
               .Add("--repo {value}", Repo)
-              .Add("--reset-values {value}", ResetValues)
-              .Add("--reuse-values {value}", ReuseValues)
+              .Add("--reset-values", ResetValues)
+              .Add("--reuse-values", ReuseValues)
               .Add("--set {value}", Set, "{key}={value}", separator: ',')
               .Add("--set-file {value}", SetFile, "{key}={value}", separator: ',')
               .Add("--set-string {value}", SetString, "{key}={value}", separator: ',')
               .Add("--timeout {value}", Timeout)
-              .Add("--tls {value}", Tls)
+              .Add("--tls", Tls)
               .Add("--tls-ca-cert {value}", TlsCaCert)
               .Add("--tls-cert {value}", TlsCert)
               .Add("--tls-hostname {value}", TlsHostname)
               .Add("--tls-key {value}", TlsKey)
-              .Add("--tls-verify {value}", TlsVerify)
+              .Add("--tls-verify", TlsVerify)
               .Add("--username {value}", Username)
               .Add("--values {value}", Values, separator: ' ')
-              .Add("--verify {value}", Verify)
+              .Add("--verify", Verify)
               .Add("--version {value}", Version)
-              .Add("--wait {value}", Wait)
+              .Add("--wait", Wait)
               .Add("{value}", Release)
               .Add("{value}", Chart);
             return base.ConfigureArguments(arguments);
@@ -2209,7 +2215,7 @@ namespace Nuke.Helm
         {
             arguments
               .Add("verify")
-              .Add("--help {value}", Help)
+              .Add("--help", Help)
               .Add("--keyring {value}", Keyring)
               .Add("{value}", Path);
             return base.ConfigureArguments(arguments);
@@ -2251,17 +2257,17 @@ namespace Nuke.Helm
         {
             arguments
               .Add("version")
-              .Add("--client {value}", Client)
-              .Add("--help {value}", Help)
-              .Add("--server {value}", Server)
-              .Add("--short {value}", Short)
+              .Add("--client", Client)
+              .Add("--help", Help)
+              .Add("--server", Server)
+              .Add("--short", Short)
               .Add("--template {value}", Template)
-              .Add("--tls {value}", Tls)
+              .Add("--tls", Tls)
               .Add("--tls-ca-cert {value}", TlsCaCert)
               .Add("--tls-cert {value}", TlsCert)
               .Add("--tls-hostname {value}", TlsHostname)
               .Add("--tls-key {value}", TlsKey)
-              .Add("--tls-verify {value}", TlsVerify);
+              .Add("--tls-verify", TlsVerify);
             return base.ConfigureArguments(arguments);
         }
     }
@@ -2293,8 +2299,8 @@ namespace Nuke.Helm
         {
             arguments
             
-              .Add("--debug {value}", Debug)
-              .Add("--help {value}", Help)
+              .Add("--debug", Debug)
+              .Add("--help", Help)
               .Add("--home {value}", Home)
               .Add("--host {value}", Host)
               .Add("--kube-context {value}", KubeContext)
@@ -4766,6 +4772,24 @@ namespace Nuke.Helm
         {
             toolSettings = toolSettings.NewInstance();
             toolSettings.Help = !toolSettings.Help;
+            return toolSettings;
+        }
+        #endregion
+        #region Output
+        /// <summary><p><em>Sets <see cref="HelmGetValuesSettings.Output"/>.</em></p><p>Output the specified format (json or yaml) (default "yaml").</p></summary>
+        [Pure]
+        public static HelmGetValuesSettings SetOutput(this HelmGetValuesSettings toolSettings, string output)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Output = output;
+            return toolSettings;
+        }
+        /// <summary><p><em>Resets <see cref="HelmGetValuesSettings.Output"/>.</em></p><p>Output the specified format (json or yaml) (default "yaml").</p></summary>
+        [Pure]
+        public static HelmGetValuesSettings ResetOutput(this HelmGetValuesSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Output = null;
             return toolSettings;
         }
         #endregion
@@ -10299,6 +10323,48 @@ namespace Nuke.Helm
             return toolSettings;
         }
         #endregion
+        #region Strict
+        /// <summary><p><em>Sets <see cref="HelmRepoUpdateSettings.Strict"/>.</em></p><p>Fail on update warnings.</p></summary>
+        [Pure]
+        public static HelmRepoUpdateSettings SetStrict(this HelmRepoUpdateSettings toolSettings, bool? strict)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Strict = strict;
+            return toolSettings;
+        }
+        /// <summary><p><em>Resets <see cref="HelmRepoUpdateSettings.Strict"/>.</em></p><p>Fail on update warnings.</p></summary>
+        [Pure]
+        public static HelmRepoUpdateSettings ResetStrict(this HelmRepoUpdateSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Strict = null;
+            return toolSettings;
+        }
+        /// <summary><p><em>Enables <see cref="HelmRepoUpdateSettings.Strict"/>.</em></p><p>Fail on update warnings.</p></summary>
+        [Pure]
+        public static HelmRepoUpdateSettings EnableStrict(this HelmRepoUpdateSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Strict = true;
+            return toolSettings;
+        }
+        /// <summary><p><em>Disables <see cref="HelmRepoUpdateSettings.Strict"/>.</em></p><p>Fail on update warnings.</p></summary>
+        [Pure]
+        public static HelmRepoUpdateSettings DisableStrict(this HelmRepoUpdateSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Strict = false;
+            return toolSettings;
+        }
+        /// <summary><p><em>Toggles <see cref="HelmRepoUpdateSettings.Strict"/>.</em></p><p>Fail on update warnings.</p></summary>
+        [Pure]
+        public static HelmRepoUpdateSettings ToggleStrict(this HelmRepoUpdateSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Strict = !toolSettings.Strict;
+            return toolSettings;
+        }
+        #endregion
     }
     #endregion
     #region HelmResetSettingsExtensions
@@ -11782,7 +11848,7 @@ namespace Nuke.Helm
         }
         #endregion
         #region Name
-        /// <summary><p><em>Sets <see cref="HelmTemplateSettings.Name"/>.</em></p><p>Release name (default "RELEASE-NAME").</p></summary>
+        /// <summary><p><em>Sets <see cref="HelmTemplateSettings.Name"/>.</em></p><p>Release name (default "release-name").</p></summary>
         [Pure]
         public static HelmTemplateSettings SetName(this HelmTemplateSettings toolSettings, string name)
         {
@@ -11790,7 +11856,7 @@ namespace Nuke.Helm
             toolSettings.Name = name;
             return toolSettings;
         }
-        /// <summary><p><em>Resets <see cref="HelmTemplateSettings.Name"/>.</em></p><p>Release name (default "RELEASE-NAME").</p></summary>
+        /// <summary><p><em>Resets <see cref="HelmTemplateSettings.Name"/>.</em></p><p>Release name (default "release-name").</p></summary>
         [Pure]
         public static HelmTemplateSettings ResetName(this HelmTemplateSettings toolSettings)
         {
