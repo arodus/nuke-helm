@@ -2,38 +2,34 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <RootNamespace></RootNamespace>
-    <IsPackable>False</IsPackable>
+    <IsPackable>false</IsPackable>
     <NoWarn>CS0649;CS0169</NoWarn>
+    <ReplacePackageReferences>false</ReplacePackageReferences>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Nuke.CodeGeneration" Version="0.8.0" />
-    <PackageReference Include="GitVersion.CommandLine" Version="3.6.5" />
-    <PackageReference Include="Nuke.GitHub" Version="1.3.4" />
+    <PackageReference Include="Nuke.CodeGeneration" Version="0.*" />
+    <PackageReference Include="Nuke.GitHub" Version="*" />
+    <PackageReference Include="GitVersion.CommandLine.DotNetCore" Version="4.0.1-beta1-53" />
+    <PackageReference Include="xunit.runner.console" Version="2.4.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <NukeMetadata Include="**\*.json" Exclude="bin\**;obj\**" />
-    <NukeExternalFiles Include="**\*.*.ext" Exclude="bin\**;obj\**" />
-    <None Remove="*.csproj.DotSettings;*.ref.*.txt" />
-    
-    <!-- Common build related files -->
+    <None Remove="*.csproj.DotSettings" />
+
     <None Include="..\build.ps1" />
     <None Include="..\build.sh" />
-    <None Include="..\.nuke" />     
+    <None Include="..\.nuke" />
     <None Include="..\global.json" Condition="Exists('..\global.json')" />
     <None Include="..\nuget.config" Condition="Exists('..\nuget.config')" />
-    <None Include="..\Jenkinsfile" Condition="Exists('..\Jenkinsfile')" Link="jenkins\Jenkinsfile" />
+    <None Include="..\azure-pipelines.yml" Condition="Exists('..\azure-pipelines.yml')" />
+    <None Include="..\Jenkinsfile" Condition="Exists('..\Jenkinsfile')" />
     <None Include="..\appveyor.yml" Condition="Exists('..\appveyor.yml')" />
     <None Include="..\.travis.yml" Condition="Exists('..\.travis.yml')" />
     <None Include="..\GitVersion.yml" Condition="Exists('..\GitVersion.yml')" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\src\Nuke.Helm.Generator\Nuke.Helm.Generator.csproj" />
   </ItemGroup>
 
 </Project>

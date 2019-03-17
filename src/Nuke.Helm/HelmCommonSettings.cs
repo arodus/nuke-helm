@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using Nuke.Common.Tooling;
 
@@ -10,5 +10,7 @@ namespace Nuke.Helm
         {
             return ConfigureArguments(new Arguments());
         }
+
+        public override Action<OutputType, string> CustomLogger { get; }
     }
 }

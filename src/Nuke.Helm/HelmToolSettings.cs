@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using JetBrains.Annotations;
@@ -15,6 +15,9 @@ namespace Nuke.Helm
         /// Common settings for Helm, like kubecontext, Tiller namespace ...
         /// </summary>
         public HelmCommonSettings CommonSettings { get; internal set; }
+
+        public override Action<OutputType, string> CustomLogger { get; }
+
         protected override Arguments ConfigureArguments([NotNull] Arguments arguments)
         {
             if (CommonSettings != null)

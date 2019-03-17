@@ -1,4 +1,4 @@
-﻿enumerations:
+enumerations:
   - name: 'HelmOutputFormat'
     values:
       - 'json'

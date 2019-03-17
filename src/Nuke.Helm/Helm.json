@@ -1,10 +1,5 @@
 {
   "$schema": "https://raw.githubusercontent.com/nuke-build/nuke/master/source/Nuke.CodeGeneration/schema.json",
-  "license": [
-    "Copyright Matthias Koch, Sebastian Karasek 2018.",
-    "Distributed under the MIT License.",
-    "https://github.com/nuke-build/kubernetes/blob/master/LICENSE"
-  ],
   "references": [
     "https://raw.githubusercontent.com/helm/helm/v2.12.0/docs/helm/helm.md",
     "https://raw.githubusercontent.com/helm/helm/v2.12.0/docs/helm/helm_completion.md",
@@ -2857,7 +2852,6 @@
     {
       "name": "HelmCommonSettings",
       "extensionMethods": true,
-      "argumentConstruction": true,
       "properties": [
         {
           "name": "Debug",
