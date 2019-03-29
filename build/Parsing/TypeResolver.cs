@@ -56,7 +56,7 @@ namespace Nuke.Helm.Generator.Parsing
                     break;
                 case "valueFiles":
                     reference.Type = "List<string>";
-                    reference.Separator = ' ';
+                    reference.Separator = null;
                     break;
                 case "OutputFormat":
                     reference.Type = "HelmOutputFormat";
