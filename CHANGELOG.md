@@ -6,6 +6,9 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [vNext]
 
+## [0.5.0] / 2019-03-29
+- Changed supported version to [Helm v2.13.1](https://github.com/helm/helm/releases/tag/v2.13.1)
+- Fixed format of `values` parameter
 ## [0.4.0] / 2019-03-22
 - Updated supported Nuke.Common version
 
@@ -24,7 +27,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 ## [0.1.0] / 2018-09-10
 - First release. Supported version: [Helm v2.10.0](https://github.com/helm/helm/releases/tag/v2.10.0)
 
-[vNext]: https://github.com/nuke-build/helm/compare/0.4.0...HEAD
+[vNext]: https://github.com/nuke-build/helm/compare/0.5.0...HEAD
+[0.5.0]: https://github.com/nuke-build/helm/compare/0.4.0...0.5.0
 [0.4.0]: https://github.com/nuke-build/helm/compare/0.3.2...0.4.0
 [0.3.2]: https://github.com/nuke-build/helm/compare/0.3.1...0.3.2
 [0.3.1]: https://github.com/nuke-build/helm/compare/0.3.0...0.3.1
