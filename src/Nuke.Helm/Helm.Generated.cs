@@ -1,5 +1,5 @@
-// Generated from https://github.com/nuke-build/helm/blob/master/src/Nuke.Helm/Helm.json
-// Generated with Nuke.CodeGeneration version 0.17.7 (OSX,.NETStandard,Version=v2.0)
+// Generated from https://github.com/nuke-build/helm/blob/release/0.5.0/src/Nuke.Helm/Helm.json
+// Generated with Nuke.CodeGeneration version 0.18.0 (Windows,.NETStandard,Version=v2.0)
 
 using JetBrains.Annotations;
 using Newtonsoft.Json;
@@ -870,6 +870,7 @@ namespace Nuke.Helm
         ///     <li><c>&lt;chart&gt;</c> via <see cref="HelmInspectSettings.Chart"/></li>
         ///     <li><c>--ca-file</c> via <see cref="HelmInspectSettings.CaFile"/></li>
         ///     <li><c>--cert-file</c> via <see cref="HelmInspectSettings.CertFile"/></li>
+        ///     <li><c>--devel</c> via <see cref="HelmInspectSettings.Devel"/></li>
         ///     <li><c>--help</c> via <see cref="HelmInspectSettings.Help"/></li>
         ///     <li><c>--key-file</c> via <see cref="HelmInspectSettings.KeyFile"/></li>
         ///     <li><c>--keyring</c> via <see cref="HelmInspectSettings.Keyring"/></li>
@@ -894,6 +895,7 @@ namespace Nuke.Helm
         ///     <li><c>&lt;chart&gt;</c> via <see cref="HelmInspectSettings.Chart"/></li>
         ///     <li><c>--ca-file</c> via <see cref="HelmInspectSettings.CaFile"/></li>
         ///     <li><c>--cert-file</c> via <see cref="HelmInspectSettings.CertFile"/></li>
+        ///     <li><c>--devel</c> via <see cref="HelmInspectSettings.Devel"/></li>
         ///     <li><c>--help</c> via <see cref="HelmInspectSettings.Help"/></li>
         ///     <li><c>--key-file</c> via <see cref="HelmInspectSettings.KeyFile"/></li>
         ///     <li><c>--keyring</c> via <see cref="HelmInspectSettings.Keyring"/></li>
@@ -929,6 +931,7 @@ namespace Nuke.Helm
         ///     <li><c>&lt;chart&gt;</c> via <see cref="HelmInspectChartSettings.Chart"/></li>
         ///     <li><c>--ca-file</c> via <see cref="HelmInspectChartSettings.CaFile"/></li>
         ///     <li><c>--cert-file</c> via <see cref="HelmInspectChartSettings.CertFile"/></li>
+        ///     <li><c>--devel</c> via <see cref="HelmInspectChartSettings.Devel"/></li>
         ///     <li><c>--help</c> via <see cref="HelmInspectChartSettings.Help"/></li>
         ///     <li><c>--key-file</c> via <see cref="HelmInspectChartSettings.KeyFile"/></li>
         ///     <li><c>--keyring</c> via <see cref="HelmInspectChartSettings.Keyring"/></li>
@@ -953,6 +956,7 @@ namespace Nuke.Helm
         ///     <li><c>&lt;chart&gt;</c> via <see cref="HelmInspectChartSettings.Chart"/></li>
         ///     <li><c>--ca-file</c> via <see cref="HelmInspectChartSettings.CaFile"/></li>
         ///     <li><c>--cert-file</c> via <see cref="HelmInspectChartSettings.CertFile"/></li>
+        ///     <li><c>--devel</c> via <see cref="HelmInspectChartSettings.Devel"/></li>
         ///     <li><c>--help</c> via <see cref="HelmInspectChartSettings.Help"/></li>
         ///     <li><c>--key-file</c> via <see cref="HelmInspectChartSettings.KeyFile"/></li>
         ///     <li><c>--keyring</c> via <see cref="HelmInspectChartSettings.Keyring"/></li>
@@ -988,6 +992,7 @@ namespace Nuke.Helm
         ///     <li><c>&lt;chart&gt;</c> via <see cref="HelmInspectReadmeSettings.Chart"/></li>
         ///     <li><c>--ca-file</c> via <see cref="HelmInspectReadmeSettings.CaFile"/></li>
         ///     <li><c>--cert-file</c> via <see cref="HelmInspectReadmeSettings.CertFile"/></li>
+        ///     <li><c>--devel</c> via <see cref="HelmInspectReadmeSettings.Devel"/></li>
         ///     <li><c>--help</c> via <see cref="HelmInspectReadmeSettings.Help"/></li>
         ///     <li><c>--key-file</c> via <see cref="HelmInspectReadmeSettings.KeyFile"/></li>
         ///     <li><c>--keyring</c> via <see cref="HelmInspectReadmeSettings.Keyring"/></li>
@@ -1010,6 +1015,7 @@ namespace Nuke.Helm
         ///     <li><c>&lt;chart&gt;</c> via <see cref="HelmInspectReadmeSettings.Chart"/></li>
         ///     <li><c>--ca-file</c> via <see cref="HelmInspectReadmeSettings.CaFile"/></li>
         ///     <li><c>--cert-file</c> via <see cref="HelmInspectReadmeSettings.CertFile"/></li>
+        ///     <li><c>--devel</c> via <see cref="HelmInspectReadmeSettings.Devel"/></li>
         ///     <li><c>--help</c> via <see cref="HelmInspectReadmeSettings.Help"/></li>
         ///     <li><c>--key-file</c> via <see cref="HelmInspectReadmeSettings.KeyFile"/></li>
         ///     <li><c>--keyring</c> via <see cref="HelmInspectReadmeSettings.Keyring"/></li>
@@ -1043,6 +1049,7 @@ namespace Nuke.Helm
         ///     <li><c>&lt;chart&gt;</c> via <see cref="HelmInspectValuesSettings.Chart"/></li>
         ///     <li><c>--ca-file</c> via <see cref="HelmInspectValuesSettings.CaFile"/></li>
         ///     <li><c>--cert-file</c> via <see cref="HelmInspectValuesSettings.CertFile"/></li>
+        ///     <li><c>--devel</c> via <see cref="HelmInspectValuesSettings.Devel"/></li>
         ///     <li><c>--help</c> via <see cref="HelmInspectValuesSettings.Help"/></li>
         ///     <li><c>--key-file</c> via <see cref="HelmInspectValuesSettings.KeyFile"/></li>
         ///     <li><c>--keyring</c> via <see cref="HelmInspectValuesSettings.Keyring"/></li>
@@ -1067,6 +1074,7 @@ namespace Nuke.Helm
         ///     <li><c>&lt;chart&gt;</c> via <see cref="HelmInspectValuesSettings.Chart"/></li>
         ///     <li><c>--ca-file</c> via <see cref="HelmInspectValuesSettings.CaFile"/></li>
         ///     <li><c>--cert-file</c> via <see cref="HelmInspectValuesSettings.CertFile"/></li>
+        ///     <li><c>--devel</c> via <see cref="HelmInspectValuesSettings.Devel"/></li>
         ///     <li><c>--help</c> via <see cref="HelmInspectValuesSettings.Help"/></li>
         ///     <li><c>--key-file</c> via <see cref="HelmInspectValuesSettings.KeyFile"/></li>
         ///     <li><c>--keyring</c> via <see cref="HelmInspectValuesSettings.Keyring"/></li>
@@ -1100,6 +1108,7 @@ namespace Nuke.Helm
         ///   <p>This is a <a href="http://www.nuke.build/docs/authoring-builds/cli-tools.html#fluent-apis">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p>
         ///   <ul>
         ///     <li><c>&lt;chart&gt;</c> via <see cref="HelmInstallSettings.Chart"/></li>
+        ///     <li><c>--atomic</c> via <see cref="HelmInstallSettings.Atomic"/></li>
         ///     <li><c>--ca-file</c> via <see cref="HelmInstallSettings.CaFile"/></li>
         ///     <li><c>--cert-file</c> via <see cref="HelmInstallSettings.CertFile"/></li>
         ///     <li><c>--dep-up</c> via <see cref="HelmInstallSettings.DepUp"/></li>
@@ -1110,11 +1119,12 @@ namespace Nuke.Helm
         ///     <li><c>--key-file</c> via <see cref="HelmInstallSettings.KeyFile"/></li>
         ///     <li><c>--keyring</c> via <see cref="HelmInstallSettings.Keyring"/></li>
         ///     <li><c>--name</c> via <see cref="HelmInstallSettings.Name"/></li>
-        ///     <li><c>--name-template</c> via <see cref="HelmInstallSettings.NameTemplate"/></li>
         ///     <li><c>--namespace</c> via <see cref="HelmInstallSettings.Namespace"/></li>
+        ///     <li><c>--name-template</c> via <see cref="HelmInstallSettings.NameTemplate"/></li>
         ///     <li><c>--no-crd-hook</c> via <see cref="HelmInstallSettings.NoCrdHook"/></li>
         ///     <li><c>--no-hooks</c> via <see cref="HelmInstallSettings.NoHooks"/></li>
         ///     <li><c>--password</c> via <see cref="HelmInstallSettings.Password"/></li>
+        ///     <li><c>--render-subchart-notes</c> via <see cref="HelmInstallSettings.RenderSubchartNotes"/></li>
         ///     <li><c>--replace</c> via <see cref="HelmInstallSettings.Replace"/></li>
         ///     <li><c>--repo</c> via <see cref="HelmInstallSettings.Repo"/></li>
         ///     <li><c>--set</c> via <see cref="HelmInstallSettings.Set"/></li>
@@ -1146,6 +1156,7 @@ namespace Nuke.Helm
         ///   <p>This is a <a href="http://www.nuke.build/docs/authoring-builds/cli-tools.html#fluent-apis">CLI wrapper with fluent API</a> that allows to modify the following arguments:</p>
         ///   <ul>
         ///     <li><c>&lt;chart&gt;</c> via <see cref="HelmInstallSettings.Chart"/></li>
+        ///     <li><c>--atomic</c> via <see cref="HelmInstallSettings.Atomic"/></li>
         ///     <li><c>--ca-file</c> via <see cref="HelmInstallSettings.CaFile"/></li>
         ///     <li><c>--cert-file</c> via <see cref="HelmInstallSettings.CertFile"/></li>
         ///     <li><c>--dep-up</c> via <see cref="HelmInstallSettings.DepUp"/></li>
@@ -1156,11 +1167,12 @@ namespace Nuke.Helm
         ///     <li><c>--key-file</c> via <see cref="HelmInstallSettings.KeyFile"/></li>
         ///     <li><c>--keyring</c> via <see cref="HelmInstallSettings.Keyring"/></li>
         ///     <li><c>--name</c> via <see cref="HelmInstallSettings.Name"/></li>
-        ///     <li><c>--name-template</c> via <see cref="HelmInstallSettings.NameTemplate"/></li>
         ///     <li><c>--namespace</c> via <see cref="HelmInstallSettings.Namespace"/></li>
+        ///     <li><c>--name-template</c> via <see cref="HelmInstallSettings.NameTemplate"/></li>
         ///     <li><c>--no-crd-hook</c> via <see cref="HelmInstallSettings.NoCrdHook"/></li>
         ///     <li><c>--no-hooks</c> via <see cref="HelmInstallSettings.NoHooks"/></li>
         ///     <li><c>--password</c> via <see cref="HelmInstallSettings.Password"/></li>
+        ///     <li><c>--render-subchart-notes</c> via <see cref="HelmInstallSettings.RenderSubchartNotes"/></li>
         ///     <li><c>--replace</c> via <see cref="HelmInstallSettings.Replace"/></li>
         ///     <li><c>--repo</c> via <see cref="HelmInstallSettings.Repo"/></li>
         ///     <li><c>--set</c> via <see cref="HelmInstallSettings.Set"/></li>
@@ -1820,7 +1832,7 @@ namespace Nuke.Helm
             return configurator.Invoke(HelmReset, HelmLogger, degreeOfParallelism, completeOnFailure);
         }
         /// <summary>
-        ///   <p>This command rolls back a release to a previous revision. The first argument of the rollback command is the name of a release, and the second is a revision (version) number. To see revision numbers, run 'helm history RELEASE'.</p>
+        ///   <p>This command rolls back a release to a previous revision. The first argument of the rollback command is the name of a release, and the second is a revision (version) number. To see revision numbers, run 'helm history RELEASE'. If you'd like to rollback to the previous release use 'helm rollback [RELEASE] 0'.</p>
         ///   <p>For more details, visit the <a href="https://helm.sh/">official website</a>.</p>
         /// </summary>
         public static IReadOnlyCollection<Output> HelmRollback(HelmRollbackSettings toolSettings = null)
@@ -1831,7 +1843,7 @@ namespace Nuke.Helm
             return process.Output;
         }
         /// <summary>
-        ///   <p>This command rolls back a release to a previous revision. The first argument of the rollback command is the name of a release, and the second is a revision (version) number. To see revision numbers, run 'helm history RELEASE'.</p>
+        ///   <p>This command rolls back a release to a previous revision. The first argument of the rollback command is the name of a release, and the second is a revision (version) number. To see revision numbers, run 'helm history RELEASE'. If you'd like to rollback to the previous release use 'helm rollback [RELEASE] 0'.</p>
         ///   <p>For more details, visit the <a href="https://helm.sh/">official website</a>.</p>
         /// </summary>
         /// <remarks>
@@ -1860,7 +1872,7 @@ namespace Nuke.Helm
             return HelmRollback(configurator(new HelmRollbackSettings()));
         }
         /// <summary>
-        ///   <p>This command rolls back a release to a previous revision. The first argument of the rollback command is the name of a release, and the second is a revision (version) number. To see revision numbers, run 'helm history RELEASE'.</p>
+        ///   <p>This command rolls back a release to a previous revision. The first argument of the rollback command is the name of a release, and the second is a revision (version) number. To see revision numbers, run 'helm history RELEASE'. If you'd like to rollback to the previous release use 'helm rollback [RELEASE] 0'.</p>
         ///   <p>For more details, visit the <a href="https://helm.sh/">official website</a>.</p>
         /// </summary>
         /// <remarks>
@@ -2063,8 +2075,8 @@ namespace Nuke.Helm
         ///     <li><c>--is-upgrade</c> via <see cref="HelmTemplateSettings.IsUpgrade"/></li>
         ///     <li><c>--kube-version</c> via <see cref="HelmTemplateSettings.KubeVersion"/></li>
         ///     <li><c>--name</c> via <see cref="HelmTemplateSettings.Name"/></li>
-        ///     <li><c>--name-template</c> via <see cref="HelmTemplateSettings.NameTemplate"/></li>
         ///     <li><c>--namespace</c> via <see cref="HelmTemplateSettings.Namespace"/></li>
+        ///     <li><c>--name-template</c> via <see cref="HelmTemplateSettings.NameTemplate"/></li>
         ///     <li><c>--notes</c> via <see cref="HelmTemplateSettings.Notes"/></li>
         ///     <li><c>--output-dir</c> via <see cref="HelmTemplateSettings.OutputDir"/></li>
         ///     <li><c>--set</c> via <see cref="HelmTemplateSettings.Set"/></li>
@@ -2090,8 +2102,8 @@ namespace Nuke.Helm
         ///     <li><c>--is-upgrade</c> via <see cref="HelmTemplateSettings.IsUpgrade"/></li>
         ///     <li><c>--kube-version</c> via <see cref="HelmTemplateSettings.KubeVersion"/></li>
         ///     <li><c>--name</c> via <see cref="HelmTemplateSettings.Name"/></li>
-        ///     <li><c>--name-template</c> via <see cref="HelmTemplateSettings.NameTemplate"/></li>
         ///     <li><c>--namespace</c> via <see cref="HelmTemplateSettings.Namespace"/></li>
+        ///     <li><c>--name-template</c> via <see cref="HelmTemplateSettings.NameTemplate"/></li>
         ///     <li><c>--notes</c> via <see cref="HelmTemplateSettings.Notes"/></li>
         ///     <li><c>--output-dir</c> via <see cref="HelmTemplateSettings.OutputDir"/></li>
         ///     <li><c>--set</c> via <see cref="HelmTemplateSettings.Set"/></li>
@@ -2125,6 +2137,7 @@ namespace Nuke.Helm
         ///     <li><c>&lt;release&gt;</c> via <see cref="HelmTestSettings.Release"/></li>
         ///     <li><c>--cleanup</c> via <see cref="HelmTestSettings.Cleanup"/></li>
         ///     <li><c>--help</c> via <see cref="HelmTestSettings.Help"/></li>
+        ///     <li><c>--parallel</c> via <see cref="HelmTestSettings.Parallel"/></li>
         ///     <li><c>--timeout</c> via <see cref="HelmTestSettings.Timeout"/></li>
         ///     <li><c>--tls</c> via <see cref="HelmTestSettings.Tls"/></li>
         ///     <li><c>--tls-ca-cert</c> via <see cref="HelmTestSettings.TlsCaCert"/></li>
@@ -2148,6 +2161,7 @@ namespace Nuke.Helm
         ///     <li><c>&lt;release&gt;</c> via <see cref="HelmTestSettings.Release"/></li>
         ///     <li><c>--cleanup</c> via <see cref="HelmTestSettings.Cleanup"/></li>
         ///     <li><c>--help</c> via <see cref="HelmTestSettings.Help"/></li>
+        ///     <li><c>--parallel</c> via <see cref="HelmTestSettings.Parallel"/></li>
         ///     <li><c>--timeout</c> via <see cref="HelmTestSettings.Timeout"/></li>
         ///     <li><c>--tls</c> via <see cref="HelmTestSettings.Tls"/></li>
         ///     <li><c>--tls-ca-cert</c> via <see cref="HelmTestSettings.TlsCaCert"/></li>
@@ -2162,7 +2176,7 @@ namespace Nuke.Helm
             return configurator.Invoke(HelmTest, HelmLogger, degreeOfParallelism, completeOnFailure);
         }
         /// <summary>
-        ///   <p>This command upgrades a release to a specified version of a chart and/or updates chart values. Required arguments are release and chart. The chart argument can be one of:  - a chart reference('stable/mariadb'); use '--version' and '--devel' flags for versions other than latest,  - a path to a chart directory,  - a packaged chart,  - a fully qualified URL. To customize the chart values, use any of  - '--values'/'-f' to pass in a yaml file holding settings,  - '--set' to provide one or more key=val pairs directly,  - '--set-string' to provide key=val forcing val to be stored as a string,  - '--set-file' to provide key=path to read a single large value from a file at path. To edit or append to the existing customized values, add the   '--reuse-values' flag, otherwise any existing customized values are ignored. If no chart value arguments are provided on the command line, any existing customized values are carried forward. If you want to revert to just the values provided in the chart, use the '--reset-values' flag. You can specify any of the chart value flags multiple times. The priority will be given to the last (right-most) value specified. For example, if both myvalues.yaml and override.yaml contained a key called 'Test', the value set in override.yaml would take precedence: 	$ helm upgrade -f myvalues.yaml -f override.yaml redis ./redis Note that the key name provided to the '--set', '--set-string' and '--set-file' flags can reference structure elements. Examples:   - mybool=TRUE   - livenessProbe.timeoutSeconds=10   - metrics.annotations[0]=hey,metrics.annotations[1]=ho which sets the top level key mybool to true, the nested timeoutSeconds to 10, and two array values, respectively. Note that the value side of the key=val provided to '--set' and '--set-string' flags will pass through shell evaluation followed by yaml type parsing to produce the final value. This may alter inputs with special characters in unexpected ways, for example 	$ helm upgrade --set pwd=3jk$o2,z=f\30.e redis ./redis results in "pwd: 3jk" and "z: f30.e". Use single quotes to avoid shell evaluation and argument delimiters, and use backslash to escape yaml special characters: 	$ helm upgrade --set pwd='3jk$o2z=f\\30.e' redis ./redis which results in the expected "pwd: 3jk$o2z=f\30.e". If a single quote occurs in your value then follow your shell convention for escaping it; for example in bash: 	$ helm upgrade --set pwd='3jk$o2z=f\\30with'\''quote' which results in "pwd: 3jk$o2z=f\30with'quote".</p>
+        ///   <p>This command upgrades a release to a specified version of a chart and/or updates chart values. Required arguments are release and chart. The chart argument can be one of:  - a chart reference('stable/mariadb'); use '--version' and '--devel' flags for versions other than latest,  - a path to a chart directory,  - a packaged chart,  - a fully qualified URL. To customize the chart values, use any of  - '--values'/'-f' to pass in a yaml file holding settings,  - '--set' to provide one or more key=val pairs directly,  - '--set-string' to provide key=val forcing val to be stored as a string,  - '--set-file' to provide key=path to read a single large value from a file at path. To edit or append to the existing customized values, add the  '--reuse-values' flag, otherwise any existing customized values are ignored. If no chart value arguments are provided on the command line, any existing customized values are carried forward. If you want to revert to just the values provided in the chart, use the '--reset-values' flag. You can specify any of the chart value flags multiple times. The priority will be given to the last (right-most) value specified. For example, if both myvalues.yaml and override.yaml contained a key called 'Test', the value set in override.yaml would take precedence: 	$ helm upgrade -f myvalues.yaml -f override.yaml redis ./redis Note that the key name provided to the '--set', '--set-string' and '--set-file' flags can reference structure elements. Examples:   - mybool=TRUE   - livenessProbe.timeoutSeconds=10   - metrics.annotations[0]=hey,metrics.annotations[1]=ho which sets the top level key mybool to true, the nested timeoutSeconds to 10, and two array values, respectively. Note that the value side of the key=val provided to '--set' and '--set-string' flags will pass through shell evaluation followed by yaml type parsing to produce the final value. This may alter inputs with special characters in unexpected ways, for example 	$ helm upgrade --set pwd=3jk$o2,z=f\30.e redis ./redis results in "pwd: 3jk" and "z: f30.e". Use single quotes to avoid shell evaluation and argument delimiters, and use backslash to escape yaml special characters: 	$ helm upgrade --set pwd='3jk$o2z=f\\30.e' redis ./redis which results in the expected "pwd: 3jk$o2z=f\30.e". If a single quote occurs in your value then follow your shell convention for escaping it; for example in bash: 	$ helm upgrade --set pwd='3jk$o2z=f\\30with'\''quote' which results in "pwd: 3jk$o2z=f\30with'quote".</p>
         ///   <p>For more details, visit the <a href="https://helm.sh/">official website</a>.</p>
         /// </summary>
         public static IReadOnlyCollection<Output> HelmUpgrade(HelmUpgradeSettings toolSettings = null)
@@ -2173,7 +2187,7 @@ namespace Nuke.Helm
             return process.Output;
         }
         /// <summary>
-        ///   <p>This command upgrades a release to a specified version of a chart and/or updates chart values. Required arguments are release and chart. The chart argument can be one of:  - a chart reference('stable/mariadb'); use '--version' and '--devel' flags for versions other than latest,  - a path to a chart directory,  - a packaged chart,  - a fully qualified URL. To customize the chart values, use any of  - '--values'/'-f' to pass in a yaml file holding settings,  - '--set' to provide one or more key=val pairs directly,  - '--set-string' to provide key=val forcing val to be stored as a string,  - '--set-file' to provide key=path to read a single large value from a file at path. To edit or append to the existing customized values, add the   '--reuse-values' flag, otherwise any existing customized values are ignored. If no chart value arguments are provided on the command line, any existing customized values are carried forward. If you want to revert to just the values provided in the chart, use the '--reset-values' flag. You can specify any of the chart value flags multiple times. The priority will be given to the last (right-most) value specified. For example, if both myvalues.yaml and override.yaml contained a key called 'Test', the value set in override.yaml would take precedence: 	$ helm upgrade -f myvalues.yaml -f override.yaml redis ./redis Note that the key name provided to the '--set', '--set-string' and '--set-file' flags can reference structure elements. Examples:   - mybool=TRUE   - livenessProbe.timeoutSeconds=10   - metrics.annotations[0]=hey,metrics.annotations[1]=ho which sets the top level key mybool to true, the nested timeoutSeconds to 10, and two array values, respectively. Note that the value side of the key=val provided to '--set' and '--set-string' flags will pass through shell evaluation followed by yaml type parsing to produce the final value. This may alter inputs with special characters in unexpected ways, for example 	$ helm upgrade --set pwd=3jk$o2,z=f\30.e redis ./redis results in "pwd: 3jk" and "z: f30.e". Use single quotes to avoid shell evaluation and argument delimiters, and use backslash to escape yaml special characters: 	$ helm upgrade --set pwd='3jk$o2z=f\\30.e' redis ./redis which results in the expected "pwd: 3jk$o2z=f\30.e". If a single quote occurs in your value then follow your shell convention for escaping it; for example in bash: 	$ helm upgrade --set pwd='3jk$o2z=f\\30with'\''quote' which results in "pwd: 3jk$o2z=f\30with'quote".</p>
+        ///   <p>This command upgrades a release to a specified version of a chart and/or updates chart values. Required arguments are release and chart. The chart argument can be one of:  - a chart reference('stable/mariadb'); use '--version' and '--devel' flags for versions other than latest,  - a path to a chart directory,  - a packaged chart,  - a fully qualified URL. To customize the chart values, use any of  - '--values'/'-f' to pass in a yaml file holding settings,  - '--set' to provide one or more key=val pairs directly,  - '--set-string' to provide key=val forcing val to be stored as a string,  - '--set-file' to provide key=path to read a single large value from a file at path. To edit or append to the existing customized values, add the  '--reuse-values' flag, otherwise any existing customized values are ignored. If no chart value arguments are provided on the command line, any existing customized values are carried forward. If you want to revert to just the values provided in the chart, use the '--reset-values' flag. You can specify any of the chart value flags multiple times. The priority will be given to the last (right-most) value specified. For example, if both myvalues.yaml and override.yaml contained a key called 'Test', the value set in override.yaml would take precedence: 	$ helm upgrade -f myvalues.yaml -f override.yaml redis ./redis Note that the key name provided to the '--set', '--set-string' and '--set-file' flags can reference structure elements. Examples:   - mybool=TRUE   - livenessProbe.timeoutSeconds=10   - metrics.annotations[0]=hey,metrics.annotations[1]=ho which sets the top level key mybool to true, the nested timeoutSeconds to 10, and two array values, respectively. Note that the value side of the key=val provided to '--set' and '--set-string' flags will pass through shell evaluation followed by yaml type parsing to produce the final value. This may alter inputs with special characters in unexpected ways, for example 	$ helm upgrade --set pwd=3jk$o2,z=f\30.e redis ./redis results in "pwd: 3jk" and "z: f30.e". Use single quotes to avoid shell evaluation and argument delimiters, and use backslash to escape yaml special characters: 	$ helm upgrade --set pwd='3jk$o2z=f\\30.e' redis ./redis which results in the expected "pwd: 3jk$o2z=f\30.e". If a single quote occurs in your value then follow your shell convention for escaping it; for example in bash: 	$ helm upgrade --set pwd='3jk$o2z=f\\30with'\''quote' which results in "pwd: 3jk$o2z=f\30with'quote".</p>
         ///   <p>For more details, visit the <a href="https://helm.sh/">official website</a>.</p>
         /// </summary>
         /// <remarks>
@@ -2181,6 +2195,7 @@ namespace Nuke.Helm
         ///   <ul>
         ///     <li><c>&lt;chart&gt;</c> via <see cref="HelmUpgradeSettings.Chart"/></li>
         ///     <li><c>&lt;release&gt;</c> via <see cref="HelmUpgradeSettings.Release"/></li>
+        ///     <li><c>--atomic</c> via <see cref="HelmUpgradeSettings.Atomic"/></li>
         ///     <li><c>--ca-file</c> via <see cref="HelmUpgradeSettings.CaFile"/></li>
         ///     <li><c>--cert-file</c> via <see cref="HelmUpgradeSettings.CertFile"/></li>
         ///     <li><c>--description</c> via <see cref="HelmUpgradeSettings.Description"/></li>
@@ -2195,6 +2210,7 @@ namespace Nuke.Helm
         ///     <li><c>--no-hooks</c> via <see cref="HelmUpgradeSettings.NoHooks"/></li>
         ///     <li><c>--password</c> via <see cref="HelmUpgradeSettings.Password"/></li>
         ///     <li><c>--recreate-pods</c> via <see cref="HelmUpgradeSettings.RecreatePods"/></li>
+        ///     <li><c>--render-subchart-notes</c> via <see cref="HelmUpgradeSettings.RenderSubchartNotes"/></li>
         ///     <li><c>--repo</c> via <see cref="HelmUpgradeSettings.Repo"/></li>
         ///     <li><c>--reset-values</c> via <see cref="HelmUpgradeSettings.ResetValues"/></li>
         ///     <li><c>--reuse-values</c> via <see cref="HelmUpgradeSettings.ReuseValues"/></li>
@@ -2220,7 +2236,7 @@ namespace Nuke.Helm
             return HelmUpgrade(configurator(new HelmUpgradeSettings()));
         }
         /// <summary>
-        ///   <p>This command upgrades a release to a specified version of a chart and/or updates chart values. Required arguments are release and chart. The chart argument can be one of:  - a chart reference('stable/mariadb'); use '--version' and '--devel' flags for versions other than latest,  - a path to a chart directory,  - a packaged chart,  - a fully qualified URL. To customize the chart values, use any of  - '--values'/'-f' to pass in a yaml file holding settings,  - '--set' to provide one or more key=val pairs directly,  - '--set-string' to provide key=val forcing val to be stored as a string,  - '--set-file' to provide key=path to read a single large value from a file at path. To edit or append to the existing customized values, add the   '--reuse-values' flag, otherwise any existing customized values are ignored. If no chart value arguments are provided on the command line, any existing customized values are carried forward. If you want to revert to just the values provided in the chart, use the '--reset-values' flag. You can specify any of the chart value flags multiple times. The priority will be given to the last (right-most) value specified. For example, if both myvalues.yaml and override.yaml contained a key called 'Test', the value set in override.yaml would take precedence: 	$ helm upgrade -f myvalues.yaml -f override.yaml redis ./redis Note that the key name provided to the '--set', '--set-string' and '--set-file' flags can reference structure elements. Examples:   - mybool=TRUE   - livenessProbe.timeoutSeconds=10   - metrics.annotations[0]=hey,metrics.annotations[1]=ho which sets the top level key mybool to true, the nested timeoutSeconds to 10, and two array values, respectively. Note that the value side of the key=val provided to '--set' and '--set-string' flags will pass through shell evaluation followed by yaml type parsing to produce the final value. This may alter inputs with special characters in unexpected ways, for example 	$ helm upgrade --set pwd=3jk$o2,z=f\30.e redis ./redis results in "pwd: 3jk" and "z: f30.e". Use single quotes to avoid shell evaluation and argument delimiters, and use backslash to escape yaml special characters: 	$ helm upgrade --set pwd='3jk$o2z=f\\30.e' redis ./redis which results in the expected "pwd: 3jk$o2z=f\30.e". If a single quote occurs in your value then follow your shell convention for escaping it; for example in bash: 	$ helm upgrade --set pwd='3jk$o2z=f\\30with'\''quote' which results in "pwd: 3jk$o2z=f\30with'quote".</p>
+        ///   <p>This command upgrades a release to a specified version of a chart and/or updates chart values. Required arguments are release and chart. The chart argument can be one of:  - a chart reference('stable/mariadb'); use '--version' and '--devel' flags for versions other than latest,  - a path to a chart directory,  - a packaged chart,  - a fully qualified URL. To customize the chart values, use any of  - '--values'/'-f' to pass in a yaml file holding settings,  - '--set' to provide one or more key=val pairs directly,  - '--set-string' to provide key=val forcing val to be stored as a string,  - '--set-file' to provide key=path to read a single large value from a file at path. To edit or append to the existing customized values, add the  '--reuse-values' flag, otherwise any existing customized values are ignored. If no chart value arguments are provided on the command line, any existing customized values are carried forward. If you want to revert to just the values provided in the chart, use the '--reset-values' flag. You can specify any of the chart value flags multiple times. The priority will be given to the last (right-most) value specified. For example, if both myvalues.yaml and override.yaml contained a key called 'Test', the value set in override.yaml would take precedence: 	$ helm upgrade -f myvalues.yaml -f override.yaml redis ./redis Note that the key name provided to the '--set', '--set-string' and '--set-file' flags can reference structure elements. Examples:   - mybool=TRUE   - livenessProbe.timeoutSeconds=10   - metrics.annotations[0]=hey,metrics.annotations[1]=ho which sets the top level key mybool to true, the nested timeoutSeconds to 10, and two array values, respectively. Note that the value side of the key=val provided to '--set' and '--set-string' flags will pass through shell evaluation followed by yaml type parsing to produce the final value. This may alter inputs with special characters in unexpected ways, for example 	$ helm upgrade --set pwd=3jk$o2,z=f\30.e redis ./redis results in "pwd: 3jk" and "z: f30.e". Use single quotes to avoid shell evaluation and argument delimiters, and use backslash to escape yaml special characters: 	$ helm upgrade --set pwd='3jk$o2z=f\\30.e' redis ./redis which results in the expected "pwd: 3jk$o2z=f\30.e". If a single quote occurs in your value then follow your shell convention for escaping it; for example in bash: 	$ helm upgrade --set pwd='3jk$o2z=f\\30with'\''quote' which results in "pwd: 3jk$o2z=f\30with'quote".</p>
         ///   <p>For more details, visit the <a href="https://helm.sh/">official website</a>.</p>
         /// </summary>
         /// <remarks>
@@ -2228,6 +2244,7 @@ namespace Nuke.Helm
         ///   <ul>
         ///     <li><c>&lt;chart&gt;</c> via <see cref="HelmUpgradeSettings.Chart"/></li>
         ///     <li><c>&lt;release&gt;</c> via <see cref="HelmUpgradeSettings.Release"/></li>
+        ///     <li><c>--atomic</c> via <see cref="HelmUpgradeSettings.Atomic"/></li>
         ///     <li><c>--ca-file</c> via <see cref="HelmUpgradeSettings.CaFile"/></li>
         ///     <li><c>--cert-file</c> via <see cref="HelmUpgradeSettings.CertFile"/></li>
         ///     <li><c>--description</c> via <see cref="HelmUpgradeSettings.Description"/></li>
@@ -2242,6 +2259,7 @@ namespace Nuke.Helm
         ///     <li><c>--no-hooks</c> via <see cref="HelmUpgradeSettings.NoHooks"/></li>
         ///     <li><c>--password</c> via <see cref="HelmUpgradeSettings.Password"/></li>
         ///     <li><c>--recreate-pods</c> via <see cref="HelmUpgradeSettings.RecreatePods"/></li>
+        ///     <li><c>--render-subchart-notes</c> via <see cref="HelmUpgradeSettings.RenderSubchartNotes"/></li>
         ///     <li><c>--repo</c> via <see cref="HelmUpgradeSettings.Repo"/></li>
         ///     <li><c>--reset-values</c> via <see cref="HelmUpgradeSettings.ResetValues"/></li>
         ///     <li><c>--reuse-values</c> via <see cref="HelmUpgradeSettings.ReuseValues"/></li>
@@ -3364,6 +3382,10 @@ namespace Nuke.Helm
         /// </summary>
         public virtual string CertFile { get; internal set; }
         /// <summary>
+        ///   Use development versions, too. Equivalent to version '&gt;0.0.0-0'. If --version is set, this is ignored.
+        /// </summary>
+        public virtual bool? Devel { get; internal set; }
+        /// <summary>
         ///   Help for inspect.
         /// </summary>
         public virtual bool? Help { get; internal set; }
@@ -3405,6 +3427,7 @@ namespace Nuke.Helm
               .Add("inspect")
               .Add("--ca-file {value}", CaFile)
               .Add("--cert-file {value}", CertFile)
+              .Add("--devel", Devel)
               .Add("--help", Help)
               .Add("--key-file {value}", KeyFile)
               .Add("--keyring {value}", Keyring)
@@ -3440,6 +3463,10 @@ namespace Nuke.Helm
         ///   Verify certificates of HTTPS-enabled servers using this CA bundle.
         /// </summary>
         public virtual string CertFile { get; internal set; }
+        /// <summary>
+        ///   Use development versions, too. Equivalent to version '&gt;0.0.0-0'. If --version is set, this is ignored.
+        /// </summary>
+        public virtual bool? Devel { get; internal set; }
         /// <summary>
         ///   Help for chart.
         /// </summary>
@@ -3482,6 +3509,7 @@ namespace Nuke.Helm
               .Add("inspect chart")
               .Add("--ca-file {value}", CaFile)
               .Add("--cert-file {value}", CertFile)
+              .Add("--devel", Devel)
               .Add("--help", Help)
               .Add("--key-file {value}", KeyFile)
               .Add("--keyring {value}", Keyring)
@@ -3518,6 +3546,10 @@ namespace Nuke.Helm
         /// </summary>
         public virtual string CertFile { get; internal set; }
         /// <summary>
+        ///   Use development versions, too. Equivalent to version '&gt;0.0.0-0'. If --version is set, this is ignored.
+        /// </summary>
+        public virtual bool? Devel { get; internal set; }
+        /// <summary>
         ///   Help for readme.
         /// </summary>
         public virtual bool? Help { get; internal set; }
@@ -3551,6 +3583,7 @@ namespace Nuke.Helm
               .Add("inspect readme")
               .Add("--ca-file {value}", CaFile)
               .Add("--cert-file {value}", CertFile)
+              .Add("--devel", Devel)
               .Add("--help", Help)
               .Add("--key-file {value}", KeyFile)
               .Add("--keyring {value}", Keyring)
@@ -3584,6 +3617,10 @@ namespace Nuke.Helm
         ///   Verify certificates of HTTPS-enabled servers using this CA bundle.
         /// </summary>
         public virtual string CertFile { get; internal set; }
+        /// <summary>
+        ///   Use development versions, too. Equivalent to version '&gt;0.0.0-0'. If --version is set, this is ignored.
+        /// </summary>
+        public virtual bool? Devel { get; internal set; }
         /// <summary>
         ///   Help for values.
         /// </summary>
@@ -3626,6 +3663,7 @@ namespace Nuke.Helm
               .Add("inspect values")
               .Add("--ca-file {value}", CaFile)
               .Add("--cert-file {value}", CertFile)
+              .Add("--devel", Devel)
               .Add("--help", Help)
               .Add("--key-file {value}", KeyFile)
               .Add("--keyring {value}", Keyring)
@@ -3653,6 +3691,10 @@ namespace Nuke.Helm
         /// </summary>
         public override string ToolPath => base.ToolPath ?? HelmTasks.HelmPath;
         public override Action<OutputType, string> CustomLogger => HelmTasks.HelmLogger;
+        /// <summary>
+        ///   If set, installation process purges chart on fail, also sets --wait flag.
+        /// </summary>
+        public virtual bool? Atomic { get; internal set; }
         /// <summary>
         ///   Verify certificates of HTTPS-enabled servers using this CA bundle.
         /// </summary>
@@ -3713,6 +3755,10 @@ namespace Nuke.Helm
         ///   Chart repository password where to locate the requested chart.
         /// </summary>
         public virtual string Password { get; internal set; }
+        /// <summary>
+        ///   Render subchart notes along with the parent.
+        /// </summary>
+        public virtual bool? RenderSubchartNotes { get; internal set; }
         /// <summary>
         ///   Re-use the given name, even if that name is already used. This is unsafe in production.
         /// </summary>
@@ -3793,6 +3839,7 @@ namespace Nuke.Helm
         {
             arguments
               .Add("install")
+              .Add("--atomic", Atomic)
               .Add("--ca-file {value}", CaFile)
               .Add("--cert-file {value}", CertFile)
               .Add("--dep-up", DepUp)
@@ -3808,6 +3855,7 @@ namespace Nuke.Helm
               .Add("--no-crd-hook", NoCrdHook)
               .Add("--no-hooks", NoHooks)
               .Add("--password {value}", Password, secret: true)
+              .Add("--render-subchart-notes", RenderSubchartNotes)
               .Add("--replace", Replace)
               .Add("--repo {value}", Repo)
               .Add("--set {value}", Set, "{key}={value}", separator: ',')
@@ -3821,7 +3869,7 @@ namespace Nuke.Helm
               .Add("--tls-key {value}", TlsKey)
               .Add("--tls-verify", TlsVerify)
               .Add("--username {value}", Username)
-              .Add("--values {value}", Values, separator: ' ')
+              .Add("--values {value}", Values)
               .Add("--verify", Verify)
               .Add("--version {value}", Version)
               .Add("--wait", Wait)
@@ -3890,7 +3938,7 @@ namespace Nuke.Helm
               .Add("--set-file {value}", SetFile, "{key}={value}", separator: ',')
               .Add("--set-string {value}", SetString, "{key}={value}", separator: ',')
               .Add("--strict", Strict)
-              .Add("--values {value}", Values, separator: ' ')
+              .Add("--values {value}", Values)
               .Add("{value}", Path);
             return base.ConfigureArguments(arguments);
         }
@@ -4862,7 +4910,7 @@ namespace Nuke.Helm
               .Add("--set {value}", Set, "{key}={value}", separator: ',')
               .Add("--set-file {value}", SetFile, "{key}={value}", separator: ',')
               .Add("--set-string {value}", SetString, "{key}={value}", separator: ',')
-              .Add("--values {value}", Values, separator: ' ')
+              .Add("--values {value}", Values)
               .Add("{value}", Chart);
             return base.ConfigureArguments(arguments);
         }
@@ -4890,6 +4938,10 @@ namespace Nuke.Helm
         ///   Help for test.
         /// </summary>
         public virtual bool? Help { get; internal set; }
+        /// <summary>
+        ///   Run test pods in parallel.
+        /// </summary>
+        public virtual bool? Parallel { get; internal set; }
         /// <summary>
         ///   Time in seconds to wait for any individual Kubernetes operation (like Jobs for hooks) (default 300).
         /// </summary>
@@ -4928,6 +4980,7 @@ namespace Nuke.Helm
               .Add("test")
               .Add("--cleanup", Cleanup)
               .Add("--help", Help)
+              .Add("--parallel", Parallel)
               .Add("--timeout {value}", Timeout)
               .Add("--tls", Tls)
               .Add("--tls-ca-cert {value}", TlsCaCert)
@@ -4954,6 +5007,10 @@ namespace Nuke.Helm
         /// </summary>
         public override string ToolPath => base.ToolPath ?? HelmTasks.HelmPath;
         public override Action<OutputType, string> CustomLogger => HelmTasks.HelmLogger;
+        /// <summary>
+        ///   If set, upgrade process rolls back changes made in case of failed upgrade, also sets --wait flag.
+        /// </summary>
+        public virtual bool? Atomic { get; internal set; }
         /// <summary>
         ///   Verify certificates of HTTPS-enabled servers using this CA bundle.
         /// </summary>
@@ -5010,6 +5067,10 @@ namespace Nuke.Helm
         ///   Performs pods restart for the resource if applicable.
         /// </summary>
         public virtual bool? RecreatePods { get; internal set; }
+        /// <summary>
+        ///   Render subchart notes along with parent.
+        /// </summary>
+        public virtual bool? RenderSubchartNotes { get; internal set; }
         /// <summary>
         ///   Chart repository url where to locate the requested chart.
         /// </summary>
@@ -5098,6 +5159,7 @@ namespace Nuke.Helm
         {
             arguments
               .Add("upgrade")
+              .Add("--atomic", Atomic)
               .Add("--ca-file {value}", CaFile)
               .Add("--cert-file {value}", CertFile)
               .Add("--description {value}", Description)
@@ -5112,6 +5174,7 @@ namespace Nuke.Helm
               .Add("--no-hooks", NoHooks)
               .Add("--password {value}", Password, secret: true)
               .Add("--recreate-pods", RecreatePods)
+              .Add("--render-subchart-notes", RenderSubchartNotes)
               .Add("--repo {value}", Repo)
               .Add("--reset-values", ResetValues)
               .Add("--reuse-values", ReuseValues)
@@ -5126,7 +5189,7 @@ namespace Nuke.Helm
               .Add("--tls-key {value}", TlsKey)
               .Add("--tls-verify", TlsVerify)
               .Add("--username {value}", Username)
-              .Add("--values {value}", Values, separator: ' ')
+              .Add("--values {value}", Values)
               .Add("--verify", Verify)
               .Add("--version {value}", Version)
               .Add("--wait", Wait)
@@ -10434,6 +10497,63 @@ namespace Nuke.Helm
             return toolSettings;
         }
         #endregion
+        #region Devel
+        /// <summary>
+        ///   <p><em>Sets <see cref="HelmInspectSettings.Devel"/></em></p>
+        ///   <p>Use development versions, too. Equivalent to version '&gt;0.0.0-0'. If --version is set, this is ignored.</p>
+        /// </summary>
+        [Pure]
+        public static HelmInspectSettings SetDevel(this HelmInspectSettings toolSettings, bool? devel)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Devel = devel;
+            return toolSettings;
+        }
+        /// <summary>
+        ///   <p><em>Resets <see cref="HelmInspectSettings.Devel"/></em></p>
+        ///   <p>Use development versions, too. Equivalent to version '&gt;0.0.0-0'. If --version is set, this is ignored.</p>
+        /// </summary>
+        [Pure]
+        public static HelmInspectSettings ResetDevel(this HelmInspectSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Devel = null;
+            return toolSettings;
+        }
+        /// <summary>
+        ///   <p><em>Enables <see cref="HelmInspectSettings.Devel"/></em></p>
+        ///   <p>Use development versions, too. Equivalent to version '&gt;0.0.0-0'. If --version is set, this is ignored.</p>
+        /// </summary>
+        [Pure]
+        public static HelmInspectSettings EnableDevel(this HelmInspectSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Devel = true;
+            return toolSettings;
+        }
+        /// <summary>
+        ///   <p><em>Disables <see cref="HelmInspectSettings.Devel"/></em></p>
+        ///   <p>Use development versions, too. Equivalent to version '&gt;0.0.0-0'. If --version is set, this is ignored.</p>
+        /// </summary>
+        [Pure]
+        public static HelmInspectSettings DisableDevel(this HelmInspectSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Devel = false;
+            return toolSettings;
+        }
+        /// <summary>
+        ///   <p><em>Toggles <see cref="HelmInspectSettings.Devel"/></em></p>
+        ///   <p>Use development versions, too. Equivalent to version '&gt;0.0.0-0'. If --version is set, this is ignored.</p>
+        /// </summary>
+        [Pure]
+        public static HelmInspectSettings ToggleDevel(this HelmInspectSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Devel = !toolSettings.Devel;
+            return toolSettings;
+        }
+        #endregion
         #region Help
         /// <summary>
         ///   <p><em>Sets <see cref="HelmInspectSettings.Help"/></em></p>
@@ -10771,6 +10891,63 @@ namespace Nuke.Helm
         {
             toolSettings = toolSettings.NewInstance();
             toolSettings.CertFile = null;
+            return toolSettings;
+        }
+        #endregion
+        #region Devel
+        /// <summary>
+        ///   <p><em>Sets <see cref="HelmInspectChartSettings.Devel"/></em></p>
+        ///   <p>Use development versions, too. Equivalent to version '&gt;0.0.0-0'. If --version is set, this is ignored.</p>
+        /// </summary>
+        [Pure]
+        public static HelmInspectChartSettings SetDevel(this HelmInspectChartSettings toolSettings, bool? devel)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Devel = devel;
+            return toolSettings;
+        }
+        /// <summary>
+        ///   <p><em>Resets <see cref="HelmInspectChartSettings.Devel"/></em></p>
+        ///   <p>Use development versions, too. Equivalent to version '&gt;0.0.0-0'. If --version is set, this is ignored.</p>
+        /// </summary>
+        [Pure]
+        public static HelmInspectChartSettings ResetDevel(this HelmInspectChartSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Devel = null;
+            return toolSettings;
+        }
+        /// <summary>
+        ///   <p><em>Enables <see cref="HelmInspectChartSettings.Devel"/></em></p>
+        ///   <p>Use development versions, too. Equivalent to version '&gt;0.0.0-0'. If --version is set, this is ignored.</p>
+        /// </summary>
+        [Pure]
+        public static HelmInspectChartSettings EnableDevel(this HelmInspectChartSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Devel = true;
+            return toolSettings;
+        }
+        /// <summary>
+        ///   <p><em>Disables <see cref="HelmInspectChartSettings.Devel"/></em></p>
+        ///   <p>Use development versions, too. Equivalent to version '&gt;0.0.0-0'. If --version is set, this is ignored.</p>
+        /// </summary>
+        [Pure]
+        public static HelmInspectChartSettings DisableDevel(this HelmInspectChartSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Devel = false;
+            return toolSettings;
+        }
+        /// <summary>
+        ///   <p><em>Toggles <see cref="HelmInspectChartSettings.Devel"/></em></p>
+        ///   <p>Use development versions, too. Equivalent to version '&gt;0.0.0-0'. If --version is set, this is ignored.</p>
+        /// </summary>
+        [Pure]
+        public static HelmInspectChartSettings ToggleDevel(this HelmInspectChartSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Devel = !toolSettings.Devel;
             return toolSettings;
         }
         #endregion
@@ -11114,6 +11291,63 @@ namespace Nuke.Helm
             return toolSettings;
         }
         #endregion
+        #region Devel
+        /// <summary>
+        ///   <p><em>Sets <see cref="HelmInspectReadmeSettings.Devel"/></em></p>
+        ///   <p>Use development versions, too. Equivalent to version '&gt;0.0.0-0'. If --version is set, this is ignored.</p>
+        /// </summary>
+        [Pure]
+        public static HelmInspectReadmeSettings SetDevel(this HelmInspectReadmeSettings toolSettings, bool? devel)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Devel = devel;
+            return toolSettings;
+        }
+        /// <summary>
+        ///   <p><em>Resets <see cref="HelmInspectReadmeSettings.Devel"/></em></p>
+        ///   <p>Use development versions, too. Equivalent to version '&gt;0.0.0-0'. If --version is set, this is ignored.</p>
+        /// </summary>
+        [Pure]
+        public static HelmInspectReadmeSettings ResetDevel(this HelmInspectReadmeSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Devel = null;
+            return toolSettings;
+        }
+        /// <summary>
+        ///   <p><em>Enables <see cref="HelmInspectReadmeSettings.Devel"/></em></p>
+        ///   <p>Use development versions, too. Equivalent to version '&gt;0.0.0-0'. If --version is set, this is ignored.</p>
+        /// </summary>
+        [Pure]
+        public static HelmInspectReadmeSettings EnableDevel(this HelmInspectReadmeSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Devel = true;
+            return toolSettings;
+        }
+        /// <summary>
+        ///   <p><em>Disables <see cref="HelmInspectReadmeSettings.Devel"/></em></p>
+        ///   <p>Use development versions, too. Equivalent to version '&gt;0.0.0-0'. If --version is set, this is ignored.</p>
+        /// </summary>
+        [Pure]
+        public static HelmInspectReadmeSettings DisableDevel(this HelmInspectReadmeSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Devel = false;
+            return toolSettings;
+        }
+        /// <summary>
+        ///   <p><em>Toggles <see cref="HelmInspectReadmeSettings.Devel"/></em></p>
+        ///   <p>Use development versions, too. Equivalent to version '&gt;0.0.0-0'. If --version is set, this is ignored.</p>
+        /// </summary>
+        [Pure]
+        public static HelmInspectReadmeSettings ToggleDevel(this HelmInspectReadmeSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Devel = !toolSettings.Devel;
+            return toolSettings;
+        }
+        #endregion
         #region Help
         /// <summary>
         ///   <p><em>Sets <see cref="HelmInspectReadmeSettings.Help"/></em></p>
@@ -11403,6 +11637,63 @@ namespace Nuke.Helm
         {
             toolSettings = toolSettings.NewInstance();
             toolSettings.CertFile = null;
+            return toolSettings;
+        }
+        #endregion
+        #region Devel
+        /// <summary>
+        ///   <p><em>Sets <see cref="HelmInspectValuesSettings.Devel"/></em></p>
+        ///   <p>Use development versions, too. Equivalent to version '&gt;0.0.0-0'. If --version is set, this is ignored.</p>
+        /// </summary>
+        [Pure]
+        public static HelmInspectValuesSettings SetDevel(this HelmInspectValuesSettings toolSettings, bool? devel)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Devel = devel;
+            return toolSettings;
+        }
+        /// <summary>
+        ///   <p><em>Resets <see cref="HelmInspectValuesSettings.Devel"/></em></p>
+        ///   <p>Use development versions, too. Equivalent to version '&gt;0.0.0-0'. If --version is set, this is ignored.</p>
+        /// </summary>
+        [Pure]
+        public static HelmInspectValuesSettings ResetDevel(this HelmInspectValuesSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Devel = null;
+            return toolSettings;
+        }
+        /// <summary>
+        ///   <p><em>Enables <see cref="HelmInspectValuesSettings.Devel"/></em></p>
+        ///   <p>Use development versions, too. Equivalent to version '&gt;0.0.0-0'. If --version is set, this is ignored.</p>
+        /// </summary>
+        [Pure]
+        public static HelmInspectValuesSettings EnableDevel(this HelmInspectValuesSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Devel = true;
+            return toolSettings;
+        }
+        /// <summary>
+        ///   <p><em>Disables <see cref="HelmInspectValuesSettings.Devel"/></em></p>
+        ///   <p>Use development versions, too. Equivalent to version '&gt;0.0.0-0'. If --version is set, this is ignored.</p>
+        /// </summary>
+        [Pure]
+        public static HelmInspectValuesSettings DisableDevel(this HelmInspectValuesSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Devel = false;
+            return toolSettings;
+        }
+        /// <summary>
+        ///   <p><em>Toggles <see cref="HelmInspectValuesSettings.Devel"/></em></p>
+        ///   <p>Use development versions, too. Equivalent to version '&gt;0.0.0-0'. If --version is set, this is ignored.</p>
+        /// </summary>
+        [Pure]
+        public static HelmInspectValuesSettings ToggleDevel(this HelmInspectValuesSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Devel = !toolSettings.Devel;
             return toolSettings;
         }
         #endregion
@@ -11698,6 +11989,63 @@ namespace Nuke.Helm
     [ExcludeFromCodeCoverage]
     public static partial class HelmInstallSettingsExtensions
     {
+        #region Atomic
+        /// <summary>
+        ///   <p><em>Sets <see cref="HelmInstallSettings.Atomic"/></em></p>
+        ///   <p>If set, installation process purges chart on fail, also sets --wait flag.</p>
+        /// </summary>
+        [Pure]
+        public static HelmInstallSettings SetAtomic(this HelmInstallSettings toolSettings, bool? atomic)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Atomic = atomic;
+            return toolSettings;
+        }
+        /// <summary>
+        ///   <p><em>Resets <see cref="HelmInstallSettings.Atomic"/></em></p>
+        ///   <p>If set, installation process purges chart on fail, also sets --wait flag.</p>
+        /// </summary>
+        [Pure]
+        public static HelmInstallSettings ResetAtomic(this HelmInstallSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Atomic = null;
+            return toolSettings;
+        }
+        /// <summary>
+        ///   <p><em>Enables <see cref="HelmInstallSettings.Atomic"/></em></p>
+        ///   <p>If set, installation process purges chart on fail, also sets --wait flag.</p>
+        /// </summary>
+        [Pure]
+        public static HelmInstallSettings EnableAtomic(this HelmInstallSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Atomic = true;
+            return toolSettings;
+        }
+        /// <summary>
+        ///   <p><em>Disables <see cref="HelmInstallSettings.Atomic"/></em></p>
+        ///   <p>If set, installation process purges chart on fail, also sets --wait flag.</p>
+        /// </summary>
+        [Pure]
+        public static HelmInstallSettings DisableAtomic(this HelmInstallSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Atomic = false;
+            return toolSettings;
+        }
+        /// <summary>
+        ///   <p><em>Toggles <see cref="HelmInstallSettings.Atomic"/></em></p>
+        ///   <p>If set, installation process purges chart on fail, also sets --wait flag.</p>
+        /// </summary>
+        [Pure]
+        public static HelmInstallSettings ToggleAtomic(this HelmInstallSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Atomic = !toolSettings.Atomic;
+            return toolSettings;
+        }
+        #endregion
         #region CaFile
         /// <summary>
         ///   <p><em>Sets <see cref="HelmInstallSettings.CaFile"/></em></p>
@@ -12253,6 +12601,63 @@ namespace Nuke.Helm
         {
             toolSettings = toolSettings.NewInstance();
             toolSettings.Password = null;
+            return toolSettings;
+        }
+        #endregion
+        #region RenderSubchartNotes
+        /// <summary>
+        ///   <p><em>Sets <see cref="HelmInstallSettings.RenderSubchartNotes"/></em></p>
+        ///   <p>Render subchart notes along with the parent.</p>
+        /// </summary>
+        [Pure]
+        public static HelmInstallSettings SetRenderSubchartNotes(this HelmInstallSettings toolSettings, bool? renderSubchartNotes)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.RenderSubchartNotes = renderSubchartNotes;
+            return toolSettings;
+        }
+        /// <summary>
+        ///   <p><em>Resets <see cref="HelmInstallSettings.RenderSubchartNotes"/></em></p>
+        ///   <p>Render subchart notes along with the parent.</p>
+        /// </summary>
+        [Pure]
+        public static HelmInstallSettings ResetRenderSubchartNotes(this HelmInstallSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.RenderSubchartNotes = null;
+            return toolSettings;
+        }
+        /// <summary>
+        ///   <p><em>Enables <see cref="HelmInstallSettings.RenderSubchartNotes"/></em></p>
+        ///   <p>Render subchart notes along with the parent.</p>
+        /// </summary>
+        [Pure]
+        public static HelmInstallSettings EnableRenderSubchartNotes(this HelmInstallSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.RenderSubchartNotes = true;
+            return toolSettings;
+        }
+        /// <summary>
+        ///   <p><em>Disables <see cref="HelmInstallSettings.RenderSubchartNotes"/></em></p>
+        ///   <p>Render subchart notes along with the parent.</p>
+        /// </summary>
+        [Pure]
+        public static HelmInstallSettings DisableRenderSubchartNotes(this HelmInstallSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.RenderSubchartNotes = false;
+            return toolSettings;
+        }
+        /// <summary>
+        ///   <p><em>Toggles <see cref="HelmInstallSettings.RenderSubchartNotes"/></em></p>
+        ///   <p>Render subchart notes along with the parent.</p>
+        /// </summary>
+        [Pure]
+        public static HelmInstallSettings ToggleRenderSubchartNotes(this HelmInstallSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.RenderSubchartNotes = !toolSettings.RenderSubchartNotes;
             return toolSettings;
         }
         #endregion
@@ -18679,6 +19084,63 @@ namespace Nuke.Helm
             return toolSettings;
         }
         #endregion
+        #region Parallel
+        /// <summary>
+        ///   <p><em>Sets <see cref="HelmTestSettings.Parallel"/></em></p>
+        ///   <p>Run test pods in parallel.</p>
+        /// </summary>
+        [Pure]
+        public static HelmTestSettings SetParallel(this HelmTestSettings toolSettings, bool? parallel)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Parallel = parallel;
+            return toolSettings;
+        }
+        /// <summary>
+        ///   <p><em>Resets <see cref="HelmTestSettings.Parallel"/></em></p>
+        ///   <p>Run test pods in parallel.</p>
+        /// </summary>
+        [Pure]
+        public static HelmTestSettings ResetParallel(this HelmTestSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Parallel = null;
+            return toolSettings;
+        }
+        /// <summary>
+        ///   <p><em>Enables <see cref="HelmTestSettings.Parallel"/></em></p>
+        ///   <p>Run test pods in parallel.</p>
+        /// </summary>
+        [Pure]
+        public static HelmTestSettings EnableParallel(this HelmTestSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Parallel = true;
+            return toolSettings;
+        }
+        /// <summary>
+        ///   <p><em>Disables <see cref="HelmTestSettings.Parallel"/></em></p>
+        ///   <p>Run test pods in parallel.</p>
+        /// </summary>
+        [Pure]
+        public static HelmTestSettings DisableParallel(this HelmTestSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Parallel = false;
+            return toolSettings;
+        }
+        /// <summary>
+        ///   <p><em>Toggles <see cref="HelmTestSettings.Parallel"/></em></p>
+        ///   <p>Run test pods in parallel.</p>
+        /// </summary>
+        [Pure]
+        public static HelmTestSettings ToggleParallel(this HelmTestSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Parallel = !toolSettings.Parallel;
+            return toolSettings;
+        }
+        #endregion
         #region Timeout
         /// <summary>
         ///   <p><em>Sets <see cref="HelmTestSettings.Timeout"/></em></p>
@@ -18947,6 +19409,63 @@ namespace Nuke.Helm
     [ExcludeFromCodeCoverage]
     public static partial class HelmUpgradeSettingsExtensions
     {
+        #region Atomic
+        /// <summary>
+        ///   <p><em>Sets <see cref="HelmUpgradeSettings.Atomic"/></em></p>
+        ///   <p>If set, upgrade process rolls back changes made in case of failed upgrade, also sets --wait flag.</p>
+        /// </summary>
+        [Pure]
+        public static HelmUpgradeSettings SetAtomic(this HelmUpgradeSettings toolSettings, bool? atomic)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Atomic = atomic;
+            return toolSettings;
+        }
+        /// <summary>
+        ///   <p><em>Resets <see cref="HelmUpgradeSettings.Atomic"/></em></p>
+        ///   <p>If set, upgrade process rolls back changes made in case of failed upgrade, also sets --wait flag.</p>
+        /// </summary>
+        [Pure]
+        public static HelmUpgradeSettings ResetAtomic(this HelmUpgradeSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Atomic = null;
+            return toolSettings;
+        }
+        /// <summary>
+        ///   <p><em>Enables <see cref="HelmUpgradeSettings.Atomic"/></em></p>
+        ///   <p>If set, upgrade process rolls back changes made in case of failed upgrade, also sets --wait flag.</p>
+        /// </summary>
+        [Pure]
+        public static HelmUpgradeSettings EnableAtomic(this HelmUpgradeSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Atomic = true;
+            return toolSettings;
+        }
+        /// <summary>
+        ///   <p><em>Disables <see cref="HelmUpgradeSettings.Atomic"/></em></p>
+        ///   <p>If set, upgrade process rolls back changes made in case of failed upgrade, also sets --wait flag.</p>
+        /// </summary>
+        [Pure]
+        public static HelmUpgradeSettings DisableAtomic(this HelmUpgradeSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Atomic = false;
+            return toolSettings;
+        }
+        /// <summary>
+        ///   <p><em>Toggles <see cref="HelmUpgradeSettings.Atomic"/></em></p>
+        ///   <p>If set, upgrade process rolls back changes made in case of failed upgrade, also sets --wait flag.</p>
+        /// </summary>
+        [Pure]
+        public static HelmUpgradeSettings ToggleAtomic(this HelmUpgradeSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.Atomic = !toolSettings.Atomic;
+            return toolSettings;
+        }
+        #endregion
         #region CaFile
         /// <summary>
         ///   <p><em>Sets <see cref="HelmUpgradeSettings.CaFile"/></em></p>
@@ -19511,6 +20030,63 @@ namespace Nuke.Helm
         {
             toolSettings = toolSettings.NewInstance();
             toolSettings.RecreatePods = !toolSettings.RecreatePods;
+            return toolSettings;
+        }
+        #endregion
+        #region RenderSubchartNotes
+        /// <summary>
+        ///   <p><em>Sets <see cref="HelmUpgradeSettings.RenderSubchartNotes"/></em></p>
+        ///   <p>Render subchart notes along with parent.</p>
+        /// </summary>
+        [Pure]
+        public static HelmUpgradeSettings SetRenderSubchartNotes(this HelmUpgradeSettings toolSettings, bool? renderSubchartNotes)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.RenderSubchartNotes = renderSubchartNotes;
+            return toolSettings;
+        }
+        /// <summary>
+        ///   <p><em>Resets <see cref="HelmUpgradeSettings.RenderSubchartNotes"/></em></p>
+        ///   <p>Render subchart notes along with parent.</p>
+        /// </summary>
+        [Pure]
+        public static HelmUpgradeSettings ResetRenderSubchartNotes(this HelmUpgradeSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.RenderSubchartNotes = null;
+            return toolSettings;
+        }
+        /// <summary>
+        ///   <p><em>Enables <see cref="HelmUpgradeSettings.RenderSubchartNotes"/></em></p>
+        ///   <p>Render subchart notes along with parent.</p>
+        /// </summary>
+        [Pure]
+        public static HelmUpgradeSettings EnableRenderSubchartNotes(this HelmUpgradeSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.RenderSubchartNotes = true;
+            return toolSettings;
+        }
+        /// <summary>
+        ///   <p><em>Disables <see cref="HelmUpgradeSettings.RenderSubchartNotes"/></em></p>
+        ///   <p>Render subchart notes along with parent.</p>
+        /// </summary>
+        [Pure]
+        public static HelmUpgradeSettings DisableRenderSubchartNotes(this HelmUpgradeSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.RenderSubchartNotes = false;
+            return toolSettings;
+        }
+        /// <summary>
+        ///   <p><em>Toggles <see cref="HelmUpgradeSettings.RenderSubchartNotes"/></em></p>
+        ///   <p>Render subchart notes along with parent.</p>
+        /// </summary>
+        [Pure]
+        public static HelmUpgradeSettings ToggleRenderSubchartNotes(this HelmUpgradeSettings toolSettings)
+        {
+            toolSettings = toolSettings.NewInstance();
+            toolSettings.RenderSubchartNotes = !toolSettings.RenderSubchartNotes;
             return toolSettings;
         }
         #endregion
