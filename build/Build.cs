@@ -1,4 +1,4 @@
-// Copyright 2018 Maintainers of NUKE.
+﻿// Copyright 2018 Maintainers of NUKE.
 // Distributed under the MIT License.
 // https://github.com/nuke-build/nuke/blob/master/LICENSE
 
@@ -115,6 +115,7 @@ partial class Build : NukeBuild
     Target Changelog => _ => _
         .After(Test)
         .Before(Pack)
+        .Requires(() => SemanticVersion)
         .OnlyWhenDynamic(() =>
             GitRepository.IsOnMasterBranch() ||
             GitRepository.IsOnReleaseBranch() ||
